@@ -1,0 +1,44 @@
+import { useMemo } from 'react'
+import useMediaQuery from '@useweb/ui/useMediaQuery'
+
+import type NavLinkSchema from '../../../_commonSchemas/NavLinkSchema/NavLinkSchema.js'
+import useAuth from '../../../users/utils/useAuth/useAuth.js'
+
+export default function useMainNavLinks() {
+  const auth = useAuth()
+  const mobileMq = useMediaQuery({
+    size: 'lg',
+    type: 'down',
+  })
+
+  const mainNavLinks = useMemo(() => {
+    const links: NavLinkSchema[] = []
+
+    const isMobile = mobileMq.matches
+
+    if (auth.user?.id) {
+      links.push({
+        label: 'Profile',
+        url: `/settings/profile`,
+      })
+
+      links.push({
+        label: 'Settings',
+        url: `/settings/edit-profile`,
+      })
+    }
+
+    if (isMobile) {
+      links.push({
+        label: 'FAQ',
+        url: `/faq`,
+      })
+    }
+
+    return links
+  }, [auth.user?.id, mobileMq.matches])
+
+  return { mainNavLinks }
+}
+
+export type UseMainNavLinksReturn = ReturnType<typeof useMainNavLinks>

@@ -1,0 +1,7 @@
+{
+  "repositoryName": "social-seed",
+  "adapter": "@slicemachine/adapter-next",
+  "libraries": ["./src/lib/integrations/Prismic/slices"],
+  "apiEndpoint": "https://social-seed.prismic.io/api/v2",
+  "localSliceSimulatorURL": "http://localhost:3001/slice-simulator"
+}

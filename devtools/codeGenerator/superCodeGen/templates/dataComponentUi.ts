@@ -1,0 +1,249 @@
+import type {
+  SuperCodeGeneratorTemplateSchema,
+  SuperCodeGeneratorFilesSchema,
+} from '@jeremytenjo/super-code-generator'
+
+import { getStoryPrefix } from './story.js'
+
+const dataComponentName = 'Data Component'
+
+const files: SuperCodeGeneratorFilesSchema<{
+  folderPath: string
+}> = [
+  // stories
+  {
+    path: ({ name, helpers, type }) => {
+      const pascalName = helpers?.changeCase?.pascalCase(name)
+      const prefix = type === dataComponentName ? 'ui/' : '/'
+      return `${prefix}${pascalName}/stories/${name}.stories.tsx`
+    },
+    template: ({ name, helpers, customProps }) => {
+      const pascalName = helpers?.changeCase?.pascalCase(name)
+      const storyPrefix = getStoryPrefix({ folderPath: customProps?.folderPath })
+
+      return `//https://storybook.js.org/docs/react/writing-docs/docs-page
+      import React from 'react'
+      
+      import ${pascalName}Stubs from '../../../${name}.stubs'
+      import ${pascalName} from '../${pascalName}'
+      import ${pascalName}Result_ from '../${pascalName}Result/${pascalName}Result'
+      import ${pascalName}Loading_ from '../${pascalName}Loading/${pascalName}Loading'
+      import ${pascalName}Error_ from '../${pascalName}Error/${pascalName}Error'
+      
+      export default {
+        title: '${storyPrefix}/${name}/ui/${pascalName}',
+        parameters: {
+          signInAs: false,
+        },
+      }
+      
+      // full example
+      export const ${pascalName}Example = {
+        render: () => {
+          return (
+            <>
+              <${pascalName} />
+            </>
+          )
+        },
+      }
+      
+      // result
+      export const ${pascalName}WithResult = {
+        render: () => {
+          return (
+            <>
+              <${pascalName}Result_ {...commonProps} result={${pascalName}Stubs as any} />
+            </>
+          )
+        },
+      }
+      
+      // loading
+      export const ${pascalName}Loading = {
+        render: () => {
+          return (
+            <>
+              <${pascalName}Loading_ {...commonProps} />
+            </>
+          )
+        },
+      }
+      
+      // error
+      export const ${pascalName}Error = {
+        render: () => {
+          return (
+            <>
+              <${pascalName}Error_
+                {...commonProps}
+                error={new Error('${pascalName} failed')}
+              />
+            </>
+          )
+        },
+      }
+      
+      const commonProps = {
+        exec: () => null,
+      }
+      
+      `
+    },
+  },
+
+  // main
+
+  {
+    path: ({ name, helpers, type }) => {
+      const pascalName = helpers?.changeCase?.pascalCase(name)
+      const prefix = type === dataComponentName ? 'ui/' : '/'
+
+      return `${prefix}${pascalName}/${pascalName}.tsx`
+    },
+    template: ({ name, helpers }) => {
+      const pascalName = helpers?.changeCase?.pascalCase(name)
+
+      return `import React from 'react'
+      import Box from '@useweb/ui/Box'
+      import UseAsyncUi from '@useweb/use-async-ui'
+      
+      import use${pascalName} from '../../use${pascalName}/use${pascalName}'
+
+      import ${pascalName}Result from './${pascalName}Result/${pascalName}Result'
+      import ${pascalName}Loading from './${pascalName}Loading/${pascalName}Loading'
+      import ${pascalName}Error from './${pascalName}Error/${pascalName}Error'
+      
+      export default function ${pascalName}() {
+        const ${name} = use${pascalName}()
+      
+        return (
+          <Box data-id='${pascalName}' sx={{}}>
+            <UseAsyncUi
+              asyncFunctionVariable={${name}}
+              result={${pascalName}Result}
+              loading={${pascalName}Loading}
+              error={${pascalName}Error}
+            />
+          </Box>
+        )
+      }
+      
+      `
+    },
+  },
+
+  // result
+  {
+    path: ({ name, helpers, type }) => {
+      const pascalName = helpers?.changeCase?.pascalCase(name)
+      const prefix = type === dataComponentName ? 'ui/' : '/'
+
+      return `${prefix}${pascalName}/${pascalName}Result/${pascalName}Result.tsx`
+    },
+    template: ({ name, helpers }) => {
+      const pascalName = helpers?.changeCase?.pascalCase(name)
+
+      return `import React from 'react'
+      import Box from '@useweb/ui/Box'
+      import { type UseAsyncUiComponentProps } from '@useweb/use-async-ui'
+      
+      import type ${pascalName}Schema from '../../../${pascalName}.schema'
+      
+      export type ${pascalName}ResultProps = UseAsyncUiComponentProps<${pascalName}Schema>['result']
+      
+      export default function ${pascalName}Result(props: ${pascalName}ResultProps) {
+        return <Box data-id='${pascalName}Result' sx={{}}>${pascalName}Result</Box>
+      }
+      
+    `
+    },
+  },
+
+  // loading
+  {
+    path: ({ name, helpers, type }) => {
+      const pascalName = helpers?.changeCase?.pascalCase(name)
+      const prefix = type === dataComponentName ? 'ui/' : '/'
+
+      return `${prefix}${pascalName}/${pascalName}Loading/${pascalName}Loading.tsx`
+    },
+    template: ({ name, helpers }) => {
+      const pascalName = helpers?.changeCase?.pascalCase(name)
+
+      return `import React from 'react'
+      import Box from '@useweb/ui/Box'
+      import LinearProgress from '@mui/material/LinearProgress'
+      import { type UseAsyncUiComponentProps } from '@useweb/use-async-ui'
+      
+      import type ${pascalName}Schema from '../../../${pascalName}.schema'
+      
+      export type ${pascalName}LoadingProps =
+        UseAsyncUiComponentProps<${pascalName}Schema>['loading']
+      
+      export default function ${pascalName}Loading(props: ${pascalName}LoadingProps) {
+        return (
+          <Box data-id='${pascalName}Loading' sx={{}}>
+            <LinearProgress />
+          </Box>
+        )
+      }
+      
+
+      `
+    },
+  },
+
+  // error
+  {
+    path: ({ name, helpers, type }) => {
+      const pascalName = helpers?.changeCase?.pascalCase(name)
+      const prefix = type === dataComponentName ? 'ui/' : '/'
+
+      return `${prefix}${pascalName}/${pascalName}Error/${pascalName}Error.tsx`
+    },
+    template: ({ name, helpers }) => {
+      const pascalName = helpers?.changeCase?.pascalCase(name)
+
+      return `import React from 'react'
+      import Box from '@useweb/ui/Box'
+      import Text from '@useweb/ui/Text'
+      import { type UseAsyncUiComponentProps } from '@useweb/use-async-ui'
+      
+      import type ${pascalName}Schema from '../../../${pascalName}.schema'
+      
+      export type ${pascalName}ErrorProps =
+        UseAsyncUiComponentProps<${pascalName}Schema>['error']
+      
+      export default function ${pascalName}Error(props: ${pascalName}ErrorProps) {
+        const error =
+        props.error instanceof Error ? String(props.error) : JSON.stringify(props.error)
+
+        return (
+          <Box data-id='${pascalName}Error' sx={{}}>
+            <Text
+              text={error}
+              sx={{
+                color: 'red',
+              }}
+            />
+          </Box>
+        )
+      }
+      
+      `
+    },
+  },
+]
+
+const template: SuperCodeGeneratorTemplateSchema<{
+  folderPath: string
+}> = {
+  type: 'Data Component UI',
+  files,
+  options: {
+    createNamedFolder: false,
+  },
+}
+
+export default template

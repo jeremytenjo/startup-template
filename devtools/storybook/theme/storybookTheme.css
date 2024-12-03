@@ -1,0 +1,19 @@
+.sb-main-padded.sb-show-main {
+  padding: 0;
+}
+
+.firebase-emulator-warning {
+  display: none;
+}
+
+body {
+  background-color: #15202b !important;
+}
+
+[data-id='FetchingUI'] .MuiAlert-message {
+  color: white !important;
+}
+
+[data-id='FetchingUI'] .MuiTab-root[aria-selected='false'] {
+  color: lightgrey !important;
+}

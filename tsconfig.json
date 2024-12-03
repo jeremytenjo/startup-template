@@ -1,0 +1,50 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "noImplicitAny": false,
+    "jsx": "preserve",
+    "baseUrl": "./",
+    "types": ["node"],
+    "paths": {
+      "@/*": ["*"],
+      "*": ["devtools/ts/declaredModules/*"]
+    },
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "./src",
+    "./devtools",
+    "devtools/ts/declaredModules/*",
+    "scripts/storybook/startStorybook",
+    ".sliceMachine",
+    ".next/types/**/*.ts",
+    "playwright.config.ts",
+    "firebaseFunctions",
+    "firebaseAdminServer/scripts/startFirebaseAdminServer",
+    "app"
+  ],
+  "exclude": ["node_modules", "devtools/codeGenerator/superCodeGen/test/testApp"],
+  "ts-node": {
+    "transpileOnly": true,
+    "files": true,
+    "experimentalResolver": true
+  }
+}

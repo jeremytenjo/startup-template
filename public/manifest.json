@@ -1,0 +1,22 @@
+{
+  "short_name": "Social Seed",
+  "name": "Social Seed",
+  "description": "Where Game Developers and Creators connect",
+  "start_url": "/",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#15202B",
+  "background_color": "#15202B",
+  "icons": [
+    {
+      "src": "/images/logo/assets/sizes/192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/logo/assets/sizes/512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

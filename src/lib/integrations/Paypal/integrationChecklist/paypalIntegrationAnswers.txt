@@ -1,0 +1,165 @@
+Sandbox Account
+
+email address (sandbox REST App): cole_test@socialseed.com
+client ID (sandbox REST App): ARjDzfe24yMcxF98JbvOEX_nhaXzBi4iltq91s9nAsIht_lHo1lJHU22eov1pJD57CiB14hL3md2jgl6
+Webhooks (subscribed to): Merchant onboarding completed	
+
+---
+
+Video recordings
+
+The steps a new seller would take to link their PayPal account to your platform and begin accepting payments.
+
+Links: https://drive.google.com/file/d/1MjBWvdoRjla5ZjYVfOI1OMDtr1hyTDA6/view?usp=sharing
+
+The process a buyer would then take to purchase items from that seller (multiple items if applicable).
+
+Links: https://drive.google.com/file/d/1lqYwLG2ZvSATdavnPcm_4dGhy6Gj_C6T/view?usp=sharing
+
+An example of each checkout method that your integration uses such as the PayPal button, guest checkout, unbranded checkout, or billing agreements if applicable.
+
+Links: https://drive.google.com/file/d/1MjBWvdoRjla5ZjYVfOI1OMDtr1hyTDA6/view?usp=sharing
+
+A declined payment scenario. See Simulate negative responses with request headers.
+
+Links: https://drive.google.com/file/d/15hIn_yrx9SY56AUGCfULloh6C65R-5t5/view?usp=sharing
+
+Any tools or dashboards available to your sellers such as refunds, transaction dashboards, and unlinking accounts.
+
+Links: https://drive.google.com/file/d/1tNg3STemQJk3277AUFkMmcp2vjE_q5GM/view?usp=sharing
+
+---
+
+Integration Questionnaire
+
+Seller onboarding
+
+1. Are you using the Partner Referral API to onboard sellers?
+Answer: Yes, I am using v2 of the Partner Referral API.
+
+2. If you are not using the Partner Referral API, then what method are you using to connect the sellers to your platform?
+Answer: N/A
+
+3. What are you submitting as the product_name when generating a new onboarding referral link?
+Answer: EXPRESS_CHECKOUT
+
+4. Are you passing the following features when generating a new onboarding referral link?
+
+Answer: None of the options provided are part of the 'v2/customer/partner-referrals' endpoint.
+
+5. Before enabling payments for a seller, are you performing a GET call to /v1/customer/partners/{partner_id}/merchant-integrations/{merchant_id} to ensure that the:
+
+payments_receivable flag is true.
+primary_email_confirmed flag is true.
+oauth_third_party is not blank and has the set of third-party permissions that correspond with the required features above?
+
+Answer: Yes
+
+6. If product_name above was set to PPCP, are you confirming vetting_status is SUBSCRIBED, and enabling advanced card processing based on CUSTOM_CARD_PROCESSING capabilities? In the sandbox environment, vetting_status is subscribed by default, but you should confirm this flag.
+
+Answer: N/A
+
+Buyer checkout
+
+1. Are you using PayPal's JavaScript SDK library for the following:
+
+Render a PayPal-branded button: Yes
+Handle the buyer checkout experience: Yes
+For payment buttons on the seller's product pages, set the layout to horizontal, size to responsive, and label to buynow in the button's style attributes: No
+For payment buttons on seller's cart or checkout page, set the layout to vertical and size to responsive in the button's style attributes No
+
+Answer: We set the disableMaxWidth to true and label to 'pay' in the button's style attributes.
+
+2. Are you waiting to call the Create Order API until after the buyer has clicked on the PayPal checkout button?
+
+Answer: Yes
+
+3. Are you passing individual line-item details as part of the Create Order call?
+
+Answer: No
+
+4. Are you able to process a successful payment?
+
+Answer: Yes
+
+5. If you are using delayed disbursement, are you able to issue a refund?
+
+Answer: N/A
+
+6. Are you passing your BN code, which is the PayPal-Partner-Attribution-ID, to PayPal with each payment?
+
+Answer: Yes
+
+7. Have you capitalized the two letter P's when PayPal is mentioned?
+
+Answer: Yes
+
+8. Does your checkout button or payment selection take buyers directly to PayPal without any steps in between?
+
+Answer: Yes
+
+9. If an order does not require any shipping information, such as digital products or services:
+
+Use NO_SHIPPING during the Create Order call to hide the shipping information on the PayPal review page. This is required when you charge the customer immediately when returning to your platform.
+
+Set application_context > user_action> to PAY_NOW and commit to true. This is required when the final amount of an order will change after shipping information is selected at PayPal.
+
+Set application_context > user_action> to CONTINUE. In the same scenario, display PayPal as the payment method. Display the shipping address information on post-PayPal pages.
+
+10. When a capture attempt returns an INSTRUMENT_DECLINED error, are you restarting the payment so the buyer can select another funding source?
+
+Answer: Yes
+
+11. Does your checkout work across major browsers on desktop and mobile?
+
+Answer: Yes
+
+12. Are PayPal checkout buttons included with equal prominence as other options on any platform page that starts checkout?
+
+Answer: Yes
+
+13. If you are subscribed to webhooks, are you following any changes to the transaction status?
+
+Answer: Yes
+
+14. If you are using standard checkout with the PayPal button, does your checkout flow allow buyers to checkout in only two steps?
+
+Answer: yes
+
+Reporting
+
+If you are using the partner features, are you able to connect to your SFTP folder and receive your partner reports?
+
+Answer: N/A
+
+Troubleshooting
+
+Are you storing the Paypal-Debug-Id header returned in the API Response?
+
+Answer: Yes, we log it in our error logs.
+
+Additional comments
+
+List any comments or observations that you have in this walkthrough that was not included in the questions above.
+
+Answer: N/A
+
+---
+
+FEEDBACK
+
+Feedback Aug 20, 2024
+
+3. Please add ACCESS_MERCHANT_INFORMATION endpoint feature to the onboarding API call (/v2/customer/partner-referrals). More information can be found at: https://developer.paypal.com/docs/api/partner-referrals/v2/#definition-rest_endpoint_features_enum
+Once added, please run a new onboarding test, and share the debug ID. 
+
+Answer: f6605132b50e8
+
+4. Please run a test in the following API call and provide the debug ID:
+/v2/checkout/orders/
+
+Answer: f369835d95dee
+
+/v2/checkout/orders/{order_id}/capture
+
+Answer: f531024c43f06

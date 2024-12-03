@@ -1,0 +1,42 @@
+{
+  "functions": {
+    "source": "firebaseFunctions",
+    "runtime": "nodejs18",
+    "ignore": [".env.local"]
+  },
+  "firestore": {
+    "rules": "src/lib/integrations/Google/Firebase/firestore/firestore.rules",
+    "indexes": "src/lib/integrations/Google/Firebase/firestore/firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "src/lib/integrations/Google/Firebase/storage/storage.rules"
+  },
+  "emulators": {
+    "ui": {
+      "enabled": true,
+      "port": 4000
+    },
+    "auth": {
+      "port": 9005
+    },
+    "firestore": {
+      "port": 9002
+    },
+    "functions": {
+      "port": 5002
+    },
+    "storage": {
+      "port": 9199
+    }
+  },
+  "hosting": {
+    "public": "build",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
