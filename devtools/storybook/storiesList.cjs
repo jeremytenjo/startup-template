@@ -4,6 +4,11 @@
  */
 
 module.exports = [
+  '../../src/data/notifications/queries/Notifications/stories/unseenNotifications.stories.tsx',
+  '../../src/data/notifications/queries/Notifications/ui/NotificationsList/stories/NotificationsList.stories.tsx',
+  '../../src/data/notifications/queries/Notifications/ui/NotificationsPopover/stories/NotificationsPopover.stories.tsx',
+  '../../src/data/notifications/queries/sendNotification/stories/sendNotification.stories.tsx',
+  '../../src/data/notifications/queries/sendNotification/ui/stories/sendNotification.stories.tsx',
   '../../src/lib/components/basic/ComingSoon/stories/ComingSoon.stories.tsx',
   '../../src/lib/components/basic/CPMAvatar/stories/CPMAvatar.stories.tsx',
   '../../src/lib/components/basic/ErrorMessage/stories/ErrorMessage.stories.tsx',
