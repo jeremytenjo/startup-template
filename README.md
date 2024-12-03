@@ -19,6 +19,7 @@ This is a template for a startup website. It includes common pages, components, 
 - Account - Sign Up
 - Account - Forgot Password
 
+- Terms of Service
 - FAQ
 - Privacy Policy
 
