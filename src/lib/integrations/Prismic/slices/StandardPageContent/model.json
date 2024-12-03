@@ -1,7 +1,7 @@
 {
   "id": "root_page",
   "type": "SharedSlice",
-  "name": "RootPage",
+  "name": "StandardPageContent",
   "description": "RootPage",
   "variations": [
     {

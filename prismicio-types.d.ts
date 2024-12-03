@@ -223,11 +223,11 @@ export type AllDocumentTypes =
   | UsersTermsOfServiceDocument;
 
 /**
- * Primary content in *RootPage → Default → Primary*
+ * Primary content in *StandardPageContent → Default → Primary*
  */
 export interface RootPageSliceDefaultPrimary {
   /**
-   * Body field in *RootPage → Default → Primary*
+   * Body field in *StandardPageContent → Default → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: Body
@@ -238,7 +238,7 @@ export interface RootPageSliceDefaultPrimary {
 }
 
 /**
- * Default variation for RootPage Slice
+ * Default variation for StandardPageContent Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -251,12 +251,12 @@ export type RootPageSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Slice variation for *RootPage*
+ * Slice variation for *StandardPageContent*
  */
 type RootPageSliceVariation = RootPageSliceDefault;
 
 /**
- * RootPage Shared Slice
+ * StandardPageContent Shared Slice
  *
  * - **API ID**: `root_page`
  * - **Description**: RootPage

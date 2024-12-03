@@ -3,5 +3,5 @@
 import dynamic from "next/dynamic";
 
 export const components = {
-  root_page: dynamic(() => import("./RootPage")),
+  root_page: dynamic(() => import("./StandardPageContent")),
 };
