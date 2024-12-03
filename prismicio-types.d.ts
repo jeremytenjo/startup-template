@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type FaqDocumentDataSlicesSlice = QuestionAnswerSlice;
+type FaqDocumentDataSlicesSlice = RootPageSlice;
 
 /**
  * Content for FAQ documents
@@ -222,6 +222,51 @@ export type AllDocumentTypes =
   | PrivacyPolicyDocument
   | UsersTermsOfServiceDocument;
 
+/**
+ * Primary content in *RootPage → Default → Primary*
+ */
+export interface RootPageSliceDefaultPrimary {
+  /**
+   * Body field in *RootPage → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Body
+   * - **API ID Path**: root_page.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Default variation for RootPage Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RootPageSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<RootPageSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *RootPage*
+ */
+type RootPageSliceVariation = RootPageSliceDefault;
+
+/**
+ * RootPage Shared Slice
+ *
+ * - **API ID**: `root_page`
+ * - **Description**: RootPage
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RootPageSlice = prismic.SharedSlice<
+  "root_page",
+  RootPageSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -253,6 +298,10 @@ declare module "@prismicio/client" {
       UsersTermsOfServiceDocumentData,
       UsersTermsOfServiceDocumentDataSlicesSlice,
       AllDocumentTypes,
+      RootPageSlice,
+      RootPageSliceDefaultPrimary,
+      RootPageSliceVariation,
+      RootPageSliceDefault,
     };
   }
 }
