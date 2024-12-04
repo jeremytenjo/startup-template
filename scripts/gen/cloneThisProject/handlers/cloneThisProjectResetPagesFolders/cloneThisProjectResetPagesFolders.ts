@@ -18,7 +18,7 @@ import foundationPageAccountSignIn from './handlers/access/sign-in/foundationPag
 import foundationPageAccountSignUp from './handlers/access/sign-up/foundationPageAccountSignUp.js'
 import foundationPageSettingsAccount from './handlers/settings/account/foundationPageSettingsAccount.js'
 import foundationPageSettingsBilling from './handlers/settings/billing/foundationPageSettingsBilling.js'
-import foundationPageSettingsProfile from './handlers/settings/profile/foundationPageSettingsProfile.js'
+import foundationPageSettingsEditProfile from './handlers/settings/profile/foundationPageSettingsEditProfile.js'
 import foundationPageSettingsSecurity from './handlers/settings/security/foundationPageSettingsSecurity.js'
 
 export type CloneThisProjectResetPagesFoldersProps = {
@@ -89,7 +89,7 @@ export default async function cloneThisProjectResetPagesFolders(
     foundationPageAccountSignIn(),
     foundationPageAccountSignUp(),
     foundationPageAccountResetPassword(),
-    foundationPageSettingsProfile(),
+    foundationPageSettingsEditProfile(),
     foundationPageSettingsAccount(),
     foundationPageSettingsSecurity(),
     foundationPageSettingsBilling(),

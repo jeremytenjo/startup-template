@@ -1,9 +1,13 @@
 import React from 'react'
 import Box from '@useweb/ui/Box'
 
+import useMainNavLinks from '../../../../../../../data/mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
+
 import RootFooterLinksList from './containers/RootFooterLinksList/RootFooterLinksList.js'
 
 export default function RootFooterLinks() {
+  const mainNavLinks = useMainNavLinks()
+
   return (
     <Box
       data-id='RootFooterLinks'
@@ -12,9 +16,6 @@ export default function RootFooterLinks() {
         backgroundColor: 'rgba(0, 0, 0, 0)',
         gridAutoFlow: ['row', 'column'],
         gridGap: ['10px', '90px'],
-        paddingLeft: '16px',
-        paddingRight: '16px',
-
         '& a': {
           color: 'neutral.200',
           fontWeight: 'bold',

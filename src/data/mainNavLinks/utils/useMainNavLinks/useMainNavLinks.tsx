@@ -7,12 +7,44 @@ import useAuth from '../../../users/utils/useAuth/useAuth.js'
 import DiscordIcon from '../../../../lib/components/icons/DiscordIcon.js'
 import appConfig from '../../../../../app.config.js'
 
+const rawLinks = {
+  home: {
+    label: 'Home',
+    url: `/`,
+  } satisfies NavLinkSchema,
+  faq: {
+    label: 'FAQ',
+    url: `/faq`,
+  } satisfies NavLinkSchema,
+  settings: {
+    settings: {
+      label: 'Settings',
+      url: `/settings/edit-profile`,
+    } satisfies NavLinkSchema,
+    account: {
+      label: 'Account',
+      url: `/settings/account`,
+    } satisfies NavLinkSchema,
+  },
+  socialLinks: {
+    discord: {
+      label: 'Discord',
+      url: appConfig.socialLinks.discord.link,
+      icon: DiscordIcon,
+    } satisfies NavLinkSchema,
+  },
+}
+
 export default function useMainNavLinks() {
   const auth = useAuth()
   const mobileMq = useMediaQuery({
     size: 'lg',
     type: 'down',
   })
+  const profileLink: NavLinkSchema = {
+    label: 'Profile',
+    url: `/profile/${auth.user?.id}`,
+  }
 
   // Main navigation links
   const mainNavLinks = useMemo(() => {
@@ -22,28 +54,15 @@ export default function useMainNavLinks() {
 
     if (isMobile) {
       if (auth.user?.id) {
-        links.push({
-          label: 'Profile',
-          url: `/settings/profile`,
-        })
-
-        links.push({
-          label: 'Settings',
-          url: `/settings/edit-profile`,
-        })
+        links.push(profileLink)
+        links.push(rawLinks.settings.settings)
       }
 
-      links.push({
-        label: 'FAQ',
-        url: `/faq`,
-      })
+      links.push(rawLinks.faq)
     }
 
     if (isDesktop) {
-      links.push({
-        label: 'Home',
-        url: `/`,
-      })
+      links.push(rawLinks.home)
     }
 
     return links
@@ -53,23 +72,14 @@ export default function useMainNavLinks() {
   const profilePhotoMenuLinks = useMemo(() => {
     const links: NavLinkSchema[] = []
 
-    links.push({
-      label: 'Profile',
-      url: `/settings/profile`,
-    })
+    links.push(profileLink)
 
     return links
   }, [])
 
   // Social links
   const socialLinks = useMemo(() => {
-    const links: NavLinkSchema[] = [
-      {
-        label: 'Discord',
-        url: appConfig.socialLinks.discord.link,
-        icon: DiscordIcon,
-      },
-    ]
+    const links: NavLinkSchema[] = [rawLinks.socialLinks.discord]
 
     return links
   }, [])

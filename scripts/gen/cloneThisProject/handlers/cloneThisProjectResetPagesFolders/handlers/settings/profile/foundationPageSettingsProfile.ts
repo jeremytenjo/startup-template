@@ -1,6 +1,6 @@
 import type { FoundationPageReturn } from '../../../cloneThisProjectResetPagesFolders.ts'
 
-export default function foundationPageSettingsProfile(): FoundationPageReturn {
+export default function foundationPageSettingsEditProfile(): FoundationPageReturn {
   const data: FoundationPageReturn = {
     name: 'settings/profile',
   }
