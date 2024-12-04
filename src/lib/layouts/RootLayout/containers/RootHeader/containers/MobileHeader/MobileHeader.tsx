@@ -11,6 +11,7 @@ import MenuIcon from '../../../../../../components/icons/MenuIcon.js'
 import LogoIcon from '../../../../../../components/icons/LogoIcon.js'
 import NotificationsPopover from '../../../../../../../data/notifications/queries/Notifications/ui/NotificationsPopover/NotificationsPopover.js'
 import SettingProfileAvatarLink from '../../../../../../../data/mainNavLinks/ui/SettingProfileAvatarLink/SettingProfileAvatarLink.js'
+import SignUpLink from '../../../../../../../data/mainNavLinks/ui/SignUpLink/SignUpLink.js'
 
 export default function MobileHeader() {
   const appHeaderStore = useAppHeaderStore()
@@ -103,13 +104,7 @@ export default function MobileHeader() {
                 }}
               />
 
-              <NavLink
-                href={'/account/sign-up'}
-                label={
-                  <Button name='JoinButton' variant='green' sx={{}}>
-                    Join BidBlox
-                  </Button>
-                }
+              <SignUpLink
                 sx={{
                   mr: '10px',
                 }}

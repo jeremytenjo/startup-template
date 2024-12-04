@@ -11,6 +11,7 @@ import useAuth from '../../../../../../../data/users/utils/useAuth/useAuth.js'
 import NotificationsPopover from '../../../../../../../data/notifications/queries/Notifications/ui/NotificationsPopover/NotificationsPopover.js'
 import useOnNewNotificationReceived from '../../../../../../../data/notifications/queries/Notifications/useOnNewNotificationReceived/useOnNewNotificationReceived.js'
 import SettingProfileAvatarLink from '../../../../../../../data/mainNavLinks/ui/SettingProfileAvatarLink/SettingProfileAvatarLink.js'
+import SignUpLink from '../../../../../../../data/mainNavLinks/ui/SignUpLink/SignUpLink.js'
 
 export default function DesktopHeader() {
   const mainNavLinks = useMainNavLinks()
@@ -84,7 +85,23 @@ export default function DesktopHeader() {
               />
             </>
           ) : (
-            <>out</>
+            <>
+              <NavLink
+                href={'/signin'}
+                label='Sign In'
+                sx={{
+                  '& p': {
+                    fontSize: '16px',
+                  },
+                }}
+              />
+
+              <SignUpLink
+                sx={{
+                  ml: '10px',
+                }}
+              />
+            </>
           )}
         </Box>
       </Box>
