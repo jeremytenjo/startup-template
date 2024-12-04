@@ -23,7 +23,7 @@ export default async function handleNewPrismicSlice() {
         createSliceLibComponent({ newSlicePath: itemPath })
       } else {
         // update slice types on file changes
-        shell('npm run cms:prismic-generate-types')
+        shell('npm run prismic:generate:types')
       }
     },
   })

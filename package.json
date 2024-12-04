@@ -26,6 +26,7 @@
     "prismic:slicemachine:dev": "node --loader ts-node/esm ./scripts/cms/prismic/startSliceMachine/run.ts",
     "prismic:login": "npx prismic-cli login",
     "prismic:update": "npm install --save-dev slice-machine-ui@latest @slicemachine/adapter-next@latest",
+    "prismic:generate:types": "",
     "supabase:database:reset": "node --loader ts-node/esm ./scripts/supabase/resetSupabaseDatabaseData/run.ts",
     "supabase:database:generateDevDatabase": "node --loader ts-node/esm ./src/lib/integrations/Supabase/database/scripts/generateSupabaseDevDatabase/run.ts",
     "supabase:generate:types": "node --loader ts-node/esm ./scripts/supabase/generateSupabaseTypes/run.ts",

@@ -13,25 +13,32 @@ export default function useMainNavLinks() {
 
   const mainNavLinks = useMemo(() => {
     const links: NavLinkSchema[] = []
-
     const isMobile = mobileMq.matches
-
-    if (auth.user?.id) {
-      links.push({
-        label: 'Profile',
-        url: `/settings/profile`,
-      })
-
-      links.push({
-        label: 'Settings',
-        url: `/settings/edit-profile`,
-      })
-    }
+    const isDesktop = !isMobile
 
     if (isMobile) {
+      if (auth.user?.id) {
+        links.push({
+          label: 'Profile',
+          url: `/settings/profile`,
+        })
+
+        links.push({
+          label: 'Settings',
+          url: `/settings/edit-profile`,
+        })
+      }
+
       links.push({
         label: 'FAQ',
         url: `/faq`,
+      })
+    }
+
+    if (isDesktop) {
+      links.push({
+        label: 'Home',
+        url: `/`,
       })
     }
 
