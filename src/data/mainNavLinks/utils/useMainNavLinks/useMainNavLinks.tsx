@@ -1,9 +1,11 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useMemo } from 'react'
 import useMediaQuery from '@useweb/ui/useMediaQuery'
 
 import type NavLinkSchema from '../../../_commonSchemas/NavLinkSchema/NavLinkSchema.js'
 import useAuth from '../../../users/utils/useAuth/useAuth.js'
 import DiscordIcon from '../../../../lib/components/icons/DiscordIcon.js'
+import appConfig from '../../../../../app.config.js'
 
 export default function useMainNavLinks() {
   const auth = useAuth()
@@ -64,7 +66,7 @@ export default function useMainNavLinks() {
     const links: NavLinkSchema[] = [
       {
         label: 'Discord',
-        url: 'https://discord.gg/discord',
+        url: appConfig.socialLinks.discord.link,
         icon: DiscordIcon,
       },
     ]

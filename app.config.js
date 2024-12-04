@@ -12,7 +12,7 @@ const appConfig = {
   },
   socialLinks: {
     discord: {
-      link: 'https://discord.gg/umxUD5zRyz',
+      link: 'https://discord.gg/startup',
     },
     twitter: {
       link: 'https://twitter.com/SocialSeedHQ',
