@@ -34,7 +34,15 @@ export default function DesktopHeader() {
           maxWidth: otherTokens.maxWidth[2],
         }}
       >
-        <Box data-id='DesktopHeaderContentLeft' sx={{}}>
+        <Box
+          data-id='DesktopHeaderContentLeft'
+          sx={{
+            display: 'grid',
+            gap: '50px',
+            alignItems: 'center',
+            gridAutoFlow: 'column',
+          }}
+        >
           <FullLogoLink />
           <Box data-id='DesktopRooHeaderNavlinks' sx={{}}>
             <List<NavLinkSchema>
@@ -54,13 +62,16 @@ export default function DesktopHeader() {
           </Box>
         </Box>
 
-        <Box data-id='DesktopHeaderContentRIght' sx={{}}>
-          <Link
-            href={`/settings/profile`}
-            sx={{
-              ml: '8px',
-            }}
-          >
+        <Box
+          data-id='DesktopHeaderContentRight'
+          sx={{
+            display: 'grid',
+            gap: '20px',
+            alignItems: 'center',
+            gridAutoFlow: 'column',
+          }}
+        >
+          <Link href={`/settings/profile`} sx={{}}>
             <Avatar
               src={auth.user?.photoURL}
               alt={auth.user?.displayName}
@@ -68,7 +79,6 @@ export default function DesktopHeader() {
                 justifySelf: 'start',
                 width: '35px',
                 height: '35px',
-                mr: '8px',
                 borderRadius: '12px',
               }}
             />
