@@ -6,6 +6,8 @@ import Link from '@useweb/ui/Link'
 import FullLogoLink from '../../../../components/logo/FullLogoLink/FullLogoLink.js'
 import useMainNavLinks from '../../../../../data/mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
 
+import RootFooterLinks from './containers/RootFooterLinks/RootFooterLinks.js'
+
 export default function RootFooter() {
   const mainNavLinks = useMainNavLinks()
 
@@ -30,9 +32,7 @@ export default function RootFooter() {
           gap: 4,
         }}
       >
-        <Box data-id='RootFooterLinks' sx={{}}>
-          RootFooterLinks
-        </Box>
+        <RootFooterLinks />
 
         <Box
           data-id='RootFooterBottom'
