@@ -10,6 +10,7 @@ import FullLogoLink from '../../../../../../components/logo/FullLogoLink/FullLog
 import useMainNavLinks from '../../../../../../../data/mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
 import type NavLinkSchema from '../../../../../../../data/_commonSchemas/NavLinkSchema/NavLinkSchema.js'
 import useAuth from '../../../../../../../data/users/utils/useAuth/useAuth.js'
+import NotificationsPopover from '../../../../../../../data/notifications/queries/Notifications/ui/NotificationsPopover/NotificationsPopover.js'
 
 export default function DesktopHeader() {
   const mainNavLinks = useMainNavLinks()
@@ -66,19 +67,21 @@ export default function DesktopHeader() {
           data-id='DesktopHeaderContentRight'
           sx={{
             display: 'grid',
-            gap: '20px',
+            gap: '10px',
             alignItems: 'center',
             gridAutoFlow: 'column',
           }}
         >
+          <NotificationsPopover />
+
           <Link href={`/settings/profile`} sx={{}}>
             <Avatar
               src={auth.user?.photoURL}
               alt={auth.user?.displayName}
               sx={{
                 justifySelf: 'start',
-                width: '35px',
-                height: '35px',
+                width: '40px',
+                height: '40px',
                 borderRadius: '12px',
               }}
             />
