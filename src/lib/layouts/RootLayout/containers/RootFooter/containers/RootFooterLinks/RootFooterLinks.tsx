@@ -1,13 +1,11 @@
 import React from 'react'
 import Box from '@useweb/ui/Box'
 
-import useMainNavLinks from '../../../../../../../data/mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
+import { allNavLinks } from '../../../../../../../data/mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
 
 import RootFooterLinksList from './containers/RootFooterLinksList/RootFooterLinksList.js'
 
 export default function RootFooterLinks() {
-  const mainNavLinks = useMainNavLinks()
-
   return (
     <Box
       data-id='RootFooterLinks'
@@ -24,13 +22,13 @@ export default function RootFooterLinks() {
     >
       <RootFooterLinksList
         title='About'
-        links={[{ url: 'privacy policy' }, { url: 'terms of service' }]}
+        links={[allNavLinks.privacyPolicy, allNavLinks.tos]}
       />
       <RootFooterLinksList
         title='Support'
         links={[
           {
-            url: 'FAQ',
+            ...allNavLinks.faq,
             sx: {
               textTransform: 'uppercase',
             },

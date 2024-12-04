@@ -1,21 +1,16 @@
 import React from 'react'
 import Link from '@useweb/ui/Link'
 import List from '@useweb/ui/List'
-import * as changeCase from 'change-case'
 import type { BoxProps } from '@useweb/ui/Box'
 
+import type NavLinkSchema from '../../../../../../../../../../../data/_commonSchemas/NavLinkSchema/NavLinkSchema.js'
+
 export type ContentProps = {
-  links: {
-    url: string
-    sx?: BoxProps['sx']
-    overrideLabel?: string
-  }[]
+  links: ({ sx?: BoxProps['sx'] } & NavLinkSchema)[]
   linkPrefix?: string
 }
 
 export default function Content(props: ContentProps) {
-  const linkPrefix = props.linkPrefix ? `${props.linkPrefix}/` : ''
-
   return (
     <List<ContentProps['links'][0]>
       data={props.links || []}
@@ -23,7 +18,7 @@ export default function Content(props: ContentProps) {
       ListItemComponent={({ itemData: link }) => {
         return (
           <Link
-            href={`/${linkPrefix}${changeCase.paramCase(link.url)}`}
+            href={link.url}
             sx={{
               color: 'neutral.100',
               fontWeight: 400,
@@ -33,7 +28,7 @@ export default function Content(props: ContentProps) {
               ...(link.sx || {}),
             }}
           >
-            {link.overrideLabel || changeCase.capitalCase(link.url)}
+            {link.label}
           </Link>
         )
       }}

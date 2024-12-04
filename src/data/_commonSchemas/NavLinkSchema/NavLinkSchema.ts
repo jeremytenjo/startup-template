@@ -3,7 +3,6 @@ type NavLinkSchema = {
   label: string
   active?: boolean
   icon?: any
-  category?: 'About' | 'Support'
 }
 
 export default NavLinkSchema

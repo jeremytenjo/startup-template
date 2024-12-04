@@ -7,7 +7,7 @@ import useAuth from '../../../users/utils/useAuth/useAuth.js'
 import DiscordIcon from '../../../../lib/components/icons/DiscordIcon.js'
 import appConfig from '../../../../../app.config.js'
 
-export const rawLinks = {
+export const allNavLinks = {
   home: {
     label: 'Home',
     url: `/`,
@@ -31,19 +31,16 @@ export const rawLinks = {
   faq: {
     label: 'FAQ',
     url: `/faq`,
-    category: 'Support',
   } satisfies NavLinkSchema,
 
   tos: {
     label: 'Terms of Service',
     url: `/terms-of-service`,
-    category: 'About',
   } satisfies NavLinkSchema,
 
   privacyPolicy: {
     label: 'Privacy Policy',
     url: `/privacy-policy`,
-    category: 'About',
   } satisfies NavLinkSchema,
 
   settings: {
@@ -94,13 +91,13 @@ export default function useMainNavLinks() {
     if (isMobile) {
       if (auth.user?.id) {
         links.push(profileLink)
-        links.push(rawLinks.settings.settings)
+        links.push(allNavLinks.settings.settings)
       }
-      links.push(rawLinks.faq)
+      links.push(allNavLinks.faq)
     }
 
     if (isDesktop) {
-      links.push(rawLinks.home)
+      links.push(allNavLinks.home)
     }
 
     return links
@@ -115,7 +112,7 @@ export default function useMainNavLinks() {
 
   // Social links
   const socialLinks = useMemo(() => {
-    const links: NavLinkSchema[] = [rawLinks.socialLinks.discord]
+    const links: NavLinkSchema[] = [allNavLinks.socialLinks.discord]
     return links
   }, [])
 
