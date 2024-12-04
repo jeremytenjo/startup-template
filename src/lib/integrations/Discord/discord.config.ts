@@ -4,7 +4,7 @@ export const discordConfig = {
   socialSeedServerId: '1023670485466226798',
   socialSeedBotName: 'startup-template-bot',
   botChannelCategory: {
-    // Social Seed Bot Channel Category
+    // Startup Template Bot Channel Category
     id: '1234580840365691063',
   },
   notificationsChannel: {

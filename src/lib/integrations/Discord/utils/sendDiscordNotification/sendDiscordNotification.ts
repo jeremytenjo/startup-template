@@ -27,7 +27,7 @@ export default async function sendDiscordNotification(
   })
 
   if (!userFromServer?.socialSeedDiscordMember?.id) {
-    throw new Error(`User not found in Social Seed Discord server`, { cause: {} })
+    throw new Error(`User not found in Startup Template Discord server`, { cause: {} })
   }
 
   const thread = await discordHttpApi<APIChannel>({

@@ -45,5 +45,5 @@ export default createSvgIcon(
       fill='white'
     />
   </svg>,
-  'Social Seed Logo Banner',
+  'Startup Template Logo Banner',
 )

@@ -8,5 +8,5 @@ export default createSvgIcon(
       fill='#00AA6D'
     />
   </svg>,
-  'Social Seed Logo',
+  'Startup Template Logo',
 )
