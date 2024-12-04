@@ -2,8 +2,6 @@ import React from 'react'
 import Box from '@useweb/ui/Box'
 import List from '@useweb/ui/List'
 import NavLink from '@useweb/ui/NavLink'
-import Link from '@useweb/ui/Link'
-import Avatar from '@useweb/ui/Avatar'
 
 import { otherTokens } from '../../../../../../../theme/tokens/otherTokens.js'
 import FullLogoLink from '../../../../../../components/logo/FullLogoLink/FullLogoLink.js'
@@ -11,10 +9,13 @@ import useMainNavLinks from '../../../../../../../data/mainNavLinks/utils/useMai
 import type NavLinkSchema from '../../../../../../../data/_commonSchemas/NavLinkSchema/NavLinkSchema.js'
 import useAuth from '../../../../../../../data/users/utils/useAuth/useAuth.js'
 import NotificationsPopover from '../../../../../../../data/notifications/queries/Notifications/ui/NotificationsPopover/NotificationsPopover.js'
+import useOnNewNotificationReceived from '../../../../../../../data/notifications/queries/Notifications/useOnNewNotificationReceived/useOnNewNotificationReceived.js'
+import SettingProfileAvatarLink from '../../../../../../../data/mainNavLinks/ui/SettingProfileAvatarLink/SettingProfileAvatarLink.js'
 
 export default function DesktopHeader() {
   const mainNavLinks = useMainNavLinks()
   const auth = useAuth()
+  useOnNewNotificationReceived()
 
   return (
     <>
@@ -72,20 +73,19 @@ export default function DesktopHeader() {
             gridAutoFlow: 'column',
           }}
         >
-          <NotificationsPopover />
-
-          <Link href={`/settings/profile`} sx={{}}>
-            <Avatar
-              src={auth.user?.photoURL}
-              alt={auth.user?.displayName}
-              sx={{
-                justifySelf: 'start',
-                width: '40px',
-                height: '40px',
-                borderRadius: '12px',
-              }}
-            />
-          </Link>
+          {auth.userWasSignedInOrIsSignedIn ? (
+            <>
+              <NotificationsPopover />
+              <SettingProfileAvatarLink
+                avatarSx={{
+                  width: '40px',
+                  height: '40px',
+                }}
+              />
+            </>
+          ) : (
+            <>out</>
+          )}
         </Box>
       </Box>
     </>

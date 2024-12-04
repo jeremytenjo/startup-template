@@ -5,12 +5,12 @@ import IconButton from '@useweb/ui/IconButton'
 import Link from '@useweb/ui/Link'
 import Button from '@useweb/ui/Button'
 import NavLink from '@useweb/ui/NavLink'
-import Avatar from '@useweb/ui/Avatar'
 
 import useAuth from '../../../../../../../data/users/utils/useAuth/useAuth.js'
 import MenuIcon from '../../../../../../components/icons/MenuIcon.js'
 import LogoIcon from '../../../../../../components/icons/LogoIcon.js'
 import NotificationsPopover from '../../../../../../../data/notifications/queries/Notifications/ui/NotificationsPopover/NotificationsPopover.js'
+import SettingProfileAvatarLink from '../../../../../../../data/mainNavLinks/ui/SettingProfileAvatarLink/SettingProfileAvatarLink.js'
 
 export default function MobileHeader() {
   const appHeaderStore = useAppHeaderStore()
@@ -75,24 +75,16 @@ export default function MobileHeader() {
             >
               <NotificationsPopover />
 
-              <Link
-                href={`/settings/profile`}
+              <SettingProfileAvatarLink
                 sx={{
                   ml: '8px',
                 }}
-              >
-                <Avatar
-                  src={auth.user?.photoURL}
-                  alt={auth.user?.displayName}
-                  sx={{
-                    justifySelf: 'start',
-                    width: '35px',
-                    height: '35px',
-                    mr: '8px',
-                    borderRadius: '12px',
-                  }}
-                />
-              </Link>
+                avatarSx={{
+                  width: '40px',
+                  height: '40px',
+                  mr: '8px',
+                }}
+              />
             </Box>
           ) : (
             <Box
