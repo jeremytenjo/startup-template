@@ -82,6 +82,10 @@ export default function DesktopHeader() {
                   width: '40px',
                   height: '40px',
                 }}
+                disableLink
+                onClick={() => {
+                  console.log('HERE!')
+                }}
               />
             </>
           ) : (

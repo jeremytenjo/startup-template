@@ -8,10 +8,21 @@ import useAuth from '../../../users/utils/useAuth/useAuth.js'
 export type SettingProfileAvatarLinkProps = {
   sx?: BoxProps['sx']
   avatarSx?: BoxProps['sx']
+  onClick?: any
+  disableLink?: boolean
 }
 
 export default function SettingProfileAvatarLink(props: SettingProfileAvatarLinkProps) {
-  const auth = useAuth()
+  if (props.disableLink) {
+    return (
+      <SettingProfileAvatarLinkAvatar
+        onClick={props.onClick}
+        sx={{
+          ...props.avatarSx,
+        }}
+      />
+    )
+  }
 
   return (
     <Link
@@ -20,17 +31,39 @@ export default function SettingProfileAvatarLink(props: SettingProfileAvatarLink
         ...props.sx,
       }}
     >
-      <Avatar
-        src={auth.user?.photoURL}
-        alt={auth.user?.displayName}
+      <SettingProfileAvatarLinkAvatar
+        onClick={props.onClick}
         sx={{
-          justifySelf: 'start',
-          width: '40px',
-          height: '40px',
-          borderRadius: '12px',
           ...props.avatarSx,
         }}
       />
     </Link>
+  )
+}
+
+const SettingProfileAvatarLinkAvatar = (props: {
+  sx?: BoxProps['sx']
+  onClick?: any
+}) => {
+  const auth = useAuth()
+
+  return (
+    <Avatar
+      src={auth.user?.photoURL}
+      alt={auth.user?.displayName}
+      avatarProps={{
+        onClick: props.onClick,
+      }}
+      sx={{
+        justifySelf: 'start',
+        width: '40px',
+        height: '40px',
+        borderRadius: '12px',
+        ...(props.onClick && {
+          cursor: 'pointer',
+        }),
+        ...props.sx,
+      }}
+    />
   )
 }
