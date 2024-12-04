@@ -21,9 +21,6 @@ export default async function handleNewPrismicSlice() {
       // on folder change
       if (!itemPath.includes('.')) {
         createSliceLibComponent({ newSlicePath: itemPath })
-      } else {
-        // update slice types on file changes
-        shell('npm run prismic:generate:types')
       }
     },
   })

@@ -99,8 +99,6 @@ module.exports = [
   '../../src/lib/integrations/Paypal/utils/getPaypalAccessToken/stories/getPaypalAccessToken.stories.tsx',
   '../../src/lib/integrations/Prismic/ui/RichText/stories/RichText.stories.tsx',
   '../../src/lib/integrations/Prismic/utils/addSlugToData/stories/addSlugToData.stories.tsx',
-  '../../src/lib/integrations/RoMonitor/utils/romonitorFetchPlaceData/stories/romonitorFetchPlaceData.stories.tsx',
-  '../../src/lib/integrations/RoMonitor/utils/romonitorGetPlaceUsersStats/stories/romonitorGetPlaceUsersStats.stories.tsx',
   '../../src/lib/integrations/Stripe/ui/CantDeleteStripeAccountAlert/stories/CantDeleteStripeAccountAlert.stories.tsx',
   '../../src/lib/integrations/Stripe/ui/StripeBalanceItem/stories/StripeBalanceItem.stories.tsx',
   '../../src/lib/layouts/ContentWithHeader/stories/ContentWithHeader.stories.tsx',

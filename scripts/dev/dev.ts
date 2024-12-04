@@ -12,7 +12,6 @@ import generateSupabaseDevDatabaseConfig from '../../src/lib/integrations/Supaba
 import { stripeConfig } from '../../src/lib/integrations/Stripe/stripe.config.js'
 
 import getDevScriptArgs from './handlers/getDevScriptArgs/getDevScriptArgs.js'
-import generatePrismicTypes from './handlers/generatePrismicTypes/generatePrismicTypes.js'
 
 export default async function dev() {
   const devScriptArgs = await getDevScriptArgs()
@@ -37,14 +36,6 @@ export default async function dev() {
     : undefined
 
   const commands: CommandProps[] = []
-
-  // prismic
-  try {
-    const prismicConfig = await import(
-      '../../src/lib/integrations/Prismic/prismic.config.js'
-    )
-    if (prismicConfig.default.accessToken) generatePrismicTypes()
-  } catch (error: any) {}
 
   // nextjs
   if (startApp) {

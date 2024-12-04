@@ -1,3 +1,5 @@
+// https://github.com/prismicio/prismic-ts-codegen
+
 import type { Config } from 'prismic-ts-codegen'
 
 const config: Config = {
