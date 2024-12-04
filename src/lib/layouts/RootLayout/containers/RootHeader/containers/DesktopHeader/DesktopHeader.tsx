@@ -14,9 +14,10 @@ import SettingProfileAvatarLink from '../../../../../../../data/mainNavLinks/ui/
 import SignUpLink from '../../../../../../../data/mainNavLinks/ui/SignUpLink/SignUpLink.js'
 
 export default function DesktopHeader() {
+  useOnNewNotificationReceived()
+
   const mainNavLinks = useMainNavLinks()
   const auth = useAuth()
-  useOnNewNotificationReceived()
 
   return (
     <>
