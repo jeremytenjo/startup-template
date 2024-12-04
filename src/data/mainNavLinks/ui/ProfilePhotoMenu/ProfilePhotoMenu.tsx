@@ -1,6 +1,5 @@
 import React from 'react'
 import Box from '@useweb/ui/Box'
-import Avatar from '@useweb/ui/Avatar'
 import Menu from '@useweb/ui/Menu'
 import MenuItem from '@useweb/ui/MenuItem'
 import Divider from '@useweb/ui/Divider'
@@ -10,6 +9,7 @@ import { useRouter } from 'next/router'
 
 import useMainNavLinks from '../../utils/useMainNavLinks/useMainNavLinks.js'
 import useAuth from '../../../users/utils/useAuth/useAuth.js'
+import SettingProfileAvatarLink from '../SettingProfileAvatarLink/SettingProfileAvatarLink.js'
 
 export default function ProfilePhotoMenu() {
   const mainLinks = useMainNavLinks()
@@ -37,16 +37,12 @@ export default function ProfilePhotoMenu() {
                 backgroundColor: 'neutral.300',
               }}
             >
-              <Avatar
-                src={auth?.user?.photoURL}
-                alt={auth?.auth?.currentUser?.displayName as string}
-                sx={{
+              <SettingProfileAvatarLink
+                avatarSx={{
                   width: '40px',
                   height: '40px',
-                  borderRadius: '12px',
-                  border: '2px solid',
-                  borderColor: 'neutral.300',
                 }}
+                disableLink
                 imgProps={{
                   quality: 5,
                 }}

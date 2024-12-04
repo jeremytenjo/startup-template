@@ -1,6 +1,7 @@
 import React from 'react'
 import type { BoxProps } from '@useweb/ui/Box'
 import Link from '@useweb/ui/Link'
+import type { AvatarProps } from '@useweb/ui/Avatar'
 import Avatar from '@useweb/ui/Avatar'
 
 import useAuth from '../../../users/utils/useAuth/useAuth.js'
@@ -10,6 +11,7 @@ export type SettingProfileAvatarLinkProps = {
   avatarSx?: BoxProps['sx']
   onClick?: any
   disableLink?: boolean
+  imgProps?: AvatarProps['imgProps']
 }
 
 export default function SettingProfileAvatarLink(props: SettingProfileAvatarLinkProps) {
@@ -20,6 +22,7 @@ export default function SettingProfileAvatarLink(props: SettingProfileAvatarLink
         sx={{
           ...props.avatarSx,
         }}
+        imgProps={props.imgProps}
       />
     )
   }
@@ -36,6 +39,7 @@ export default function SettingProfileAvatarLink(props: SettingProfileAvatarLink
         sx={{
           ...props.avatarSx,
         }}
+        imgProps={props.imgProps}
       />
     </Link>
   )
@@ -44,6 +48,7 @@ export default function SettingProfileAvatarLink(props: SettingProfileAvatarLink
 const SettingProfileAvatarLinkAvatar = (props: {
   sx?: BoxProps['sx']
   onClick?: any
+  imgProps?: AvatarProps['imgProps']
 }) => {
   const auth = useAuth()
 
@@ -64,6 +69,7 @@ const SettingProfileAvatarLinkAvatar = (props: {
         }),
         ...props.sx,
       }}
+      imgProps={props.imgProps}
     />
   )
 }

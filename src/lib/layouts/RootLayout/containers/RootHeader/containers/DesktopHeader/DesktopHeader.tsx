@@ -10,7 +10,6 @@ import type NavLinkSchema from '../../../../../../../data/_commonSchemas/NavLink
 import useAuth from '../../../../../../../data/users/utils/useAuth/useAuth.js'
 import NotificationsPopover from '../../../../../../../data/notifications/queries/Notifications/ui/NotificationsPopover/NotificationsPopover.js'
 import useOnNewNotificationReceived from '../../../../../../../data/notifications/queries/Notifications/useOnNewNotificationReceived/useOnNewNotificationReceived.js'
-import SettingProfileAvatarLink from '../../../../../../../data/mainNavLinks/ui/SettingProfileAvatarLink/SettingProfileAvatarLink.js'
 import SignUpLink from '../../../../../../../data/mainNavLinks/ui/SignUpLink/SignUpLink.js'
 import ProfilePhotoMenu from '../../../../../../../data/mainNavLinks/ui/ProfilePhotoMenu/ProfilePhotoMenu.js'
 
@@ -84,17 +83,6 @@ export default function DesktopHeader() {
             <>
               <NotificationsPopover />
               <ProfilePhotoMenu />
-              <SettingProfileAvatarLink
-                avatarSx={{
-                  width: '40px',
-                  height: '40px',
-                }}
-                disableLink
-                onClick={() => {
-                  // TODO copy ProfilePhotoMenu from ss
-                  console.log('HERE!')
-                }}
-              />
             </>
           ) : (
             <>
