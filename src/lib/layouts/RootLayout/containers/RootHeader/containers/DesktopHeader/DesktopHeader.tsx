@@ -84,6 +84,7 @@ export default function DesktopHeader() {
                 }}
                 disableLink
                 onClick={() => {
+                  // TODO copy ProfilePhotoMenu from ss
                   console.log('HERE!')
                 }}
               />
