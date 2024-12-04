@@ -8,7 +8,7 @@ export type MembershipRequiredButtonProps = { text: string }
 export default function MembershipRequiredButton(props: MembershipRequiredButtonProps) {
   return (
     <Wrapper>
-      <Link href={`/signin`}>
+      <Link href={`/access/sign-in`}>
         <Button name='sign in' sx={{}}>
           {props.text}
         </Button>

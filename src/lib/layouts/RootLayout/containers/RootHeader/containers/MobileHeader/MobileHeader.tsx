@@ -3,7 +3,6 @@ import Box from '@useweb/ui/Box'
 import { useAppHeaderStore } from '@useweb/ui/AppHeader'
 import IconButton from '@useweb/ui/IconButton'
 import Link from '@useweb/ui/Link'
-import Button from '@useweb/ui/Button'
 import NavLink from '@useweb/ui/NavLink'
 
 import useAuth from '../../../../../../../data/users/utils/useAuth/useAuth.js'
@@ -97,7 +96,7 @@ export default function MobileHeader() {
               }}
             >
               <NavLink
-                href={'/account/sign-in'}
+                href={'/access/sign-in'}
                 label='Sign in'
                 sx={{
                   mr: '10px',

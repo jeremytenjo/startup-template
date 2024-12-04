@@ -97,7 +97,7 @@ export default function DesktopHeader() {
           ) : (
             <>
               <NavLink
-                href={'/signin'}
+                href={'/access/sign-in'}
                 label='Sign In'
                 sx={{
                   '& p': {

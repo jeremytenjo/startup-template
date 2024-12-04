@@ -51,7 +51,7 @@ export default function VerifyPhoneCode(props: VerifyPhoneCodeProps) {
   const snackbar = useSnackbar()
   const auth = useAuth({
     onSignOut: () => {
-      router.push('/signin?redirectAfterSignin=/settings/security')
+      router.push('/access/sign-in?redirectAfterSignin=/settings/security')
     },
   })
   const [recaptchaVerifier, setRecaptchaVerifier] = React.useState<

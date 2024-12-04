@@ -8,7 +8,7 @@ export type SignUpLinkProps = { sx?: BoxProps['sx'] }
 export default function SignUpLink(props: SignUpLinkProps) {
   return (
     <NavLink
-      href={'/account/sign-up'}
+      href={'/access/sign-up'}
       data-id='SignUpLink'
       label={
         <Button name='SignUpLink' variant='green' sx={{}}>
