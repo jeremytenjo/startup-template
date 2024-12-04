@@ -1,8 +1,9 @@
-import { useMemo } from 'react'
+import React, { useMemo } from 'react'
 import useMediaQuery from '@useweb/ui/useMediaQuery'
 
 import type NavLinkSchema from '../../../_commonSchemas/NavLinkSchema/NavLinkSchema.js'
 import useAuth from '../../../users/utils/useAuth/useAuth.js'
+import DiscordIcon from '../../../../lib/components/icons/DiscordIcon.js'
 
 export default function useMainNavLinks() {
   const auth = useAuth()
@@ -11,6 +12,7 @@ export default function useMainNavLinks() {
     type: 'down',
   })
 
+  // Main navigation links
   const mainNavLinks = useMemo(() => {
     const links: NavLinkSchema[] = []
     const isMobile = mobileMq.matches
@@ -45,6 +47,7 @@ export default function useMainNavLinks() {
     return links
   }, [auth.user?.id, mobileMq.matches])
 
+  // Profile photo menu links
   const profilePhotoMenuLinks = useMemo(() => {
     const links: NavLinkSchema[] = []
 
@@ -56,7 +59,20 @@ export default function useMainNavLinks() {
     return links
   }, [])
 
-  return { mainNavLinks, profilePhotoMenuLinks }
+  // Social links
+  const socialLinks = useMemo(() => {
+    const links: NavLinkSchema[] = [
+      {
+        label: 'Discord',
+        url: 'https://discord.gg/discord',
+        icon: DiscordIcon,
+      },
+    ]
+
+    return links
+  }, [])
+
+  return { mainNavLinks, profilePhotoMenuLinks, socialLinks }
 }
 
 export type UseMainNavLinksReturn = ReturnType<typeof useMainNavLinks>
