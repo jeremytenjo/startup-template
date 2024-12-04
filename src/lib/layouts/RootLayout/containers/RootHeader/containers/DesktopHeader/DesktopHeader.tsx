@@ -47,7 +47,11 @@ export default function DesktopHeader() {
             gridAutoFlow: 'column',
           }}
         >
-          <FullLogoLink />
+          <FullLogoLink
+            sx={{
+              transform: 'translateY(-2px)',
+            }}
+          />
           <Box data-id='DesktopRooHeaderNavlinks' sx={{}}>
             <List<NavLinkSchema>
               listItemKeyName='label'
@@ -58,7 +62,6 @@ export default function DesktopHeader() {
               sx={{
                 gridAutoFlow: 'column',
                 gridGap: '21px',
-                transform: 'translateY(2px)',
                 '& p': {
                   fontSize: '16px',
                 },
