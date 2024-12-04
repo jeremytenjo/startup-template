@@ -1,12 +1,14 @@
 import { getToday } from '@useweb/date'
 
+import appConfig from '../../../app.config.js'
+
 import type UserSchema from './user.schema.js'
 
 const commonProps: UserSchema = {
   id: '1',
   displayName: 'User 1',
   email: 'user1@email.com',
-  photoURL: 'https://via.placeholder.com/150',
+  photoURL: `http://localhost:${appConfig.nextjs.port}/images/placeholders/user1.jpg`,
   bannerUrl: 'https://via.placeholder.com/150',
   agreedToTOSandPrivacyPolicy: true,
   lastSignedIn: getToday(),
