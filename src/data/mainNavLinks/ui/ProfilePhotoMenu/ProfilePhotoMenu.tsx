@@ -81,7 +81,7 @@ export default function ProfilePhotoMenu() {
         transformOrigin={{ horizontal: 'center', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}
         items={[
-          ...mainLinks.mainNavLinks.map((link) => {
+          ...mainLinks.profilePhotoMenuLinks.map((link) => {
             return (
               <Link key={link.label} href={link.url}>
                 <MenuItem>{link.label}</MenuItem>

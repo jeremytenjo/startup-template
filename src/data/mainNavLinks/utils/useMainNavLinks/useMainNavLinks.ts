@@ -45,7 +45,18 @@ export default function useMainNavLinks() {
     return links
   }, [auth.user?.id, mobileMq.matches])
 
-  return { mainNavLinks }
+  const profilePhotoMenuLinks = useMemo(() => {
+    const links: NavLinkSchema[] = []
+
+    links.push({
+      label: 'Profile',
+      url: `/settings/profile`,
+    })
+
+    return links
+  }, [])
+
+  return { mainNavLinks, profilePhotoMenuLinks }
 }
 
 export type UseMainNavLinksReturn = ReturnType<typeof useMainNavLinks>
