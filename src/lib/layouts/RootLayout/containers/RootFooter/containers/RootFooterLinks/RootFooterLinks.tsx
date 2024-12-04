@@ -37,13 +37,6 @@ export default function RootFooterLinks() {
           },
         ]}
       />
-      <RootFooterLinksList
-        title='Community'
-        links={[
-          { url: 'creators', overrideLabel: 'Influencers' },
-          { url: 'game-listings' },
-        ]}
-      />
     </Box>
   )
 }

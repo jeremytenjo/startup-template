@@ -31,16 +31,19 @@ export const rawLinks = {
   faq: {
     label: 'FAQ',
     url: `/faq`,
+    category: 'Support',
   } satisfies NavLinkSchema,
 
   tos: {
     label: 'Terms of Service',
     url: `/terms-of-service`,
+    category: 'About',
   } satisfies NavLinkSchema,
 
   privacyPolicy: {
     label: 'Privacy Policy',
     url: `/privacy-policy`,
+    category: 'About',
   } satisfies NavLinkSchema,
 
   settings: {
