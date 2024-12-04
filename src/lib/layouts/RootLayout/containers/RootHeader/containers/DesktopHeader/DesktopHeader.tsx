@@ -12,6 +12,7 @@ import NotificationsPopover from '../../../../../../../data/notifications/querie
 import useOnNewNotificationReceived from '../../../../../../../data/notifications/queries/Notifications/useOnNewNotificationReceived/useOnNewNotificationReceived.js'
 import SettingProfileAvatarLink from '../../../../../../../data/mainNavLinks/ui/SettingProfileAvatarLink/SettingProfileAvatarLink.js'
 import SignUpLink from '../../../../../../../data/mainNavLinks/ui/SignUpLink/SignUpLink.js'
+import ProfilePhotoMenu from '../../../../../../../data/mainNavLinks/ui/ProfilePhotoMenu/ProfilePhotoMenu.js'
 
 export default function DesktopHeader() {
   useOnNewNotificationReceived()
@@ -82,6 +83,7 @@ export default function DesktopHeader() {
           {auth.userWasSignedInOrIsSignedIn ? (
             <>
               <NotificationsPopover />
+              <ProfilePhotoMenu />
               <SettingProfileAvatarLink
                 avatarSx={{
                   width: '40px',
