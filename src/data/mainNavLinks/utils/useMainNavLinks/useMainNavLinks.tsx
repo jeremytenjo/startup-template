@@ -7,11 +7,26 @@ import useAuth from '../../../users/utils/useAuth/useAuth.js'
 import DiscordIcon from '../../../../lib/components/icons/DiscordIcon.js'
 import appConfig from '../../../../../app.config.js'
 
-const rawLinks = {
+export const rawLinks = {
   home: {
     label: 'Home',
     url: `/`,
   } satisfies NavLinkSchema,
+
+  access: {
+    signIn: {
+      label: 'Sign In',
+      url: `/access/sign-in`,
+    } satisfies NavLinkSchema,
+    signUp: {
+      label: 'Sign Up',
+      url: `/access/sign-up`,
+    } satisfies NavLinkSchema,
+    forgotPassword: {
+      label: 'Forgot Password',
+      url: `/access/forgot-password`,
+    } satisfies NavLinkSchema,
+  },
 
   faq: {
     label: 'FAQ',
@@ -36,6 +51,14 @@ const rawLinks = {
     account: {
       label: 'Account',
       url: `/settings/account`,
+    } satisfies NavLinkSchema,
+    billing: {
+      label: 'Billing',
+      url: `/settings/billing`,
+    } satisfies NavLinkSchema,
+    security: {
+      label: 'Security',
+      url: `/settings/security`,
     } satisfies NavLinkSchema,
   },
 
@@ -70,7 +93,6 @@ export default function useMainNavLinks() {
         links.push(profileLink)
         links.push(rawLinks.settings.settings)
       }
-
       links.push(rawLinks.faq)
     }
 
@@ -84,16 +106,13 @@ export default function useMainNavLinks() {
   // Profile photo menu links
   const profilePhotoMenuLinks = useMemo(() => {
     const links: NavLinkSchema[] = []
-
     links.push(profileLink)
-
     return links
   }, [])
 
   // Social links
   const socialLinks = useMemo(() => {
     const links: NavLinkSchema[] = [rawLinks.socialLinks.discord]
-
     return links
   }, [])
 
