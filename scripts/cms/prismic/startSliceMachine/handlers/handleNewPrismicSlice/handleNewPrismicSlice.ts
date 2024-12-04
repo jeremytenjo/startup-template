@@ -1,7 +1,6 @@
 import path from 'path'
 
 import log from '../../../../../../devtools/utils/node/log.js'
-import shell from '../../../../../../devtools/utils/node/shell.js'
 import watchFolder from '../../../../../../devtools/utils/node/watchFolder.js'
 
 import createSliceLibComponent from './handlers/createSliceLibComponent/createSliceLibComponent.js'

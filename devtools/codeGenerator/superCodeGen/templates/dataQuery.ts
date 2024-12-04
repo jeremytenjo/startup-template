@@ -6,7 +6,7 @@ import type {
 } from '@jeremytenjo/super-code-generator'
 
 import { getStoryPrefix } from './story.js'
-import dataQueryUi, { getSchemaImportPath } from './dataQueryUi.js'
+import { getSchemaImportPath } from './dataQueryUi.js'
 
 const splitCamelCase = (string) => {
   return string.split(/(?=[A-Z])/).map((s) => s.toLowerCase())[0]
