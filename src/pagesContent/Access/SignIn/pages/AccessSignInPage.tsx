@@ -1,7 +1,7 @@
 import React from 'react'
 import Box from '@useweb/ui/Box'
 
-import AccessSignInPageLayout from '../layouts/AccessSignInPageLayout/AccessSignInPageLayout.jsx'
+import AccessSignInPageLayout from '../layouts/AccessSignInPageLayout/AccessSignInPageLayout.js'
 
 export default function AccessSignInPage() {
   return (
