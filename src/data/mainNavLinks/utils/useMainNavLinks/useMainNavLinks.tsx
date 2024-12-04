@@ -12,10 +12,22 @@ const rawLinks = {
     label: 'Home',
     url: `/`,
   } satisfies NavLinkSchema,
+
   faq: {
     label: 'FAQ',
     url: `/faq`,
   } satisfies NavLinkSchema,
+
+  tos: {
+    label: 'Terms of Service',
+    url: `/terms-of-service`,
+  } satisfies NavLinkSchema,
+
+  privacyPolicy: {
+    label: 'Privacy Policy',
+    url: `/privacy-policy`,
+  } satisfies NavLinkSchema,
+
   settings: {
     settings: {
       label: 'Settings',
@@ -26,6 +38,7 @@ const rawLinks = {
       url: `/settings/account`,
     } satisfies NavLinkSchema,
   },
+
   socialLinks: {
     discord: {
       label: 'Discord',
