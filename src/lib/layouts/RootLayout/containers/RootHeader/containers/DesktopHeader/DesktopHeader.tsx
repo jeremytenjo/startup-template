@@ -58,6 +58,7 @@ export default function DesktopHeader() {
               sx={{
                 gridAutoFlow: 'column',
                 gridGap: '21px',
+                transform: 'translateY(2px)',
                 '& p': {
                   fontSize: '16px',
                 },
