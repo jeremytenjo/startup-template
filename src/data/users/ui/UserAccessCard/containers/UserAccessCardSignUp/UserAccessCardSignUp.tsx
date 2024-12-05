@@ -1,31 +1,52 @@
 import React from 'react'
 import Box from '@useweb/ui/Box'
 import Text from '@useweb/ui/Text'
-import Form from '@useweb/ui/Form'
+import Form, { useFormContext } from '@useweb/ui/Form'
 import Link from '@useweb/ui/Link'
 import Button from '@useweb/ui/Button'
 import Avatar from '@useweb/ui/Avatar'
 import ErrorMessage from '@useweb/ui/ErrorMessage'
+import TextField from '@useweb/ui/TextField'
 
+import type { SignUpFetcherProps } from '../../../../utils/useAuth/useAuth.js'
 import useAuth from '../../../../utils/useAuth/useAuth.js'
-import { getFirebaseErrorMessage } from '../../../../utils/signUp/signUpFormUtils/signUpFormUtils.js'
+import { validatePassword } from '../../../../utils/signUp/signUpFormUtils/signUpFormUtils.js'
+import AccountAccessCta from '../../../AccountAccessCTA/AccountAccessCta.js'
+import postHogEventClick from '../../../../../../lib/integrations/PostHog/events/browser/postHogEventClick/postHogEventClick.js'
+import ContinueWithGoogleButton from '../../../../utils/signIn/ContinueWithGoogle/ui/ContinueWithGoogleButton/ContinueWithGoogleButton.js'
 
 export type UserAccessCardSignUpProps = { name?: string }
 
-type FormSchema = {
+type UserAccessCardSignUpFormSchema = {
   email: string
   password: string
+  username: string
+  photoUrl: string
+  bannerUrl: string
 }
 
 export default function UserAccessCardSignUp(props: UserAccessCardSignUpProps) {
   const auth = useAuth()
+  const [showEmailSignUpoptions, setShowEmailSignUpoptions] = React.useState(false)
+
+  const [formSubmissionIntentError, setFormSubmissionIntentError] = React.useState<
+    string | undefined
+  >()
 
   return (
-    <Form<FormSchema>
-      data-id='UserAccessCardSignUp'
-      sx={{}}
-      onSubmit={(p) => {
-        console.log(p)
+    <Form<UserAccessCardSignUpFormSchema>
+      data-id='UserAccessCardSignUpForm'
+      sx={{
+        display: 'grid',
+        gap: 2,
+        width: '100%',
+      }}
+      onSubmit={({ formValues: formProps }) => {
+        auth.signUp.exec({
+          emailPasswordData: {
+            ...formProps,
+          },
+        })
       }}
     >
       {auth.user?.id ? (
@@ -62,20 +83,136 @@ export default function UserAccessCardSignUp(props: UserAccessCardSignUpProps) {
           </Link>
         </Box>
       ) : (
-        <Box data-id='UserAccessCardSignUpNewAccount' sx={{}}>
-          formmmmm
-          {auth.signUp.error && (
-            <ErrorMessage
-              error={auth.signUp.error}
-              message={getFirebaseErrorMessage({ error: auth.signUp.error })}
-              sx={{
-                mt: 2,
-                width: '100%',
-              }}
-            />
+        <Box
+          data-id='UserAccessCardSignUpNewAccount'
+          sx={{
+            display: 'grid',
+            gap: 2,
+          }}
+        >
+          <UserAccessCardSignUpFormContinueWithGoogle />
+
+          {showEmailSignUpoptions ? (
+            <UserAccessCardSignUpWithEmailFormFields />
+          ) : (
+            <>
+              <Text
+                text={`Or sign up via email`}
+                sx={{
+                  textAlign: 'center',
+                }}
+              />
+
+              {/* Continue with email trigger */}
+              <AccountAccessCta
+                loading={auth.signUp.loading}
+                text='Continue with Email'
+                buttonProps={{
+                  type: 'button',
+                  onClick: () => setShowEmailSignUpoptions(true),
+                }}
+              />
+            </>
           )}
+
+          <ErrorMessage
+            error={formSubmissionIntentError || auth.signUp?.error}
+            message={
+              formSubmissionIntentError
+                ? formSubmissionIntentError
+                : String(auth.signUp.error).includes(
+                    'Username taken, please try a different one',
+                  )
+                ? 'Username taken, please try a different one.'
+                : 'Error creating account'
+            }
+          />
         </Box>
       )}
     </Form>
+  )
+}
+
+const UserAccessCardSignUpFormContinueWithGoogle = () => {
+  const auth = useAuth()
+  const formContext = useFormContext<UserAccessCardSignUpFormSchema>()
+
+  const signUpWithGoogleProps: SignUpFetcherProps['signUpWithGoogle'] = {
+    username: formContext.watch('username'),
+    photoUrl: formContext.watch('photoUrl'),
+    bannerUrl: formContext.watch('bannerUrl'),
+  }
+
+  const onContinueWithGoogleClick = () => {
+    postHogEventClick({
+      action: 'user sign up: Continue with Google',
+    })
+
+    auth.signUp.exec({ signUpWithGoogle: signUpWithGoogleProps })
+  }
+
+  return <ContinueWithGoogleButton onClick={onContinueWithGoogleClick} />
+}
+
+const UserAccessCardSignUpWithEmailFormFields = () => {
+  const auth = useAuth()
+
+  return (
+    <>
+      <TextField<UserAccessCardSignUpFormSchema>
+        name='email'
+        type='email'
+        placeholder='Email'
+        label='E-mail'
+        required='Missing email'
+        inputProps={{
+          autoCapitalize: 'off',
+          autoCorrect: 'off',
+        }}
+        sx={{
+          width: '100%',
+        }}
+        validate={(value) => {
+          if (value.includes('socialseed') && value !== 'cole@socialseed.com') {
+            return 'Invalid email'
+          }
+        }}
+      />
+
+      <TextField<UserAccessCardSignUpFormSchema>
+        id='new-password'
+        type='password'
+        name='password'
+        label={'Password'}
+        placeholder='Password'
+        required='Missing password'
+        inputProps={{
+          autoComplete: 'new-password',
+          autoCapitalize: 'off',
+        }}
+        registerProps={{
+          validate: (value) => {
+            const res = validatePassword(value)
+            return res.isValid ? true : res.message
+          },
+        }}
+        sx={{
+          width: '100%',
+        }}
+      />
+
+      <AccountAccessCta
+        loading={auth.signUp.loading}
+        text='Continue with Email'
+        buttonProps={{
+          variant: 'text',
+          onClick: () => {
+            postHogEventClick({
+              action: 'user sign up: Continue with Email',
+            })
+          },
+        }}
+      />
+    </>
   )
 }

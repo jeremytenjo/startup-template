@@ -8,6 +8,7 @@ import {
   where,
 } from 'firebase/firestore'
 import assert from '@useweb/assert'
+import { getToday } from '@useweb/date'
 
 import addNewUserDoc from '../../addNewUserDoc/addNewUserDoc.js'
 import { usersCollectionName } from '../../../users.config.js'
@@ -23,10 +24,6 @@ export default async function signUpWithEmailPassword(
     props,
     requiredProps: ['username', 'email', 'password'],
   })
-
-  if (!props.agreedToTOSandPrivacyPolicy) {
-    throw new Error(`agreedToTOSandPrivacyPolicy is undefined`)
-  }
 
   await getIsUsernameTaken({ username: props.username })
 
@@ -45,7 +42,7 @@ export default async function signUpWithEmailPassword(
     username: props.username,
     photoURL: props.photoUrl || false,
     bannerUrl: props.bannerUrl || false,
-    agreedToTOSandPrivacyPolicy: props.agreedToTOSandPrivacyPolicy,
+    agreedToTOSandPrivacyPolicy: getToday(),
   })
 
   return createdAuthUser

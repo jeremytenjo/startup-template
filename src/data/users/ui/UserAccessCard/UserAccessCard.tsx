@@ -52,6 +52,7 @@ export default function UserAccessCard(props: UserAccessCardProps) {
         maxWidth: '400px',
         pt: 0,
         px: [1, 2],
+        width: '100%',
         ...props.sx,
       }}
     >

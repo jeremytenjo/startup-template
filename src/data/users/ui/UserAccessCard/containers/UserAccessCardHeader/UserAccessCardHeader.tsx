@@ -22,6 +22,7 @@ export default function UserAccessCardHeader(props: UserAccessCardHeaderProps) {
       data-id='UserAccessCardHeader'
       sx={{
         mb: '50px',
+        width: '100%',
       }}
     >
       <Box
