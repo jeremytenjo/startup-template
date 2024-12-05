@@ -2,7 +2,6 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import useFirebaseAuth, {
   type UseFirebaseAuthProps,
 } from '@useweb/firebase/useFirebaseAuth'
-import assert from '@useweb/assert'
 import { getToday } from '@useweb/date'
 
 import type UserSchema from '../../user.schema.js'
@@ -12,6 +11,7 @@ import updateFirestoreUserLastSignedIn from '../../../../lib/integrations/Google
 import { auth as firebaseAuth } from '../../../../lib/integrations/Google/Firebase/firebase.js'
 import signUpWithEmailPassword from '../signUp/signUpWithEmailPassword/signUpWithEmailPassword.js'
 import continueWithGoogle from '../signIn/ContinueWithGoogle/continueWithGoogle.js'
+import type { AddNewUserDocProps } from '../addNewUserDoc/addNewUserDoc.js'
 
 // Sign in
 type SignInFetcherProps = {
@@ -74,13 +74,13 @@ const signInFetcher = async (props: SignInFetcherProps) => {
 }
 
 export type SignUpFormEmailPasswordDataSchema = {
-  email: string
+  email: AddNewUserDocProps['email']
+  photoUrl: AddNewUserDocProps['photoURL']
   password: string
-  photoUrl: string | false
 }
 
 export type SignUpFormGoogleDataSchema = {
-  photoUrl: string | false
+  photoUrl: AddNewUserDocProps['photoURL']
 }
 
 // Sign up
