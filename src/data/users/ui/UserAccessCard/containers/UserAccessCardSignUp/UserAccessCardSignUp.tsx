@@ -1,5 +1,6 @@
 import React from 'react'
 import Form from '@useweb/ui/Form'
+import ErrorMessage from '@useweb/ui/ErrorMessage'
 
 import useAuth from '../../../../utils/useAuth/useAuth.js'
 import useOnSignUpActions from '../../../../utils/signUp/useOnSignUpActions/useOnSignUpActions.js'
@@ -43,6 +44,8 @@ export default function UserAccessCardSignUp() {
     >
       {auth.user?.id && <UserAccessCardSignUpExistingUser />}
       {!auth.user?.id && <UserAccessCardSignUpLastStep auth={auth} />}
+
+      <ErrorMessage error={auth.signUp?.error} message={'Error creating account'} />
     </Form>
   )
 }

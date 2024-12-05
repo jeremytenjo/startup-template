@@ -3,7 +3,6 @@ import Box from '@useweb/ui/Box'
 import { useFormContext } from '@useweb/ui/Form'
 import TextField from '@useweb/ui/TextField'
 import Text from '@useweb/ui/Text'
-import ErrorMessage from '@useweb/ui/ErrorMessage'
 
 import type {
   SignUpFetcherProps,
@@ -120,8 +119,6 @@ export default function UserAccessCardSignUpLastStep(
           }}
         />
       )}
-
-      <ErrorMessage error={props.auth.signUp?.error} message={'Error creating account'} />
     </Box>
   )
 }
