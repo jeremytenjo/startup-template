@@ -2,9 +2,6 @@ import React from 'react'
 import Box from '@useweb/ui/Box'
 import Text from '@useweb/ui/Text'
 import Form, { useFormContext } from '@useweb/ui/Form'
-import Link from '@useweb/ui/Link'
-import Button from '@useweb/ui/Button'
-import Avatar from '@useweb/ui/Avatar'
 import ErrorMessage from '@useweb/ui/ErrorMessage'
 import TextField from '@useweb/ui/TextField'
 
@@ -15,6 +12,8 @@ import AccountAccessCta from '../../../AccountAccessCTA/AccountAccessCta.js'
 import postHogEventClick from '../../../../../../lib/integrations/PostHog/events/browser/postHogEventClick/postHogEventClick.js'
 import ContinueWithGoogleButton from '../../../../utils/signIn/ContinueWithGoogle/ui/ContinueWithGoogleButton/ContinueWithGoogleButton.js'
 import useOnSignUpActions from '../../../../utils/signUp/useOnSignUpActions/useOnSignUpActions.js'
+
+import UserAccessCardSignUpExistingUser from './containers/UserAccessCardSignUpExistingUser/UserAccessCardSignUpExistingUser.js'
 
 export type UserAccessCardSignUpProps = any
 
@@ -52,38 +51,7 @@ export default function UserAccessCardSignUp() {
       }}
     >
       {auth.user?.id ? (
-        <Box
-          data-id='UserAccessCardSignUpExistingUser'
-          sx={{
-            mb: 3,
-            display: 'grid',
-            justifyContent: 'center',
-            justifyItems: 'center',
-            gap: 2,
-          }}
-        >
-          <Text
-            text={`Welcome ${auth.user?.displayName}!`}
-            tag='p'
-            sx={{
-              fontSize: '20px',
-              fontWeight: 'bold',
-              textAlign: 'center',
-              mb: 2,
-            }}
-          />
-          <Avatar
-            src={auth.user?.photoURL}
-            alt={`${auth.user?.displayName}`}
-            sx={{ width: '45px', height: '45px' }}
-          />
-
-          <Link href={`/dashboard`}>
-            <Button name='Go to Dashboard' sx={{}}>
-              Go to Dashboard
-            </Button>
-          </Link>
-        </Box>
+        <UserAccessCardSignUpExistingUser />
       ) : (
         <Box
           data-id='UserAccessCardSignUpNewAccount'
