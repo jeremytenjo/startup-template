@@ -23,8 +23,6 @@ export const getStaticProps = async ({ previewData }) => {
 export default function TermsOfServicePageRoot(
   props: InferGetStaticPropsType<typeof getStaticProps>,
 ) {
-  console.log(props.tosData.data)
-
   return (
     <PrismicStandardPageProvider getStandardPageByUidReturn={props.tosData}>
       <RootLayout title='Terms of Service'>
