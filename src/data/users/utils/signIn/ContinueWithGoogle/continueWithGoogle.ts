@@ -91,7 +91,10 @@ export default async function continueWithGoogle(props: ContinueWithGoogleProps)
       })
     }
 
-    const { username } = await createUsernameFromEmail({ email: authUser.user.email })
+    const { username } = await createUsernameFromEmail({
+      email: authUser.user.email,
+      customUsername: props.signUp?.customUsername,
+    })
 
     await addNewUserDoc({
       uid: authUser.user.uid,

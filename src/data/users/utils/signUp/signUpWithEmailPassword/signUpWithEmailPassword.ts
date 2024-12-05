@@ -15,7 +15,10 @@ export default async function signUpWithEmailPassword(
     requiredProps: ['email', 'password'],
   })
 
-  const { username } = await createUsernameFromEmail({ email: props.email })
+  const { username } = await createUsernameFromEmail({
+    email: props.email,
+    customUsername: props.customUsername,
+  })
 
   // create auth user
   const auth = getAuth()

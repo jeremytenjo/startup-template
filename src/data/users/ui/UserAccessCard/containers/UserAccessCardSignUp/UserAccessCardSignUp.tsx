@@ -15,7 +15,6 @@ export type UserAccessCardSignUpFormSchema = {
   password: string
   username: string
   photoUrl: string
-  bannerUrl: string
 }
 
 export default function UserAccessCardSignUp() {
