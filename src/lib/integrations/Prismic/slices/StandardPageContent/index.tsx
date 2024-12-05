@@ -20,7 +20,15 @@ const StandardPage = ({ slice }: StandardPageProps) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <RichText field={slice.primary.body} />
+      <RichText
+        field={slice.primary.body}
+        sx={{
+          '& h1': {
+            fontSize: ['24px', '32px'],
+            mb: '40px',
+          },
+        }}
+      />
     </Box>
   )
 }

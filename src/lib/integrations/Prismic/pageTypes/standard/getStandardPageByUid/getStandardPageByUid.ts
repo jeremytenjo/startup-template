@@ -7,7 +7,7 @@ import fetchPrismicFromNode from '../../../utils/fetchPrismicFromNode/fetchPrism
 
 export type GetStandardPageByUidProps = {
   previewData: PreviewData
-  uid: 'terms-of-service'
+  uid: 'terms-of-service' | 'privacy-policy' | 'faq'
 }
 
 export default async function getStandardPageByUid(props: GetStandardPageByUidProps) {

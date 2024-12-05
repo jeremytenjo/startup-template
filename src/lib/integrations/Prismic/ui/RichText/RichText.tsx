@@ -12,15 +12,18 @@ export default function RichText(props: RichTextProps) {
     <Box
       data-id='RichText'
       sx={{
-        ...props.sx,
         '& strong': {
           fontWeight: 'inherit',
         },
+
         '& h1, & h2, & h3, & h4, & h5, & h6': {
           fontWeight: '600',
           mb: 1,
           fontSize: ['15px', '17px'],
         },
+
+        ...props.sx,
+
         '& p': {
           fontSize: ['13px', '15px'],
           mb: 2,
