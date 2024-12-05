@@ -1,5 +1,5 @@
 import assert from '@useweb/assert'
-import { addUserToFirestore } from '@useweb/firebase/useFirebaseAuth'
+import { addUserToFirestore, getIsUsernameTaken } from '@useweb/firebase/useFirebaseAuth'
 import { getToday } from '@useweb/date'
 
 import type UserSchema from '../../user.schema.js'
@@ -8,7 +8,6 @@ import ph_userSignedUp from '../../../../lib/integrations/PostHog/events/browser
 export type AddNewUserDocProps = {
   uid: UserSchema['id']
   email: UserSchema['email']
-  username: string
   photoURL: UserSchema['photoURL'] | false
   bannerUrl: UserSchema['bannerUrl']
 }
@@ -17,12 +16,17 @@ export type AddNewUserDocProps = {
 export default async function addNewUserDoc(props: AddNewUserDocProps) {
   assert<AddNewUserDocProps>({
     props,
-    requiredProps: ['uid', 'email', 'username'],
+    requiredProps: ['uid', 'email'],
   })
+
+  // TODO generate username from email
+  const username = 'usrename'
+
+  await getIsUsernameTaken({ username })
 
   const newUserDoc: UserSchema = {
     id: props.uid,
-    displayName: props.username,
+    displayName: username,
     email: props.email,
     photoURL: props.photoURL || '',
     bannerUrl: props.bannerUrl || false,

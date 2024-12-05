@@ -1,18 +1,8 @@
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
-import {
-  collection,
-  getDocs,
-  getFirestore,
-  limit,
-  query,
-  where,
-} from 'firebase/firestore'
 import assert from '@useweb/assert'
 
 import addNewUserDoc from '../../addNewUserDoc/addNewUserDoc.js'
-import { usersCollectionName } from '../../../users.config.js'
 import type { SignUpFormEmailPasswordDataSchema } from '../../useAuth/useAuth.js'
-import type UserSchema from '../../../user.schema.js'
 
 export type SignUpWithEmailPasswordProps = SignUpFormEmailPasswordDataSchema
 
@@ -21,10 +11,8 @@ export default async function signUpWithEmailPassword(
 ) {
   assert<SignUpWithEmailPasswordProps>({
     props,
-    requiredProps: ['username', 'email', 'password'],
+    requiredProps: ['email', 'password'],
   })
-
-  await getIsUsernameTaken({ username: props.username })
 
   // create auth user
   const auth = getAuth()
@@ -38,7 +26,6 @@ export default async function signUpWithEmailPassword(
   await addNewUserDoc({
     uid: createdAuthUser.user.uid,
     email: props.email,
-    username: props.username,
     photoURL: props.photoUrl || false,
     bannerUrl: props.bannerUrl || false,
   })
@@ -47,28 +34,6 @@ export default async function signUpWithEmailPassword(
 }
 
 export type SignUpWithEmailPasswordReturn = ReturnType<typeof signUpWithEmailPassword>
-
-export const getIsUsernameTaken = async ({ username }) => {
-  if (!username) {
-    throw new Error(`username is undefined`, { cause: {} })
-  }
-
-  const db = getFirestore()
-  const usersRef = collection(db, usersCollectionName)
-  const userQuery = query(
-    usersRef,
-    where('displayName' satisfies keyof UserSchema, '==', username),
-    limit(1),
-  )
-  const querySnapshot = await getDocs(userQuery)
-  const usernameTaken = !querySnapshot.empty
-
-  if (usernameTaken) {
-    throw new Error('Username taken, please try a different one.', {
-      cause: { username },
-    })
-  }
-}
 
 export const usernameErrorMessage =
   'Username must be 4 to 40 characters long and only use letters, numbers, underscores, and periods.'
