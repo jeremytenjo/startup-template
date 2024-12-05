@@ -15,6 +15,7 @@ import { db } from '../../../../../lib/integrations/Google/Firebase/firebase.js'
 import { usersCollectionName } from '../../../users.config.js'
 import { getIsUsernameTaken } from '../../signUp/signUpWithEmailPassword/signUpWithEmailPassword.js'
 import addNewUserDoc from '../../addNewUserDoc/addNewUserDoc.js'
+import appConfig from '../../../../../../app.config.js'
 
 const provider = new GoogleAuthProvider()
 
@@ -22,7 +23,7 @@ export type ContinueWithGoogleProps = {
   signUp?: SignUpFormGoogleDataSchema
 }
 
-export const noAccountErrorMessage = 'User does not have a Social Seed Account'
+export const noAccountErrorMessage = `User does not have a ${appConfig.siteInfo.name} Account`
 
 export default async function continueWithGoogle(props: ContinueWithGoogleProps) {
   // https://firebase.google.com/docs/auth/web/google-signin
@@ -112,7 +113,6 @@ export default async function continueWithGoogle(props: ContinueWithGoogleProps)
       email: authUser.user.email,
       username: props.signUp?.username,
       photoURL: props.signUp?.photoUrl || authUser.user.photoURL || false,
-      robloxUserId: props.signUp?.robloxUserId || false,
       bannerUrl: props.signUp?.bannerUrl || false,
       agreedToTOSandPrivacyPolicy: props.signUp?.agreedToTOSandPrivacyPolicy,
     })

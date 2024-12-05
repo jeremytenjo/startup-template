@@ -10,7 +10,6 @@ export type AddNewUserDocProps = {
   email: UserSchema['email']
   username: string
   photoURL: UserSchema['photoURL'] | false
-  robloxUserId: string | false
   bannerUrl: UserSchema['bannerUrl']
   agreedToTOSandPrivacyPolicy: UserSchema['agreedToTOSandPrivacyPolicy']
 }

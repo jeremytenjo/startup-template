@@ -10,6 +10,8 @@ import { setRecentlyLoggedInSessionStorage } from '../../../../lib/utils/misc/re
 import logError from '../../../../lib/utils/loggers/logError/logError.js'
 import updateFirestoreUserLastSignedIn from '../../../../lib/integrations/Google/Firebase/auth/utils/updateFirestoreUserLastSignedIn/updateFirestoreUserLastSignedIn.js'
 import { auth as firebaseAuth } from '../../../../lib/integrations/Google/Firebase/firebase.js'
+import signUpWithEmailPassword from '../signUp/signUpWithEmailPassword/signUpWithEmailPassword.js'
+import continueWithGoogle from '../signIn/ContinueWithGoogle/continueWithGoogle.js'
 
 // Sign in
 type SignInFetcherProps = {
@@ -71,10 +73,6 @@ const signInFetcher = async (props: SignInFetcherProps) => {
   // @useweb/firebase/useFirebaseAuth handlers return user, it fetrches the user from firestore
 }
 
-export type RobloxDataSchema = {
-  robloxUserId: string | false
-}
-
 export type SignUpFormEmailPasswordDataSchema = {
   email: string
   password: string
@@ -82,9 +80,9 @@ export type SignUpFormEmailPasswordDataSchema = {
   photoUrl: string | false
   bannerUrl: UserSchema['bannerUrl']
   agreedToTOSandPrivacyPolicy: UserSchema['agreedToTOSandPrivacyPolicy']
-} & RobloxDataSchema
+}
 
-export type SignUpFormGoogleDataSchema = RobloxDataSchema & {
+export type SignUpFormGoogleDataSchema = {
   username: string
   photoUrl: string | false
   bannerUrl: UserSchema['bannerUrl']
@@ -100,38 +98,29 @@ export type SignUpFetcherProps = {
 const signUpFetcher = async (props: SignUpFetcherProps) => {
   assert({
     props: props.emailPasswordData || props.signUpWithGoogle,
-    requiredProps: ['robloxUserId', 'username'],
+    requiredProps: ['username'],
   })
 
-  const robloxUserId =
-    props.emailPasswordData?.robloxUserId || props.signUpWithGoogle?.robloxUserId
-
-  if (!robloxUserId) {
-    throw new Error('missing robloxUserId')
-  }
-
   if (props.emailPasswordData) {
-    // await signUpWithEmailPassword({
-    //   email: props.emailPasswordData.email,
-    //   password: props.emailPasswordData.password,
-    //   username: props.emailPasswordData.username,
-    //   photoUrl: props.emailPasswordData.photoUrl,
-    //   robloxUserId: props.emailPasswordData.robloxUserId,
-    //   bannerUrl: props.emailPasswordData.bannerUrl,
-    //   agreedToTOSandPrivacyPolicy: props.emailPasswordData.agreedToTOSandPrivacyPolicy,
-    // })
+    await signUpWithEmailPassword({
+      email: props.emailPasswordData.email,
+      password: props.emailPasswordData.password,
+      username: props.emailPasswordData.username,
+      photoUrl: props.emailPasswordData.photoUrl,
+      bannerUrl: props.emailPasswordData.bannerUrl,
+      agreedToTOSandPrivacyPolicy: props.emailPasswordData.agreedToTOSandPrivacyPolicy,
+    })
   }
 
   if (props.signUpWithGoogle) {
-    // await continueWithGoogle({
-    //   signUp: {
-    //     username: props.signUpWithGoogle?.username,
-    //     photoUrl: props.signUpWithGoogle?.photoUrl,
-    //     robloxUserId: props.signUpWithGoogle?.robloxUserId,
-    //     bannerUrl: props.signUpWithGoogle?.bannerUrl,
-    //     agreedToTOSandPrivacyPolicy: props.signUpWithGoogle?.agreedToTOSandPrivacyPolicy,
-    //   },
-    // })
+    await continueWithGoogle({
+      signUp: {
+        username: props.signUpWithGoogle?.username,
+        photoUrl: props.signUpWithGoogle?.photoUrl,
+        bannerUrl: props.signUpWithGoogle?.bannerUrl,
+        agreedToTOSandPrivacyPolicy: props.signUpWithGoogle?.agreedToTOSandPrivacyPolicy,
+      },
+    })
   }
 }
 

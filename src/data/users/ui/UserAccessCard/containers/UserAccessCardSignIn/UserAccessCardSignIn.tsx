@@ -17,6 +17,8 @@ import VerifyPhoneCode from '../../../../../../lib/components/dataDisplay/Verify
 import ContinueWithGoogleButton from '../../../../utils/signIn/ContinueWithGoogle/ui/ContinueWithGoogleButton/ContinueWithGoogleButton.js'
 import { noAccountErrorMessage } from '../../../../utils/signIn/ContinueWithGoogle/continueWithGoogle.js'
 import AccountAccessCta from '../../../AccountAccessCTA/AccountAccessCta.js'
+import appConfig from '../../../../../../../app.config.js'
+import { allNavLinks } from '../../../../../mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
 
 export type UserAccessCardSignInProps = {
   redirectOnSignIn?: boolean
@@ -75,7 +77,7 @@ export default function UserAccessCardSignIn(props: UserAccessCardSignInProps) {
     )
   }
 
-  const noSocialSeedAccountError = auth.signingInError
+  const isNoAccountErrorMessage = auth.signingInError
     .toString()
     .includes(noAccountErrorMessage)
 
@@ -159,17 +161,17 @@ export default function UserAccessCardSignIn(props: UserAccessCardSignInProps) {
             <ErrorMessage
               error={auth.signingInError}
               message={
-                noSocialSeedAccountError
-                  ? 'You do not have a Social Seed account, please create one in the Sign Up page.'
+                isNoAccountErrorMessage
+                  ? `You do not have a ${appConfig.siteInfo.name} account, please create one in the ${allNavLinks.access.signUp.label} page.`
                   : 'You have entered an invalid username/email or password'
               }
             />
           )}
 
-        {noSocialSeedAccountError && (
+        {isNoAccountErrorMessage && (
           <Link href={`/signup`}>
-            <Button name='Go to Sign Up page' sx={{}}>
-              Go to Sign Up page
+            <Button name={`Go to ${allNavLinks.access.signUp.label} page`} sx={{}}>
+              Go to {allNavLinks.access.signUp.label} page
             </Button>
           </Link>
         )}

@@ -11,7 +11,6 @@ import signUpWithEmailPassword, {
 const defaultArgs: SignUpWithEmailPasswordProps = {
   email: '',
   password: '',
-  robloxUserId: '',
   username: '',
   photoUrl: '',
   bannerUrl: '',

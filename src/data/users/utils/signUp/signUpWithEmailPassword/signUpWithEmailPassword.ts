@@ -43,7 +43,6 @@ export default async function signUpWithEmailPassword(
     uid: createdAuthUser.user.uid,
     email: props.email,
     username: props.username,
-    robloxUserId: props.robloxUserId,
     photoURL: props.photoUrl || false,
     bannerUrl: props.bannerUrl || false,
     agreedToTOSandPrivacyPolicy: props.agreedToTOSandPrivacyPolicy,
