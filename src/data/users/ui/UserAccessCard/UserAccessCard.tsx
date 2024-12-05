@@ -14,7 +14,6 @@ import UserAccessCardResetPassword from './containers/UserAccessCardResetPasswor
 
 export type UserAccessCardProps = {
   type: 'sign-in' | 'sign-up' | 'reset-password'
-
   sx?: BoxProps['sx']
   headerProps?: UserAccessCardHeaderProps
   signInProps?: UserAccessCardSignInProps
