@@ -14,6 +14,9 @@ export type UserAccessCardProps = {
   title?: string
   subTitle?: string
   sx?: BoxProps['sx']
+  signInProps?: any
+  signUpProps?: any
+  resetPasswordProps?: any
 }
 
 export default function UserAccessCard(props: UserAccessCardProps) {
