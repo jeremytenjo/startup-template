@@ -6,7 +6,7 @@ import type UserSchema from './user.schema.js'
 
 const commonProps: UserSchema = {
   id: '1',
-  displayName: 'User 1',
+  displayName: 'user1',
   email: 'user1@email.com',
   photoURL: `http://localhost:${appConfig.nextjs.port}/images/placeholders/user1.jpg`,
   bannerUrl: 'https://via.placeholder.com/150',

@@ -79,7 +79,7 @@ export default function useMainNavLinks() {
   })
   const profileLink: NavLinkSchema = {
     label: 'Profile',
-    url: `/profile/${auth.user?.id}`,
+    url: `/user/${auth.user?.displayName}`,
   }
 
   // Main navigation links
