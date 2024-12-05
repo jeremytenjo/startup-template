@@ -112,11 +112,8 @@ export default function UserAccessCardHeader(props: UserAccessCardHeaderProps) {
         sx={{
           width: '100%',
           gridTemplateColumns: '1fr 1fr',
-          borderRadius: '0',
-          border: 'none',
-          '& *': {
-            borderRadius: '0 !important',
-          },
+          borderRadius: '8px',
+          borderColor: 'neutral.300',
 
           '& [data-id="LinkTab"]': {
             justifyContent: 'center',
@@ -128,8 +125,10 @@ export default function UserAccessCardHeader(props: UserAccessCardHeaderProps) {
             },
 
             '&[data-is-active="true"]': {
-              borderBottom: '2px solid',
-              borderBottomColor: 'primary.main',
+              border: '2px solid',
+              borderColor: 'neutral.300',
+              borderRadius: '8px',
+              backgroundColor: 'neutral.350',
             },
           },
         }}
