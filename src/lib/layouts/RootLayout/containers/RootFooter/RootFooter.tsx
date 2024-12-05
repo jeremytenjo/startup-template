@@ -5,11 +5,17 @@ import Link from '@useweb/ui/Link'
 
 import FullLogoLink from '../../../../components/logo/FullLogoLink/FullLogoLink.js'
 import useMainNavLinks from '../../../../../data/mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
+import useIsAccessPage from '../../../../../data/users/utils/useIsAccessPage/useIsAccessPage.js'
 
 import RootFooterLinks from './containers/RootFooterLinks/RootFooterLinks.js'
 
 export default function RootFooter() {
   const mainNavLinks = useMainNavLinks()
+  const isAccessPage = useIsAccessPage()
+
+  if (isAccessPage.isAccessPage) {
+    return null
+  }
 
   return (
     <Box
