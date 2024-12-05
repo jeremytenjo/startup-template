@@ -10,7 +10,7 @@ const commonProps: UserSchema = {
   email: 'user1@email.com',
   photoURL: `http://localhost:${appConfig.nextjs.port}/images/placeholders/user1.jpg`,
   bannerUrl: 'https://via.placeholder.com/150',
-  agreedToTOSandPrivacyPolicy: true,
+  agreedToTOSandPrivacyPolicy: getToday(),
   lastSignedIn: getToday(),
 }
 

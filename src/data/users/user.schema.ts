@@ -1,10 +1,12 @@
+import type DateSchema from '../_commonSchemas/DateSchema/date.schema.js'
+
 type UserSchema = {
   id: string
   displayName: string
   email: string
   photoURL: string
   bannerUrl: string | false
-  agreedToTOSandPrivacyPolicy: boolean
+  agreedToTOSandPrivacyPolicy: DateSchema
   lastSignedIn: number
 }
 
