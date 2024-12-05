@@ -38,7 +38,7 @@ export default function ResetPasswordForm(props: ResetPasswordFormProps) {
         hint='Enter email you used to sign up'
         type='email'
         placeholder='Email'
-        required='Email is required'
+        isRequired
         sx={{
           width: '100%',
         }}
