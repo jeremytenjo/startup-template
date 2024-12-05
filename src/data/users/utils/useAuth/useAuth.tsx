@@ -76,13 +76,13 @@ const signInFetcher = async (props: SignInFetcherProps) => {
 export type SignUpFormEmailPasswordDataSchema = {
   email: AddNewUserDocProps['email']
   photoUrl: AddNewUserDocProps['photoURL']
-  customUsername?: AddNewUserDocProps['username']
+  customUsername: AddNewUserDocProps['username']
   password: string
 }
 
 export type SignUpFormGoogleDataSchema = {
   photoUrl: AddNewUserDocProps['photoURL']
-  customUsername?: AddNewUserDocProps['username']
+  customUsername: AddNewUserDocProps['username']
 }
 
 // Sign up

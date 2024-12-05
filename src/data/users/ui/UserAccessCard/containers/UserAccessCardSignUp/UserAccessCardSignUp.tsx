@@ -1,6 +1,10 @@
 import React from 'react'
 import Form from '@useweb/ui/Form'
 
+import type {
+  SignUpFormEmailPasswordDataSchema,
+  SignUpFormGoogleDataSchema,
+} from '../../../../utils/useAuth/useAuth.js'
 import useAuth from '../../../../utils/useAuth/useAuth.js'
 import useOnSignUpActions from '../../../../utils/signUp/useOnSignUpActions/useOnSignUpActions.js'
 
@@ -10,12 +14,8 @@ import UserAccessCardSignUpErrorMessage from './containers/UserAccessCardSignUpE
 
 export type UserAccessCardSignUpProps = any
 
-export type UserAccessCardSignUpFormSchema = {
-  email: string
-  password: string
-  username: string
-  photoUrl: string
-}
+export type UserAccessCardSignUpFormSchema = SignUpFormEmailPasswordDataSchema &
+  SignUpFormGoogleDataSchema
 
 export default function UserAccessCardSignUp() {
   const onSignUpAction = useOnSignUpActions()
