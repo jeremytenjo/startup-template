@@ -169,7 +169,7 @@ export default function UserAccessCardSignIn(props: UserAccessCardSignInProps) {
           )}
 
         {isNoAccountErrorMessage && (
-          <Link href={`/signup`}>
+          <Link href={allNavLinks.access.signUp.url}>
             <Button name={`Go to ${allNavLinks.access.signUp.label} page`} sx={{}}>
               Go to {allNavLinks.access.signUp.label} page
             </Button>
