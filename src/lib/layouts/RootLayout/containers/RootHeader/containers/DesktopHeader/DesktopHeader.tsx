@@ -5,7 +5,9 @@ import NavLink from '@useweb/ui/NavLink'
 
 import { otherTokens } from '../../../../../../../theme/tokens/otherTokens.js'
 import FullLogoLink from '../../../../../../components/logo/FullLogoLink/FullLogoLink.js'
-import useMainNavLinks from '../../../../../../../data/mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
+import useMainNavLinks, {
+  allNavLinks,
+} from '../../../../../../../data/mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
 import type NavLinkSchema from '../../../../../../../data/_commonSchemas/NavLinkSchema/NavLinkSchema.js'
 import useAuth from '../../../../../../../data/users/utils/useAuth/useAuth.js'
 import NotificationsPopover from '../../../../../../../data/notifications/queries/Notifications/ui/NotificationsPopover/NotificationsPopover.js'
@@ -87,8 +89,8 @@ export default function DesktopHeader() {
           ) : (
             <>
               <NavLink
-                href={'/access/sign-in'}
-                label='Sign In'
+                href={allNavLinks.access.signIn?.url}
+                label={allNavLinks.access.signIn?.label}
                 sx={{
                   '& p': {
                     fontSize: '16px',

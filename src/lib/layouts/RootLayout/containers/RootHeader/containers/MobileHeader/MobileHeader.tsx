@@ -11,6 +11,7 @@ import LogoIcon from '../../../../../../components/icons/LogoIcon.js'
 import NotificationsPopover from '../../../../../../../data/notifications/queries/Notifications/ui/NotificationsPopover/NotificationsPopover.js'
 import SettingProfileAvatarLink from '../../../../../../../data/mainNavLinks/ui/SettingProfileAvatarLink/SettingProfileAvatarLink.js'
 import SignUpLink from '../../../../../../../data/mainNavLinks/ui/SignUpLink/SignUpLink.js'
+import { allNavLinks } from '../../../../../../../data/mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
 
 export default function MobileHeader() {
   const appHeaderStore = useAppHeaderStore()
@@ -96,8 +97,8 @@ export default function MobileHeader() {
               }}
             >
               <NavLink
-                href={'/access/sign-in'}
-                label='Sign in'
+                href={allNavLinks.access.signIn?.url}
+                label={allNavLinks.access.signIn?.label}
                 sx={{
                   mr: '10px',
                 }}
