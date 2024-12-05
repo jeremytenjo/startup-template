@@ -27,7 +27,6 @@ export default async function signUpWithEmailPassword(
     uid: createdAuthUser.user.uid,
     email: props.email,
     photoURL: props.photoUrl || false,
-    bannerUrl: props.bannerUrl || false,
   })
 
   return createdAuthUser

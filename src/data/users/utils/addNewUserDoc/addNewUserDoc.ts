@@ -9,7 +9,6 @@ export type AddNewUserDocProps = {
   uid: UserSchema['id']
   email: UserSchema['email']
   photoURL: UserSchema['photoURL'] | false
-  bannerUrl: UserSchema['bannerUrl']
 }
 
 // add new user doc to firestore with default values
@@ -19,10 +18,7 @@ export default async function addNewUserDoc(props: AddNewUserDocProps) {
     requiredProps: ['uid', 'email'],
   })
 
-  // TODO generate username from email
   const username = props.email.split('@')[0]
-
-  console.log('username', username)
 
   await getIsUsernameTaken({ username })
 
@@ -31,7 +27,7 @@ export default async function addNewUserDoc(props: AddNewUserDocProps) {
     displayName: username,
     email: props.email,
     photoURL: props.photoURL || '',
-    bannerUrl: props.bannerUrl || false,
+    bannerUrl: false,
     agreedToTOSandPrivacyPolicy: getToday(),
     lastSignedIn: getToday(),
   }

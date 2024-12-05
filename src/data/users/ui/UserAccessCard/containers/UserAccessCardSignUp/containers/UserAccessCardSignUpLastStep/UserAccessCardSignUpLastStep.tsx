@@ -24,7 +24,6 @@ export default function UserAccessCardSignUpLastStep(
 
   const signUpWithGoogleProps: SignUpFetcherProps['signUpWithGoogle'] = {
     photoUrl: formContext.watch('photoUrl'),
-    bannerUrl: formContext.watch('bannerUrl'),
   }
 
   return (

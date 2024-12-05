@@ -94,7 +94,6 @@ export default async function continueWithGoogle(props: ContinueWithGoogleProps)
       uid: authUser.user.uid,
       email: authUser.user.email,
       photoURL: props.signUp?.photoUrl || authUser.user.photoURL || false,
-      bannerUrl: props.signUp?.bannerUrl || false,
     })
   }
 

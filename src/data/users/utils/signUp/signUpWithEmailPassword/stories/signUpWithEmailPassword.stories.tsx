@@ -11,7 +11,6 @@ const defaultArgs: SignUpWithEmailPasswordProps = {
   email: '',
   password: '',
   photoUrl: '',
-  bannerUrl: '',
 }
 
 export default {

@@ -104,7 +104,7 @@
     "@useweb/fetch-tester": "1.31.0",
     "@useweb/fetching-ui": "7.1.0",
     "@useweb/figma-to-code": "2.29.1",
-    "@useweb/firebase": "13.9.0",
+    "@useweb/firebase": "13.9.2",
     "@useweb/firebase-function-tester": "6.1.0",
     "@useweb/format-to-units": "1.0.5",
     "@useweb/google-identity-service": "2.1.1",
