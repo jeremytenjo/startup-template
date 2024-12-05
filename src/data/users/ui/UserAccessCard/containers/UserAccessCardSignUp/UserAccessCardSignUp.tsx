@@ -14,8 +14,7 @@ import { validatePassword } from '../../../../utils/signUp/signUpFormUtils/signU
 import AccountAccessCta from '../../../AccountAccessCTA/AccountAccessCta.js'
 import postHogEventClick from '../../../../../../lib/integrations/PostHog/events/browser/postHogEventClick/postHogEventClick.js'
 import ContinueWithGoogleButton from '../../../../utils/signIn/ContinueWithGoogle/ui/ContinueWithGoogleButton/ContinueWithGoogleButton.js'
-
-export type UserAccessCardSignUpProps = { name?: string }
+import useOnSignUpActions from '../../../../utils/signUp/useOnSignUpActions/useOnSignUpActions.js'
 
 type UserAccessCardSignUpFormSchema = {
   email: string
@@ -25,13 +24,14 @@ type UserAccessCardSignUpFormSchema = {
   bannerUrl: string
 }
 
-export default function UserAccessCardSignUp(props: UserAccessCardSignUpProps) {
-  const auth = useAuth()
+export default function UserAccessCardSignUp() {
   const [showEmailSignUpoptions, setShowEmailSignUpoptions] = React.useState(false)
-
-  const [formSubmissionIntentError, setFormSubmissionIntentError] = React.useState<
-    string | undefined
-  >()
+  const onSignUpAction = useOnSignUpActions()
+  const auth = useAuth({
+    onSignUp: () => {
+      onSignUpAction.onSignUp()
+    },
+  })
 
   return (
     <Form<UserAccessCardSignUpFormSchema>
@@ -112,18 +112,7 @@ export default function UserAccessCardSignUp(props: UserAccessCardSignUpProps) {
             />
           )}
 
-          <ErrorMessage
-            error={formSubmissionIntentError || auth.signUp?.error}
-            message={
-              formSubmissionIntentError
-                ? formSubmissionIntentError
-                : String(auth.signUp.error).includes(
-                    'Username taken, please try a different one',
-                  )
-                ? 'Username taken, please try a different one.'
-                : 'Error creating account'
-            }
-          />
+          <ErrorMessage error={auth.signUp?.error} message={'Error creating account'} />
         </Box>
       )}
     </Form>
