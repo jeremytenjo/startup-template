@@ -20,7 +20,9 @@ export default async function addNewUserDoc(props: AddNewUserDocProps) {
   })
 
   // TODO generate username from email
-  const username = 'usrename'
+  const username = props.email.split('@')[0]
+
+  console.log('username', username)
 
   await getIsUsernameTaken({ username })
 
