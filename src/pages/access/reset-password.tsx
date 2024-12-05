@@ -6,7 +6,7 @@ import RootLayout from '@/src/lib/layouts/RootLayout/RootLayout.js'
 export default function AccessResetPasswordPageRoot() {
   return (
     <>
-      <RootLayout title='Access-Reset-Password'>
+      <RootLayout title='Reset Password'>
         <AccessResetPasswordPage />
       </RootLayout>
     </>

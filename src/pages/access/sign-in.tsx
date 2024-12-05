@@ -6,7 +6,7 @@ import RootLayout from '@/src/lib/layouts/RootLayout/RootLayout.js'
 export default function AccessSignInPageRoot() {
   return (
     <>
-      <RootLayout title='Access-Sign-In'>
+      <RootLayout title='Sign In'>
         <AccessSignInPage />
       </RootLayout>
     </>
