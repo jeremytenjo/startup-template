@@ -7,13 +7,11 @@ import {
   getDocs,
   limit,
 } from 'firebase/firestore'
-import assert from '@useweb/assert'
 
 import type { SignUpFormGoogleDataSchema } from '../../useAuth/useAuth.js'
 import type UserSchema from '../../../user.schema.js'
 import { db } from '../../../../../lib/integrations/Google/Firebase/firebase.js'
 import { usersCollectionName } from '../../../users.config.js'
-import { getIsUsernameTaken } from '../../signUp/signUpWithEmailPassword/signUpWithEmailPassword.js'
 import addNewUserDoc from '../../addNewUserDoc/addNewUserDoc.js'
 import appConfig from '../../../../../../app.config.js'
 
@@ -83,13 +81,6 @@ export default async function continueWithGoogle(props: ContinueWithGoogleProps)
     }
   } else {
     // Sign Up with Google
-    assert<SignUpFormGoogleDataSchema>({
-      props: props.signUp,
-      requiredProps: ['username'],
-    })
-
-    await getIsUsernameTaken({ username: props.signUp?.username })
-
     if (!authUser.user.email) {
       throw new Error(`authUser.user.email is undefined`, {
         cause: {
@@ -102,7 +93,6 @@ export default async function continueWithGoogle(props: ContinueWithGoogleProps)
     await addNewUserDoc({
       uid: authUser.user.uid,
       email: authUser.user.email,
-      username: props.signUp?.username,
       photoURL: props.signUp?.photoUrl || authUser.user.photoURL || false,
       bannerUrl: props.signUp?.bannerUrl || false,
     })

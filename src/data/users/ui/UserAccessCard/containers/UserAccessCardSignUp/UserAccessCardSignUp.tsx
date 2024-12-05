@@ -126,7 +126,6 @@ const UserAccessCardSignUpFormContinueWithGoogle = () => {
   const formContext = useFormContext<UserAccessCardSignUpFormSchema>()
 
   const signUpWithGoogleProps: SignUpFetcherProps['signUpWithGoogle'] = {
-    username: formContext.watch('username'),
     photoUrl: formContext.watch('photoUrl'),
     bannerUrl: formContext.watch('bannerUrl'),
   }
