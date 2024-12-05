@@ -13,8 +13,8 @@ export default function UserAccessCardSignUpErrorMessage(
   const error = props.auth.signUp?.error
 
   if (
-    String(error)?.includes('(auth/popup-closed-by-user)') ||
-    String(error)?.includes('(auth/cancelled-popup-request).')
+    String(error)?.includes('auth/popup-closed-by-user') ||
+    String(error)?.includes('auth/cancelled-popup-request')
   ) {
     return null
   }
