@@ -2,10 +2,10 @@ import React from 'react'
 import Box from '@useweb/ui/Box'
 import Text from '@useweb/ui/Text'
 
-import LogoIcon from '../../../../../lib/components/icons/LogoIcon.js'
-import appConfig from '../../../../../../app.config.js'
-import { LinkTabsList } from '../../../../../lib/components/navigation/LinkTabs/LinkTabs.js'
-import { allNavLinks } from '../../../../mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
+import LogoIcon from '../../../../../../lib/components/icons/LogoIcon.js'
+import appConfig from '../../../../../../../app.config.js'
+import { LinkTabsList } from '../../../../../../lib/components/navigation/LinkTabs/LinkTabs.js'
+import { allNavLinks } from '../../../../../mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
 
 export type UserAccessCardHeaderProps = {
   title?: string
