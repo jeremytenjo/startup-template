@@ -8,7 +8,6 @@ import {
   where,
 } from 'firebase/firestore'
 import assert from '@useweb/assert'
-import { getToday } from '@useweb/date'
 
 import addNewUserDoc from '../../addNewUserDoc/addNewUserDoc.js'
 import { usersCollectionName } from '../../../users.config.js'
@@ -42,7 +41,6 @@ export default async function signUpWithEmailPassword(
     username: props.username,
     photoURL: props.photoUrl || false,
     bannerUrl: props.bannerUrl || false,
-    agreedToTOSandPrivacyPolicy: getToday(),
   })
 
   return createdAuthUser

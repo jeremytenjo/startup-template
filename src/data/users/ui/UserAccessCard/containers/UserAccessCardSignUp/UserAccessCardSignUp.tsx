@@ -16,6 +16,8 @@ import postHogEventClick from '../../../../../../lib/integrations/PostHog/events
 import ContinueWithGoogleButton from '../../../../utils/signIn/ContinueWithGoogle/ui/ContinueWithGoogleButton/ContinueWithGoogleButton.js'
 import useOnSignUpActions from '../../../../utils/signUp/useOnSignUpActions/useOnSignUpActions.js'
 
+export type UserAccessCardSignUpProps = any
+
 type UserAccessCardSignUpFormSchema = {
   email: string
   password: string

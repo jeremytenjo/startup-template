@@ -99,22 +99,12 @@ export default async function continueWithGoogle(props: ContinueWithGoogleProps)
       })
     }
 
-    if (!props.signUp?.agreedToTOSandPrivacyPolicy) {
-      throw new Error(`agreedToTOSandPrivacyPolicy missing`, {
-        cause: {
-          authUser: authUser.user,
-          props,
-        },
-      })
-    }
-
     await addNewUserDoc({
       uid: authUser.user.uid,
       email: authUser.user.email,
       username: props.signUp?.username,
       photoURL: props.signUp?.photoUrl || authUser.user.photoURL || false,
       bannerUrl: props.signUp?.bannerUrl || false,
-      agreedToTOSandPrivacyPolicy: props.signUp?.agreedToTOSandPrivacyPolicy,
     })
   }
 

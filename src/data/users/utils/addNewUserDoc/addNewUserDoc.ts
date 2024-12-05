@@ -11,7 +11,6 @@ export type AddNewUserDocProps = {
   username: string
   photoURL: UserSchema['photoURL'] | false
   bannerUrl: UserSchema['bannerUrl']
-  agreedToTOSandPrivacyPolicy: UserSchema['agreedToTOSandPrivacyPolicy']
 }
 
 // add new user doc to firestore with default values
@@ -21,17 +20,13 @@ export default async function addNewUserDoc(props: AddNewUserDocProps) {
     requiredProps: ['uid', 'email', 'username'],
   })
 
-  if (!props.agreedToTOSandPrivacyPolicy) {
-    throw new Error("agreedToTOSandPrivacyPolicy can't be undefined")
-  }
-
   const newUserDoc: UserSchema = {
     id: props.uid,
     displayName: props.username,
     email: props.email,
     photoURL: props.photoURL || '',
     bannerUrl: props.bannerUrl || false,
-    agreedToTOSandPrivacyPolicy: props.agreedToTOSandPrivacyPolicy,
+    agreedToTOSandPrivacyPolicy: getToday(),
     lastSignedIn: getToday(),
   }
 

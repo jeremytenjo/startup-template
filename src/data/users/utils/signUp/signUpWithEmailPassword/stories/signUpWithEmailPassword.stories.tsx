@@ -1,7 +1,6 @@
 //https://storybook.js.org/docs/react/writing-docs/docs-page
 import React from 'react'
 import AsyncTester from '@useweb/async-tester'
-import { getToday } from '@useweb/date'
 
 import signUpWithEmailPassword, {
   type SignUpWithEmailPasswordProps,
@@ -14,7 +13,6 @@ const defaultArgs: SignUpWithEmailPasswordProps = {
   username: '',
   photoUrl: '',
   bannerUrl: '',
-  agreedToTOSandPrivacyPolicy: getToday(),
 }
 
 export default {

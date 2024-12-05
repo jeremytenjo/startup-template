@@ -115,7 +115,6 @@ const signUpFetcher = async (props: SignUpFetcherProps) => {
         username: props.signUpWithGoogle?.username,
         photoUrl: props.signUpWithGoogle?.photoUrl,
         bannerUrl: props.signUpWithGoogle?.bannerUrl,
-        agreedToTOSandPrivacyPolicy: props.signUpWithGoogle?.agreedToTOSandPrivacyPolicy,
       },
     })
   }
