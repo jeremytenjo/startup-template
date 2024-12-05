@@ -112,7 +112,7 @@ export default function UserAccessCardHeader(props: UserAccessCardHeaderProps) {
         sx={{
           width: '100%',
           gridTemplateColumns: '1fr 1fr',
-          borderRadius: '100px',
+          borderRadius: '8px',
           borderColor: 'neutral.300',
 
           '& [data-id="LinkTab"]': {
@@ -127,7 +127,7 @@ export default function UserAccessCardHeader(props: UserAccessCardHeaderProps) {
             '&[data-is-active="true"]': {
               border: '2px solid',
               borderColor: 'neutral.300',
-              borderRadius: '100px',
+              borderRadius: '8px',
               backgroundColor: 'neutral.350',
             },
           },
