@@ -152,12 +152,13 @@ export type LinkTabsListProps = {
   onChange?: LinkTabsProps['onChange']
   controlledValue?: LinkTabsProps['controlledValue']
   shallow?: boolean
+  'data-id'?: string
 }
 
 export const LinkTabsList = (props: LinkTabsListProps) => {
   return (
     <List<LinkTabProps>
-      data-id='LinkTabsList'
+      data-id={props['data-id'] || 'LinkTabsList'}
       listItemKeyName='label'
       data={(props.links as any) || []}
       sx={{
