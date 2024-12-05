@@ -22,7 +22,7 @@ export const getStaticProps = (async ({ previewData }) => {
 export default function TermsOfServicePageRoot() {
   return (
     <>
-      <RootLayout title='Terms-Of-Service'>
+      <RootLayout title='Terms of Service'>
         <TermsOfServicePage />
       </RootLayout>
     </>
