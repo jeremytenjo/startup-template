@@ -4,7 +4,7 @@ import { PrismicRichText } from '@prismicio/react'
 
 import linkResolver from '../../utils/linkResolver/linkResolver.js'
 
-export type RichTextProps = { field: any; sx?: BoxProps['sx'] }
+export type RichTextProps = { field: any[]; sx?: BoxProps['sx'] }
 
 // https://prismic.io/docs/technologies/prismic-react-v2-migration-guide#convert-html-serializer-function-to-an-object
 export default function RichText(props: RichTextProps) {
@@ -34,7 +34,7 @@ export default function RichText(props: RichTextProps) {
         },
       }}
     >
-      <PrismicRichText field={props.field} linkResolver={linkResolver} />
+      <PrismicRichText field={props.field as any} linkResolver={linkResolver} />
     </Box>
   ) : null
 }

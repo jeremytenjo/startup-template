@@ -1,6 +1,9 @@
 import React from 'react'
 import type { Content } from '@prismicio/client'
 import type { SliceComponentProps } from '@prismicio/react'
+import Box from '@useweb/ui/Box'
+
+import RichText from '../../ui/RichText/RichText.js'
 
 /**
  * Props for `StandardPage`.
@@ -12,9 +15,13 @@ export type StandardPageProps = SliceComponentProps<Content.RootPageSlice>
  */
 const StandardPage = ({ slice }: StandardPageProps) => {
   return (
-    <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-      Placeholder component for standard_page (variation: {slice.variation}) Slices
-    </section>
+    <Box
+      component={'section'}
+      data-slice-type={slice.slice_type}
+      data-slice-variation={slice.variation}
+    >
+      <RichText field={slice.primary.body} />
+    </Box>
   )
 }
 
