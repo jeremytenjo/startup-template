@@ -3,14 +3,14 @@ import type { Content } from '@prismicio/client'
 import type { SliceComponentProps } from '@prismicio/react'
 
 /**
- * Props for `RootPage`.
+ * Props for `StandardPage`.
  */
-export type RootPageProps = SliceComponentProps<Content.RootPageSlice>
+export type StandardPageProps = SliceComponentProps<Content.RootPageSlice>
 
 /**
- * Component for "RootPage" Slices.
+ * Component for "StandardPage" Slices.
  */
-const RootPage = ({ slice }: RootPageProps) => {
+const StandardPage = ({ slice }: StandardPageProps) => {
   return (
     <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
       Placeholder component for standard_page (variation: {slice.variation}) Slices
@@ -18,4 +18,4 @@ const RootPage = ({ slice }: RootPageProps) => {
   )
 }
 
-export default RootPage
+export default StandardPage

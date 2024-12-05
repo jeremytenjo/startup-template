@@ -1,19 +1,17 @@
 import React from 'react'
 import Box from '@useweb/ui/Box'
-import { SliceZone } from '@prismicio/react'
 
 import TermsOfServicePageLayout from '../layouts/TermsOfServicePageLayout/TermsOfServicePageLayout.js'
 import { usePrismicStandardPage } from '../../../lib/integrations/Prismic/pageTypes/standard/PrismicStandardPageProvider/PrismicStandardPageProvider.js'
+import PrismicSlicesRenderer from '../../../lib/integrations/Prismic/ui/PrismicSlicesRenderer/PrismicSlicesRenderer.js'
 
 export default function TermsOfServicePage() {
   const pageData = usePrismicStandardPage()
 
-  console.log(pageData)
-
   return (
     <TermsOfServicePageLayout>
       <Box data-id='TermsOfServicePage' sx={{}}>
-        <SliceZone slices={pageData.data.slices} components={{}} />
+        <PrismicSlicesRenderer slices={pageData.data.slices} />
       </Box>
     </TermsOfServicePageLayout>
   )
