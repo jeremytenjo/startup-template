@@ -31,12 +31,11 @@ type FormSchema = {
 }
 
 export default function UserAccessCardSignIn(props: UserAccessCardSignInProps) {
+  const snackbar = useSnackbar()
+  const router = useRouter()
+
   const { redirectOnSignIn = true } = props
   const [mfaResolver, setMfaResolver] = React.useState<MultiFactorResolver | undefined>()
-
-  const snackbar = useSnackbar()
-
-  const router = useRouter()
 
   const auth = useAuth({
     onSignIn({ result }) {
