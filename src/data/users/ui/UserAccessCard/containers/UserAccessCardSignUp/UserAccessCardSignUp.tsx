@@ -92,27 +92,24 @@ export default function UserAccessCardSignUp(props: UserAccessCardSignUpProps) {
         >
           <UserAccessCardSignUpFormContinueWithGoogle />
 
+          <Text
+            text={`Or sign up via email`}
+            sx={{
+              textAlign: 'center',
+            }}
+          />
+
           {showEmailSignUpoptions ? (
             <UserAccessCardSignUpWithEmailFormFields />
           ) : (
-            <>
-              <Text
-                text={`Or sign up via email`}
-                sx={{
-                  textAlign: 'center',
-                }}
-              />
-
-              {/* Continue with email trigger */}
-              <AccountAccessCta
-                loading={auth.signUp.loading}
-                text='Continue with Email'
-                buttonProps={{
-                  type: 'button',
-                  onClick: () => setShowEmailSignUpoptions(true),
-                }}
-              />
-            </>
+            <AccountAccessCta
+              loading={auth.signUp.loading}
+              text='Continue with Email'
+              buttonProps={{
+                type: 'button',
+                onClick: () => setShowEmailSignUpoptions(true),
+              }}
+            />
           )}
 
           <ErrorMessage
