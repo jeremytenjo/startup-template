@@ -98,7 +98,9 @@ export default function UserAccessCardSignIn(props: UserAccessCardSignInProps) {
         }}
       >
         <ContinueWithGoogleButton
-          onClick={() => auth.signIn({ signInWithGoogle: true })}
+          onClick={() => {
+            auth.signIn({ signInWithGoogle: true })
+          }}
         />
         <Text
           text={`Or log in via email`}
