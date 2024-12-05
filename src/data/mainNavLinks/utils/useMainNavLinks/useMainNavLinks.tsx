@@ -107,6 +107,7 @@ export default function useMainNavLinks() {
   const profilePhotoMenuLinks = useMemo(() => {
     const links: NavLinkSchema[] = []
     links.push(profileLink)
+    links.push(allNavLinks.settings.settings)
     return links
   }, [])
 
