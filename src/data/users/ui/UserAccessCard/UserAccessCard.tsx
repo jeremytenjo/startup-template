@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import type { BoxProps } from '@useweb/ui/Box'
 
 import CenterIsland from '../../../../lib/layouts/CenterIsland/CenterIsland.js'
@@ -22,6 +22,22 @@ export type UserAccessCardProps = {
 }
 
 export default function UserAccessCard(props: UserAccessCardProps) {
+  const title = useMemo(() => {
+    if (props.type === 'sign-in') {
+      return 'Sign in to your account'
+    }
+
+    if (props.type === 'sign-up') {
+      return 'Create an account'
+    }
+
+    if (props.type === 'reset-password') {
+      return 'Reset your password'
+    }
+
+    return ''
+  }, [props.type])
+
   return (
     <CenterIsland
       data-id='UserAccessCard'
@@ -39,7 +55,7 @@ export default function UserAccessCard(props: UserAccessCardProps) {
         ...props.sx,
       }}
     >
-      <UserAccessCardHeader {...props.headerProps} />
+      <UserAccessCardHeader {...props.headerProps} title={title} />
       {props.type === 'sign-in' && <UserAccessCardSignIn {...props.signInProps} />}
       {props.type === 'sign-up' && <UserAccessCardSignUp {...props.signUpProps} />}
       {props.type === 'reset-password' && (
