@@ -6,7 +6,7 @@ import ResetPasswordForm from '../../../../utils/resetPassword/resetPasswordForm
 import type { UseResetPasswordForm } from '../../../../utils/resetPassword/resetPasswordForm/useResetPasswordForm/useResetPassword.js'
 
 export type UserAccessCardResetPasswordProps = {
-  onSuccess: UseResetPasswordForm['onSuccess']
+  onSuccess?: UseResetPasswordForm['onSuccess']
 }
 
 export default function UserAccessCardResetPassword(

@@ -4,7 +4,7 @@ import useSnackbar from '@useweb/ui/Snackbar'
 import resetPasswordFormFn, { type ResetPasswordFormProps } from '../resetPasswordForm.js'
 
 export type UseResetPasswordForm = {
-  onSuccess: () => void
+  onSuccess?: () => void
 }
 
 export default function useResetPasswordForm(props: UseResetPasswordForm) {
@@ -18,7 +18,9 @@ export default function useResetPasswordForm(props: UseResetPasswordForm) {
         severity: 'success',
       })
 
-      props.onSuccess()
+      if (props.onSuccess) {
+        props.onSuccess()
+      }
     },
   })
 

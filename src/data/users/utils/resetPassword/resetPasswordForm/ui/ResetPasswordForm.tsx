@@ -9,7 +9,7 @@ import useResetPasswordForm from '../useResetPasswordForm/useResetPassword.js'
 import AccountAccessCta from '../../../../ui/AccountAccessCTA/AccountAccessCta.js'
 
 export type ResetPasswordFormProps = {
-  onSuccess: UseResetPasswordForm['onSuccess']
+  onSuccess?: UseResetPasswordForm['onSuccess']
 }
 
 export default function ResetPasswordForm(props: ResetPasswordFormProps) {
