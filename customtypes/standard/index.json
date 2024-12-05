@@ -17,7 +17,7 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "root_page": {
+            "standard_page": {
               "type": "SharedSlice"
             }
           }

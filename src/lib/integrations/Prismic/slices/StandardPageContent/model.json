@@ -1,5 +1,5 @@
 {
-  "id": "root_page",
+  "id": "standard_page",
   "type": "SharedSlice",
   "name": "StandardPageContent",
   "description": "RootPage",

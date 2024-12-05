@@ -13,7 +13,7 @@ export type RootPageProps = SliceComponentProps<Content.RootPageSlice>
 const RootPage = ({ slice }: RootPageProps) => {
   return (
     <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-      Placeholder component for root_page (variation: {slice.variation}) Slices
+      Placeholder component for standard_page (variation: {slice.variation}) Slices
     </section>
   )
 }
