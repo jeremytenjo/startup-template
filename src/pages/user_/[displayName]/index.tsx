@@ -4,7 +4,7 @@ import DefaultHeadTags from '../../../lib/components/head/DefaultHeadTags/Defaul
 import UserPage from '../../../pagesContent/User/pages/UserPage.js'
 
 // Use to navigate to a creator without SSR
-export default function UserPublicPageIndex() {
+export default function UserPublicPageRoot() {
   return (
     <>
       <DefaultHeadTags />
