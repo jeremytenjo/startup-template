@@ -138,7 +138,7 @@ export default function UserAccessCardSignIn(props: UserAccessCardSignInProps) {
             justifyContent: 'space-between',
           }}
           labelRightIcon={
-            <Link href={'/reset-password'}>
+            <Link href={allNavLinks.access.resetPassword.url}>
               <Text
                 text={`Password Recovery`}
                 sx={{

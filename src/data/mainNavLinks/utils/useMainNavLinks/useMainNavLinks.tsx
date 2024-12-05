@@ -22,9 +22,9 @@ export const allNavLinks = {
       label: 'Sign Up',
       url: `/access/sign-up`,
     } satisfies NavLinkSchema,
-    forgotPassword: {
-      label: 'Forgot Password',
-      url: `/access/forgot-password`,
+    resetPassword: {
+      label: 'Reset Password',
+      url: `/access/reset-password`,
     } satisfies NavLinkSchema,
   },
 
