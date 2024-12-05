@@ -1,25 +1,26 @@
 {
-  "id": "privacy_policy",
-  "label": "Privacy Policy",
   "format": "page",
-  "repeatable": false,
+  "id": "standard",
+  "label": "Standard",
+  "repeatable": true,
   "status": true,
   "json": {
     "Main": {
-      "content": {
-        "type": "StructuredText",
+      "uid": {
+        "type": "UID",
         "config": {
-          "label": "Content",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          "label": "UID"
         }
       },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "root_page": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },
@@ -37,6 +38,17 @@
           "placeholder": "A brief summary of the page"
         },
         "type": "Text"
+      },
+      "meta_image": {
+        "config": {
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
       }
     }
   }
