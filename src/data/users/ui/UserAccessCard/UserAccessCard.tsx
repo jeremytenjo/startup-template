@@ -10,7 +10,7 @@ import { LinkTabsList } from '../../../../lib/components/navigation/LinkTabs/Lin
 import { allNavLinks } from '../../../mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
 
 export type UserAccessCardProps = {
-  type: 'sign-in' | 'sign-up' | 'forgot-password'
+  type: 'sign-in' | 'sign-up' | 'reset-password'
   title?: string
   subTitle?: string
   sx?: BoxProps['sx']
