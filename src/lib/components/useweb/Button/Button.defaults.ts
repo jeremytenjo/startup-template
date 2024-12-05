@@ -15,13 +15,6 @@ export const buttonVariantSmallStyles: BoxProps['sx'] = {
   padding: '7px 16px',
   fontSize: '12px',
   transition: '0.2s',
-
-  '&:active': {
-    transform: 'scale(0.80) !important',
-  },
-  '&:hover': {
-    transform: 'scale(1.05)',
-  },
 }
 
 // colors
