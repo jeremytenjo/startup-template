@@ -67,7 +67,7 @@ const signInFetcher = async (props: SignInFetcherProps) => {
   }
 
   if (props.signInWithGoogle) {
-    // await continueWithGoogle({})
+    await continueWithGoogle({})
   }
 
   // @useweb/firebase/useFirebaseAuth handlers return user, it fetrches the user from firestore
