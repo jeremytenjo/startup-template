@@ -1,5 +1,5 @@
 import assert from '@useweb/assert'
-import { addUserToFirestore, getIsUsernameTaken } from '@useweb/firebase/useFirebaseAuth'
+import { addUserToFirestore } from '@useweb/firebase/useFirebaseAuth'
 import { getToday } from '@useweb/date'
 
 import type UserSchema from '../../user.schema.js'
@@ -9,22 +9,19 @@ export type AddNewUserDocProps = {
   uid: UserSchema['id']
   email: UserSchema['email']
   photoURL: UserSchema['photoURL'] | false
+  username: UserSchema['displayName']
 }
 
 // add new user doc to firestore with default values
 export default async function addNewUserDoc(props: AddNewUserDocProps) {
   assert<AddNewUserDocProps>({
     props,
-    requiredProps: ['uid', 'email'],
+    requiredProps: ['uid', 'email', 'username'],
   })
-
-  const username = props.email.split('@')[0]
-
-  await getIsUsernameTaken({ username })
 
   const newUserDoc: UserSchema = {
     id: props.uid,
-    displayName: username,
+    displayName: props.username,
     email: props.email,
     photoURL: props.photoURL || '',
     bannerUrl: false,

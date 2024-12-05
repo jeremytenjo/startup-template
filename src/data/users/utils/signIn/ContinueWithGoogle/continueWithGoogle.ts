@@ -14,6 +14,7 @@ import { db } from '../../../../../lib/integrations/Google/Firebase/firebase.js'
 import { usersCollectionName } from '../../../users.config.js'
 import addNewUserDoc from '../../addNewUserDoc/addNewUserDoc.js'
 import appConfig from '../../../../../../app.config.js'
+import createUsernameFromEmail from '../../signUp/createUsernameFromEmail/createUsernameFromEmail.js'
 
 const provider = new GoogleAuthProvider()
 
@@ -90,10 +91,13 @@ export default async function continueWithGoogle(props: ContinueWithGoogleProps)
       })
     }
 
+    const { username } = await createUsernameFromEmail({ email: authUser.user.email })
+
     await addNewUserDoc({
       uid: authUser.user.uid,
       email: authUser.user.email,
       photoURL: props.signUp?.photoUrl || authUser.user.photoURL || false,
+      username,
     })
   }
 

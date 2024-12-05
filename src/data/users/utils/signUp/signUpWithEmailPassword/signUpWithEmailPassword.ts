@@ -3,6 +3,7 @@ import assert from '@useweb/assert'
 
 import addNewUserDoc from '../../addNewUserDoc/addNewUserDoc.js'
 import type { SignUpFormEmailPasswordDataSchema } from '../../useAuth/useAuth.js'
+import createUsernameFromEmail from '../createUsernameFromEmail/createUsernameFromEmail.js'
 
 export type SignUpWithEmailPasswordProps = SignUpFormEmailPasswordDataSchema
 
@@ -14,9 +15,10 @@ export default async function signUpWithEmailPassword(
     requiredProps: ['email', 'password'],
   })
 
+  const { username } = await createUsernameFromEmail({ email: props.email })
+
   // create auth user
   const auth = getAuth()
-
   const createdAuthUser = await createUserWithEmailAndPassword(
     auth,
     props.email,
@@ -27,6 +29,7 @@ export default async function signUpWithEmailPassword(
     uid: createdAuthUser.user.uid,
     email: props.email,
     photoURL: props.photoUrl || false,
+    username,
   })
 
   return createdAuthUser
