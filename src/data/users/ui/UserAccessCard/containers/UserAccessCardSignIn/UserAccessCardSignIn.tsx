@@ -49,7 +49,7 @@ export default function UserAccessCardSignIn(props: UserAccessCardSignInProps) {
       }
 
       if (redirectOnSignIn) {
-        router.push('/dashboard')
+        router.push('/')
         snackbar.show({
           severity: 'success',
           message: `Welcome ${result.displayName}`,

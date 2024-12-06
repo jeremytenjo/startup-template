@@ -37,9 +37,9 @@ export default function UserAccessCardSignUpExistingUser() {
         sx={{ width: '45px', height: '45px' }}
       />
 
-      <Link href={`/dashboard`}>
-        <Button name='Go to Dashboard' sx={{}}>
-          Go to Dashboard
+      <Link href={`/`}>
+        <Button name='Go Home' sx={{}}>
+          Go Home
         </Button>
       </Link>
     </Box>
