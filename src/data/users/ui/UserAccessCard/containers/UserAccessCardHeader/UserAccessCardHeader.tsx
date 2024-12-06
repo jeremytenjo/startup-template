@@ -114,7 +114,7 @@ export default function UserAccessCardHeader(props: UserAccessCardHeaderProps) {
           mb: 2,
           width: '100%',
           gridTemplateColumns: '1fr 1fr',
-          borderRadius: '8px',
+          borderRadius: '14px',
           borderColor: 'neutral.300',
           color: 'neutral.200',
 
@@ -130,7 +130,7 @@ export default function UserAccessCardHeader(props: UserAccessCardHeaderProps) {
             '&[data-is-active="true"]': {
               border: '2px solid',
               borderColor: 'neutral.300',
-              borderRadius: '8px',
+              borderRadius: '14px',
               backgroundColor: 'neutral.350',
               color: 'neutral.100',
             },

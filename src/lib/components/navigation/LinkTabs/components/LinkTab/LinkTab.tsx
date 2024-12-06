@@ -148,7 +148,7 @@ export default function LinkTab(props: LinkTabProps) {
           sx={{
             backgroundColor: 'neutral.200',
             fontSize: '12px',
-            borderRadius: '8px',
+            borderRadius: '14px',
             width: '25px',
             height: '25px',
             fontWeight: 'bold',

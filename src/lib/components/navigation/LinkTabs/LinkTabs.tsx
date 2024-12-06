@@ -166,7 +166,7 @@ export const LinkTabsList = (props: LinkTabsListProps) => {
         border: '1px solid transparent',
         borderColor: 'neutral.300',
         width: 'fit-content',
-        borderRadius: '8px',
+        borderRadius: '14px',
 
         '& li:first-of-type a': {
           borderTopLeftRadius: '8px',

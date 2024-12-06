@@ -38,7 +38,7 @@ const Wrapper = ({ children }) => {
         display: 'grid',
         width: '100%',
         height: 'fit-content',
-        borderRadius: '8px',
+        borderRadius: '14px',
         gridAutoFlow: 'column',
         gridGap: '10px',
       }}

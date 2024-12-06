@@ -110,7 +110,7 @@ const defaults: ComponentDefaultsProps<ButtonProps> = {
   },
   styleOverrides: {
     root: {
-      borderRadius: '40px',
+      borderRadius: '14px',
       fontWeight: '600',
       boxShadow: 'none',
       width: '100%',
