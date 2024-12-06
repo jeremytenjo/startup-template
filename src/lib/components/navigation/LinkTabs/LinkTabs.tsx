@@ -164,18 +164,18 @@ export const LinkTabsList = (props: LinkTabsListProps) => {
       sx={{
         filter: 'drop-shadow(0px 1px 2px rgba(16, 24, 40, 0.05))',
         border: '1px solid transparent',
-        borderColor: 'neutral.600',
+        borderColor: 'neutral.300',
         width: 'fit-content',
-        borderRadius: '100px',
+        borderRadius: '8px',
 
         '& li:first-of-type a': {
-          borderTopLeftRadius: '100px',
-          borderBottomLeftRadius: '100px',
+          borderTopLeftRadius: '8px',
+          borderBottomLeftRadius: '8px',
         },
 
         '& li:last-of-type a': {
-          borderTopRightRadius: '100px',
-          borderBottomRightRadius: '100px',
+          borderTopRightRadius: '8px',
+          borderBottomRightRadius: '8px',
           borderRightColor: 'neutral.600',
         },
 

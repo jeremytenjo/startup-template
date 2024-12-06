@@ -115,6 +115,7 @@ export default function UserAccessCardHeader(props: UserAccessCardHeaderProps) {
           gridTemplateColumns: '1fr 1fr',
           borderRadius: '8px',
           borderColor: 'neutral.300',
+          color: 'neutral.200',
 
           '& [data-id="LinkTab"]': {
             justifyContent: 'center',
@@ -130,6 +131,7 @@ export default function UserAccessCardHeader(props: UserAccessCardHeaderProps) {
               borderColor: 'neutral.300',
               borderRadius: '8px',
               backgroundColor: 'neutral.350',
+              color: 'neutral.100',
             },
           },
         }}

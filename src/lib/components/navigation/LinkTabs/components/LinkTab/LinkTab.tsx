@@ -92,11 +92,11 @@ export default function LinkTab(props: LinkTabProps) {
         alignContent: 'start',
         // height: '43px',
         width: '100%',
-        backgroundColor: isActive ? 'neutral.300' : 'neutral.600',
+        backgroundColor: isActive ? 'neutral.350' : 'neutral.600',
         gridAutoFlow: 'column',
         alignItems: 'center',
         transition: '0.3s',
-        color: isActive ? 'neutral.100' : 'neutral.100',
+        color: isActive ? 'neutral.100' : 'neutral.200',
         cursor: isActive ? 'default' : 'pointer',
         p: '8px 12px',
         ...(props.sx || {}),
@@ -128,7 +128,6 @@ export default function LinkTab(props: LinkTabProps) {
       shallow={Boolean(props.shallow)}
     >
       {props.loading ? null : props.labelPrefix || null}
-
       <Skeleton loading={props.loading}>
         <Text
           tag='p'
@@ -143,14 +142,13 @@ export default function LinkTab(props: LinkTabProps) {
           }}
         />
       </Skeleton>
-
       {props.quantity !== undefined && (
         <Box
           data-id='quantity'
           sx={{
             backgroundColor: 'neutral.200',
             fontSize: '12px',
-            borderRadius: '50%',
+            borderRadius: '8px',
             width: '25px',
             height: '25px',
             fontWeight: 'bold',
