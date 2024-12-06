@@ -27,7 +27,7 @@ export default function ContinueWithGoogleButton(props: ContinueWithGoogleButton
 
         '&:hover, &:active, &:focus': {
           boxShadow: 'none',
-          backgroundColor: 'neutral.400',
+          backgroundColor: 'neutral.150',
           borderColor: 'neutral.250',
         },
 
