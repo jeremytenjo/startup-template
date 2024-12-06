@@ -31,7 +31,7 @@ export default function UserAccessCardHeader(props: UserAccessCardHeaderProps) {
           display: 'grid',
           justifyItems: 'center',
           gap: 2,
-          mb: '50px',
+          mb: 4,
         }}
       >
         <Image
@@ -111,6 +111,7 @@ export default function UserAccessCardHeader(props: UserAccessCardHeaderProps) {
           },
         ]}
         sx={{
+          mb: 2,
           width: '100%',
           gridTemplateColumns: '1fr 1fr',
           borderRadius: '8px',

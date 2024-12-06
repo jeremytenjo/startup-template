@@ -26,6 +26,7 @@ export default function SettingsPagesLayout(props: SettingsPagesLayoutProps) {
   return (
     <Box data-id='SettingsPagesLayout' sx={{}}>
       <PageTitleHeading title='Settings' subTitle='Manage your account settings.' />
+      {/* TODO Move LinkTabs to useweb ui */}
       <LinkTabs
         links={settingsLinks}
         urlBase='settings'
