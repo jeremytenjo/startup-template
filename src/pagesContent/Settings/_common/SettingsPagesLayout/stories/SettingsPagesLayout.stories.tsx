@@ -1,7 +1,6 @@
 //https://storybook.js.org/docs/react/writing-docs/docs-page
 import React from 'react'
-
-import LinkTabsComp from '../../../../../lib/components/navigation/LinkTabs/LinkTabs.js'
+import LinkTabsComp from '@useweb/ui/LinkTabs'
 
 export default {
   title: 'lib/components/SettingsPagesLayout',
