@@ -39,7 +39,6 @@ module.exports = [
   '../../src/lib/components/feedback/progress/ProgressRing/stories/ProgressRing.stories.tsx',
   '../../src/lib/components/logo/FullLogoLink/stories/FullLogoLink.stories.tsx',
   '../../src/lib/components/memberships/MembershipRequiredButton/stories/MembershipRequiredButton.stories.tsx',
-  '../../src/lib/components/navigation/LinkTabs/components/LinkTab/stories/LinkTab.stories.tsx',
   '../../src/lib/components/socials/freshcut/FreshcutEmbed/stories/FreshcutEmbed.stories.tsx',
   '../../src/lib/components/socials/SocialStrip/stories/SocialStrip.stories.tsx',
   '../../src/lib/components/socials/tiktok/TikTokEmbed/stories/TikTokEmbed.stories.tsx',
@@ -114,5 +113,6 @@ module.exports = [
   '../../src/lib/utils/date/formatDateToHumanReadable/stories/formatDateToHumanReadable.stories.tsx',
   '../../src/lib/utils/loggers/logError/GlobalErrorLogger/stories/GlobalErrorLogger.stories.tsx',
   '../../src/lib/utils/socials/getSocialAccountProfilePhoto/stories/getSocialAccountProfilePhoto.stories.tsx',
+  '../../src/pagesContent/Settings/_common/SettingsPagesLayout/stories/SettingsPagesLayout.stories.tsx',
   '../../src/theme/tokens/stories/tokens.stories.tsx',
 ]
