@@ -2,10 +2,10 @@ import React from 'react'
 import * as changeCase from 'change-case'
 import ErrorMessage from '@useweb/ui/ErrorMessage'
 import Box from '@useweb/ui/Box'
+import type { LinkTabsProps } from '@useweb/ui/LinkTabs'
+import LinkTabs from '@useweb/ui/LinkTabs'
+import type { LinkTabProps } from '@useweb/ui/LinkTab'
 
-import type { LinkTabsProps } from '../../../../lib/components/navigation/LinkTabs/LinkTabs.js'
-import LinkTabs from '../../../../lib/components/navigation/LinkTabs/LinkTabs.js'
-import type { LinkTabProps } from '../../../../lib/components/navigation/LinkTabs/components/LinkTab/LinkTab.js'
 import PageTitleHeading from '../../../../lib/layouts/PageTitleHeading/PageTitleHeading.js'
 import useAuth from '../../../../data/users/utils/useAuth/useAuth.js'
 
@@ -26,7 +26,6 @@ export default function SettingsPagesLayout(props: SettingsPagesLayoutProps) {
   return (
     <Box data-id='SettingsPagesLayout' sx={{}}>
       <PageTitleHeading title='Settings' subTitle='Manage your account settings.' />
-      {/* TODO Move LinkTabs to useweb ui */}
       <LinkTabs
         links={settingsLinks}
         urlBase='settings'

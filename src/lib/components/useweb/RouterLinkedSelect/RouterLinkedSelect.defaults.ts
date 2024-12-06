@@ -5,9 +5,7 @@ import { type RouterLinkedSelectProps } from '@useweb/ui/RouterLinkedSelect'
 
 const defaults: ComponentDefaultsProps<RouterLinkedSelectProps> = {
   styleOverrides: {
-    root: {
-      backgroundColor: 'red',
-    },
+    root: {},
   },
 }
 

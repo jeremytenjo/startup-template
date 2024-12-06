@@ -2,9 +2,9 @@ import React from 'react'
 import Box from '@useweb/ui/Box'
 import Text from '@useweb/ui/Text'
 import Image from '@useweb/ui/Image'
+import { LinkTabsList } from '@useweb/ui/LinkTabs'
 
 import appConfig from '../../../../../../../app.config.js'
-import { LinkTabsList } from '../../../../../../lib/components/navigation/LinkTabs/LinkTabs.js'
 import { allNavLinks } from '../../../../../mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
 
 export type UserAccessCardHeaderProps = {

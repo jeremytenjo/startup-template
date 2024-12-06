@@ -5,9 +5,7 @@ import { type LinkTabProps } from '@useweb/ui/LinkTab'
 
 const defaults: ComponentDefaultsProps<LinkTabProps> = {
   styleOverrides: {
-    root: {
-      backgroundColor: 'red',
-    },
+    root: {},
   },
 }
 

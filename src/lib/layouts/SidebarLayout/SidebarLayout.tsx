@@ -2,11 +2,10 @@ import React from 'react'
 import type { BoxProps } from '@useweb/ui/Box'
 import Box from '@useweb/ui/Box'
 import Image from '@useweb/ui/Image'
+import type { LinkTabsProps } from '@useweb/ui/LinkTabs'
+import LinkTabs from '@useweb/ui/LinkTabs'
 
 import { islandStyles } from '../../../theme/UiTheme/commonStyles/islandStyles.js'
-import LinkTabs, {
-  type LinkTabsProps,
-} from '../../components/navigation/LinkTabs/LinkTabs.js'
 
 export type SidebarLayoutProps = {
   children: any
