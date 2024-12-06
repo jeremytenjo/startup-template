@@ -17,21 +17,18 @@ export default function ContinueWithGoogleButton(props: ContinueWithGoogleButton
       name='continue with google'
       onClick={props.onClick || null}
       sx={{
-        backgroundColor: 'neutral.400',
-        color: 'neutral.100',
+        backgroundColor: 'neutral.100',
+        color: 'neutral.600',
         borderColor: 'neutral.250',
         display: 'flex',
         gap: 2,
         height: '42px',
         fontWeight: 600,
+
         '&:hover, &:active, &:focus': {
           boxShadow: 'none',
           backgroundColor: 'neutral.400',
           borderColor: 'neutral.250',
-        },
-
-        '& path': {
-          fill: '#B6C1D1',
         },
 
         ...(props.sx || {}),
