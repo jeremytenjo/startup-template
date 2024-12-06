@@ -1,17 +1,17 @@
 //https://storybook.js.org/docs/react/writing-docs/docs-page
 import React from 'react'
 
-import SettingsPanelNavLinkComponent from '../LinkTab.js'
+import SettingsPagesLayoutNavLinkComponent from '../LinkTab.js'
 
 export default {
-  title: 'lib/components/SettingsPanelNavLink',
+  title: 'lib/components/SettingsPagesLayoutNavLink',
 }
 
 export const Default = {
   render: () => {
     return (
       <>
-        <SettingsPanelNavLinkComponent label='settings' urlBase='settings' />
+        <SettingsPagesLayoutNavLinkComponent label='settings' urlBase='settings' />
       </>
     )
   },

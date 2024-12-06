@@ -2,13 +2,16 @@ import React from 'react'
 import Box from '@useweb/ui/Box'
 
 import SettingsSecurityPageLayout from '../layouts/SettingsSecurityPageLayout/SettingsSecurityPageLayout.js'
+import SettingsPagesLayout from '../../_common/SettingsPagesLayout/SettingsPagesLayout.js'
 
 export default function SettingsSecurityPage() {
   return (
-    <SettingsSecurityPageLayout>
-      <Box data-id='SettingsSecurityPage' sx={{}}>
-        SettingsSecurity
-      </Box>
-    </SettingsSecurityPageLayout>
+    <SettingsPagesLayout>
+      <SettingsSecurityPageLayout>
+        <Box data-id='SettingsSecurityPage' sx={{}}>
+          SettingsSecurity
+        </Box>
+      </SettingsSecurityPageLayout>
+    </SettingsPagesLayout>
   )
 }
