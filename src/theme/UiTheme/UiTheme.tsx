@@ -46,6 +46,9 @@ import Pill from '../../lib/components/useweb/Pill/Pill.defaults.js'
 import Accordion from '../../lib/components/useweb/Accordion/Accordion.defaults.js'
 import InfiniteList from '../../lib/components/useweb/InfiniteList/InfiniteList.defaults.js'
 import Snackbar from '../../lib/components/useweb/Snackbar/Snackbar.defaults.js'
+import LinkTab from '../../lib/components/useweb/LinkTab/LinkTab.defaults.js'
+import LinkTabs from '../../lib/components/useweb/LinkTabs/LinkTabs.defaults.js'
+import RouterLinkedSelect from '../../lib/components/useweb/RouterLinkedSelect/RouterLinkedSelect.defaults.js'
 
 import CssBaseline from './CssBaseline/CssBaseline.defaults.js'
 
@@ -96,6 +99,9 @@ const themeData: CreateThemeProps = {
     InfiniteList,
     Snackbar,
     NumberField,
+    LinkTab,
+    LinkTabs,
+    RouterLinkedSelect,
   },
 }
 
