@@ -128,7 +128,7 @@ export default function UserAccessCardHeader(props: UserAccessCardHeaderProps) {
             },
 
             '&[data-is-active="true"]': {
-              border: '2px solid',
+              border: '1px solid',
               borderColor: 'neutral.300',
               borderRadius: '14px',
               backgroundColor: 'neutral.350',
