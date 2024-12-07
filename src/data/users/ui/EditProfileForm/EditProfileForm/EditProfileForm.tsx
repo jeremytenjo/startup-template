@@ -7,12 +7,12 @@ import Button from '@useweb/ui/Button'
 import ActionBox from '@useweb/ui/ActionBox'
 import FileInput from '@useweb/ui/FileInput'
 import Avatar from '@useweb/ui/Avatar'
+import useAsync from '@useweb/use-async'
 
 import useEditProfileForm from '../useEditProfileForm/useEditProfileForm.js'
 import type UserSchema from '../../../user.schema.js'
 import useAuth from '../../../utils/useAuth/useAuth.js'
 import { Island } from '../../../../../theme/UiTheme/commonStyles/islandStyles.js'
-import useAsync from '@useweb/use-async'
 import logError from '../../../../../lib/utils/loggers/logError/logError'
 
 export type EditProfileFormSchema = {
