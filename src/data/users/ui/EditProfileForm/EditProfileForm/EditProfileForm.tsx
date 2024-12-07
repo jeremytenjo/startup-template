@@ -23,7 +23,6 @@ export type EditProfileFormProps = any
 
 export default function EditProfileForm(props: EditProfileFormProps) {
   const auth = useAuth()
-
   const submitForm = useSubmitEditProfileForm({})
 
   if (!auth.user) {
@@ -34,7 +33,6 @@ export default function EditProfileForm(props: EditProfileFormProps) {
     <Form<EditProfileFormSchema>
       data-id='EditProfileForm'
       onSubmit={({ formValues }) => {
-        console.log('formValues', formValues)
         submitForm.exec(formValues)
       }}
       defaultValues={{
