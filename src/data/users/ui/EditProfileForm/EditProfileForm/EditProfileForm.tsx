@@ -130,7 +130,7 @@ const EditProfileFormContent = (props: EditProfileFormContentProps) => {
             text={formData.displayName}
             tag='p'
             sx={{
-              fontSize: '20px',
+              fontSize: ['15px', '17px'],
               fontWeight: '600',
             }}
           />
