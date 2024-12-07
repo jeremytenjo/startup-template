@@ -8,12 +8,15 @@ import ActionBox from '@useweb/ui/ActionBox'
 import FileInput from '@useweb/ui/FileInput'
 import Avatar from '@useweb/ui/Avatar'
 import useAsync from '@useweb/use-async'
+import { updateUserData } from '@useweb/firebase/useFirebaseAuth'
 
 import useEditProfileForm from '../useEditProfileForm/useEditProfileForm.js'
 import type UserSchema from '../../../user.schema.js'
 import useAuth from '../../../utils/useAuth/useAuth.js'
 import { Island } from '../../../../../theme/UiTheme/commonStyles/islandStyles.js'
 import logError from '../../../../../lib/utils/loggers/logError/logError.js'
+
+import uploadProfilePhoto from './handlers/uploadProfilePhoto/uploadProfilePhoto.js'
 
 export type EditProfileFormSchema = {
   profilePhoto: UserSchema['profilePhoto'][]
@@ -27,8 +30,23 @@ export default function EditProfileForm(props: EditProfileFormProps) {
 
   const submitForm = useAsync<EditProfileFormSchema, any>({
     fn: async (p) => {
-      // TODO submit form
-      console.log(p)
+      const updates: Partial<UserSchema> = {
+        displayName: p.displayName,
+      }
+
+      if (p.profilePhoto[0].file) {
+        const { downloadUrl } = await uploadProfilePhoto({
+          file: p.profilePhoto[0].file,
+          fileName: p.profilePhoto[0].file.name,
+          displayName: p.displayName,
+        })
+
+        updates.profilePhoto = { src: downloadUrl, type: 'image' }
+      }
+
+      await updateUserData({
+        user: updates,
+      })
     },
 
     onError({ error, fnProps }) {
