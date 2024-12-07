@@ -13,9 +13,7 @@ export type UseSubmitEditProfileFormProps = {
 export default function useSubmitEditProfileForm(props: UseSubmitEditProfileFormProps) {
   const submitForm = useAsync<EditProfileFormSchema, any>({
     fn: async (p) => {
-      const updates: Partial<UserSchema> = {
-        displayName: p.displayName,
-      }
+      const updates: Partial<UserSchema> = {}
 
       if (p.profilePhoto[0].file) {
         const { downloadUrl } = await uploadProfilePhoto({
