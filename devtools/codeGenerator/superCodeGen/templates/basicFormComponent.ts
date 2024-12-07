@@ -15,6 +15,7 @@ const files: SuperCodeGeneratorFilesSchema = [
     template: ({ name, helpers }) => {
       const pascalName = helpers?.changeCase?.pascalCase(name)
       const formHookName = `use${pascalName}`
+      const useSubmitForm = `useSubmit${pascalName}`
 
       return `import React from 'react'
       import Box from '@useweb/ui/Box'
@@ -23,6 +24,8 @@ const files: SuperCodeGeneratorFilesSchema = [
       import ErrorMessage from '@useweb/ui/ErrorMessage'
       
       import ${formHookName} from '../${formHookName}/${formHookName}.js'
+      import ${useSubmitForm} from '../${useSubmitForm}/${useSubmitForm}.js'
+
       
       export type ${pascalName}Schema = {
         name: string
@@ -31,6 +34,8 @@ const files: SuperCodeGeneratorFilesSchema = [
       export type ${pascalName}Props = any
       
       export default function ${pascalName}(props: ${pascalName}Props) {
+        const submitForm = ${useSubmitForm}({})
+
         return (
           <Form<${pascalName}Schema>
             data-id='${pascalName}'
@@ -40,8 +45,8 @@ const files: SuperCodeGeneratorFilesSchema = [
           >
             <${pascalName}Content
               {...props}
-              submissionError={null}
-              submitting={false}
+              submissionError={submitForm.error}
+              submitting={submitForm.loading}
             />
           </Form>
         )
@@ -119,6 +124,51 @@ const files: SuperCodeGeneratorFilesSchema = [
       return `## ${pascalName} Components
 
       Add Custom Field Components, etc in this folder.
+      `
+    },
+  },
+  // useSubmitForm Hook
+  {
+    path: ({ name, helpers }) => {
+      const pascalName = helpers?.changeCase?.pascalCase(name)
+      const formHookName = `useSubmit${pascalName}`
+
+      return `${formHookName}/${formHookName}.ts`
+    },
+    template: ({ name, helpers }) => {
+      const pascalName = helpers?.changeCase?.pascalCase(name)
+      const formHookName = `useSubmit${pascalName}`
+      const formHookNamePascal = helpers?.changeCase?.pascalCase(formHookName)
+
+      return `import useAsync  from '@useweb/use-async'
+
+      import type { ${pascalName}Schema } from '../${pascalName}/${pascalName}.js'
+            
+      import logError from '@/src/lib/utils/loggers/logError/logError'
+      
+      export type ${formHookNamePascal}Props = {
+        onSuccess?: (props: { updates: Partial<any> }) => void
+      }
+      
+      export default function ${formHookName}(props: ${formHookNamePascal}Props) {
+        const submitForm = useAsync<${pascalName}Schema, any>({
+          fn: async (p) => {
+            // Add your form submission logic here
+          },
+      
+          onError({ error, fnProps }) {
+            logError({
+              error,
+              fnName: '${formHookName}',
+              metadata: { fnProps },
+            })
+          },
+        })
+      
+        return submitForm
+      }
+      
+      export type ${formHookNamePascal}Return = ReturnType<typeof ${formHookName}>
       `
     },
   },
