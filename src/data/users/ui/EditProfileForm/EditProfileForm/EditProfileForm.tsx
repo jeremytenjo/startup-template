@@ -12,6 +12,8 @@ import useEditProfileForm from '../useEditProfileForm/useEditProfileForm.js'
 import type UserSchema from '../../../user.schema.js'
 import useAuth from '../../../utils/useAuth/useAuth.js'
 import { Island } from '../../../../../theme/UiTheme/commonStyles/islandStyles.js'
+import useAsync from '@useweb/use-async'
+import logError from '../../../../../lib/utils/loggers/logError/logError'
 
 export type EditProfileFormSchema = {
   profilePhoto: UserSchema['profilePhoto'][]
@@ -23,6 +25,21 @@ export type EditProfileFormProps = any
 export default function EditProfileForm(props: EditProfileFormProps) {
   const auth = useAuth()
 
+  const submitForm = useAsync<EditProfileFormSchema, any>({
+    fn: async (p) => {
+      // TODO submit form
+      console.log(p)
+    },
+
+    onError({ error, fnProps }) {
+      logError({
+        error,
+        fnName: 'submitForm',
+        metadata: { fnProps },
+      })
+    },
+  })
+
   if (!auth.user) {
     return null
   }
@@ -32,13 +49,18 @@ export default function EditProfileForm(props: EditProfileFormProps) {
       data-id='EditProfileForm'
       onSubmit={({ formValues }) => {
         console.log('formValues', formValues)
+        submitForm.exec(formValues)
       }}
       defaultValues={{
         profilePhoto: [{ ...auth.user.profilePhoto, type: 'image' }],
         displayName: auth.user.displayName,
       }}
     >
-      <EditProfileFormContent {...props} submissionError={null} submitting={false} />
+      <EditProfileFormContent
+        {...props}
+        submissionError={submitForm.publicErrorMessage}
+        submitting={submitForm.loading}
+      />
     </Form>
   )
 }
