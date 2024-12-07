@@ -22,6 +22,7 @@ const files: SuperCodeGeneratorFilesSchema = [
       import Form from '@useweb/ui/Form'
       import TextField from '@useweb/ui/TextField'
       import ErrorMessage from '@useweb/ui/ErrorMessage'
+      import useSnackbar from '@useweb/ui/Snackbar'
       
       import ${formHookName} from '../${formHookName}/${formHookName}.js'
       import ${useSubmitForm} from '../${useSubmitForm}/${useSubmitForm}.js'
@@ -34,7 +35,14 @@ const files: SuperCodeGeneratorFilesSchema = [
       export type ${pascalName}Props = any
       
       export default function ${pascalName}(props: ${pascalName}Props) {
-        const submitForm = ${useSubmitForm}({})
+        const snackbar = useSnackbar()
+        const submitForm = ${useSubmitForm}({
+          onSuccess: () => {
+            snackbar.show({
+            message: 'Success',
+          })
+        },
+      })  
 
         return (
           <Form<${pascalName}Schema>

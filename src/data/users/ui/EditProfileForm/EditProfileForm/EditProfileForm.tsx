@@ -7,6 +7,7 @@ import Button from '@useweb/ui/Button'
 import ActionBox from '@useweb/ui/ActionBox'
 import FileInput from '@useweb/ui/FileInput'
 import Avatar from '@useweb/ui/Avatar'
+import useSnackbar from '@useweb/ui/Snackbar'
 
 import useEditProfileForm from '../useEditProfileForm/useEditProfileForm.js'
 import type UserSchema from '../../../user.schema.js'
@@ -23,7 +24,14 @@ export type EditProfileFormProps = any
 
 export default function EditProfileForm(props: EditProfileFormProps) {
   const auth = useAuth()
-  const submitForm = useSubmitEditProfileForm({})
+  const snackbar = useSnackbar()
+  const submitForm = useSubmitEditProfileForm({
+    onSuccess: () => {
+      snackbar.show({
+        message: 'Profile Updated',
+      })
+    },
+  })
 
   if (!auth.user) {
     return null
