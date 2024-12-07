@@ -13,7 +13,7 @@ import useEditProfileForm from '../useEditProfileForm/useEditProfileForm.js'
 import type UserSchema from '../../../user.schema.js'
 import useAuth from '../../../utils/useAuth/useAuth.js'
 import { Island } from '../../../../../theme/UiTheme/commonStyles/islandStyles.js'
-import logError from '../../../../../lib/utils/loggers/logError/logError'
+import logError from '../../../../../lib/utils/loggers/logError/logError.js'
 
 export type EditProfileFormSchema = {
   profilePhoto: UserSchema['profilePhoto'][]
