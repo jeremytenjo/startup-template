@@ -14,7 +14,7 @@ import useAuth from '../../../utils/useAuth/useAuth.js'
 import { Island } from '../../../../../theme/UiTheme/commonStyles/islandStyles.js'
 
 export type EditProfileFormSchema = {
-  profilePhoto: UserSchema['profilePhoto']
+  profilePhoto: UserSchema['profilePhoto'][]
   displayName: UserSchema['displayName']
 }
 
@@ -34,7 +34,7 @@ export default function EditProfileForm(props: EditProfileFormProps) {
         console.log('formValues', formValues)
       }}
       defaultValues={{
-        profilePhoto: auth.user.profilePhoto,
+        profilePhoto: [{ ...auth.user.profilePhoto, type: 'image' }],
         displayName: auth.user.displayName,
       }}
     >
@@ -58,6 +58,7 @@ const EditProfileFormContent = (props: EditProfileFormContentProps) => {
         title: 'Personal Information',
         subTitle: 'Update your personal information',
       }}
+      singleCTA
       ctas={
         <>
           <Button name='Save' type='submit' sx={{}}>
@@ -91,7 +92,11 @@ const EditProfileFormContent = (props: EditProfileFormContentProps) => {
           }}
         >
           <Avatar
-            src={formData.profilePhoto?.[0]?.src}
+            src={
+              formData.profilePhoto?.[0]?.file
+                ? URL.createObjectURL(formData.profilePhoto?.[0]?.file)
+                : formData.profilePhoto?.[0]?.src
+            }
             alt={'photo'}
             sx={{
               width: '80px',
