@@ -54,7 +54,11 @@ export default function MobileHeader() {
               display: 'contents',
             }}
           >
-            <LogoIcon />
+            <LogoIcon
+              sx={{
+                width: '20px',
+              }}
+            />
           </Link>
         </Box>
 
