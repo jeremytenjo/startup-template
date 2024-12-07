@@ -78,7 +78,7 @@ export default async function verifyYoutubeAccount(props: VerifyYoutubeAccountPr
 
       // Success!!
       await updateUserData({
-        user: props.user,
+        uid: props.user.id,
         updatedData: {
           displayName: basicYoutubedata.username,
         },

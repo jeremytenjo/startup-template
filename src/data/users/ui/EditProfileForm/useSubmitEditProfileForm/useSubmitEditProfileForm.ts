@@ -5,12 +5,15 @@ import type { EditProfileFormSchema } from '../EditProfileForm/EditProfileForm.j
 import type UserSchema from '../../../user.schema.js'
 import uploadProfilePhoto from '../EditProfileForm/handlers/uploadProfilePhoto/uploadProfilePhoto.js'
 import logError from '../../../../../lib/utils/loggers/logError/logError.js'
+import useAuth from '../../../utils/useAuth/useAuth.js'
 
 export type UseSubmitEditProfileFormProps = {
   onSuccess?: (props: { updates: Partial<UserSchema> }) => void
 }
 
 export default function useSubmitEditProfileForm(props: UseSubmitEditProfileFormProps) {
+  const auth = useAuth()
+
   const submitForm = useAsync<EditProfileFormSchema, any>({
     fn: async (p) => {
       const updates: Partial<UserSchema> = {}
@@ -25,8 +28,9 @@ export default function useSubmitEditProfileForm(props: UseSubmitEditProfileForm
         updates.profilePhoto = { src: downloadUrl, type: 'image' }
       }
 
-      await updateUserData({
-        user: updates,
+      await updateUserData<UserSchema>({
+        uid: auth.user?.id,
+        updatedData: updates,
       })
 
       props.onSuccess?.({ updates })

@@ -30,7 +30,7 @@ export default async function revokeYoutubeAccountAccess(
 
   if (googleAccessToken) {
     await updateUserData({
-      user: props.user,
+      uid: props.user.id,
       updatedData: {},
       preventRefetchFirestoreUser: props.preventRefetchFirestoreUser,
     })

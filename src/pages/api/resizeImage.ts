@@ -2,6 +2,12 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 import resizeImage from '../../apiFunctions/resizeImage/resizeImage.next.js'
 
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+}
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   let body: any = {}
 
