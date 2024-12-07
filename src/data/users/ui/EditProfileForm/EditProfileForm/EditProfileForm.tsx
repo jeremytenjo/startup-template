@@ -79,6 +79,7 @@ const EditProfileFormContent = (props: EditProfileFormContentProps) => {
           gap: 2,
           justifyContent: 'space-between',
           gridAutoFlow: 'column',
+          alignItems: 'center',
         }}
       >
         <Box
@@ -86,6 +87,7 @@ const EditProfileFormContent = (props: EditProfileFormContentProps) => {
           sx={{
             display: 'flex',
             gap: 2,
+            alignItems: 'center',
           }}
         >
           <Avatar
@@ -97,7 +99,14 @@ const EditProfileFormContent = (props: EditProfileFormContentProps) => {
             }}
           />
 
-          <Text text={formData.displayName} tag='p' sx={{}} />
+          <Text
+            text={formData.displayName}
+            tag='p'
+            sx={{
+              fontSize: '20px',
+              fontWeight: '600',
+            }}
+          />
         </Box>
 
         <FileInput<EditProfileFormSchema>
