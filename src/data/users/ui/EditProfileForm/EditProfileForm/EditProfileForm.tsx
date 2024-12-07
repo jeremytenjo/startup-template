@@ -79,7 +79,7 @@ const EditProfileFormContent = (props: EditProfileFormContentProps) => {
           display: 'grid',
           gap: 2,
           justifyContent: 'space-between',
-          gridAutoFlow: 'column',
+          gridAutoFlow: ['row', 'column'],
           alignItems: 'center',
         }}
       >
