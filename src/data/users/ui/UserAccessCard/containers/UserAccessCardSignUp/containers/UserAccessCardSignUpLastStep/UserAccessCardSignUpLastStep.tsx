@@ -23,7 +23,7 @@ export default function UserAccessCardSignUpLastStep(
   const formContext = useFormContext<UserAccessCardSignUpFormSchema>()
 
   const signUpWithGoogleProps: SignUpFetcherProps['signUpWithGoogle'] = {
-    photoUrl: formContext.watch('photoUrl'),
+    profilePhoto: formContext.watch('profilePhoto'),
     customUsername: formContext.watch('customUsername'),
   }
 

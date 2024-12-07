@@ -32,7 +32,7 @@ export default function UserAccessCardSignUpExistingUser() {
         }}
       />
       <Avatar
-        src={auth.user?.photoURL}
+        src={auth.user?.profilePhoto?.src}
         alt={`${auth.user?.displayName}`}
         sx={{ width: '45px', height: '45px' }}
       />

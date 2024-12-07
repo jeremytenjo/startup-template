@@ -75,7 +75,7 @@ export default function AuthUserSetter(props: AuthUserSetterProps) {
         }}
       >
         <Avatar
-          src={auth?.user?.photoURL}
+          src={auth?.user?.profilePhoto?.src}
           alt={auth?.user?.displayName}
           avatarProps={{
             title: !auth?.user
@@ -143,7 +143,7 @@ export default function AuthUserSetter(props: AuthUserSetterProps) {
                     gap: '10px',
                   }}
                 >
-                  <Avatar src={itemData.photoURL} alt={itemData.displayName} />
+                  <Avatar src={itemData.profilePhoto?.src} alt={itemData.displayName} />
 
                   {itemData && (
                     <Text

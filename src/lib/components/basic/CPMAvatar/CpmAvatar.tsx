@@ -29,7 +29,7 @@ export default function CpmAvatar(props: CpmAvatarProps) {
       }}
     >
       <Avatar
-        src={props.user?.photoURL}
+        src={props.user?.profilePhoto?.src}
         alt={`${props?.user?.displayName} profile photo`}
         sx={{
           width: '70px',

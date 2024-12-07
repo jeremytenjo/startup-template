@@ -75,13 +75,13 @@ const signInFetcher = async (props: SignInFetcherProps) => {
 
 export type SignUpFormEmailPasswordDataSchema = {
   email: AddNewUserDocProps['email']
-  photoUrl: AddNewUserDocProps['photoURL']
+  profilePhoto: AddNewUserDocProps['profilePhoto']
   customUsername: AddNewUserDocProps['username']
   password: string
 }
 
 export type SignUpFormGoogleDataSchema = {
-  photoUrl: AddNewUserDocProps['photoURL']
+  profilePhoto: AddNewUserDocProps['profilePhoto']
   customUsername: AddNewUserDocProps['username']
 }
 
@@ -96,7 +96,7 @@ const signUpFetcher = async (props: SignUpFetcherProps) => {
     await signUpWithEmailPassword({
       email: props.emailPasswordData.email,
       password: props.emailPasswordData.password,
-      photoUrl: props.emailPasswordData.photoUrl,
+      profilePhoto: props.emailPasswordData.profilePhoto,
       customUsername: props.emailPasswordData.customUsername,
     })
   }
@@ -104,7 +104,7 @@ const signUpFetcher = async (props: SignUpFetcherProps) => {
   if (props.signUpWithGoogle) {
     await continueWithGoogle({
       signUp: {
-        photoUrl: props.signUpWithGoogle?.photoUrl,
+        profilePhoto: props.signUpWithGoogle?.profilePhoto,
         customUsername: props.signUpWithGoogle?.customUsername,
       },
     })

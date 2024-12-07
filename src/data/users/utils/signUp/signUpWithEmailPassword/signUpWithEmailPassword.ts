@@ -31,7 +31,7 @@ export default async function signUpWithEmailPassword(
   await addNewUserDoc({
     uid: createdAuthUser.user.uid,
     email: props.email,
-    photoURL: props.photoUrl || false,
+    profilePhoto: props.profilePhoto,
     username,
   })
 

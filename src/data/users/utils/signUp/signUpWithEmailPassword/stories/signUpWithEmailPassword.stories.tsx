@@ -10,8 +10,10 @@ import signUpWithEmailPassword, {
 const defaultArgs: SignUpWithEmailPasswordProps = {
   email: '',
   password: '',
-  photoUrl: '',
   customUsername: '',
+  profilePhoto: {
+    src: '',
+  },
 }
 
 export default {

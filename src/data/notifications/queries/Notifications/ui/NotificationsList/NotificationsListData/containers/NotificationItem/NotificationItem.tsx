@@ -53,7 +53,7 @@ const NotificationItemUi = () => {
       >
         <Avatar
           src={
-            notificationItemData?.senderUser?.photoURL ||
+            notificationItemData?.senderUser?.profilePhoto?.src ||
             notificationItemData?.notificationData?.imageUrl
           }
           alt={notificationItemData?.senderUser?.displayName}

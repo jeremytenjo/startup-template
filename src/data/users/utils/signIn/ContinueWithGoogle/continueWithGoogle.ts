@@ -99,7 +99,9 @@ export default async function continueWithGoogle(props: ContinueWithGoogleProps)
     await addNewUserDoc({
       uid: authUser.user.uid,
       email: authUser.user.email,
-      photoURL: props.signUp?.photoUrl || authUser.user.photoURL || false,
+      profilePhoto: props.signUp?.profilePhoto?.src
+        ? props.signUp?.profilePhoto
+        : { src: authUser.user.photoURL || '' },
       username,
     })
   }

@@ -8,7 +8,7 @@ import ph_userSignedUp from '../../../../lib/integrations/PostHog/events/browser
 export type AddNewUserDocProps = {
   uid: UserSchema['id']
   email: UserSchema['email']
-  photoURL: UserSchema['photoURL'] | false
+  profilePhoto: UserSchema['profilePhoto']
   username: UserSchema['displayName']
 }
 
@@ -23,8 +23,8 @@ export default async function addNewUserDoc(props: AddNewUserDocProps) {
     id: props.uid,
     displayName: props.username,
     email: props.email,
-    photoURL: props.photoURL || '',
-    bannerUrl: false,
+    profilePhoto: { src: props.profilePhoto?.src || '', type: 'image' },
+    bannerUrl: { src: '', type: 'image' },
     agreedToTOSandPrivacyPolicy: getToday(),
     lastSignedIn: getToday(),
   }

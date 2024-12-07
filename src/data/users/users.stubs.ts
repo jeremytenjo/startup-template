@@ -8,7 +8,9 @@ const commonProps: UserSchema = {
   id: '1',
   displayName: 'user1',
   email: 'user1@email.com',
-  photoURL: `http://localhost:${appConfig.nextjs.port}/images/placeholders/user1.jpg`,
+  profilePhoto: {
+    src: `http://localhost:${appConfig.nextjs.port}/images/placeholders/user1.jpg`,
+  },
   bannerUrl: 'https://via.placeholder.com/150',
   agreedToTOSandPrivacyPolicy: getToday(),
   lastSignedIn: getToday(),

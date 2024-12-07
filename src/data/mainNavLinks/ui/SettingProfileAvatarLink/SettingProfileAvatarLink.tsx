@@ -54,7 +54,7 @@ const SettingProfileAvatarLinkAvatar = (props: {
 
   return (
     <Avatar
-      src={auth.user?.photoURL}
+      src={auth.user?.profilePhoto?.src}
       alt={auth.user?.displayName}
       avatarProps={{
         onClick: props.onClick,
