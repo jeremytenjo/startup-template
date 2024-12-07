@@ -42,7 +42,7 @@ export default function EditProfileForm(props: EditProfileFormProps) {
     >
       <EditProfileFormContent
         {...props}
-        submissionError={submitForm.publicErrorMessage}
+        submissionError={submitForm.error}
         submitting={submitForm.loading}
       />
     </Form>
@@ -136,7 +136,7 @@ const EditProfileFormContent = (props: EditProfileFormContentProps) => {
         />
       </Island>
 
-      <ErrorMessage error={props.submissionError} message='Error' />
+      <ErrorMessage error={props.submissionError} message='Error Saving changes' />
     </ActionBox>
   )
 }
