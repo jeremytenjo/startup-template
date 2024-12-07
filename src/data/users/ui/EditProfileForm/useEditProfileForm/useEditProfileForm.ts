@@ -9,12 +9,6 @@ export default function useEditProfileForm() {
   const profilePhoto = formContext.watch('profilePhoto')
   const displayName = formContext.watch('displayName')
 
-  console.log({
-    formContext,
-    profilePhoto,
-    displayName,
-  })
-
   return {
     formContext,
     profilePhoto,
