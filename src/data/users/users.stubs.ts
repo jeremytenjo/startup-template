@@ -11,7 +11,9 @@ const commonProps: UserSchema = {
   profilePhoto: {
     src: `http://localhost:${appConfig.nextjs.port}/images/placeholders/user1.jpg`,
   },
-  bannerUrl: 'https://via.placeholder.com/150',
+  bannerUrl: {
+    src: 'https://via.placeholder.com/150',
+  },
   agreedToTOSandPrivacyPolicy: getToday(),
   lastSignedIn: getToday(),
 }
