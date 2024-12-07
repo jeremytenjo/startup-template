@@ -9,7 +9,7 @@ export default function SettingsEditProfilePage() {
     <SettingsPagesLayout>
       <SettingsEditProfilePageLayout>
         <Box data-id='SettingsEditProfilePage' sx={{}}>
-          SettingsEditProfile
+          SettingsEditProfilePage
         </Box>
       </SettingsEditProfilePageLayout>
     </SettingsPagesLayout>
