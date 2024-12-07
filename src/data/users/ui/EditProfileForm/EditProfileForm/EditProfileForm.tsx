@@ -7,16 +7,12 @@ import Button from '@useweb/ui/Button'
 import ActionBox from '@useweb/ui/ActionBox'
 import FileInput from '@useweb/ui/FileInput'
 import Avatar from '@useweb/ui/Avatar'
-import useAsync from '@useweb/use-async'
-import { updateUserData } from '@useweb/firebase/useFirebaseAuth'
 
 import useEditProfileForm from '../useEditProfileForm/useEditProfileForm.js'
 import type UserSchema from '../../../user.schema.js'
 import useAuth from '../../../utils/useAuth/useAuth.js'
 import { Island } from '../../../../../theme/UiTheme/commonStyles/islandStyles.js'
-import logError from '../../../../../lib/utils/loggers/logError/logError.js'
-
-import uploadProfilePhoto from './handlers/uploadProfilePhoto/uploadProfilePhoto.js'
+import useSubmitEditProfileForm from '../useSubmitEditProfileForm/useSubmitEditProfileForm.js'
 
 export type EditProfileFormSchema = {
   profilePhoto: UserSchema['profilePhoto'][]
@@ -28,35 +24,7 @@ export type EditProfileFormProps = any
 export default function EditProfileForm(props: EditProfileFormProps) {
   const auth = useAuth()
 
-  const submitForm = useAsync<EditProfileFormSchema, any>({
-    fn: async (p) => {
-      const updates: Partial<UserSchema> = {
-        displayName: p.displayName,
-      }
-
-      if (p.profilePhoto[0].file) {
-        const { downloadUrl } = await uploadProfilePhoto({
-          file: p.profilePhoto[0].file,
-          fileName: p.profilePhoto[0].file.name,
-          displayName: p.displayName,
-        })
-
-        updates.profilePhoto = { src: downloadUrl, type: 'image' }
-      }
-
-      await updateUserData({
-        user: updates,
-      })
-    },
-
-    onError({ error, fnProps }) {
-      logError({
-        error,
-        fnName: 'submitForm',
-        metadata: { fnProps },
-      })
-    },
-  })
+  const submitForm = useSubmitEditProfileForm({})
 
   if (!auth.user) {
     return null
@@ -101,7 +69,7 @@ const EditProfileFormContent = (props: EditProfileFormContentProps) => {
       singleCTA
       ctas={
         <>
-          <Button name='Save' type='submit' sx={{}}>
+          <Button name='Save' type='submit' loading={props.submitting} sx={{}}>
             Save
           </Button>
         </>
