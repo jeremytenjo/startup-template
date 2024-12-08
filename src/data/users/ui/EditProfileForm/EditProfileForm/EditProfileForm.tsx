@@ -8,6 +8,7 @@ import ActionBox from '@useweb/ui/ActionBox'
 import FileInput from '@useweb/ui/FileInput'
 import Avatar from '@useweb/ui/Avatar'
 import useSnackbar from '@useweb/ui/Snackbar'
+import Skeleton from '@useweb/ui/Skeleton'
 
 import useEditProfileForm from '../useEditProfileForm/useEditProfileForm.js'
 import type UserSchema from '../../../user.schema.js'
@@ -22,6 +23,9 @@ export type EditProfileFormSchema = {
 
 export type EditProfileFormProps = any
 
+const title = 'Personal Information'
+const subTitle = 'Update your personal information'
+
 export default function EditProfileForm(props: EditProfileFormProps) {
   const auth = useAuth()
   const snackbar = useSnackbar()
@@ -34,7 +38,27 @@ export default function EditProfileForm(props: EditProfileFormProps) {
   })
 
   if (!auth.user) {
-    return null
+    return (
+      <ActionBox
+        data-id='EditProfileFormLoading'
+        headerProps={{
+          title,
+          subTitle,
+        }}
+        ctas={
+          <>
+            <Button name='Save' disabled sx={{}}>
+              Save
+            </Button>
+          </>
+        }
+        sx={{}}
+      >
+        <Skeleton loading count={4}>
+          Skeleton
+        </Skeleton>
+      </ActionBox>
+    )
   }
 
   return (
@@ -69,8 +93,8 @@ const EditProfileFormContent = (props: EditProfileFormContentProps) => {
     <ActionBox
       data-id='EditProfileFormContent'
       headerProps={{
-        title: 'Personal Information',
-        subTitle: 'Update your personal information',
+        title,
+        subTitle,
       }}
       singleCTA
       ctas={
