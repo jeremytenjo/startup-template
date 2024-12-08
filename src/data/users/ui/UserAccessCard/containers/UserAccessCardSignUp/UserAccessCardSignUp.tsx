@@ -11,6 +11,7 @@ import useOnSignUpActions from '../../../../utils/signUp/useOnSignUpActions/useO
 import UserAccessCardSignUpExistingUser from './containers/UserAccessCardSignUpExistingUser/UserAccessCardSignUpExistingUser.js'
 import UserAccessCardSignUpLastStep from './containers/UserAccessCardSignUpLastStep/UserAccessCardSignUpLastStep.js'
 import UserAccessCardSignUpErrorMessage from './containers/UserAccessCardSignUpErrorMessage/UserAccessCardSignUpErrorMessage.js'
+import UserAccessCardSignUpAknowledgmentAcknowledgment from './containers/UserAccessCardSignUpAknowledgmentAcknowledgment/UserAccessCardSignUpAknowledgmentAcknowledgment.js'
 
 export type UserAccessCardSignUpProps = {
   onSignUp?: () => void
@@ -49,8 +50,8 @@ export default function UserAccessCardSignUp(props: UserAccessCardSignUpProps) {
     >
       {auth.user?.id && <UserAccessCardSignUpExistingUser />}
       {!auth.user?.id && <UserAccessCardSignUpLastStep auth={auth} />}
-
       <UserAccessCardSignUpErrorMessage auth={auth} />
+      <UserAccessCardSignUpAknowledgmentAcknowledgment />
     </Form>
   )
 }
