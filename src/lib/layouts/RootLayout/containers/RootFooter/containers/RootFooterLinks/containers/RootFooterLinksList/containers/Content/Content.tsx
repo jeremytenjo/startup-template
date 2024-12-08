@@ -22,7 +22,7 @@ export default function Content(props: ContentProps) {
             sx={{
               color: 'neutral.100',
               fontWeight: 400,
-              fontSize: '14px',
+              fontSize: '13px',
               lineHeight: '24px',
               textAlign: 'left',
               ...(link.sx || {}),
