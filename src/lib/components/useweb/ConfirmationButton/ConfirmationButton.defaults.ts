@@ -13,6 +13,17 @@ const defaults: ComponentDefaultsProps<ConfirmationButtonProps> = {
       variant: 'text',
     },
   },
+  styleOverrides: {
+    root: {
+      '& .dialog_wrapper': {
+        borderRadius: '32px',
+      },
+      '& .dialog_ctas': {
+        borderBottomRightRadius: '32px',
+        borderBottomLeftRadius: '32px',
+      },
+    },
+  },
 }
 
 export default defaults
