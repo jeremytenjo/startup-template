@@ -4,6 +4,7 @@
  */
 
 module.exports = [
+  '../../src/apiFunctions/resetFirebaseEmulatorData/stories/resetFirebaseEmulatorData.stories.tsx',
   '../../src/apiFunctions/resizeImage/stories/resizeImage.stories.tsx',
   '../../src/data/notifications/queries/Notifications/stories/unseenNotifications.stories.tsx',
   '../../src/data/notifications/queries/Notifications/ui/NotificationsList/stories/NotificationsList.stories.tsx',
