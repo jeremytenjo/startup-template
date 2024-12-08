@@ -27,7 +27,7 @@ export default function SettingsAccountPageDeactivateAccount() {
             data-id='SettingsAccountPageDeactivateAccountConfirmationButton'
             fn={{
               fn: async () => {
-                await miscFunctionsClient<API_DeactivateAccountProps>({
+                const res = await miscFunctionsClient<API_DeactivateAccountProps>({
                   api: {
                     route: 'routes/deactivateAccount',
                     payload: {
@@ -35,6 +35,8 @@ export default function SettingsAccountPageDeactivateAccount() {
                     },
                   },
                 })
+
+                console.log(res)
               },
               onError({ error }) {
                 logError({

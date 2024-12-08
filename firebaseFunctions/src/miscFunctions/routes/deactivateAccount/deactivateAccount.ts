@@ -49,13 +49,15 @@ export default async function deactivateAccount(
   const userDoc: UserSchema = await firebaseAdmin
     .firestore()
     .collection(usersCollectionName)
-    .doc(props.authUser.uid)
+    .where('id' satisfies keyof UserSchema, '==', props.authUser.uid)
+    .limit(1)
     .get()
     .then((doc) => {
-      if (!doc.exists) {
-        throw new Error('User Doc does not exist')
+      if (doc.empty) {
+        throw new Error('User Doc not found')
       }
-      return doc.data() as UserSchema
+
+      return doc.docs[0].data() as UserSchema
     })
 
   await firebaseAdmin.firestore().collection(usersCollectionName).doc(userDoc.id).delete()
