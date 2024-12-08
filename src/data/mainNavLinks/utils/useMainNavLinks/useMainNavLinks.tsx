@@ -93,7 +93,10 @@ export default function useMainNavLinks() {
         links.push(profileLink)
         links.push(allNavLinks.settings.settings)
       }
-      links.push(allNavLinks.faq)
+
+      if (!auth.user?.id) {
+        links.push(allNavLinks.faq)
+      }
     }
 
     if (isDesktop) {
