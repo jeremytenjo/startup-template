@@ -56,7 +56,7 @@ export default function SettingsAccountPageDeactivateAccount() {
                 })
               },
             }}
-            singleCta
+            singleCTA
             customErrorComponent={(p) => {
               let errorMessage = 'Error deactivating account. Please try again.'
 
