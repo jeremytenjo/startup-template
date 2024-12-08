@@ -4,6 +4,8 @@ import Text from '@useweb/ui/Text'
 import Alert from '@useweb/ui/Alert'
 import ActionBox from '@useweb/ui/ActionBox'
 import ConfirmationButton from '@useweb/ui/ConfirmationButton'
+import useSnackbar from '@useweb/ui/Snackbar'
+import { useRouter } from 'next/router'
 
 import logError from '../../../../../../lib/utils/loggers/logError/logError.js'
 import useAuth from '../../../../../../data/users/utils/useAuth/useAuth.js'
@@ -12,6 +14,8 @@ import type { API_DeactivateAccountProps } from '../../../../../../../firebaseFu
 
 export default function SettingsAccountPageDeactivateAccount() {
   const auth = useAuth()
+  const snackbar = useSnackbar()
+  const router = useRouter()
 
   return (
     <ActionBox
@@ -27,7 +31,7 @@ export default function SettingsAccountPageDeactivateAccount() {
             data-id='SettingsAccountPageDeactivateAccountConfirmationButton'
             fn={{
               fn: async () => {
-                const res = await miscFunctionsClient<API_DeactivateAccountProps>({
+                await miscFunctionsClient<API_DeactivateAccountProps>({
                   api: {
                     route: 'routes/deactivateAccount',
                     payload: {
@@ -36,7 +40,13 @@ export default function SettingsAccountPageDeactivateAccount() {
                   },
                 })
 
-                console.log(res)
+                snackbar.show({
+                  message: 'Sorry to see you go.',
+                })
+
+                auth.signOut()
+
+                router.push('/')
               },
               onError({ error }) {
                 logError({
@@ -45,6 +55,25 @@ export default function SettingsAccountPageDeactivateAccount() {
                   metadata: {},
                 })
               },
+            }}
+            customErrorComponent={(p) => {
+              let errorMessage = 'Error deactivating account. Please try again.'
+
+              if (String(p.error).includes('requires-recent-login')) {
+                errorMessage =
+                  'Please sign out and sign in again to deactivate your account.'
+              }
+
+              return (
+                <Alert
+                  severity='warning'
+                  sx={{
+                    mt: 3,
+                  }}
+                >
+                  <Text text={errorMessage} tag='p' sx={{}} />
+                </Alert>
+              )
             }}
             triggerButtonProps={{
               name: 'Deactivate',
