@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import type { BoxProps } from '@useweb/ui/Box'
 
 import CenterIsland from '../../../../lib/layouts/CenterIsland/CenterIsland.js'
+import appConfig from '../../../../../app.config.js'
 
 import type { UserAccessCardHeaderProps } from './containers/UserAccessCardHeader/UserAccessCardHeader.js'
 import UserAccessCardHeader from './containers/UserAccessCardHeader/UserAccessCardHeader.js'
@@ -24,11 +25,11 @@ export type UserAccessCardProps = {
 export default function UserAccessCard(props: UserAccessCardProps) {
   const title = useMemo(() => {
     if (props.type === 'sign-in') {
-      return 'Sign in to your account'
+      return `Sign in to ${appConfig.siteInfo.name}`
     }
 
     if (props.type === 'sign-up') {
-      return 'Create your account'
+      return `Sign up for ${appConfig.siteInfo.name}`
     }
 
     if (props.type === 'reset-password') {
