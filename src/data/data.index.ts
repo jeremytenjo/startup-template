@@ -28,4 +28,4 @@ const dataIndex: CollectionType[] = [
 export default dataIndex
 
 // use when you add a collection stubs but the data is coming from supabase
-export const ignoreCollections = []
+export const ignoreCollections: { name: string }[] = []
