@@ -18,10 +18,5 @@ service firebase.storage {
                  && request.resource.contentType.matches('image/.*');
     
     }
-
-    match /Roblox/{path} {
-      // only allow read if the user is authenticated
-      allow read: if request.auth != null;
-    }
   }
 }
