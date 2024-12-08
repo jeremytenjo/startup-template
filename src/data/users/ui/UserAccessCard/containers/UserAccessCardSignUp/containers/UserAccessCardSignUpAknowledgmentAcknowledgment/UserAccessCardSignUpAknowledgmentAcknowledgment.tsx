@@ -20,11 +20,15 @@ export default function UserAccessCardSignUpAknowledgmentAcknowledgment(
         ...props.sx,
       }}
     >
-      <Text text={`By signing up, you acknowledge our `} tag='span' sx={{}} />
+      <Text
+        text={`By continuing with an account, you agree to our `}
+        tag='span'
+        sx={{}}
+      />
 
-      <Link href={allNavLinks.privacyPolicy.url} newTab>
+      <Link href={allNavLinks.tos.url} newTab>
         <Text
-          text={`Privacy Policy `}
+          text={`Terms of Service `}
           tag='span'
           sx={{
             color: 'primary.light',
@@ -32,11 +36,11 @@ export default function UserAccessCardSignUpAknowledgmentAcknowledgment(
         />
       </Link>
 
-      <Text text={`and agree to your `} tag='span' sx={{}} />
+      <Text text={`and acknowledge that you have read our `} tag='span' sx={{}} />
 
-      <Link href={allNavLinks.tos.url} newTab>
+      <Link href={allNavLinks.privacyPolicy.url} newTab>
         <Text
-          text={`Terms of Service.`}
+          text={`Privacy Policy.`}
           tag='span'
           sx={{
             color: 'primary.light',
