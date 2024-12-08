@@ -46,6 +46,7 @@ export default function ChangePasswordForm(props: ChangePasswordFormProps) {
           title,
           subTitle,
         }}
+        singleCTA
         ctas={
           <>
             <Button name='Save' disabled>
@@ -78,6 +79,7 @@ export default function ChangePasswordForm(props: ChangePasswordFormProps) {
           title,
           subTitle,
         }}
+        singleCTA
         ctas={
           <>
             <Button name='Save' disabled>
@@ -127,6 +129,7 @@ const ChangePasswordFormContent = (props: ChangePasswordFormContentProps) => {
         title,
         subTitle,
       }}
+      singleCTA
       ctas={
         <>
           <Button name='Save' type='submit' sx={{}}>
