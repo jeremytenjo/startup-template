@@ -53,6 +53,9 @@ export default function RootFooter() {
             sx={{
               transform: 'translateY(-2px)',
             }}
+            iconSx={{
+              width: '120px',
+            }}
           />
           <Text
             text={`Startup LLC. ${new Date().getFullYear()}`}
