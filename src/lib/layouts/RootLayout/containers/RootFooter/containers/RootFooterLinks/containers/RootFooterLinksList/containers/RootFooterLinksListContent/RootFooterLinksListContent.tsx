@@ -6,7 +6,7 @@ import type { BoxProps } from '@useweb/ui/Box'
 import type NavLinkSchema from '../../../../../../../../../../../data/_commonSchemas/NavLinkSchema/NavLinkSchema.js'
 
 export type RootFooterLinksListContentProps = {
-  links: ({ sx?: BoxProps['sx'] } & NavLinkSchema)[]
+  links: ({ sx?: BoxProps['sx']; component?: any; newTab?: boolean } & NavLinkSchema)[]
   linkPrefix?: string
 }
 
@@ -21,6 +21,7 @@ export default function RootFooterLinksListContent(
         return (
           <Link
             href={link.url}
+            newTab={link.newTab}
             sx={{
               color: 'neutral.100',
               fontWeight: 400,
@@ -30,7 +31,7 @@ export default function RootFooterLinksListContent(
               ...(link.sx || {}),
             }}
           >
-            {link.label}
+            {link.component || link.label}
           </Link>
         )
       }}

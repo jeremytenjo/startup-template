@@ -1,11 +1,15 @@
 import React from 'react'
 import Box from '@useweb/ui/Box'
 
-import { allNavLinks } from '../../../../../../../data/mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
+import useMainNavLinks, {
+  allNavLinks,
+} from '../../../../../../../data/mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
 
 import RootFooterLinksList from './containers/RootFooterLinksList/RootFooterLinksList.js'
 
 export default function RootFooterLinks() {
+  const mainNavLinks = useMainNavLinks()
+
   return (
     <Box
       data-id='RootFooterLinks'
@@ -24,6 +28,7 @@ export default function RootFooterLinks() {
         title='About'
         links={[allNavLinks.privacyPolicy, allNavLinks.tos]}
       />
+
       <RootFooterLinksList
         title='Support'
         links={[
@@ -34,6 +39,24 @@ export default function RootFooterLinks() {
             },
           },
         ]}
+      />
+
+      <RootFooterLinksList
+        title='Connect'
+        links={mainNavLinks.socialLinks.map((link) => {
+          return {
+            url: link.url,
+            label: link.label,
+            newTab: true,
+            component: (
+              <link.icon
+                sx={{
+                  width: '21px',
+                }}
+              />
+            ),
+          }
+        })}
       />
     </Box>
   )

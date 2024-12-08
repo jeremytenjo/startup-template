@@ -1,16 +1,13 @@
 import React from 'react'
 import Box from '@useweb/ui/Box'
 import Text from '@useweb/ui/Text'
-import Link from '@useweb/ui/Link'
 
 import FullLogoLink from '../../../../components/logo/FullLogoLink/FullLogoLink.js'
-import useMainNavLinks from '../../../../../data/mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
 import useIsAccessPage from '../../../../../data/users/utils/useIsAccessPage/useIsAccessPage.js'
 
 import RootFooterLinks from './containers/RootFooterLinks/RootFooterLinks.js'
 
 export default function RootFooter() {
-  const mainNavLinks = useMainNavLinks()
   const isAccessPage = useIsAccessPage()
 
   if (isAccessPage.isAccessPage) {
@@ -52,58 +49,19 @@ export default function RootFooter() {
             gap: 2,
           }}
         >
-          <Box
-            data-id='RootFooterBottomLeft'
+          <FullLogoLink
             sx={{
-              display: 'grid',
-              justifyContent: 'space-between',
-              gridColumn: [, '1'],
-              alignContent: 'center',
-              gridAutoFlow: 'column',
-              alignItems: 'center',
-              width: '100%',
-              gap: 2,
+              transform: 'translateY(-2px)',
             }}
-          >
-            <FullLogoLink
-              sx={{
-                transform: 'translateY(-2px)',
-              }}
-            />
-            <Text
-              text={`Startup LLC. ${new Date().getFullYear()}`}
-              sx={{
-                color: 'neutral.100',
-                fontWeight: 400,
-                fontSize: 12,
-              }}
-            />
-          </Box>
-
-          <Box
-            data-id='RootFooterBottomRight'
+          />
+          <Text
+            text={`Startup LLC. ${new Date().getFullYear()}`}
             sx={{
-              order: ['-1', 'initial'],
+              color: 'neutral.100',
+              fontWeight: 400,
+              fontSize: 12,
             }}
-          >
-            <Box
-              data-id='RootFooterSocialLinks'
-              sx={{
-                display: 'flex',
-                gap: 2,
-              }}
-            >
-              {mainNavLinks.socialLinks.map((link) => (
-                <Link key={link.url} href={link.url} sx={{}}>
-                  <link.icon
-                    sx={{
-                      width: '21px',
-                    }}
-                  />
-                </Link>
-              ))}
-            </Box>
-          </Box>
+          />
         </Box>
       </Box>
     </Box>
