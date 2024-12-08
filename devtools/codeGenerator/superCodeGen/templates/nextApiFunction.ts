@@ -221,7 +221,7 @@ const files: SuperCodeGeneratorFilesSchema = [
   // next api function
   {
     path: ({ name }) => {
-      return `src/pages/api/${name}.ts`
+      return `src/pages/api/${name}/index.ts`
     },
     template: ({ name }) => {
       return `import type { NextApiRequest, NextApiResponse } from 'next'
