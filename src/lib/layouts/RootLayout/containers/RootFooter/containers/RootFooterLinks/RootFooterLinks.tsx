@@ -4,6 +4,7 @@ import Box from '@useweb/ui/Box'
 import useMainNavLinks, {
   allNavLinks,
 } from '../../../../../../../data/mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
+import colors from '../../../../../../../theme/tokens/colors.js'
 
 import RootFooterLinksList from './containers/RootFooterLinksList/RootFooterLinksList.js'
 
@@ -52,6 +53,7 @@ export default function RootFooterLinks() {
               <link.icon
                 sx={{
                   width: '21px',
+                  '& path': { fill: colors.neutral[200] },
                 }}
               />
             ),
