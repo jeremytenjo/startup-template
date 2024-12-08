@@ -10,7 +10,7 @@ const defaults: ComponentDefaultsProps<any> = {
       border: '1px solid',
       borderColor: 'neutral.300',
       backdropFilter: 'blur(22px) saturate(0.9)',
-      borderRadius: '32px',
+      borderRadius: '14px',
       width: '360px',
       margin: '0 auto',
 

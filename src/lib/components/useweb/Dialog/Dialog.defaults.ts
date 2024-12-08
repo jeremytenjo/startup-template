@@ -9,7 +9,7 @@ const defaults: ComponentDefaultsProps<DialogProps> = {
   styleOverrides: {
     root: {
       '& .MuiPaper-root': {
-        borderRadius: '32px',
+        borderRadius: '14px',
         boxShadow: '0px 9px 38px rgba(0, 0, 0, 0.06)',
         minWidth: [, '360px'],
         backgroundColor: colors.neutral[500],

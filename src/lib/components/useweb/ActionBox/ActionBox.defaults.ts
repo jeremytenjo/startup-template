@@ -10,7 +10,7 @@ const defaults: ComponentDefaultsProps<ActionBoxProps> = {
     root: {
       backgroundColor: colors.neutral[400],
       border: `1px solid ${colors.neutral[300]}`,
-      borderRadius: '32px',
+      borderRadius: '14px',
     },
   },
 }

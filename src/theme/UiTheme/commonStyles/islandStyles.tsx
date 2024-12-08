@@ -8,7 +8,7 @@ import colors from '../../tokens/colors.js'
 export const islandStyles: BoxProps['sx'] = {
   height: 'fit-content',
   width: '100%',
-  borderRadius: '32px',
+  borderRadius: '14px',
   backgroundColor: colors.neutral[400],
   border: `1px solid ${colors.neutral[300]}`,
   p: '15px',

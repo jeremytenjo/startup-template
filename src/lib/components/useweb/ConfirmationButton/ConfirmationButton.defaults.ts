@@ -16,11 +16,11 @@ const defaults: ComponentDefaultsProps<ConfirmationButtonProps> = {
   styleOverrides: {
     root: {
       '& .dialog_wrapper': {
-        borderRadius: '32px',
+        borderRadius: '14px',
       },
       '& .dialog_ctas': {
-        borderBottomRightRadius: '32px',
-        borderBottomLeftRadius: '32px',
+        borderBottomRightRadius: '14px',
+        borderBottomLeftRadius: '14px',
       },
     },
   },

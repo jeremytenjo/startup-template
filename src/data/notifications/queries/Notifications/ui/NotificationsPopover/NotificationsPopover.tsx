@@ -80,7 +80,7 @@ export default function NotificationsPopover() {
           '& .MuiPaper-root': {
             backgroundColor: 'transparent',
             border: 'none !important',
-            borderRadius: '32px',
+            borderRadius: '14px',
             width: {
               xs: '100%',
               md: '400px',

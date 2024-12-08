@@ -28,7 +28,7 @@ export default function NotificationsList(props: NotificationsListProps) {
         gridTemplateRows: 'auto 1fr',
         display: 'grid',
         backgroundColor: 'neutral.450',
-        borderRadius: '32px',
+        borderRadius: '14px',
         overflow: 'hidden',
         border: '1px solid',
         borderColor: 'neutral.300',
@@ -55,7 +55,7 @@ const Content = ({ children }) => {
       data-id='NotificationsList'
       sx={{
         overflow: 'auto',
-        borderRadius: '32px',
+        borderRadius: '14px',
       }}
     >
       {children}

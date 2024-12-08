@@ -29,7 +29,7 @@ export default function InfoBanner(props: InfoBannerProps) {
         border: '1px solid',
         borderColor: 'neutral.300',
         width: '100%',
-        borderRadius: '32px',
+        borderRadius: '14px',
         p: '15px',
         py: ['20px', '30px'],
         alignItems: 'center',

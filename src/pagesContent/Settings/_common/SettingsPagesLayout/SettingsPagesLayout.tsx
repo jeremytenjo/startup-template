@@ -30,10 +30,10 @@ export default function SettingsPagesLayout(props: SettingsPagesLayoutProps) {
         links={settingsLinks}
         urlBase='settings'
         selectSx={{
-          mb: '20px',
+          mb: ['12px', '20px'],
         }}
         sx={{
-          mb: '20px',
+          mb: ['12px', '20px'],
         }}
       />
       <SettingsPagesLayoutContent>{props.children}</SettingsPagesLayoutContent>

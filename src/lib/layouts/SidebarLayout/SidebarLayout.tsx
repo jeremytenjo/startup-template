@@ -97,7 +97,7 @@ export default function SidebarLayout(props: SidebarLayoutProps) {
           maxWidth: [, , '600px'],
           m: '0 auto',
           ...islandStyles,
-          borderRadius: '32px',
+          borderRadius: '14px',
           display: [props.hideSidebarOnMobile ? 'none' : 'block', , 'block'],
 
           ...(props.reverseSidebarPosition && {
