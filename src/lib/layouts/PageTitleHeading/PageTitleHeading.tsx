@@ -30,7 +30,7 @@ export default function PageTitleHeading(props: PageTitleHeadingProps) {
       sx={{
         display: 'grid',
         gap: 0.6,
-        mb: '14px',
+        mb: ['10px', , '14px'],
         position: 'relative',
         ...(props.sx || {}),
       }}
