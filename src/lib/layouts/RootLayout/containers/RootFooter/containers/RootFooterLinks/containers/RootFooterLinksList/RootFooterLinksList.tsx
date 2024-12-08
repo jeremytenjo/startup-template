@@ -1,13 +1,13 @@
 import React from 'react'
 import Box from '@useweb/ui/Box'
 
-import Header from './containers/Header/Header.js'
-import type { ContentProps } from './containers/Content/Content.js'
-import Content from './containers/Content/Content.js'
+import RootFooterLinksListHeader from './containers/RootFooterLinksListHeader/RootFooterLinksListHeader.js'
+import type { RootFooterLinksListContentProps } from './containers/RootFooterLinksListContent/RootFooterLinksListContent.js'
+import RootFooterLinksListContent from './containers/RootFooterLinksListContent/RootFooterLinksListContent.js'
 
 type RootFooterLinksListProps = {
   title: string
-} & ContentProps
+} & RootFooterLinksListContentProps
 
 export default function RootFooterLinksList(props: RootFooterLinksListProps) {
   return (
@@ -21,8 +21,8 @@ export default function RootFooterLinksList(props: RootFooterLinksListProps) {
         paddingBottom: '40px',
       }}
     >
-      <Header title={props.title} />
-      <Content links={props.links} linkPrefix={props.linkPrefix} />
+      <RootFooterLinksListHeader title={props.title} />
+      <RootFooterLinksListContent links={props.links} linkPrefix={props.linkPrefix} />
     </Box>
   )
 }

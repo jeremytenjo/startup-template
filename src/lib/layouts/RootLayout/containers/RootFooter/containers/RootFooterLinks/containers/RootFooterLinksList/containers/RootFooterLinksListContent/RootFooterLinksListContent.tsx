@@ -5,14 +5,16 @@ import type { BoxProps } from '@useweb/ui/Box'
 
 import type NavLinkSchema from '../../../../../../../../../../../data/_commonSchemas/NavLinkSchema/NavLinkSchema.js'
 
-export type ContentProps = {
+export type RootFooterLinksListContentProps = {
   links: ({ sx?: BoxProps['sx'] } & NavLinkSchema)[]
   linkPrefix?: string
 }
 
-export default function Content(props: ContentProps) {
+export default function RootFooterLinksListContent(
+  props: RootFooterLinksListContentProps,
+) {
   return (
-    <List<ContentProps['links'][0]>
+    <List<RootFooterLinksListContentProps['links'][0]>
       data={props.links || []}
       listItemKeyName='url'
       ListItemComponent={({ itemData: link }) => {

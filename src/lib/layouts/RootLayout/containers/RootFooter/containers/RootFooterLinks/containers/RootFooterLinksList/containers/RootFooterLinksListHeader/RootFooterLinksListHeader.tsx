@@ -2,10 +2,14 @@ import React from 'react'
 import Box from '@useweb/ui/Box'
 import Text from '@useweb/ui/Text'
 
-export default function Header({ title }) {
+export type RootFooterLinksListHeaderProps = {
+  title: string
+}
+
+export default function RootFooterLinksListHeader(props: RootFooterLinksListHeaderProps) {
   return (
     <Box
-      data-id='Header'
+      data-id='RootFooterLinksListHeader'
       sx={{
         display: 'grid',
         width: '100%',
@@ -16,7 +20,7 @@ export default function Header({ title }) {
       }}
     >
       <Text
-        text={title}
+        text={props.title}
         sx={{
           color: 'neutral.100',
           fontWeight: 700,
