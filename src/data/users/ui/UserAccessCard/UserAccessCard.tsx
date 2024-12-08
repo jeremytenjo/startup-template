@@ -28,7 +28,7 @@ export default function UserAccessCard(props: UserAccessCardProps) {
     }
 
     if (props.type === 'sign-up') {
-      return 'Create an account'
+      return 'Create your account'
     }
 
     if (props.type === 'reset-password') {
