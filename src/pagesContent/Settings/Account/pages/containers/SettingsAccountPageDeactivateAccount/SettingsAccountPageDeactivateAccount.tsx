@@ -25,6 +25,7 @@ export default function SettingsAccountPageDeactivateAccount() {
         subTitle:
           'Deactivating your account will disable your account and remove your profile from the platform.',
       }}
+      singleCTA
       ctas={
         <>
           <ConfirmationButton<any, any>
@@ -56,7 +57,6 @@ export default function SettingsAccountPageDeactivateAccount() {
                 })
               },
             }}
-            singleCTA
             customErrorComponent={(p) => {
               let errorMessage = 'Error deactivating account. Please try again.'
 
