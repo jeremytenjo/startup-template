@@ -1,12 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import resizeImage from '../../apiFunctions/resizeImage/resizeImage.next.js'
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-}
+import resetFirebaseEmulatorData from '../../../../apiFunctions/resetFirebaseEmulatorData/resetFirebaseEmulatorData.next.js'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   let body: any = {}
@@ -18,12 +12,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const data = await resizeImage({ body, req })
-    console.log('resizeImage API Response:')
+    const data = await resetFirebaseEmulatorData({ body, req })
+    console.log('resetFirebaseEmulatorData API Succeeded')
     res.status(200).json({ data, error: undefined })
   } catch (error: any) {
-    console.log('resizeImage API Error:')
-    console.log(error)
+    console.log('resetFirebaseEmulatorData API Error:')
+    console.error(error)
+
     res.status(200).json({ error: String(error) })
   }
 }

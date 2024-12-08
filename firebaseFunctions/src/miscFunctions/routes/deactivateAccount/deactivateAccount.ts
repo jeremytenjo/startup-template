@@ -3,6 +3,8 @@ import type { CallableRequest } from 'firebase-functions/v2/https'
 import logger from 'firebase-functions/logger'
 
 import getFirebaseAdminServer from '../../../../../src/lib/integrations/Google/Firebase/admin/utils/getFirebaseAdminServer/getFirebaseAdmin.server.js'
+import { usersCollectionName } from '../../../../../src/data/users/users.config.js'
+import type UserSchema from '../../../../../src/data/users/user.schema.js'
 
 export const routeId = 'routes/deactivateAccount'
 
@@ -44,7 +46,19 @@ export default async function deactivateAccount(
   await firebaseAdmin.auth().deleteUser(props.authUser.uid)
 
   // Delete User Doc
-  await firebaseAdmin.auth().deleteUser(props.authUser.uid)
+  const userDoc: UserSchema = await firebaseAdmin
+    .firestore()
+    .collection(usersCollectionName)
+    .doc(props.authUser.uid)
+    .get()
+    .then((doc) => {
+      if (!doc.exists) {
+        throw new Error('User Doc does not exist')
+      }
+      return doc.data() as UserSchema
+    })
+
+  await firebaseAdmin.firestore().collection(usersCollectionName).doc(userDoc.id).delete()
 
   const response: Awaited<DeactivateAccountReturn> = {
     data: [{ success: true }],

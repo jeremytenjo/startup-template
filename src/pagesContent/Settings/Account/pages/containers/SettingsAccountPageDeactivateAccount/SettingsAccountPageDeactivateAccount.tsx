@@ -4,13 +4,11 @@ import Text from '@useweb/ui/Text'
 import Alert from '@useweb/ui/Alert'
 import ActionBox from '@useweb/ui/ActionBox'
 import ConfirmationButton from '@useweb/ui/ConfirmationButton'
-import { deleteUser } from 'firebase/auth'
-import { deleteDoc, doc } from 'firebase/firestore'
 
 import logError from '../../../../../../lib/utils/loggers/logError/logError.js'
 import useAuth from '../../../../../../data/users/utils/useAuth/useAuth.js'
-import { db } from '../../../../../../lib/integrations/Google/Firebase/firebase.js'
-import { usersCollectionName } from '../../../../../../data/users/users.config.js'
+import miscFunctionsClient from '../../../../../../../firebaseFunctions/src/miscFunctions/miscFunctions.client.js'
+import type { API_DeactivateAccountProps } from '../../../../../../../firebaseFunctions/src/miscFunctions/routes/deactivateAccount/deactivateAccount.js'
 
 export default function SettingsAccountPageDeactivateAccount() {
   const auth = useAuth()
@@ -26,17 +24,17 @@ export default function SettingsAccountPageDeactivateAccount() {
       ctas={
         <>
           <ConfirmationButton<any, any>
-            data-id='Name'
+            data-id='SettingsAccountPageDeactivateAccountConfirmationButton'
             fn={{
               fn: async () => {
-                // delete auth
-                if (!auth.auth.currentUser) {
-                  throw new Error('auth.auth.currentUser is undefined')
-                }
-                await deleteUser(auth.auth.currentUser)
-
-                // delete user doc
-                await deleteDoc(doc(db, usersCollectionName, auth.auth.currentUser.uid))
+                await miscFunctionsClient<API_DeactivateAccountProps>({
+                  api: {
+                    route: 'routes/deactivateAccount',
+                    payload: {
+                      uid: auth.user.id,
+                    },
+                  },
+                })
               },
               onError({ error }) {
                 logError({
