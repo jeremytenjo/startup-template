@@ -21,7 +21,7 @@ export default function UserAccessCardHeader(props: UserAccessCardHeaderProps) {
     <Box
       data-id='UserAccessCardHeader'
       sx={{
-        mb: '50px',
+        mb: '15px',
         width: '100%',
       }}
     >
@@ -31,7 +31,7 @@ export default function UserAccessCardHeader(props: UserAccessCardHeaderProps) {
           display: 'grid',
           justifyItems: 'center',
           gap: 2,
-          mb: 4,
+          mb: 2,
         }}
       >
         <Image
