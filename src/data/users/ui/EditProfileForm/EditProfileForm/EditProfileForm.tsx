@@ -52,6 +52,7 @@ export default function EditProfileForm(props: EditProfileFormProps) {
             </Button>
           </>
         }
+        singleCTA
         sx={{}}
       >
         <Skeleton loading count={4}>
