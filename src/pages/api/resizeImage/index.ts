@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import resizeImage from '../../../../apiFunctions/resizeImage/resizeImage.next.js'
+import resizeImage from '../../../apiFunctions/resizeImage/resizeImage.next.js'
 
 export const config = {
   api: {
