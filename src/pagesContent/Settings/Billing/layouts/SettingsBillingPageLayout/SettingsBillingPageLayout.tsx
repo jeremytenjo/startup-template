@@ -28,7 +28,6 @@ export default function SettingsBillingPageLayout(props: SettingsBillingPageLayo
           urlBase='settings/billing'
           sx={{
             mb: 2,
-            mt: [-4, , -3],
           }}
         />
         {props.children}
