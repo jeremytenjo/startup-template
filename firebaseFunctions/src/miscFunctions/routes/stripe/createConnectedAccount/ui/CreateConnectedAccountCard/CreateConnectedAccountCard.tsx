@@ -4,6 +4,7 @@ import Alert from '@useweb/ui/Alert'
 import Button from '@useweb/ui/Button'
 import ErrorMessage from '@useweb/ui/ErrorMessage'
 import Skeleton from '@useweb/ui/Skeleton'
+import ActionBox from '@useweb/ui/ActionBox'
 
 import type UserSchema from '../../../../../../../../src/data/users/user.schema.js'
 import useAuth from '../../../../../../../../src/data/users/utils/useAuth/useAuth.js'
@@ -66,41 +67,44 @@ export default function CreateConnectedAccountCard(
         }}
       >
         {!auth.user?.stripeConnectedAccountId ? (
-          <Box
+          <ActionBox
             data-id='NoConnectedAccountId'
-            sx={{
-              ...islandStyles,
-              display: 'grid',
-              gap: 2,
+            headerProps={{
+              title: 'Create Stripe Account',
+              subTitle: props.createStripeAccountSubTitle,
             }}
+            singleCTA
+            ctas={
+              <>
+                <Button
+                  name='Create Stripe Account'
+                  onClick={() => {
+                    createConnectedAccount.exec()
+                  }}
+                  sx={{
+                    width: ['100%', 'fit-content'],
+                  }}
+                  loading={createConnectedAccount.loading}
+                  disabled={!props.userToCreateAccount?.id}
+                  variant='white'
+                >
+                  <StripeIcon
+                    sx={{
+                      width: '20px',
+                      mr: '8px',
+                    }}
+                  />
+                  Create a Stripe Account
+                </Button>
+              </>
+            }
+            sx={{}}
           >
-            <CreateStripeAccountHeader subTitle={props.createStripeAccountSubTitle} />
-
             <ErrorMessage
               error={createConnectedAccount.error}
               message='Error creating Stripe account'
             />
-            <Button
-              name='Create Stripe Account'
-              onClick={() => {
-                createConnectedAccount.exec()
-              }}
-              sx={{
-                width: ['100%', 'fit-content'],
-              }}
-              loading={createConnectedAccount.loading}
-              disabled={!props.userToCreateAccount?.id}
-              variant='white'
-            >
-              <StripeIcon
-                sx={{
-                  width: '20px',
-                  mr: '8px',
-                }}
-              />
-              Create a Stripe Account
-            </Button>
-          </Box>
+          </ActionBox>
         ) : (
           <Box data-id='HasConnectedAccount' sx={{}}>
             {connectedAccount.get.firstItem?.[0]?.connectedAccount.details_submitted ? (
