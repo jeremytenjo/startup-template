@@ -4,15 +4,15 @@ import { refetchFirestoreUser } from '@useweb/firebase/useFirebaseAuth'
 import {
   getRefreshUrl,
   getReturnUrl,
-} from '../../../../../../../../src/lib/integrations/Stripe/utils/stripe.utils.config.js'
-import type UserSchema from '../../../../../../../../src/data/users/user.schema.js'
-import useAuth from '../../../../../../../../src/data/users/utils/useAuth/useAuth.js'
-import logError from '../../../../../../../../src/lib/utils/loggers/logError/logError.js'
-import miscFunctionsClient from '../../../../../miscFunctions.client.js'
+} from '../../../../../../../src/lib/integrations/Stripe/utils/stripe.utils.config.js'
+import type UserSchema from '../../../../../../../src/data/users/user.schema.js'
+import useAuth from '../../../../../../../src/data/users/utils/useAuth/useAuth.jsx'
+import logError from '../../../../../../../src/lib/utils/loggers/logError/logError.js'
+import miscFunctionsClient from '../../../../miscFunctions.client.js'
 import type {
   API_CreateConnectedAccountProps,
   CreateConnectedAccountReturn,
-} from '../../createConnectedAccount.js'
+} from '../createConnectedAccount.js'
 
 export type UseCreateConnectedAccountProps = { userToCreateAccount: UserSchema }
 

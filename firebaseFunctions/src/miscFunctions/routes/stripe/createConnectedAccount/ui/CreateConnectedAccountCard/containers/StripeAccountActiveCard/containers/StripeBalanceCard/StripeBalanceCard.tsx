@@ -6,30 +6,16 @@ import Box from '@useweb/ui/Box'
 import Link from '@useweb/ui/Link'
 import Text from '@useweb/ui/Text'
 
-import useAuth from '../../../../../../../../../../../../src/data/users/utils/useAuth/useAuth.js'
 import StripeBalanceItem from '../../../../../../../../../../../../src/lib/integrations/Stripe/ui/StripeBalanceItem/StripeBalanceItem.js'
 import AvailableBalanceIcon from '../../../../../../../../../../../../src/lib/components/icons/AvailableBalanceIcon.js'
 import PendingBalanceIcon from '../../../../../../../../../../../../src/lib/components/icons/PendingBalanceIcon.js'
 import StripeIcon from '../../../../../../../../../../../../src/lib/components/icons/StripeIcon.js'
-import type { API_GetStripeConnectedAccountDashboardLinkProps } from '../../../../../../../getStripeConnectedAccountDashboardLink/getStripeConnectedAccountDashboardLink.js'
-import useMiscFunctionsPersist from '../../../../../../../../../utils/useMiscFunctionsPersist/useMiscFunctionsPersist.js'
 import useGetStripeBalance from '../../../../../../../getStripeBalance/useGetStripeBalance/useGetStripeBalance'
+import useGetStripeConnectedAccountDashboardLink from '../../../../../../../getStripeConnectedAccountDashboardLink/useGetStripeConnectedAccountDashboardLink/useGetStripeConnectedAccountDashboardLink'
 
 export default function StripeBalanceCard() {
-  const auth = useAuth()
   const stripeBalance = useGetStripeBalance()
-
-  const stripeAccountDashboardLink =
-    useMiscFunctionsPersist<API_GetStripeConnectedAccountDashboardLinkProps>({
-      currentUser: auth.user,
-      id: auth.user?.stripeConnectedAccountId || undefined,
-      api: {
-        route: 'routes/getStripeConnectedAccountDashboardLink',
-        payload: {
-          connectedAccountId: auth.user.stripeConnectedAccountId || '',
-        },
-      },
-    })
+  const stripeAccountDashboardLink = useGetStripeConnectedAccountDashboardLink()
 
   const error = stripeBalance.get.error || stripeAccountDashboardLink.get.error
   const loading = Boolean(
