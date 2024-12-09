@@ -1,4 +1,3 @@
-import useAsync from '@useweb/use-async'
 import { refetchFirestoreUser } from '@useweb/firebase/useFirebaseAuth'
 
 import type UserSchema from '../../../../../../../src/data/users/user.schema.js'
