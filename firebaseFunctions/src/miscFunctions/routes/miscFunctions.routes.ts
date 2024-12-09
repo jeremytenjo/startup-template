@@ -2,7 +2,7 @@ import assert from '@useweb/assert'
 
 import type { MiscFunctionsProps, MiscFunctionsReturn } from '../miscFunctions.js'
 
-import * as deactivateAccount from './deactivateAccount/deactivateAccount.js'
+import * as deactivateAccount from './users/deactivateAccount/deactivateAccount.js'
 
 import type { ApiRouteSchema } from '@/firebaseFunctions/src/utils/useApiRouteData/useApiRouteData.js'
 
