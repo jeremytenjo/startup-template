@@ -1,6 +1,9 @@
 import assert from '@useweb/assert'
 import type { CallableRequest } from 'firebase-functions/v2/https'
 import logger from 'firebase-functions/logger'
+import type Stripe from 'stripe'
+
+import getStripe from '../../../../../../src/lib/integrations/Stripe/utils/getStripe/getStripe.js'
 
 export const routeId = 'routes/deleteStripeAccount'
 
@@ -8,7 +11,7 @@ export type API_DeleteStripeAccountProps = {
   route: typeof routeId
   authUser: CallableRequest['auth']
   payload: {
-    name: string
+    connectedAccountId: string
   }
   return: Awaited<DeleteStripeAccountReturn>
 }
@@ -29,11 +32,15 @@ export default async function deleteStripeAccount(
   })
   assert<API_DeleteStripeAccountProps['payload']>({
     props: props.payload,
-    requiredProps: ['name'],
+    requiredProps: ['connectedAccountId'],
   })
 
+  const { stripe } = getStripe()
+
+  const stripeRes = await stripe.accounts.del(props.payload.connectedAccountId)
+
   const response: Awaited<DeleteStripeAccountReturn> = {
-    data: [{ success: true }],
+    data: [{ stripeRes }],
   }
 
   logger.info(`END: ${routeId}`, { response })
@@ -43,6 +50,6 @@ export default async function deleteStripeAccount(
 
 export type DeleteStripeAccountReturn = Promise<{
   data: {
-    success: boolean
+    stripeRes: Stripe.Response<Stripe.DeletedAccount>
   }[]
 }>
