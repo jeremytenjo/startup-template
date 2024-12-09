@@ -1,8 +1,6 @@
 import useAsync from '@useweb/use-async'
-import { updateUserData } from '@useweb/firebase/useFirebaseAuth'
+import { refetchFirestoreUser } from '@useweb/firebase/useFirebaseAuth'
 
-import type { CreateConnectedAccountReturn } from '../../createConnectedAccount.client.js'
-import createConnectedAccountClient from '../../createConnectedAccount.client.js'
 import {
   getRefreshUrl,
   getReturnUrl,
@@ -10,30 +8,35 @@ import {
 import type UserSchema from '../../../../../../../../src/data/users/user.schema.js'
 import useAuth from '../../../../../../../../src/data/users/utils/useAuth/useAuth.js'
 import logError from '../../../../../../../../src/lib/utils/loggers/logError/logError.js'
+import miscFunctionsClient from '../../../../../miscFunctions.client.js'
+import type {
+  API_CreateConnectedAccountProps,
+  CreateConnectedAccountReturn,
+} from '../../createConnectedAccount.js'
 
 export type UseCreateConnectedAccountProps = { userToCreateAccount: UserSchema }
 
 export async function createStripeConnectedAccount(
   props: UseCreateConnectedAccountProps,
 ) {
-  const res = await createConnectedAccountClient({
-    userToCreateAccount: props.userToCreateAccount,
-    refreshUrl: getRefreshUrl(),
-    returnUrl: getReturnUrl(),
+  const res = await miscFunctionsClient<API_CreateConnectedAccountProps>({
+    api: {
+      route: 'routes/createConnectedAccount',
+      payload: {
+        userToCreateAccount: props.userToCreateAccount,
+        refreshUrl: getRefreshUrl(),
+        returnUrl: getReturnUrl(),
+      },
+    },
   })
 
-  if (!res.data?.createdConnectedAccount?.id) {
+  if (!res.data?.[0]?.createdConnectedAccount?.id) {
     throw new Error('Failed to create connected account')
   }
 
-  await updateUserData<UserSchema>({
-    updatedData: {
-      stripeConnectedAccountId: res.data.createdConnectedAccount.id,
-    },
-    uid: props.userToCreateAccount.id,
-  })
+  await refetchFirestoreUser()
 
-  window.location.href = res.data.accountLink.url
+  window.location.href = res.data?.[0].accountLink.url
 
   return res.data
 }
@@ -45,7 +48,7 @@ export default function useCreateStripeConnectedAccount(
 
   const _createConnectedAccount = useAsync<
     UseCreateConnectedAccountProps,
-    CreateConnectedAccountReturn
+    Awaited<CreateConnectedAccountReturn>['data']
   >({
     fn: async (execProps = props) => {
       if (!auth.user?.id) {

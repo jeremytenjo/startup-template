@@ -7,6 +7,8 @@ import type UserSchema from '../../../../../../src/data/users/user.schema.js'
 import getStripe from '../../../../../../src/lib/integrations/Stripe/utils/getStripe/getStripe.js'
 import appConfig from '../../../../../../app.config.js'
 import ph_sellerAddedBankAccount from '../../../../../../src/lib/integrations/PostHog/events/node/ph_sellerAddedBankAccount.ts/ph_sellerAddedBankAccount.js'
+import getFirebaseAdminServer from '../../../../../../src/lib/integrations/Google/Firebase/admin/utils/getFirebaseAdminServer/getFirebaseAdmin.server.js'
+import { usersCollectionName } from '../../../../../../src/data/users/users.config.js'
 
 export const routeId = 'routes/createConnectedAccount'
 
@@ -40,6 +42,10 @@ export default async function createConnectedAccount(
     requiredProps: ['refreshUrl', 'returnUrl', 'userToCreateAccount'],
   })
 
+  if (!props.authUser?.uid) {
+    throw new Error(`props.authUser?.uid is undefined`, { cause: {} })
+  }
+
   const { stripe } = getStripe()
 
   // returns minimum data, use getConnectedAccount if you need all the data
@@ -66,6 +72,16 @@ export default async function createConnectedAccount(
     refresh_url: props.payload.refreshUrl,
     return_url: props.payload.returnUrl,
   })
+
+  const { firebaseAdmin } = getFirebaseAdminServer()
+
+  await firebaseAdmin
+    .firestore()
+    .collection(usersCollectionName)
+    .doc(props.authUser.uid)
+    .update({
+      stripeConnectedAccountId: false,
+    } satisfies Partial<UserSchema>)
 
   try {
     ph_sellerAddedBankAccount({

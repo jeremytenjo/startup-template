@@ -6,7 +6,6 @@ import Box from '@useweb/ui/Box'
 import Link from '@useweb/ui/Link'
 import Text from '@useweb/ui/Text'
 
-import useStripeBalance from '../../../../../../../getStripeBalance/utils/useStripeBalance/useStripeBalance.js'
 import type UserSchema from '../../../../../../../../../../../../src/data/users/user.schema.js'
 import useAuth from '../../../../../../../../../../../../src/data/users/utils/useAuth/useAuth.js'
 import StripeBalanceItem from '../../../../../../../../../../../../src/lib/integrations/Stripe/ui/StripeBalanceItem/StripeBalanceItem.js'
@@ -15,6 +14,7 @@ import PendingBalanceIcon from '../../../../../../../../../../../../src/lib/comp
 import StripeIcon from '../../../../../../../../../../../../src/lib/components/icons/StripeIcon.js'
 import type { API_GetStripeConnectedAccountDashboardLinkProps } from '../../../../../../../getStripeConnectedAccountDashboardLink/getStripeConnectedAccountDashboardLink.js'
 import useMiscFunctions from '../../../../../../../../../utils/useMiscFunctions/useMiscFunctions.js'
+import type { API_GetStripeBalanceProps } from '../../../../../../../getStripeBalance/getStripeBalance.js'
 
 export default function StripeBalanceCard() {
   const auth = useAuth()
@@ -29,8 +29,15 @@ export type StripeBalanceCardUiProps = {
 }
 
 export function StripeBalanceCardUi(props: StripeBalanceCardUiProps) {
-  const stripeBalance = useStripeBalance({
-    connectedAccountId: props.user?.stripeConnectedAccountId || undefined,
+  const stripeBalance = useMiscFunctions<API_GetStripeBalanceProps>({
+    currentUser: props.user,
+    id: props.user?.stripeConnectedAccountId || undefined,
+    api: {
+      route: 'routes/getStripeBalance',
+      payload: {
+        connectedAccountId: props.user?.stripeConnectedAccountId || '',
+      },
+    },
   })
 
   const stripeAccountDashboardLink =
@@ -120,15 +127,23 @@ export function StripeBalanceCardUi(props: StripeBalanceCardUiProps) {
         <StripeBalanceItem
           title='Available Balance'
           icon={<AvailableBalanceIcon />}
-          amountCents={stripeBalance.get.firstItem?.balance?.available?.[0]?.amount || 0}
-          currency={stripeBalance.get.firstItem?.balance?.available?.[0]?.currency || ''}
+          amountCents={
+            stripeBalance.get.firstItem?.[0]?.balance?.available?.[0]?.amount || 0
+          }
+          currency={
+            stripeBalance.get.firstItem?.[0]?.balance?.available?.[0]?.currency || ''
+          }
           disclaimer='Funds that are available to be transferred or paid out immediately.'
         />
         <StripeBalanceItem
           title='Pending Balance'
           icon={<PendingBalanceIcon />}
-          amountCents={stripeBalance.get.firstItem?.balance?.pending?.[0]?.amount || 0}
-          currency={stripeBalance.get.firstItem?.balance?.pending?.[0]?.currency || ''}
+          amountCents={
+            stripeBalance.get.firstItem?.[0]?.balance?.pending?.[0]?.amount || 0
+          }
+          currency={
+            stripeBalance.get.firstItem?.[0]?.balance?.pending?.[0]?.currency || ''
+          }
           disclaimer='Funds that are not yet available to be transferred or paid out.'
         />
       </Box>

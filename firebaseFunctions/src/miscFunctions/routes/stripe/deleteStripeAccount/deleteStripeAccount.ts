@@ -4,6 +4,9 @@ import logger from 'firebase-functions/logger'
 import type Stripe from 'stripe'
 
 import getStripe from '../../../../../../src/lib/integrations/Stripe/utils/getStripe/getStripe.js'
+import getFirebaseAdminServer from '../../../../../../src/lib/integrations/Google/Firebase/admin/utils/getFirebaseAdminServer/getFirebaseAdmin.server.js'
+import { usersCollectionName } from '../../../../../../src/data/users/users.config.js'
+import type UserSchema from '../../../../../../src/data/users/user.schema.js'
 
 export const routeId = 'routes/deleteStripeAccount'
 
@@ -35,9 +38,23 @@ export default async function deleteStripeAccount(
     requiredProps: ['connectedAccountId'],
   })
 
+  if (!props.authUser?.uid) {
+    throw new Error(`props.authUser?.uid is undefined`, { cause: {} })
+  }
+
   const { stripe } = getStripe()
 
   const stripeRes = await stripe.accounts.del(props.payload.connectedAccountId)
+
+  const { firebaseAdmin } = getFirebaseAdminServer()
+
+  await firebaseAdmin
+    .firestore()
+    .collection(usersCollectionName)
+    .doc(props.authUser.uid)
+    .update({
+      stripeConnectedAccountId: false,
+    } satisfies Partial<UserSchema>)
 
   const response: Awaited<DeleteStripeAccountReturn> = {
     data: [
