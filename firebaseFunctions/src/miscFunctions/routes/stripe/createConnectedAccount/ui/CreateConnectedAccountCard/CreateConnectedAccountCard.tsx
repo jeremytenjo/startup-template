@@ -10,14 +10,18 @@ import type UserSchema from '../../../../../../../../src/data/users/user.schema.
 import useAuth from '../../../../../../../../src/data/users/utils/useAuth/useAuth.js'
 import {
   connetetedAccountUrlQuery,
+  getRefreshUrl,
+  getReturnUrl,
   type ConnetetedAccountUrlQueryNames,
 } from '../../../../../../../../src/lib/integrations/Stripe/utils/stripe.utils.config.js'
 import PageTitleHeading from '../../../../../../../../src/lib/layouts/PageTitleHeading/PageTitleHeading.js'
 import StripeIcon from '../../../../../../../../src/lib/components/icons/StripeIcon.js'
 import { islandStyles } from '../../../../../../../../src/theme/UiTheme/commonStyles/islandStyles.js'
 import useCreateStripeConnectedAccount from '../../utils/useCreateStripeConnectedAccount/useCreateStripeConnectedAccount.js'
-import useStripeConnectedAccount from '../../../getConnectedAccount/utils/useStripeConnectedAccount/useStripeConnectedAccount.js'
-import useFinishCreatingConnectedAccount from '../../../finishCreatingConnectedAccount/utils/useFinishCreatingConnectedAccount/useFinishCreatingConnectedAccount.js'
+import { useMiscFunctionsClient } from '../../../../../miscFunctions.client.js'
+import type { API_FinishCreatingConnectedAccountProps } from '../../../finishCreatingConnectedAccount/finishCreatingConnectedAccount.js'
+import useMiscFunctions from '../../../../../utils/useMiscFunctions/useMiscFunctions.js'
+import type { API_GetConnectedAccountProps } from '../../../getConnectedAccount/getConnectedAccount.js'
 
 import DeleteStripeAccountCard from './containers/StripeAccountActiveCard/containers/DeleteStripeAccountCard/DeleteStripeAccountCard.js'
 import StripeAccountActiveCard from './containers/StripeAccountActiveCard/StripeAccountActiveCard.js'
@@ -35,13 +39,28 @@ export default function CreateConnectedAccountCard(
   const createConnectedAccount = useCreateStripeConnectedAccount({
     userToCreateAccount: props.userToCreateAccount,
   })
-  const connectedAccount = useStripeConnectedAccount({
-    connectedAccountId: auth.user?.stripeConnectedAccountId || undefined,
+  const connectedAccount = useMiscFunctions<API_GetConnectedAccountProps>({
+    currentUser: auth.user,
+    id: auth.user?.stripeConnectedAccountId || undefined,
+    api: {
+      route: 'routes/getConnectedAccount',
+      payload: {
+        connectedAccountId: auth.user?.stripeConnectedAccountId || '',
+      },
+    },
   })
 
-  const finishCreatingConnectedAccount = useFinishCreatingConnectedAccount({
-    userToCreateAccount: props.userToCreateAccount,
-  })
+  const finishCreatingConnectedAccount =
+    useMiscFunctionsClient<API_FinishCreatingConnectedAccountProps>({
+      api: {
+        route: 'routes/finishCreatingConnectedAccount',
+        payload: {
+          refreshUrl: getRefreshUrl(),
+          returnUrl: getReturnUrl(),
+          userToCreateAccount: props.userToCreateAccount,
+        },
+      },
+    })
 
   const stripeConnectedAccountQuery: ConnetetedAccountUrlQueryNames = router.query[
     connetetedAccountUrlQuery.queryName
@@ -126,7 +145,7 @@ export default function CreateConnectedAccountCard(
           </Box>
         ) : (
           <Box data-id='HasConnectedAccount' sx={{}}>
-            {connectedAccount.get.firstItem?.connectedAccount.details_submitted ? (
+            {connectedAccount.get.firstItem?.[0]?.connectedAccount.details_submitted ? (
               <StripeAccountActiveCard />
             ) : (
               <Box
