@@ -1,10 +1,14 @@
+import { useEffect } from 'react'
 import type UserSchema from '../../../../../../../src/data/users/user.schema.js'
 import {
+  connetetedAccountUrlQuery,
+  ConnetetedAccountUrlQueryNames,
   getRefreshUrl,
   getReturnUrl,
 } from '../../../../../../../src/lib/integrations/Stripe/utils/stripe.utils.config.js'
 import { useMiscFunctionsClient } from '../../../../utils/useMiscFunctionsClient/useMiscFunctionsClient.js'
 import type { API_FinishCreatingConnectedAccountProps } from '../finishCreatingConnectedAccount.js'
+import { useRouter } from 'next/router'
 
 export type UseFinishCreatingConnectedAccountProps = {
   userToCreateAccount: UserSchema
@@ -13,6 +17,8 @@ export type UseFinishCreatingConnectedAccountProps = {
 export default function useFinishCreatingConnectedAccount(
   props: UseFinishCreatingConnectedAccountProps,
 ) {
+  const router = useRouter()
+
   const finishCreatingConnectedAccount =
     useMiscFunctionsClient<API_FinishCreatingConnectedAccountProps>({
       api: {
@@ -24,6 +30,18 @@ export default function useFinishCreatingConnectedAccount(
         },
       },
     })
+
+  const stripeConnectedAccountQuery: ConnetetedAccountUrlQueryNames = router.query[
+    connetetedAccountUrlQuery.queryName
+  ] as any
+
+  useEffect(() => {
+    if (stripeConnectedAccountQuery) {
+      if (stripeConnectedAccountQuery === 'refreshUrl' && props.userToCreateAccount) {
+        finishCreatingConnectedAccount.exec()
+      }
+    }
+  }, [stripeConnectedAccountQuery, props.userToCreateAccount])
 
   return finishCreatingConnectedAccount
 }

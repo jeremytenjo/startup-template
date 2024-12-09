@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Box from '@useweb/ui/Box'
-import { useRouter } from 'next/router'
 import Alert from '@useweb/ui/Alert'
 import Button from '@useweb/ui/Button'
 import ErrorMessage from '@useweb/ui/ErrorMessage'
@@ -8,10 +7,6 @@ import Skeleton from '@useweb/ui/Skeleton'
 
 import type UserSchema from '../../../../../../../../src/data/users/user.schema.js'
 import useAuth from '../../../../../../../../src/data/users/utils/useAuth/useAuth.js'
-import {
-  connetetedAccountUrlQuery,
-  type ConnetetedAccountUrlQueryNames,
-} from '../../../../../../../../src/lib/integrations/Stripe/utils/stripe.utils.config.js'
 import PageTitleHeading from '../../../../../../../../src/lib/layouts/PageTitleHeading/PageTitleHeading.js'
 import StripeIcon from '../../../../../../../../src/lib/components/icons/StripeIcon.js'
 import { islandStyles } from '../../../../../../../../src/theme/UiTheme/commonStyles/islandStyles.js'
@@ -31,7 +26,6 @@ export default function CreateConnectedAccountCard(
   props: CreateConnectedAccountCardProps,
 ) {
   const auth = useAuth()
-  const router = useRouter()
   const createConnectedAccount = useCreateStripeConnectedAccount({
     userToCreateAccount: props.userToCreateAccount,
   })
@@ -39,18 +33,6 @@ export default function CreateConnectedAccountCard(
   const finishCreatingConnectedAccount = useFinishCreatingConnectedAccount({
     userToCreateAccount: props.userToCreateAccount,
   })
-
-  const stripeConnectedAccountQuery: ConnetetedAccountUrlQueryNames = router.query[
-    connetetedAccountUrlQuery.queryName
-  ] as any
-
-  useEffect(() => {
-    if (stripeConnectedAccountQuery) {
-      if (stripeConnectedAccountQuery === 'refreshUrl' && props.userToCreateAccount) {
-        finishCreatingConnectedAccount.exec()
-      }
-    }
-  }, [stripeConnectedAccountQuery, props.userToCreateAccount])
 
   if (connectedAccount.get.error) {
     return (
