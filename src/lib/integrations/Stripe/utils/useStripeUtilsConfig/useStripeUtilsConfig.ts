@@ -3,6 +3,13 @@ import { GetPrefixProps, getRefreshUrl, getReturnUrl } from '../stripe.utils.con
 
 export default function useStripeUtilsConfig() {
   const data = useMemo(() => {
+    if (typeof window === 'undefined') {
+      return {
+        refreshUrl: '',
+        returnUrl: '',
+      }
+    }
+
     const prefixProps: GetPrefixProps = {
       origin: window?.location?.origin || '',
       pathname: window?.location?.pathname || '',
@@ -15,7 +22,7 @@ export default function useStripeUtilsConfig() {
       refreshUrl,
       returnUrl,
     }
-  }, [window?.location?.pathname])
+  }, [])
 
   return data
 }
