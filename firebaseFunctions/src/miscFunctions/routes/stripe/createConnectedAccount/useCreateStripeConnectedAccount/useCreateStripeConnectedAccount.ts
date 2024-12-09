@@ -6,7 +6,7 @@ import {
   getReturnUrl,
 } from '../../../../../../../src/lib/integrations/Stripe/utils/stripe.utils.config.js'
 import type UserSchema from '../../../../../../../src/data/users/user.schema.js'
-import useAuth from '../../../../../../../src/data/users/utils/useAuth/useAuth.jsx'
+import useAuth from '../../../../../../../src/data/users/utils/useAuth/useAuth.js'
 import logError from '../../../../../../../src/lib/utils/loggers/logError/logError.js'
 import miscFunctionsClient from '../../../../miscFunctions.client.js'
 import type {

@@ -1,7 +1,9 @@
 import useAsync from '@useweb/use-async'
-import { ApiRouteSchema } from '../../../utils/useApiRouteData/useApiRouteData'
-import logError from '../../../../../src/lib/utils/loggers/logError/logError'
-import miscFunctionsClient, { MiscFunctionsClientProps } from '../../miscFunctions.client'
+
+import type { ApiRouteSchema } from '../../../utils/useApiRouteData/useApiRouteData.js'
+import logError from '../../../../../src/lib/utils/loggers/logError/logError.js'
+import type { MiscFunctionsClientProps } from '../../miscFunctions.client.js'
+import miscFunctionsClient from '../../miscFunctions.client.js'
 
 export function useMiscFunctionsClient<RouteSchema extends ApiRouteSchema>(
   props: MiscFunctionsClientProps<RouteSchema>,

@@ -1,7 +1,8 @@
 import { refetchFirestoreUser } from '@useweb/firebase/useFirebaseAuth'
-import useAuth from '../../../../../../../src/data/users/utils/useAuth/useAuth'
-import { useMiscFunctionsClient } from '../../../../utils/useMiscFunctionsClient/useMiscFunctionsClient'
-import { API_DeleteStripeAccountProps } from '../deleteStripeAccount'
+
+import useAuth from '../../../../../../../src/data/users/utils/useAuth/useAuth.js'
+import { useMiscFunctionsClient } from '../../../../utils/useMiscFunctionsClient/useMiscFunctionsClient.js'
+import type { API_DeleteStripeAccountProps } from '../deleteStripeAccount.js'
 
 export default function useDeleteStripeAccount() {
   const auth = useAuth()

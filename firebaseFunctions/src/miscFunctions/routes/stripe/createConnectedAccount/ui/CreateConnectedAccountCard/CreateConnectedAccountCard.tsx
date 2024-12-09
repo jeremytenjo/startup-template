@@ -16,11 +16,11 @@ import PageTitleHeading from '../../../../../../../../src/lib/layouts/PageTitleH
 import StripeIcon from '../../../../../../../../src/lib/components/icons/StripeIcon.js'
 import { islandStyles } from '../../../../../../../../src/theme/UiTheme/commonStyles/islandStyles.js'
 import useCreateStripeConnectedAccount from '../../useCreateStripeConnectedAccount/useCreateStripeConnectedAccount.js'
+import useGetConnectedAccount from '../../../getConnectedAccount/useGetConnectedAccount/useGetConnectedAccount.js'
+import useFinishCreatingConnectedAccount from '../../../finishCreatingConnectedAccount/useFinishCreatingConnectedAccount/useFinishCreatingConnectedAccount.js'
 
 import DeleteStripeAccountCard from './containers/StripeAccountActiveCard/containers/DeleteStripeAccountCard/DeleteStripeAccountCard.js'
 import StripeAccountActiveCard from './containers/StripeAccountActiveCard/StripeAccountActiveCard.js'
-import useGetConnectedAccount from '../../../getConnectedAccount/useGetConnectedAccount/useGetConnectedAccount'
-import useFinishCreatingConnectedAccount from '../../../finishCreatingConnectedAccount/useFinishCreatingConnectedAccount/useFinishCreatingConnectedAccount'
 
 export type CreateConnectedAccountCardProps = {
   userToCreateAccount: UserSchema

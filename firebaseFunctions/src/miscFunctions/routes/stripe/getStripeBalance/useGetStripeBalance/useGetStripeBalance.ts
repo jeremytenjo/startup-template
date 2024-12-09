@@ -1,6 +1,6 @@
-import useAuth from '../../../../../../../src/data/users/utils/useAuth/useAuth'
-import useMiscFunctionsPersist from '../../../../utils/useMiscFunctionsPersist/useMiscFunctionsPersist'
-import { API_GetStripeBalanceProps } from '../getStripeBalance'
+import useAuth from '../../../../../../../src/data/users/utils/useAuth/useAuth.js'
+import useMiscFunctionsPersist from '../../../../utils/useMiscFunctionsPersist/useMiscFunctionsPersist.js'
+import type { API_GetStripeBalanceProps } from '../getStripeBalance.js'
 
 export default function useGetStripeBalance() {
   const auth = useAuth()

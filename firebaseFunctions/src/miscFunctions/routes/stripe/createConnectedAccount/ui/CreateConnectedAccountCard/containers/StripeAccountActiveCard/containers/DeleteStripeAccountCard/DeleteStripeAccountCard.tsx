@@ -5,8 +5,8 @@ import ActionBox from '@useweb/ui/ActionBox'
 import ConfirmationButton from '@useweb/ui/ConfirmationButton'
 
 import CantDeleteStripeAccountAlert from '../../../../../../../../../../../../src/lib/integrations/Stripe/ui/CantDeleteStripeAccountAlert/CantDeleteStripeAccountAlert.js'
-import useDeleteStripeAccount from '../../../../../../../deleteStripeAccount/useDeleteStripeAccount/useDeleteStripeAccount'
-import useGetStripeBalance from '../../../../../../../getStripeBalance/useGetStripeBalance/useGetStripeBalance'
+import useDeleteStripeAccount from '../../../../../../../deleteStripeAccount/useDeleteStripeAccount/useDeleteStripeAccount.js'
+import useGetStripeBalance from '../../../../../../../getStripeBalance/useGetStripeBalance/useGetStripeBalance.js'
 
 export default function DeleteStripeAccountCard() {
   const deleteStripeAccount = useDeleteStripeAccount()

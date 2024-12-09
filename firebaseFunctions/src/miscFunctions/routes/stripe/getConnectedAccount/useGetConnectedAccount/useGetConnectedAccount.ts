@@ -1,6 +1,6 @@
-import useAuth from '../../../../../../../src/data/users/utils/useAuth/useAuth'
-import useMiscFunctionsPersist from '../../../../utils/useMiscFunctionsPersist/useMiscFunctionsPersist'
-import { API_GetConnectedAccountProps } from '../getConnectedAccount'
+import useAuth from '../../../../../../../src/data/users/utils/useAuth/useAuth.js'
+import useMiscFunctionsPersist from '../../../../utils/useMiscFunctionsPersist/useMiscFunctionsPersist.js'
+import type { API_GetConnectedAccountProps } from '../getConnectedAccount.js'
 
 export default function useGetConnectedAccount() {
   const auth = useAuth()

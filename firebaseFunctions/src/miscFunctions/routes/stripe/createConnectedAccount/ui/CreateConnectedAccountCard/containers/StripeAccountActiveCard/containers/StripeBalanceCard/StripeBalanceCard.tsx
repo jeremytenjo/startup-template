@@ -10,8 +10,8 @@ import StripeBalanceItem from '../../../../../../../../../../../../src/lib/integ
 import AvailableBalanceIcon from '../../../../../../../../../../../../src/lib/components/icons/AvailableBalanceIcon.js'
 import PendingBalanceIcon from '../../../../../../../../../../../../src/lib/components/icons/PendingBalanceIcon.js'
 import StripeIcon from '../../../../../../../../../../../../src/lib/components/icons/StripeIcon.js'
-import useGetStripeBalance from '../../../../../../../getStripeBalance/useGetStripeBalance/useGetStripeBalance'
-import useGetStripeConnectedAccountDashboardLink from '../../../../../../../getStripeConnectedAccountDashboardLink/useGetStripeConnectedAccountDashboardLink/useGetStripeConnectedAccountDashboardLink'
+import useGetStripeBalance from '../../../../../../../getStripeBalance/useGetStripeBalance/useGetStripeBalance.js'
+import useGetStripeConnectedAccountDashboardLink from '../../../../../../../getStripeConnectedAccountDashboardLink/useGetStripeConnectedAccountDashboardLink/useGetStripeConnectedAccountDashboardLink.js'
 
 export default function StripeBalanceCard() {
   const stripeBalance = useGetStripeBalance()
