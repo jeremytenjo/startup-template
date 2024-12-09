@@ -12,19 +12,6 @@ import type { API_DeleteStripeAccountProps } from '../../../../../../../deleteSt
 import { useMiscFunctionsClient } from '../../../../../../../../../utils/useMiscFunctionsClient/useMiscFunctionsClient'
 
 export default function DeleteStripeAccountCard() {
-  // use hooks to get data
-  const data = 'DeleteStripeAccountCard'
-
-  return <DeleteStripeAccountCardUi data={data} loading={false} error={false} />
-}
-
-export type DeleteStripeAccountCardUiProps = {
-  data: any
-  loading: boolean
-  error: any
-}
-
-export function DeleteStripeAccountCardUi(props: DeleteStripeAccountCardUiProps) {
   const auth = useAuth()
 
   // TODO fix useMiscFunctionsClient and useMiscFunctions name convention
@@ -57,7 +44,7 @@ export function DeleteStripeAccountCardUi(props: DeleteStripeAccountCardUiProps)
   if (deleteStripeAccount.error || stripeBalance.get.error) {
     return (
       <ErrorMessage
-        error={props.error}
+        error={deleteStripeAccount.error || stripeBalance.get.error}
         message='Error loading, please refresh and try again.'
       />
     )
