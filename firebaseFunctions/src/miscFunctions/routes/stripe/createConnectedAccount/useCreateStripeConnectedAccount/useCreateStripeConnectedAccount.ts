@@ -13,19 +13,22 @@ import type {
   API_CreateConnectedAccountProps,
   CreateConnectedAccountReturn,
 } from '../createConnectedAccount.js'
+import useStripeUtilsConfig from '../../../../../../../src/lib/integrations/Stripe/utils/useStripeUtilsConfig/useStripeUtilsConfig'
 
 export type UseCreateConnectedAccountProps = { userToCreateAccount: UserSchema }
 
 export async function createStripeConnectedAccount(
   props: UseCreateConnectedAccountProps,
 ) {
+  const stripeConfig = useStripeUtilsConfig()
+
   const res = await miscFunctionsClient<API_CreateConnectedAccountProps>({
     api: {
       route: 'routes/createConnectedAccount',
       payload: {
         userToCreateAccount: props.userToCreateAccount,
-        refreshUrl: getRefreshUrl(),
-        returnUrl: getReturnUrl(),
+        refreshUrl: stripeConfig.refreshUrl,
+        returnUrl: stripeConfig.returnUrl,
       },
     },
   })

@@ -9,6 +9,7 @@ import {
 import { useMiscFunctionsClient } from '../../../../utils/useMiscFunctionsClient/useMiscFunctionsClient.js'
 import type { API_FinishCreatingConnectedAccountProps } from '../finishCreatingConnectedAccount.js'
 import { useRouter } from 'next/router'
+import useStripeUtilsConfig from '../../../../../../../src/lib/integrations/Stripe/utils/useStripeUtilsConfig/useStripeUtilsConfig'
 
 export type UseFinishCreatingConnectedAccountProps = {
   userToCreateAccount: UserSchema
@@ -18,14 +19,15 @@ export default function useFinishCreatingConnectedAccount(
   props: UseFinishCreatingConnectedAccountProps,
 ) {
   const router = useRouter()
+  const stripeConfig = useStripeUtilsConfig()
 
   const finishCreatingConnectedAccount =
     useMiscFunctionsClient<API_FinishCreatingConnectedAccountProps>({
       api: {
         route: 'routes/finishCreatingConnectedAccount',
         payload: {
-          refreshUrl: getRefreshUrl(),
-          returnUrl: getReturnUrl(),
+          refreshUrl: stripeConfig.refreshUrl,
+          returnUrl: stripeConfig.returnUrl,
           userToCreateAccount: props.userToCreateAccount,
         },
       },

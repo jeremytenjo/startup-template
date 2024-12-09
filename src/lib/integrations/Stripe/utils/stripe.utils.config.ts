@@ -4,18 +4,27 @@ export const connetetedAccountUrlQuery = {
 
 export type ConnetetedAccountUrlQueryNames = 'refreshUrl' | 'returnUrl'
 
-const getPrefix = () => {
-  const urlsPrefix = `${location.origin}${location.pathname}?${connetetedAccountUrlQuery.queryName}=`
+export type GetPrefixProps = {
+  origin: string
+  pathname: string
+}
+
+const getPrefix = (p: GetPrefixProps) => {
+  const urlsPrefix = `${p.origin}${p.pathname}?${connetetedAccountUrlQuery.queryName}=`
   return urlsPrefix
 }
 
-export const getRefreshUrl = () => {
-  const refreshUrl: `${string}${ConnetetedAccountUrlQueryNames}` = `${getPrefix()}refreshUrl`
+export const getRefreshUrl = (p: GetPrefixProps) => {
+  const refreshUrl: `${string}${ConnetetedAccountUrlQueryNames}` = `${getPrefix(
+    p,
+  )}refreshUrl`
   return refreshUrl
 }
 
-export const getReturnUrl = () => {
-  const returnUrl: `${string}${ConnetetedAccountUrlQueryNames}` = `${getPrefix()}returnUrl`
+export const getReturnUrl = (p: GetPrefixProps) => {
+  const returnUrl: `${string}${ConnetetedAccountUrlQueryNames}` = `${getPrefix(
+    p,
+  )}returnUrl`
   return returnUrl
 }
 
