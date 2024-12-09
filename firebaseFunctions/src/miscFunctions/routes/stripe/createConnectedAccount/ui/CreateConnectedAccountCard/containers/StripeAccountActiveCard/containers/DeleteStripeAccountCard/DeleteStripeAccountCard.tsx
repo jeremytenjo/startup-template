@@ -8,21 +8,12 @@ import useAuth from '../../../../../../../../../../../../src/data/users/utils/us
 import CantDeleteStripeAccountAlert from '../../../../../../../../../../../../src/lib/integrations/Stripe/ui/CantDeleteStripeAccountAlert/CantDeleteStripeAccountAlert.js'
 import useMiscFunctionsPersist from '../../../../../../../../../utils/useMiscFunctionsPersist/useMiscFunctionsPersist.js'
 import type { API_GetStripeBalanceProps } from '../../../../../../../getStripeBalance/getStripeBalance.js'
-import type { API_DeleteStripeAccountProps } from '../../../../../../../deleteStripeAccount/deleteStripeAccount.js'
-import { useMiscFunctionsClient } from '../../../../../../../../../utils/useMiscFunctionsClient/useMiscFunctionsClient'
+import useDeleteStripeAccount from '../../../../../../../deleteStripeAccount/useDeleteStripeAccount/useDeleteStripeAccount'
 
 export default function DeleteStripeAccountCard() {
   const auth = useAuth()
 
-  // TODO fix useMiscFunctionsClient and useMiscFunctions name convention
-  const deleteStripeAccount = useMiscFunctionsClient<API_DeleteStripeAccountProps>({
-    api: {
-      route: 'routes/deleteStripeAccount',
-      payload: {
-        connectedAccountId: auth.user?.stripeConnectedAccountId || '',
-      },
-    },
-  })
+  const deleteStripeAccount = useDeleteStripeAccount()
 
   const stripeBalance = useMiscFunctionsPersist<API_GetStripeBalanceProps>({
     currentUser: auth.user,
