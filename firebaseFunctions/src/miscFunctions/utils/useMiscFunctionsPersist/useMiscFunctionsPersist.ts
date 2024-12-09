@@ -9,7 +9,7 @@ import miscFunctionsClient, {
 import type { ApiRouteSchema } from '../../../utils/useApiRouteData/useApiRouteData.js'
 import type UserSchema from '../../../../../src/data/users/user.schema.js'
 
-export type UseMiscFunctionsProps<RouteSchema extends ApiRouteSchema> =
+export type UseMiscFunctionsPersistProps<RouteSchema extends ApiRouteSchema> =
   MiscFunctionsClientProps<RouteSchema>
 
 export function getMiscFunctionsDataId<RouteSchema extends ApiRouteSchema>(props: {
@@ -33,8 +33,8 @@ export function getMiscFunctionsDataId<RouteSchema extends ApiRouteSchema>(props
   }
 }
 
-export default function useMiscFunctions<RouteSchema extends ApiRouteSchema>(
-  props: Partial<UseMiscFunctionsProps<RouteSchema>> & {
+export default function useMiscFunctionsPersist<RouteSchema extends ApiRouteSchema>(
+  props: Partial<UseMiscFunctionsPersistProps<RouteSchema>> & {
     currentUser: UserSchema | undefined
     id: string | undefined
     allowUnauthenticatedUser?: boolean
@@ -92,7 +92,7 @@ export default function useMiscFunctions<RouteSchema extends ApiRouteSchema>(
       onGetError({ error }) {
         logError({
           error,
-          fnName: `useMiscFunctions - get - ${props.api?.route}`,
+          fnName: `useMiscFunctionsPersist - get - ${props.api?.route}`,
           metadata: { props },
         })
       },
@@ -102,4 +102,4 @@ export default function useMiscFunctions<RouteSchema extends ApiRouteSchema>(
   return miscFunctions
 }
 
-export type UseMiscFunctionsReturn = ReturnType<typeof useMiscFunctions>
+export type UseMiscFunctionsReturn = ReturnType<typeof useMiscFunctionsPersist>

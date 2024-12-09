@@ -1,9 +1,7 @@
 import type { UseAsyncProps } from '@useweb/use-async'
-import useAsync from '@useweb/use-async'
 import { httpsCallable } from 'firebase/functions'
 
 import { functions } from '../../../src/lib/integrations/Google/Firebase/firebase.js'
-import logError from '../../../src/lib/utils/loggers/logError/logError.js'
 
 import type { MiscFunctionsProps, MiscFunctionsReturn } from './miscFunctions.js'
 
@@ -34,24 +32,3 @@ export default async function miscFunctionsClient<RouteSchema extends ApiRouteSc
 
 export type MiscFunctionsClientReturn<RouteSchema extends ApiRouteSchema> =
   MiscFunctionsReturn<RouteSchema>
-
-export function useMiscFunctionsClient<RouteSchema extends ApiRouteSchema>(
-  props: MiscFunctionsClientProps<RouteSchema>,
-) {
-  const miscFunctions = useAsync<
-    MiscFunctionsClientProps<RouteSchema>['api'],
-    RouteSchema['return']
-  >({
-    fn: async () => await miscFunctionsClient(props),
-    ...props.options,
-    onError({ error, fnProps }) {
-      logError({
-        error,
-        fnName: 'useMiscFunctionsClient',
-        metadata: { props, fnProps },
-      })
-    },
-  })
-
-  return miscFunctions
-}

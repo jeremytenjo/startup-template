@@ -6,10 +6,10 @@ import ConfirmationButton from '@useweb/ui/ConfirmationButton'
 
 import useAuth from '../../../../../../../../../../../../src/data/users/utils/useAuth/useAuth.js'
 import CantDeleteStripeAccountAlert from '../../../../../../../../../../../../src/lib/integrations/Stripe/ui/CantDeleteStripeAccountAlert/CantDeleteStripeAccountAlert.js'
-import useMiscFunctions from '../../../../../../../../../utils/useMiscFunctions/useMiscFunctions.js'
+import useMiscFunctionsPersist from '../../../../../../../../../utils/useMiscFunctionsPersist/useMiscFunctionsPersist.js'
 import type { API_GetStripeBalanceProps } from '../../../../../../../getStripeBalance/getStripeBalance.js'
 import type { API_DeleteStripeAccountProps } from '../../../../../../../deleteStripeAccount/deleteStripeAccount.js'
-import { useMiscFunctionsClient } from '../../../../../../../../../miscFunctions.client.js'
+import { useMiscFunctionsClient } from '../../../../../../../../../utils/useMiscFunctionsClient/useMiscFunctionsClient'
 
 export default function DeleteStripeAccountCard() {
   // use hooks to get data
@@ -37,7 +37,7 @@ export function DeleteStripeAccountCardUi(props: DeleteStripeAccountCardUiProps)
     },
   })
 
-  const stripeBalance = useMiscFunctions<API_GetStripeBalanceProps>({
+  const stripeBalance = useMiscFunctionsPersist<API_GetStripeBalanceProps>({
     currentUser: auth.user,
     id: auth.user?.stripeConnectedAccountId || undefined,
     api: {

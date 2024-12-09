@@ -18,13 +18,13 @@ import PageTitleHeading from '../../../../../../../../src/lib/layouts/PageTitleH
 import StripeIcon from '../../../../../../../../src/lib/components/icons/StripeIcon.js'
 import { islandStyles } from '../../../../../../../../src/theme/UiTheme/commonStyles/islandStyles.js'
 import useCreateStripeConnectedAccount from '../../utils/useCreateStripeConnectedAccount/useCreateStripeConnectedAccount.js'
-import { useMiscFunctionsClient } from '../../../../../miscFunctions.client.js'
 import type { API_FinishCreatingConnectedAccountProps } from '../../../finishCreatingConnectedAccount/finishCreatingConnectedAccount.js'
-import useMiscFunctions from '../../../../../utils/useMiscFunctions/useMiscFunctions.js'
+import useMiscFunctionsPersist from '../../../../../utils/useMiscFunctionsPersist/useMiscFunctionsPersist.js'
 import type { API_GetConnectedAccountProps } from '../../../getConnectedAccount/getConnectedAccount.js'
 
 import DeleteStripeAccountCard from './containers/StripeAccountActiveCard/containers/DeleteStripeAccountCard/DeleteStripeAccountCard.js'
 import StripeAccountActiveCard from './containers/StripeAccountActiveCard/StripeAccountActiveCard.js'
+import { useMiscFunctionsClient } from '../../../../../utils/useMiscFunctionsClient/useMiscFunctionsClient'
 
 export type CreateConnectedAccountCardProps = {
   userToCreateAccount: UserSchema
@@ -40,8 +40,8 @@ export default function CreateConnectedAccountCard(
     userToCreateAccount: props.userToCreateAccount,
   })
 
-  // TODO fix useMiscFunctionsClient and useMiscFunctions name convention
-  const connectedAccount = useMiscFunctions<API_GetConnectedAccountProps>({
+  // TODO move to utils
+  const connectedAccount = useMiscFunctionsPersist<API_GetConnectedAccountProps>({
     currentUser: auth.user,
     id: auth.user?.stripeConnectedAccountId || undefined,
     api: {
