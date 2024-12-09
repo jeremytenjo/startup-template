@@ -1,8 +1,8 @@
 import React from 'react'
 import AsyncTester from '@useweb/async-tester'
 
-import miscFunctionsClient from '../../../miscFunctions.client.js'
 import type { API_DeactivateAccountProps } from '../deactivateAccount.js'
+import miscFunctionsClient from '../../../../miscFunctions.client.js'
 
 export default {
   title: 'Cloud Functions/firebase/miscFunctions/routes/deactivateAccount',

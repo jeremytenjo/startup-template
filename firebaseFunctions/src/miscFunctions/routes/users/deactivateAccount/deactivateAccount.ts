@@ -2,9 +2,9 @@ import assert from '@useweb/assert'
 import type { CallableRequest } from 'firebase-functions/v2/https'
 import logger from 'firebase-functions/logger'
 
-import getFirebaseAdminServer from '../../../../../src/lib/integrations/Google/Firebase/admin/utils/getFirebaseAdminServer/getFirebaseAdmin.server.js'
-import { usersCollectionName } from '../../../../../src/data/users/users.config.js'
-import type UserSchema from '../../../../../src/data/users/user.schema.js'
+import getFirebaseAdminServer from '../../../../../../src/lib/integrations/Google/Firebase/admin/utils/getFirebaseAdminServer/getFirebaseAdmin.server.js'
+import { usersCollectionName } from '../../../../../../src/data/users/users.config.js'
+import type UserSchema from '../../../../../../src/data/users/user.schema.js'
 
 export const routeId = 'routes/deactivateAccount'
 

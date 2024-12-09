@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 import logError from '../../../../../../lib/utils/loggers/logError/logError.js'
 import useAuth from '../../../../../../data/users/utils/useAuth/useAuth.js'
 import miscFunctionsClient from '../../../../../../../firebaseFunctions/src/miscFunctions/miscFunctions.client.js'
-import type { API_DeactivateAccountProps } from '../../../../../../../firebaseFunctions/src/miscFunctions/routes/deactivateAccount/deactivateAccount.js'
+import type { API_DeactivateAccountProps } from '../../../../../../../firebaseFunctions/src/miscFunctions/routes/users/deactivateAccount/deactivateAccount.js'
 
 export default function SettingsAccountPageDeactivateAccount() {
   const auth = useAuth()
