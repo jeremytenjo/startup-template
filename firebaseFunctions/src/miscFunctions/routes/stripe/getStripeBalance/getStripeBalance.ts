@@ -1,6 +1,9 @@
 import assert from '@useweb/assert'
 import type { CallableRequest } from 'firebase-functions/v2/https'
 import logger from 'firebase-functions/logger'
+import type Stripe from 'stripe'
+
+import getStripe from '../../../../../../src/lib/integrations/Stripe/utils/getStripe/getStripe.js'
 
 export const routeId = 'routes/getStripeBalance'
 
@@ -8,7 +11,7 @@ export type API_GetStripeBalanceProps = {
   route: typeof routeId
   authUser: CallableRequest['auth']
   payload: {
-    name: string
+    connectedAccountId: string
   }
   return: Awaited<GetStripeBalanceReturn>
 }
@@ -29,11 +32,17 @@ export default async function getStripeBalance(
   })
   assert<API_GetStripeBalanceProps['payload']>({
     props: props.payload,
-    requiredProps: ['name'],
+    requiredProps: ['connectedAccountId'],
+  })
+
+  const { stripe } = getStripe()
+
+  const balance = await stripe.balance.retrieve({
+    stripeAccount: props.payload.connectedAccountId,
   })
 
   const response: Awaited<GetStripeBalanceReturn> = {
-    data: [{ success: true }],
+    data: [{ id: props.payload.connectedAccountId, balance }],
   }
 
   logger.info(`END: ${routeId}`, { response })
@@ -43,6 +52,7 @@ export default async function getStripeBalance(
 
 export type GetStripeBalanceReturn = Promise<{
   data: {
-    success: boolean
+    balance: Stripe.Response<Stripe.Balance>
+    id: string
   }[]
 }>
