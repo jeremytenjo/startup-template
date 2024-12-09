@@ -54,7 +54,12 @@ export default async function finishCreatingConnectedAccount(
   })
 
   const response: Awaited<FinishCreatingConnectedAccountReturn> = {
-    data: [{ accountLink }],
+    data: [
+      {
+        id: accountLink.url,
+        accountLink,
+      },
+    ],
   }
 
   logger.info(`END: ${routeId}`, { response })
@@ -64,6 +69,7 @@ export default async function finishCreatingConnectedAccount(
 
 export type FinishCreatingConnectedAccountReturn = Promise<{
   data: {
+    id: string
     accountLink: Stripe.Response<Stripe.AccountLink>
   }[]
 }>

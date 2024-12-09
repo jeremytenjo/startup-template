@@ -52,7 +52,7 @@ export default async function getStripeBalance(
 
 export type GetStripeBalanceReturn = Promise<{
   data: {
-    balance: Stripe.Response<Stripe.Balance>
     id: string
+    balance: Stripe.Response<Stripe.Balance>
   }[]
 }>

@@ -16,6 +16,7 @@ const commonProps: UserSchema = {
   },
   agreedToTOSandPrivacyPolicy: getToday(),
   lastSignedIn: getToday(),
+  stripeConnectedAccountId: false,
 }
 
 const userStubs: UserSchema[] = [

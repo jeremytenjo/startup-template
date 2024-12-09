@@ -1,5 +1,6 @@
 import useData from '@useweb/use-data'
 import logError from '@/src/lib/utils/loggers/logError/logError'
+import { useMemo } from 'react'
 
 import miscFunctionsClient, {
   type MiscFunctionsClientProps,
@@ -39,6 +40,17 @@ export default function useMiscFunctions<RouteSchema extends ApiRouteSchema>(
     allowUnauthenticatedUser?: boolean
   },
 ) {
+  const id = useMemo(() => {
+    return props?.id
+      ? getMiscFunctionsDataId({
+          authId: props.currentUser?.id,
+          route: props.api?.route as string,
+          id: props.id,
+          allowUnauthenticatedUser: Boolean(props.allowUnauthenticatedUser),
+        }).id
+      : undefined
+  }, [props.currentUser?.id, props.api?.route, props.id, props.allowUnauthenticatedUser])
+
   const miscFunctions = useData<
     Awaited<
       MiscFunctionsClientReturn<RouteSchema>['data'] & {
@@ -48,14 +60,7 @@ export default function useMiscFunctions<RouteSchema extends ApiRouteSchema>(
     MiscFunctionsClientProps<RouteSchema>,
     MiscFunctionsClientProps<RouteSchema>['api']['payload']
   >({
-    id: props?.id
-      ? getMiscFunctionsDataId({
-          authId: props.currentUser?.id,
-          route: props.api?.route as string,
-          id: props?.id,
-          allowUnauthenticatedUser: Boolean(props.allowUnauthenticatedUser),
-        }).id
-      : undefined,
+    id,
     get: {
       fetcher: async (p) => {
         const miscFunctionsRes = await miscFunctionsClient<RouteSchema>({
@@ -70,17 +75,7 @@ export default function useMiscFunctions<RouteSchema extends ApiRouteSchema>(
         })
 
         if (miscFunctionsRes.data) {
-          return [
-            {
-              id: getMiscFunctionsDataId({
-                authId: props.currentUser?.id,
-                route: props.api?.route as string,
-                id: props?.id,
-                allowUnauthenticatedUser: Boolean(props.allowUnauthenticatedUser),
-              }).id as string,
-              ...miscFunctionsRes.data,
-            },
-          ]
+          return miscFunctionsRes.data
         }
 
         return []

@@ -57,7 +57,7 @@ export default async function getConnectedAccount(
 
 export type GetConnectedAccountReturn = Promise<{
   data: {
-    connectedAccount: Stripe.Response<Stripe.Account>
     id: string
+    connectedAccount: Stripe.Response<Stripe.Account>
   }[]
 }>

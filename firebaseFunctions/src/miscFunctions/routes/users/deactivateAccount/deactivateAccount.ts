@@ -63,7 +63,12 @@ export default async function deactivateAccount(
   await firebaseAdmin.firestore().collection(usersCollectionName).doc(userDoc.id).delete()
 
   const response: Awaited<DeactivateAccountReturn> = {
-    data: [{ success: true }],
+    data: [
+      {
+        id: userDoc.id,
+        success: true,
+      },
+    ],
   }
 
   logger.info(`END: ${routeId}`, { response })
@@ -73,6 +78,7 @@ export default async function deactivateAccount(
 
 export type DeactivateAccountReturn = Promise<{
   data: {
+    id: string
     success: boolean
   }[]
 }>

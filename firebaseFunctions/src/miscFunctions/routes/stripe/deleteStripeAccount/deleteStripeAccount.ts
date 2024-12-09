@@ -40,7 +40,12 @@ export default async function deleteStripeAccount(
   const stripeRes = await stripe.accounts.del(props.payload.connectedAccountId)
 
   const response: Awaited<DeleteStripeAccountReturn> = {
-    data: [{ stripeRes }],
+    data: [
+      {
+        id: stripeRes.id,
+        stripeRes,
+      },
+    ],
   }
 
   logger.info(`END: ${routeId}`, { response })
@@ -50,6 +55,7 @@ export default async function deleteStripeAccount(
 
 export type DeleteStripeAccountReturn = Promise<{
   data: {
+    id: string
     stripeRes: Stripe.Response<Stripe.DeletedAccount>
   }[]
 }>

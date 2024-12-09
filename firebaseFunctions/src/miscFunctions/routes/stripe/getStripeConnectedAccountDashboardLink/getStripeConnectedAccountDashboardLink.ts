@@ -61,7 +61,7 @@ export default async function getStripeConnectedAccountDashboardLink(
 
 export type GetStripeConnectedAccountDashboardLinkReturn = Promise<{
   data: {
-    dashboardLink: Stripe.Response<Stripe.LoginLink>
     id: string
+    dashboardLink: Stripe.Response<Stripe.LoginLink>
   }[]
 }>
