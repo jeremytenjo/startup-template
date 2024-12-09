@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+
 import { GetPrefixProps, getRefreshUrl, getReturnUrl } from '../stripe.utils.config'
 
 export default function useStripeUtilsConfig() {
