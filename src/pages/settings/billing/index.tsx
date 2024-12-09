@@ -1,13 +1,14 @@
 import React from 'react'
 
-import SettingsBillingPage from '@/src/pagesContent/Settings/Billing/pages/SettingsBillingPage.js'
+import BillingTransactionsPage from '../../../pagesContent/Settings/Billing/pages/BillingTransactionsPage.js'
+
 import RootLayout from '@/src/lib/layouts/RootLayout/RootLayout.js'
 
 export default function SettingsBillingPageRoot() {
   return (
     <>
-      <RootLayout title='Settings-Billing'>
-        <SettingsBillingPage />
+      <RootLayout title='Transactions'>
+        <BillingTransactionsPage />
       </RootLayout>
     </>
   )

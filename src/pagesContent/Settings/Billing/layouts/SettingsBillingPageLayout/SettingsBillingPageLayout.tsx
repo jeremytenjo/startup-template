@@ -1,12 +1,30 @@
 import React from 'react'
 import Box from '@useweb/ui/Box'
+import LinkTabs from '@useweb/ui/LinkTabs'
+
+import SettingsPagesLayout from '../../../_common/SettingsPagesLayout/SettingsPagesLayout.js'
 
 export type SettingsBillingPageLayoutProps = { children: any }
 
 export default function SettingsBillingPageLayout(props: SettingsBillingPageLayoutProps) {
   return (
-    <Box data-id='SettingsBillingPageLayout' sx={{}}>
-      {props.children}
-    </Box>
+    <SettingsPagesLayout>
+      <Box data-id='SettingsBillingPageLayout' sx={{}}>
+        <LinkTabs
+          links={[
+            { label: 'Transactions', hrefOverride: '/' },
+            {
+              label: 'Stripe Account',
+            },
+          ]}
+          urlBase='settings/billing'
+          sx={{
+            mb: 2,
+            mt: [-4, , -3],
+          }}
+        />
+        {props.children}
+      </Box>
+    </SettingsPagesLayout>
   )
 }
