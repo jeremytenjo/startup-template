@@ -66,7 +66,7 @@ export default function CreateConnectedAccountCard(
           ...islandStyles,
         }}
       >
-        {!auth.user?.stripeConnectedAccountId ? (
+        {auth.user?.stripeConnectedAccountId ? (
           <ActionBox
             data-id='NoConnectedAccountId'
             headerProps={{
@@ -113,21 +113,41 @@ export default function CreateConnectedAccountCard(
               <Box
                 sx={{
                   display: 'grid',
-                  gap: 2,
+                  gap: 5,
                 }}
               >
-                <Box
+                <ActionBox
                   data-id='MissingDetails'
-                  sx={{
-                    ...islandStyles,
-                    display: 'grid',
-                    gap: 2,
+                  headerProps={{
+                    title: 'Create Stripe Account',
+                    subTitle: props.createStripeAccountSubTitle,
                   }}
+                  singleCTA
+                  ctas={
+                    <>
+                      <Button
+                        name='CompleteConnectedAccount'
+                        sx={{
+                          width: ['100%', 'fit-content'],
+                        }}
+                        loading={finishCreatingConnectedAccount.loading}
+                        onClick={() => {
+                          finishCreatingConnectedAccount.exec()
+                        }}
+                        variant='white'
+                      >
+                        <StripeIcon
+                          sx={{
+                            width: '20px',
+                            mr: '8px',
+                          }}
+                        />
+                        Finish Creating Stripe Account
+                      </Button>
+                    </>
+                  }
+                  sx={{}}
                 >
-                  <CreateStripeAccountHeader
-                    subTitle={props.createStripeAccountSubTitle}
-                  />
-
                   <Alert severity='warning' sx={{}}>
                     Misssing details, please complete your Stripe account
                   </Alert>
@@ -136,27 +156,8 @@ export default function CreateConnectedAccountCard(
                     error={finishCreatingConnectedAccount.error}
                     message='Error finishing Stripe account'
                   />
+                </ActionBox>
 
-                  <Button
-                    name='CompleteConnectedAccount'
-                    sx={{
-                      width: ['100%', 'fit-content'],
-                    }}
-                    loading={finishCreatingConnectedAccount.loading}
-                    onClick={() => {
-                      finishCreatingConnectedAccount.exec()
-                    }}
-                    variant='white'
-                  >
-                    <StripeIcon
-                      sx={{
-                        width: '20px',
-                        mr: '8px',
-                      }}
-                    />
-                    Finish Creating Stripe Account
-                  </Button>
-                </Box>
                 <DeleteStripeAccountCard />
               </Box>
             )}
