@@ -1,4 +1,4 @@
-<h1 align="center">Startup Template</h1>
+<h1 align="center">Startup Template One</h1>
 
 This is a template for a startup website. It includes common pages, components, and data that are typically found on a startup website.
 
