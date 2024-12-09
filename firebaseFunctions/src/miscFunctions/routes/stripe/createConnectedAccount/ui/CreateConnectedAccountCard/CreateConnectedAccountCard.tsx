@@ -39,6 +39,8 @@ export default function CreateConnectedAccountCard(
   const createConnectedAccount = useCreateStripeConnectedAccount({
     userToCreateAccount: props.userToCreateAccount,
   })
+
+  // TODO fix useMiscFunctionsClient and useMiscFunctions name convention
   const connectedAccount = useMiscFunctions<API_GetConnectedAccountProps>({
     currentUser: auth.user,
     id: auth.user?.stripeConnectedAccountId || undefined,

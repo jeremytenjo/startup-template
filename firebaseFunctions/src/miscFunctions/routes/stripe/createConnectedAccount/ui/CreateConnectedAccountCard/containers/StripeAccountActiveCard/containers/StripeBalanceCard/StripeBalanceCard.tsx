@@ -18,6 +18,7 @@ import type { API_GetStripeBalanceProps } from '../../../../../../../getStripeBa
 export default function StripeBalanceCard() {
   const auth = useAuth()
 
+  // TODO fix useMiscFunctionsClient and useMiscFunctions name convention
   const stripeBalance = useMiscFunctions<API_GetStripeBalanceProps>({
     currentUser: auth.user,
     id: auth.user?.stripeConnectedAccountId || undefined,
