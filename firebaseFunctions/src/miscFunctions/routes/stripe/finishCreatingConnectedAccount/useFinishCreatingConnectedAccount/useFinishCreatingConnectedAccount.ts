@@ -29,6 +29,11 @@ export default function useFinishCreatingConnectedAccount(
           userToCreateAccount: props.userToCreateAccount,
         },
       },
+      options: {
+        onResult: async (p) => {
+          window.location.href = p.result.data?.[0].accountLink.url
+        },
+      },
     })
 
   const stripeConnectedAccountQuery: ConnetetedAccountUrlQueryNames = router.query[
