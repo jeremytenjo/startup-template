@@ -13,6 +13,8 @@ import StripeBalanceItem from '../../../../../../../../../../../../src/lib/integ
 import AvailableBalanceIcon from '../../../../../../../../../../../../src/lib/components/icons/AvailableBalanceIcon.js'
 import PendingBalanceIcon from '../../../../../../../../../../../../src/lib/components/icons/PendingBalanceIcon.js'
 import StripeIcon from '../../../../../../../../../../../../src/lib/components/icons/StripeIcon.js'
+import type { API_GetStripeConnectedAccountDashboardLinkProps } from '../../../../../../../getStripeConnectedAccountDashboardLink/getStripeConnectedAccountDashboardLink.js'
+import useMiscFunctions from '../../../../../../../../../utils/useMiscFunctions/useMiscFunctions.js'
 
 export default function StripeBalanceCard() {
   const auth = useAuth()
@@ -31,9 +33,17 @@ export function StripeBalanceCardUi(props: StripeBalanceCardUiProps) {
     connectedAccountId: props.user?.stripeConnectedAccountId || undefined,
   })
 
-  const stripeAccountDashboardLink = useGetStripeConnectedAccountDashboardLink({
-    connectedAccountId: props.user?.stripeConnectedAccountId || undefined,
-  })
+  const stripeAccountDashboardLink =
+    useMiscFunctions<API_GetStripeConnectedAccountDashboardLinkProps>({
+      currentUser: props.user,
+      id: props.user?.stripeConnectedAccountId || undefined,
+      api: {
+        route: 'routes/getStripeConnectedAccountDashboardLink',
+        payload: {
+          connectedAccountId: props.user.stripeConnectedAccountId || '',
+        },
+      },
+    })
 
   const error = stripeBalance.get.error || stripeAccountDashboardLink.get.error
   const loading = Boolean(
@@ -62,7 +72,9 @@ export function StripeBalanceCardUi(props: StripeBalanceCardUiProps) {
       ctas={
         <>
           <Link
-            href={stripeAccountDashboardLink.get?.firstItem?.dashboardLink?.url || ''}
+            href={
+              stripeAccountDashboardLink.get?.firstItem?.[0]?.dashboardLink?.url || ''
+            }
             newTab
           >
             <Button
@@ -72,7 +84,9 @@ export function StripeBalanceCardUi(props: StripeBalanceCardUiProps) {
                 display: 'flex',
                 alignItems: 'center',
               }}
-              disabled={!stripeAccountDashboardLink.get?.firstItem?.dashboardLink?.url}
+              disabled={
+                !stripeAccountDashboardLink.get?.firstItem?.[0]?.dashboardLink?.url
+              }
               loading={loading}
               variant='white'
             >

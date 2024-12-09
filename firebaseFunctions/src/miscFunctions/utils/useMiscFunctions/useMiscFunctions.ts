@@ -36,11 +36,9 @@ export default function useMiscFunctions<RouteSchema extends ApiRouteSchema>(
   props: Partial<UseMiscFunctionsProps<RouteSchema>> & {
     currentUser: UserSchema | undefined
     id: string | undefined
-    fetchOnTrue?: boolean
     allowUnauthenticatedUser?: boolean
   },
 ) {
-  const fetchOnTrue = props.fetchOnTrue === undefined ? true : props.fetchOnTrue
   const miscFunctions = useData<
     Awaited<
       MiscFunctionsClientReturn<RouteSchema>['data'] & {
@@ -50,7 +48,7 @@ export default function useMiscFunctions<RouteSchema extends ApiRouteSchema>(
     MiscFunctionsClientProps<RouteSchema>,
     MiscFunctionsClientProps<RouteSchema>['api']['payload']
   >({
-    id: fetchOnTrue
+    id: props?.id
       ? getMiscFunctionsDataId({
           authId: props.currentUser?.id,
           route: props.api?.route as string,
