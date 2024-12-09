@@ -6,15 +6,6 @@ import DeleteStripeAccountCard from './containers/DeleteStripeAccountCard/Delete
 
 export default function StripeAccountActiveCard() {
   return (
-    <Wrapper>
-      <StripeBalance />
-      <DeleteStripeAccountCard />
-    </Wrapper>
-  )
-}
-
-const Wrapper = ({ children }) => {
-  return (
     <Box
       data-id='StripeAccountActiveCard'
       sx={{
@@ -22,7 +13,8 @@ const Wrapper = ({ children }) => {
         gap: 2,
       }}
     >
-      {children}
+      <StripeBalance />
+      <DeleteStripeAccountCard />
     </Box>
   )
 }
