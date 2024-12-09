@@ -147,6 +147,10 @@ export default function CreateConnectedAccountCard(
                     </>
                   }
                   sx={{}}
+                  childrenSx={{
+                    display: 'grid',
+                    gap: 2,
+                  }}
                 >
                   <Alert severity='warning' sx={{}}>
                     Misssing details, please complete your Stripe account
