@@ -4,27 +4,13 @@ import ErrorMessage from '@useweb/ui/ErrorMessage'
 import ActionBox from '@useweb/ui/ActionBox'
 import ConfirmationButton from '@useweb/ui/ConfirmationButton'
 
-import useAuth from '../../../../../../../../../../../../src/data/users/utils/useAuth/useAuth.js'
 import CantDeleteStripeAccountAlert from '../../../../../../../../../../../../src/lib/integrations/Stripe/ui/CantDeleteStripeAccountAlert/CantDeleteStripeAccountAlert.js'
-import useMiscFunctionsPersist from '../../../../../../../../../utils/useMiscFunctionsPersist/useMiscFunctionsPersist.js'
-import type { API_GetStripeBalanceProps } from '../../../../../../../getStripeBalance/getStripeBalance.js'
 import useDeleteStripeAccount from '../../../../../../../deleteStripeAccount/useDeleteStripeAccount/useDeleteStripeAccount'
+import useGetStripeBalance from '../../../../../../../getStripeBalance/useGetStripeBalance/useGetStripeBalance'
 
 export default function DeleteStripeAccountCard() {
-  const auth = useAuth()
-
   const deleteStripeAccount = useDeleteStripeAccount()
-
-  const stripeBalance = useMiscFunctionsPersist<API_GetStripeBalanceProps>({
-    currentUser: auth.user,
-    id: auth.user?.stripeConnectedAccountId || undefined,
-    api: {
-      route: 'routes/getStripeBalance',
-      payload: {
-        connectedAccountId: auth.user?.stripeConnectedAccountId || '',
-      },
-    },
-  })
+  const stripeBalance = useGetStripeBalance()
 
   const availableBalance = stripeBalance.get.firstItem?.[0]?.balance.available?.[0]
   const pendingBalance = stripeBalance.get.firstItem?.[0]?.balance.pending?.[0]

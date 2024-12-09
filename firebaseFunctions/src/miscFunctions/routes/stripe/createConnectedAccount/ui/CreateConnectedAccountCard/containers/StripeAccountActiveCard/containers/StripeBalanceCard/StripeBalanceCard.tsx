@@ -13,22 +13,11 @@ import PendingBalanceIcon from '../../../../../../../../../../../../src/lib/comp
 import StripeIcon from '../../../../../../../../../../../../src/lib/components/icons/StripeIcon.js'
 import type { API_GetStripeConnectedAccountDashboardLinkProps } from '../../../../../../../getStripeConnectedAccountDashboardLink/getStripeConnectedAccountDashboardLink.js'
 import useMiscFunctionsPersist from '../../../../../../../../../utils/useMiscFunctionsPersist/useMiscFunctionsPersist.js'
-import type { API_GetStripeBalanceProps } from '../../../../../../../getStripeBalance/getStripeBalance.js'
+import useGetStripeBalance from '../../../../../../../getStripeBalance/useGetStripeBalance/useGetStripeBalance'
 
 export default function StripeBalanceCard() {
   const auth = useAuth()
-
-  // TODO fix useMiscFunctionsClient and useMiscFunctions name convention
-  const stripeBalance = useMiscFunctionsPersist<API_GetStripeBalanceProps>({
-    currentUser: auth.user,
-    id: auth.user?.stripeConnectedAccountId || undefined,
-    api: {
-      route: 'routes/getStripeBalance',
-      payload: {
-        connectedAccountId: auth.user?.stripeConnectedAccountId || '',
-      },
-    },
-  })
+  const stripeBalance = useGetStripeBalance()
 
   const stripeAccountDashboardLink =
     useMiscFunctionsPersist<API_GetStripeConnectedAccountDashboardLinkProps>({
