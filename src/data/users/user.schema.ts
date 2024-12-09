@@ -10,6 +10,7 @@ type UserSchema = {
   bannerUrl: FileInputValueSchema[0]
   agreedToTOSandPrivacyPolicy: DateSchema
   lastSignedIn: number
+  stripeConnectedAccountId: string | false
 }
 
 export default UserSchema
