@@ -12,7 +12,15 @@ export default function SettingsBillingPageLayout(props: SettingsBillingPageLayo
       <Box data-id='SettingsBillingPageLayout' sx={{}}>
         <LinkTabs
           links={[
-            { label: 'Transactions', hrefOverride: '/' },
+            {
+              label: 'Transactions',
+              hrefOverride: '/',
+              isActiveFn(p) {
+                return {
+                  isActive: p.pathname === '/settings/billing',
+                }
+              },
+            },
             {
               label: 'Stripe Account',
             },
