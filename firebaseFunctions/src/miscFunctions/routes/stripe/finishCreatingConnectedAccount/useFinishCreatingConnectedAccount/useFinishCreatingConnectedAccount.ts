@@ -3,8 +3,6 @@ import type UserSchema from '../../../../../../../src/data/users/user.schema.js'
 import {
   connetetedAccountUrlQuery,
   ConnetetedAccountUrlQueryNames,
-  getRefreshUrl,
-  getReturnUrl,
 } from '../../../../../../../src/lib/integrations/Stripe/utils/stripe.utils.config.js'
 import { useMiscFunctionsClient } from '../../../../utils/useMiscFunctionsClient/useMiscFunctionsClient.js'
 import type { API_FinishCreatingConnectedAccountProps } from '../finishCreatingConnectedAccount.js'
