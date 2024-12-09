@@ -1,13 +1,15 @@
 import { useEffect } from 'react'
+import { useRouter } from 'next/router'
+
 import type UserSchema from '../../../../../../../src/data/users/user.schema.js'
+import type {
+  ConnetetedAccountUrlQueryNames} from '../../../../../../../src/lib/integrations/Stripe/utils/stripe.utils.config.js';
 import {
-  connetetedAccountUrlQuery,
-  ConnetetedAccountUrlQueryNames,
+  connetetedAccountUrlQuery
 } from '../../../../../../../src/lib/integrations/Stripe/utils/stripe.utils.config.js'
 import { useMiscFunctionsClient } from '../../../../utils/useMiscFunctionsClient/useMiscFunctionsClient.js'
 import type { API_FinishCreatingConnectedAccountProps } from '../finishCreatingConnectedAccount.js'
-import { useRouter } from 'next/router'
-import useStripeUtilsConfig from '../../../../../../../src/lib/integrations/Stripe/utils/useStripeUtilsConfig/useStripeUtilsConfig'
+import useStripeUtilsConfig from '../../../../../../../src/lib/integrations/Stripe/utils/useStripeUtilsConfig/useStripeUtilsConfig.js'
 
 export type UseFinishCreatingConnectedAccountProps = {
   userToCreateAccount: UserSchema

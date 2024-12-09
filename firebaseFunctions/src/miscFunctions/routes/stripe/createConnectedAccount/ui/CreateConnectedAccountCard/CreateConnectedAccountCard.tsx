@@ -167,16 +167,3 @@ export default function CreateConnectedAccountCard(
     </Box>
   )
 }
-
-const CreateStripeAccountHeader = (props: { subTitle: string }) => {
-  return (
-    <PageTitleHeading
-      title='Create Stripe Account'
-      subTitle={props.subTitle}
-      size={2}
-      sx={{
-        mb: 0,
-      }}
-    />
-  )
-}

@@ -2,8 +2,8 @@ import { refetchFirestoreUser } from '@useweb/firebase/useFirebaseAuth'
 
 import type UserSchema from '../../../../../../../src/data/users/user.schema.js'
 import type { API_CreateConnectedAccountProps } from '../createConnectedAccount.js'
-import useStripeUtilsConfig from '../../../../../../../src/lib/integrations/Stripe/utils/useStripeUtilsConfig/useStripeUtilsConfig'
-import { useMiscFunctionsClient } from '../../../../utils/useMiscFunctionsClient/useMiscFunctionsClient'
+import useStripeUtilsConfig from '../../../../../../../src/lib/integrations/Stripe/utils/useStripeUtilsConfig/useStripeUtilsConfig.js'
+import { useMiscFunctionsClient } from '../../../../utils/useMiscFunctionsClient/useMiscFunctionsClient.js'
 
 export type UseCreateConnectedAccountProps = { userToCreateAccount: UserSchema }
 
