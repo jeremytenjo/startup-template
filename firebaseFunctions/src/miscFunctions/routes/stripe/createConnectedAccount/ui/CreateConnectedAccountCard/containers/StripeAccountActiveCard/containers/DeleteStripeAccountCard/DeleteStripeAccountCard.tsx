@@ -4,10 +4,12 @@ import ErrorMessage from '@useweb/ui/ErrorMessage'
 import ActionBox from '@useweb/ui/ActionBox'
 import ConfirmationButton from '@useweb/ui/ConfirmationButton'
 
-import useDeleteStripeAccount from '../../../../../../../deleteStripeAccount/utils/useDeleteStripeAccount/useDeleteStripeAccount.js'
-import useStripeBalance from '../../../../../../../getStripeBalance/utils/useStripeBalance/useStripeBalance.js'
 import useAuth from '../../../../../../../../../../../../src/data/users/utils/useAuth/useAuth.js'
 import CantDeleteStripeAccountAlert from '../../../../../../../../../../../../src/lib/integrations/Stripe/ui/CantDeleteStripeAccountAlert/CantDeleteStripeAccountAlert.js'
+import useMiscFunctions from '../../../../../../../../../utils/useMiscFunctions/useMiscFunctions.js'
+import type { API_GetStripeBalanceProps } from '../../../../../../../getStripeBalance/getStripeBalance.js'
+import type { API_DeleteStripeAccountProps } from '../../../../../../../deleteStripeAccount/deleteStripeAccount.js'
+import { useMiscFunctionsClient } from '../../../../../../../../../miscFunctions.client.js'
 
 export default function DeleteStripeAccountCard() {
   // use hooks to get data
@@ -25,14 +27,29 @@ export type DeleteStripeAccountCardUiProps = {
 export function DeleteStripeAccountCardUi(props: DeleteStripeAccountCardUiProps) {
   const auth = useAuth()
 
-  const deleteStripeAccount = useDeleteStripeAccount({
-    user: auth.user,
+  // TODO fix useMiscFunctionsClient and useMiscFunctions name convention
+  const deleteStripeAccount = useMiscFunctionsClient<API_DeleteStripeAccountProps>({
+    api: {
+      route: 'routes/deleteStripeAccount',
+      payload: {
+        connectedAccountId: auth.user?.stripeConnectedAccountId || '',
+      },
+    },
   })
-  const stripeBalance = useStripeBalance({
-    connectedAccountId: auth.user?.stripeConnectedAccountId || undefined,
+
+  const stripeBalance = useMiscFunctions<API_GetStripeBalanceProps>({
+    currentUser: auth.user,
+    id: auth.user?.stripeConnectedAccountId || undefined,
+    api: {
+      route: 'routes/getStripeBalance',
+      payload: {
+        connectedAccountId: auth.user?.stripeConnectedAccountId || '',
+      },
+    },
   })
-  const availableBalance = stripeBalance.get.firstItem?.balance.available?.[0]
-  const pendingBalance = stripeBalance.get.firstItem?.balance.pending?.[0]
+
+  const availableBalance = stripeBalance.get.firstItem?.[0]?.balance.available?.[0]
+  const pendingBalance = stripeBalance.get.firstItem?.[0]?.balance.pending?.[0]
   const hasBalance =
     !stripeBalance.get.fetching &&
     (availableBalance?.amount !== 0 || pendingBalance?.amount !== 0)

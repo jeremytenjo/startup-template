@@ -6,7 +6,6 @@ import Box from '@useweb/ui/Box'
 import Link from '@useweb/ui/Link'
 import Text from '@useweb/ui/Text'
 
-import type UserSchema from '../../../../../../../../../../../../src/data/users/user.schema.js'
 import useAuth from '../../../../../../../../../../../../src/data/users/utils/useAuth/useAuth.js'
 import StripeBalanceItem from '../../../../../../../../../../../../src/lib/integrations/Stripe/ui/StripeBalanceItem/StripeBalanceItem.js'
 import AvailableBalanceIcon from '../../../../../../../../../../../../src/lib/components/icons/AvailableBalanceIcon.js'
@@ -19,35 +18,25 @@ import type { API_GetStripeBalanceProps } from '../../../../../../../getStripeBa
 export default function StripeBalanceCard() {
   const auth = useAuth()
 
-  return <StripeBalanceCardUi user={auth.user} loading={!auth.user?.id} error={false} />
-}
-
-export type StripeBalanceCardUiProps = {
-  user: UserSchema
-  loading: boolean
-  error: any
-}
-
-export function StripeBalanceCardUi(props: StripeBalanceCardUiProps) {
   const stripeBalance = useMiscFunctions<API_GetStripeBalanceProps>({
-    currentUser: props.user,
-    id: props.user?.stripeConnectedAccountId || undefined,
+    currentUser: auth.user,
+    id: auth.user?.stripeConnectedAccountId || undefined,
     api: {
       route: 'routes/getStripeBalance',
       payload: {
-        connectedAccountId: props.user?.stripeConnectedAccountId || '',
+        connectedAccountId: auth.user?.stripeConnectedAccountId || '',
       },
     },
   })
 
   const stripeAccountDashboardLink =
     useMiscFunctions<API_GetStripeConnectedAccountDashboardLinkProps>({
-      currentUser: props.user,
-      id: props.user?.stripeConnectedAccountId || undefined,
+      currentUser: auth.user,
+      id: auth.user?.stripeConnectedAccountId || undefined,
       api: {
         route: 'routes/getStripeConnectedAccountDashboardLink',
         payload: {
-          connectedAccountId: props.user.stripeConnectedAccountId || '',
+          connectedAccountId: auth.user.stripeConnectedAccountId || '',
         },
       },
     })
