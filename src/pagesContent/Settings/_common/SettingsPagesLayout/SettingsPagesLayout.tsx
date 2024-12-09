@@ -33,7 +33,7 @@ export default function SettingsPagesLayout(props: SettingsPagesLayoutProps) {
           mb: ['15px', , '40px'],
         }}
         sx={{
-          mb: ['0px', , '30px'],
+          mb: ['0px', , '15px'],
         }}
       />
       <SettingsPagesLayoutContent>{props.children}</SettingsPagesLayoutContent>

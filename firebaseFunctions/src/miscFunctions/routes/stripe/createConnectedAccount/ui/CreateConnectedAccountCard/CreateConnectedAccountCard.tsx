@@ -56,7 +56,7 @@ export default function CreateConnectedAccountCard(
         }
         subTitle='Social Seed uses Stripe to get you paid quickly and keep your personal and payment information secure. Thousands of companies around the world trust Stripe to process payments for their users. Set up a Stripe account to get paid with Social Seed.'
         size={2}
-        sx={{ mb: 2 }}
+        sx={{ mb: 4 }}
       />
       <Skeleton
         loading={!auth.user?.id || connectedAccount.get.fetching}
