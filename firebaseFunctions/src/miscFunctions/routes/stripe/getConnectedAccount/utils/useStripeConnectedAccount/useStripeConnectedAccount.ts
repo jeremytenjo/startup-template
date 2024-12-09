@@ -1,11 +1,10 @@
 import useData from '@useweb/use-data'
+import logError from '@/src/lib/utils/loggers/logError/logError'
 
 import getConnectedAccountClient, {
   type GetConnectedAccountProps,
   type GetConnectedAccountReturn,
 } from '../../getConnectedAccount.client.js'
-
-import logError from '@/src/lib/utils/loggers/logError/logError'
 
 export type UseConnectedAccountProps = Partial<GetConnectedAccountProps>
 

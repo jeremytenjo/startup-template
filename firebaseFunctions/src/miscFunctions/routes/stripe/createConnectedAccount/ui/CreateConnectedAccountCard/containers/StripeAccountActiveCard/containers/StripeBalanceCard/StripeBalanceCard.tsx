@@ -7,13 +7,12 @@ import Link from '@useweb/ui/Link'
 import Text from '@useweb/ui/Text'
 
 import useStripeBalance from '../../../../../../../getStripeBalance/utils/useStripeBalance/useStripeBalance.js'
-import useAuth from '../../../../../../../../../data/users/utils/useAuth/useAuth.js'
-import StripeBalanceItem from '../../../../../../../../../lib/integrations/Stripe/ui/StripeBalanceItem/StripeBalanceItem.js'
-import AvailableBalanceIcon from '../../../../../../../../../lib/components/icons/AvailableBalanceIcon.js'
-import PendingBalanceIcon from '../../../../../../../../../lib/components/icons/PendingBalanceIcon.js'
-import { useGetStripeConnectedAccountDashboardLink } from '../../../../../../../getStripeConnectedAccountDashboardLink/getStripeConnectedAccountDashboardLink.client.js'
-import type UserSchema from '../../../../../../../../../data/users/user.schema.js'
-import StripeIcon from '../../../../../../../../../lib/components/icons/StripeIcon.js'
+import type UserSchema from '../../../../../../../../../../../../src/data/users/user.schema.js'
+import useAuth from '../../../../../../../../../../../../src/data/users/utils/useAuth/useAuth.js'
+import StripeBalanceItem from '../../../../../../../../../../../../src/lib/integrations/Stripe/ui/StripeBalanceItem/StripeBalanceItem.js'
+import AvailableBalanceIcon from '../../../../../../../../../../../../src/lib/components/icons/AvailableBalanceIcon.js'
+import PendingBalanceIcon from '../../../../../../../../../../../../src/lib/components/icons/PendingBalanceIcon.js'
+import StripeIcon from '../../../../../../../../../../../../src/lib/components/icons/StripeIcon.js'
 
 export default function StripeBalanceCard() {
   const auth = useAuth()

@@ -1,23 +1,23 @@
 import useAsync from '@useweb/use-async'
 
-import type { FinishCreatingConnectedAccountReturn } from '../../finishCreatingConnectedAccount.client.js'
-import finishCreatingConnectedAccountClient from '../../finishCreatingConnectedAccount.client.js'
-import logError from '../../../../../lib/utils/loggers/logError/logError.js'
-import type UserSchema from '../../../../../data/users/user.schema.js'
-import useAuth from '../../../../../data/users/utils/useAuth/useAuth.js'
 import {
   getRefreshUrl,
   getReturnUrl,
-} from '../../../../../lib/integrations/Stripe/utils/stripe.utils.config.js'
+} from '../../../../../../../../src/lib/integrations/Stripe/utils/stripe.utils.config.js'
+import type UserSchema from '../../../../../../../../src/data/users/user.schema.js'
+import useAuth from '../../../../../../../../src/data/users/utils/useAuth/useAuth.js'
+import logError from '../../../../../../../../src/lib/utils/loggers/logError/logError.js'
+import type { FinishCreatingConnectedAccountReturn } from '../../finishCreatingConnectedAccount.js'
+import finishCreatingConnectedAccount from '../../finishCreatingConnectedAccount.js'
 
 export type UseFinishCreatingConnectedAccountProps = {
   userToCreateAccount: UserSchema
 }
 
-export async function finishCreatingConnectedAccount(
+export async function usefinishCreatingConnectedAccount(
   props: UseFinishCreatingConnectedAccountProps,
 ) {
-  const res = await finishCreatingConnectedAccountClient({
+  const res = await finishCreatingConnectedAccount({
     userToCreateAccount: props.userToCreateAccount,
     refreshUrl: getRefreshUrl(),
     returnUrl: getReturnUrl(),
@@ -40,10 +40,6 @@ export default function useFinishCreatingConnectedAccount(
     fn: async (execProps = props) => {
       if (!auth.user?.id) {
         throw new Error('User is not logged in')
-      }
-
-      if (auth.user?.accountType === 'developer') {
-        throw new Error("Developer can't complete connected accounts")
       }
 
       return await finishCreatingConnectedAccount(execProps)

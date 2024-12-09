@@ -5,9 +5,9 @@ import ActionBox from '@useweb/ui/ActionBox'
 import ConfirmationButton from '@useweb/ui/ConfirmationButton'
 
 import useDeleteStripeAccount from '../../../../../../../deleteStripeAccount/utils/useDeleteStripeAccount/useDeleteStripeAccount.js'
-import useAuth from '../../../../../../../../../data/users/utils/useAuth/useAuth.js'
 import useStripeBalance from '../../../../../../../getStripeBalance/utils/useStripeBalance/useStripeBalance.js'
-import CantDeleteStripeAccountAlert from '../../../../../../../../../lib/integrations/Stripe/ui/CantDeleteStripeAccountAlert/CantDeleteStripeAccountAlert.js'
+import useAuth from '../../../../../../../../../../../../src/data/users/utils/useAuth/useAuth.js'
+import CantDeleteStripeAccountAlert from '../../../../../../../../../../../../src/lib/integrations/Stripe/ui/CantDeleteStripeAccountAlert/CantDeleteStripeAccountAlert.js'
 
 export default function DeleteStripeAccountCard() {
   // use hooks to get data
@@ -73,11 +73,7 @@ export function DeleteStripeAccountCardUi(props: DeleteStripeAccountCardUiProps)
               children: (
                 <>
                   <Text
-                    text={
-                      auth.user?.accountType === 'developer'
-                        ? `You will not be able to accept advertisement offers if you delete your stripe account. Are you sure you want to delete your account?`
-                        : `You won't be able to accept sponsorships if you delete your account. Are you sure you want to delete your account?`
-                    }
+                    text={`You will not be able to receive money if you delete your account. Are you sure you want to delete your account?`}
                     tag='p'
                     sx={{}}
                   />
@@ -90,11 +86,7 @@ export function DeleteStripeAccountCardUi(props: DeleteStripeAccountCardUiProps)
       sx={{}}
     >
       <Text
-        text={
-          auth.user?.accountType === 'developer'
-            ? `You will not be able to accept advertisement offers if you delete your stripe account.`
-            : `You won't be able to accept sponsorships if you delete your account.`
-        }
+        text={`You will not be able to accept offers if you delete your account.`}
         variant='body3'
         tag='p'
         sx={{

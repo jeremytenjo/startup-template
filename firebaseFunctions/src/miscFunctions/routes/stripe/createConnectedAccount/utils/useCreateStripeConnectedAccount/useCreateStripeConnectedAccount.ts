@@ -1,15 +1,15 @@
 import useAsync from '@useweb/use-async'
 import { updateUserData } from '@useweb/firebase/useFirebaseAuth'
 
-import type UserSchema from '../../../../../data/users/user.schema.js'
 import type { CreateConnectedAccountReturn } from '../../createConnectedAccount.client.js'
 import createConnectedAccountClient from '../../createConnectedAccount.client.js'
-import logError from '../../../../../lib/utils/loggers/logError/logError.js'
-import useAuth from '../../../../../data/users/utils/useAuth/useAuth.js'
 import {
   getRefreshUrl,
   getReturnUrl,
-} from '../../../../../lib/integrations/Stripe/utils/stripe.utils.config.js'
+} from '../../../../../../../../src/lib/integrations/Stripe/utils/stripe.utils.config.js'
+import type UserSchema from '../../../../../../../../src/data/users/user.schema.js'
+import useAuth from '../../../../../../../../src/data/users/utils/useAuth/useAuth.js'
+import logError from '../../../../../../../../src/lib/utils/loggers/logError/logError.js'
 
 export type UseCreateConnectedAccountProps = { userToCreateAccount: UserSchema }
 

@@ -4,7 +4,7 @@ import getStripeBalanceClient, {
   type GetStripeBalanceProps,
   type GetStripeBalanceReturn,
 } from '../../getStripeBalance.client.js'
-import logError from '../../../../../lib/utils/loggers/logError/logError.js'
+import logError from '../../../../../../../../src/lib/utils/loggers/logError/logError.js'
 
 export type UseStripeBalanceProps = {
   connectedAccountId: GetStripeBalanceProps['connectedAccountId'] | undefined

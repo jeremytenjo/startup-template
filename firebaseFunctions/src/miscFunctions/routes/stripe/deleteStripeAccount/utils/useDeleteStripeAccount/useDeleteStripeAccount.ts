@@ -1,9 +1,9 @@
 import useAsync from '@useweb/use-async'
 import { updateUserData } from '@useweb/firebase/useFirebaseAuth'
 
-import type { DeleteStripeAccountReturn } from '../../deleteStripeAccount.client.js'
 import deleteStripeAccountClient from '../../deleteStripeAccount.client.js'
 import type UserSchema from '../../../../../../../../src/data/users/user.schema.js'
+import type { DeleteStripeAccountReturn } from '../../deleteStripeAccount.js'
 
 export type UseDeleteStripeAccountProps = {
   user: UserSchema

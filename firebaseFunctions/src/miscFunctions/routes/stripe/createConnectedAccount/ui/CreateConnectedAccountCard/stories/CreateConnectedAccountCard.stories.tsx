@@ -5,14 +5,11 @@ import React from 'react'
 import CreateConnectedAccountCard, {
   type CreateConnectedAccountCardProps,
 } from '../CreateConnectedAccountCard.js'
-import userStubs from '../../../../../../data/users/users.stubs.js'
-import type UserSchema from '../../../../../../data/users/user.schema.js'
+import userStubs from '../../../../../../../../../src/data/users/users.stubs.js'
 
 const defaultArgs: CreateConnectedAccountCardProps = {
   createStripeAccountSubTitle: 'Create a Stripe account',
-  userToCreateAccount: userStubs.find(
-    (user) => user?.accountType === 'creator',
-  ) as UserSchema,
+  userToCreateAccount: userStubs[0],
 }
 
 export default {

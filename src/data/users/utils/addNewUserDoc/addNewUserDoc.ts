@@ -27,6 +27,7 @@ export default async function addNewUserDoc(props: AddNewUserDocProps) {
     bannerUrl: { src: '', type: 'image' },
     agreedToTOSandPrivacyPolicy: getToday(),
     lastSignedIn: getToday(),
+    stripeConnectedAccountId: false,
   }
 
   await addUserToFirestore<UserSchema>({

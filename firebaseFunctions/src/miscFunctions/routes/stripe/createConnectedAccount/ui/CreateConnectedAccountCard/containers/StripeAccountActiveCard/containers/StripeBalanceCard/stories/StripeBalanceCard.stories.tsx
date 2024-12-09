@@ -5,7 +5,7 @@ import {
   StripeBalanceCardUi,
   type StripeBalanceCardUiProps,
 } from '../StripeBalanceCard.js'
-import userStubs from '../../../../../../../../../../data/users/users.stubs.js'
+import userStubs from '../../../../../../../../../../../../../src/data/users/users.stubs.js'
 
 const defaultArgs: StripeBalanceCardUiProps = {
   loading: false,
