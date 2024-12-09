@@ -3,7 +3,7 @@ import { updateUserData } from '@useweb/firebase/useFirebaseAuth'
 
 import type { DeleteStripeAccountReturn } from '../../deleteStripeAccount.client.js'
 import deleteStripeAccountClient from '../../deleteStripeAccount.client.js'
-import type UserSchema from '../../../../../data/users/user.schema.js'
+import type UserSchema from '../../../../../../../../src/data/users/user.schema.js'
 
 export type UseDeleteStripeAccountProps = {
   user: UserSchema
