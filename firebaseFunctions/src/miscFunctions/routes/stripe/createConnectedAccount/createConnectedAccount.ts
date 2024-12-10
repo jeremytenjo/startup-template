@@ -80,7 +80,7 @@ export default async function createConnectedAccount(
     .collection(usersCollectionName)
     .doc(props.authUser.uid)
     .update({
-      stripeConnectedAccountId: false,
+      stripeConnectedAccountId: createdConnectedAccount.id,
     } satisfies Partial<UserSchema>)
 
   try {
