@@ -1,7 +1,7 @@
 import { type PostHogConfig } from 'posthog-js'
 
 export default {
-  id: undefined,
+  id: 110225,
   initContig: {
     api_host: 'https://app.posthog.com',
     autocapture: false,
