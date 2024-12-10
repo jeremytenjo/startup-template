@@ -66,7 +66,7 @@ export default function CreateConnectedAccountCard(
           ...islandStyles,
         }}
       >
-        {auth.user?.stripeConnectedAccountId ? (
+        {!auth.user?.stripeConnectedAccountId ? (
           <ActionBox
             data-id='NoConnectedAccountId'
             headerProps={{
