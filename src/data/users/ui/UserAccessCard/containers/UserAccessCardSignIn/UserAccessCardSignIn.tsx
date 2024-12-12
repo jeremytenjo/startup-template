@@ -102,7 +102,7 @@ export default function UserAccessCardSignIn(props: UserAccessCardSignInProps) {
           }}
         />
         <Text
-          text={`Or log in via email`}
+          text={`Or sign in via email`}
           sx={{
             textAlign: 'center',
           }}
