@@ -19,6 +19,7 @@ import { noAccountErrorMessage } from '../../../../utils/signIn/ContinueWithGoog
 import AccountAccessCta from '../../../AccountAccessCTA/AccountAccessCta.js'
 import appConfig from '../../../../../../../app.config.js'
 import { allNavLinks } from '../../../../../mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
+import { Island } from '../../../../../../theme/UiTheme/commonStyles/islandStyles.js'
 
 export type UserAccessCardSignInProps = {
   redirectOnSignIn?: boolean
@@ -177,6 +178,26 @@ export default function UserAccessCardSignIn(props: UserAccessCardSignInProps) {
           </Link>
         )}
       </Form>
+
+      <Island
+        sx={{
+          mt: '50px',
+          textAlign: 'center',
+          backgroundColor: 'neutral.400',
+        }}
+      >
+        <Text text={`Don't have an account? `} tag='span' sx={{}} />
+        <Link href={allNavLinks.access.signUp.url}>
+          <Text
+            text={`Sign up`}
+            tag='span'
+            sx={{
+              color: 'primary.main',
+              fontWeight: 500,
+            }}
+          />
+        </Link>
+      </Island>
     </>
   )
 }

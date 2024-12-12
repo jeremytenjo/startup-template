@@ -2,10 +2,8 @@ import React from 'react'
 import Box from '@useweb/ui/Box'
 import Text from '@useweb/ui/Text'
 import Image from '@useweb/ui/Image'
-import { LinkTabsList } from '@useweb/ui/LinkTabs'
 
 import appConfig from '../../../../../../../app.config.js'
-import { allNavLinks } from '../../../../../mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
 
 export type UserAccessCardHeaderProps = {
   title?: string
@@ -84,59 +82,6 @@ export default function UserAccessCardHeader(props: UserAccessCardHeaderProps) {
           />
         )}
       </Box>
-
-      <LinkTabsList
-        data-id='UserAccessCardTabs'
-        urlBase=''
-        links={[
-          {
-            label: 'Sign Up',
-            hrefOverride: allNavLinks.access.signUp?.url,
-            isActiveFn(p) {
-              const isActive = p.pathname === allNavLinks.access.signUp?.url
-              return {
-                isActive,
-              }
-            },
-          },
-          {
-            label: 'Sign In',
-            hrefOverride: allNavLinks.access.signIn?.url,
-            isActiveFn(p) {
-              const isActive = p.pathname === allNavLinks.access.signIn?.url
-              return {
-                isActive,
-              }
-            },
-          },
-        ]}
-        sx={{
-          mb: 2,
-          width: '100%',
-          gridTemplateColumns: '1fr 1fr',
-          borderRadius: '14px',
-          borderColor: 'neutral.300',
-          color: 'neutral.200',
-
-          '& [data-id="LinkTab"]': {
-            justifyContent: 'center',
-            backgroundColor: 'transparent',
-            border: 'none',
-
-            '&:hover': {
-              backgroundColor: 'transparent',
-            },
-
-            '&[data-is-active="true"]': {
-              border: '1px solid',
-              borderColor: 'neutral.300',
-              borderRadius: '14px',
-              backgroundColor: 'neutral.350',
-              color: 'neutral.100',
-            },
-          },
-        }}
-      />
     </Box>
   )
 }

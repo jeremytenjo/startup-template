@@ -1,5 +1,7 @@
 import React from 'react'
 import Form from '@useweb/ui/Form'
+import Text from '@useweb/ui/Text'
+import Link from '@useweb/ui/Link'
 
 import type {
   SignUpFormEmailPasswordDataSchema,
@@ -7,6 +9,8 @@ import type {
 } from '../../../../utils/useAuth/useAuth.js'
 import useAuth from '../../../../utils/useAuth/useAuth.js'
 import useOnSignUpActions from '../../../../utils/signUp/useOnSignUpActions/useOnSignUpActions.js'
+import { Island } from '../../../../../../theme/UiTheme/commonStyles/islandStyles.js'
+import { allNavLinks } from '../../../../../mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
 
 import UserAccessCardSignUpExistingUser from './containers/UserAccessCardSignUpExistingUser/UserAccessCardSignUpExistingUser.js'
 import UserAccessCardSignUpLastStep from './containers/UserAccessCardSignUpLastStep/UserAccessCardSignUpLastStep.js'
@@ -33,25 +37,47 @@ export default function UserAccessCardSignUp(props: UserAccessCardSignUpProps) {
   })
 
   return (
-    <Form<UserAccessCardSignUpFormSchema>
-      data-id='UserAccessCardSignUpForm'
-      sx={{
-        display: 'grid',
-        gap: 2,
-        width: '100%',
-      }}
-      onSubmit={({ formValues: formProps }) => {
-        auth.signUp.exec({
-          emailPasswordData: {
-            ...formProps,
-          },
-        })
-      }}
-    >
-      {auth.user?.id && <UserAccessCardSignUpExistingUser />}
-      {!auth.user?.id && <UserAccessCardSignUpLastStep auth={auth} />}
-      <UserAccessCardSignUpErrorMessage auth={auth} />
-      <UserAccessCardSignUpAknowledgmentAcknowledgment />
-    </Form>
+    <>
+      <Form<UserAccessCardSignUpFormSchema>
+        data-id='UserAccessCardSignUpForm'
+        sx={{
+          display: 'grid',
+          gap: 2,
+          width: '100%',
+        }}
+        onSubmit={({ formValues: formProps }) => {
+          auth.signUp.exec({
+            emailPasswordData: {
+              ...formProps,
+            },
+          })
+        }}
+      >
+        {auth.user?.id && <UserAccessCardSignUpExistingUser />}
+        {!auth.user?.id && <UserAccessCardSignUpLastStep auth={auth} />}
+        <UserAccessCardSignUpErrorMessage auth={auth} />
+        <UserAccessCardSignUpAknowledgmentAcknowledgment />
+      </Form>
+
+      <Island
+        sx={{
+          mt: '50px',
+          textAlign: 'center',
+          backgroundColor: 'neutral.400',
+        }}
+      >
+        <Text text={`Already have an account? `} tag='span' sx={{}} />
+        <Link href={allNavLinks.access.signIn.url}>
+          <Text
+            text={`Sign in`}
+            tag='span'
+            sx={{
+              color: 'primary.main',
+              fontWeight: 500,
+            }}
+          />
+        </Link>
+      </Island>
+    </>
   )
 }

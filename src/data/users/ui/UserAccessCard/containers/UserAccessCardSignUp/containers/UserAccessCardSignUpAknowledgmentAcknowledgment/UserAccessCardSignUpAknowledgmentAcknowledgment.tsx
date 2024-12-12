@@ -23,7 +23,9 @@ export default function UserAccessCardSignUpAknowledgmentAcknowledgment(
       <Text
         text={`By continuing with an account, you agree to our `}
         tag='span'
-        sx={{}}
+        sx={{
+          color: 'neutral.150',
+        }}
       />
 
       <Link href={allNavLinks.tos.url} newTab>
@@ -31,19 +33,25 @@ export default function UserAccessCardSignUpAknowledgmentAcknowledgment(
           text={`Terms of Service `}
           tag='span'
           sx={{
-            color: 'primary.light',
+            fontWeight: '700',
           }}
         />
       </Link>
 
-      <Text text={`and acknowledge that you have read our `} tag='span' sx={{}} />
+      <Text
+        text={`and acknowledge that you have read our `}
+        tag='span'
+        sx={{
+          color: 'neutral.150',
+        }}
+      />
 
       <Link href={allNavLinks.privacyPolicy.url} newTab>
         <Text
           text={`Privacy Policy.`}
           tag='span'
           sx={{
-            color: 'primary.light',
+            fontWeight: '700',
           }}
         />
       </Link>
