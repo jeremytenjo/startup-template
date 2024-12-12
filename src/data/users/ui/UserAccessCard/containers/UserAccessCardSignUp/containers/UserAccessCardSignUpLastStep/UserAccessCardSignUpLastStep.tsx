@@ -2,7 +2,6 @@ import React from 'react'
 import Box from '@useweb/ui/Box'
 import { useFormContext } from '@useweb/ui/Form'
 import TextField from '@useweb/ui/TextField'
-import Text from '@useweb/ui/Text'
 
 import type {
   SignUpFetcherProps,
@@ -43,12 +42,8 @@ export default function UserAccessCardSignUpLastStep(
 
           props.auth.signUp.exec({ signUpWithGoogle: signUpWithGoogleProps })
         }}
-      />
-
-      <Text
-        text={`Or sign up via email`}
         sx={{
-          textAlign: 'center',
+          mb: 1,
         }}
       />
 
