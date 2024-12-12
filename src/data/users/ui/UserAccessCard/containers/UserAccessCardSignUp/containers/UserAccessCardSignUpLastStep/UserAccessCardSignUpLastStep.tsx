@@ -42,9 +42,6 @@ export default function UserAccessCardSignUpLastStep(
 
           props.auth.signUp.exec({ signUpWithGoogle: signUpWithGoogleProps })
         }}
-        sx={{
-          mb: 1,
-        }}
       />
 
       {showEmailSignUpoptions ? (
