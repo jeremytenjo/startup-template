@@ -80,13 +80,6 @@ export default function ChangePasswordForm(props: ChangePasswordFormProps) {
           subTitle,
         }}
         singleCTA
-        ctas={
-          <>
-            <Button name='Save' disabled>
-              Save
-            </Button>
-          </>
-        }
         sx={{}}
       >
         <Alert severity='info'>

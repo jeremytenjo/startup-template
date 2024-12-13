@@ -97,6 +97,7 @@ export default function AuthUserSetter(props: AuthUserSetterProps) {
         data-id='AuthUserSetter'
         wrapperSx={{
           zIndex: 1000,
+          border: 'none',
         }}
         title={
           auth.user?.displayName ? `Signed in as ${auth.user?.displayName}` : 'Sign in'
