@@ -47,13 +47,6 @@ export default function ChangePasswordForm(props: ChangePasswordFormProps) {
           subTitle,
         }}
         singleCTA
-        ctas={
-          <>
-            <Button name='Save' disabled>
-              Save
-            </Button>
-          </>
-        }
         sx={{}}
       >
         <Skeleton count={4} loading>
