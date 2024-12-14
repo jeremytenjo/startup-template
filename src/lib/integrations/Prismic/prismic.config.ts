@@ -1,6 +1,6 @@
 import * as prismic from '@prismicio/client'
 
-const prismicProjectName = 'startup-template'
+const prismicProjectName = 'startup-template-one'
 const accessToken =
   'MC5aMC1QRFJNQUFDSUE5UEd3.Vu-_ve-_ve-_vTnvv71c77-977-9SQ7vv71e77-9DRNpSHjvv70ZQhYcO--_ve-_vXLvv73vv73vv71F'
 const apiEndpoint = `https://${prismicProjectName}.prismic.io/api/v2`
