@@ -4,6 +4,7 @@ import Text from '@useweb/ui/Text'
 
 import FullLogoLink from '../../../../components/logo/FullLogoLink/FullLogoLink.js'
 import useIsAccessPage from '../../../../../data/users/utils/useIsAccessPage/useIsAccessPage.js'
+import appConfig from '../../../../../../app.config.js'
 
 import RootFooterLinks from './containers/RootFooterLinks/RootFooterLinks.js'
 
@@ -58,7 +59,7 @@ export default function RootFooter() {
             }}
           />
           <Text
-            text={`Startup LLC. ${new Date().getFullYear()}`}
+            text={`${appConfig.siteInfo.name} LLC. ${new Date().getFullYear()}`}
             sx={{
               color: 'neutral.100',
               fontWeight: 400,
