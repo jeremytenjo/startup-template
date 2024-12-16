@@ -61,7 +61,7 @@ export default function RootFooter() {
           <Text
             text={`${appConfig.siteInfo.name} LLC. ${new Date().getFullYear()}`}
             sx={{
-              color: 'neutral.100',
+              color: 'neutral.200',
               fontWeight: 400,
               fontSize: 12,
             }}
