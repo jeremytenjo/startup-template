@@ -24,7 +24,7 @@ export default function RootFooterLinksListContent(
             newTab={link.newTab}
             sx={{
               color: 'neutral.100',
-              fontWeight: 400,
+              fontWeight: '400 !important',
               fontSize: '13px',
               lineHeight: '24px',
               textAlign: 'left',
