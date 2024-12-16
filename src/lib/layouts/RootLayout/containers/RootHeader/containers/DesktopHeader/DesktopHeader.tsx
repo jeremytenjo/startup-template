@@ -3,7 +3,6 @@ import Box from '@useweb/ui/Box'
 import List from '@useweb/ui/List'
 import NavLink from '@useweb/ui/NavLink'
 
-import { otherTokens } from '../../../../../../../theme/tokens/otherTokens.js'
 import FullLogoLink from '../../../../../../components/logo/FullLogoLink/FullLogoLink.js'
 import useMainNavLinks, {
   allNavLinks,
@@ -14,6 +13,7 @@ import NotificationsPopover from '../../../../../../../data/notifications/querie
 import useOnNewNotificationReceived from '../../../../../../../data/notifications/queries/Notifications/useOnNewNotificationReceived/useOnNewNotificationReceived.js'
 import SignUpLink from '../../../../../../../data/mainNavLinks/ui/SignUpLink/SignUpLink.js'
 import ProfilePhotoMenu from '../../../../../../../data/mainNavLinks/ui/ProfilePhotoMenu/ProfilePhotoMenu.js'
+import { themeTokens } from '../../../../../../../theme/tokens/tokens.js'
 
 export default function DesktopHeader() {
   useOnNewNotificationReceived()
@@ -37,7 +37,7 @@ export default function DesktopHeader() {
           paddingBottom: '0px',
           width: '100%',
           margin: '0 auto',
-          maxWidth: otherTokens.maxWidth[2],
+          maxWidth: themeTokens.maxWidth[2],
         }}
       >
         <Box

@@ -4,9 +4,9 @@ import Box from '@useweb/ui/Box'
 import ErrorMessage from '@useweb/ui/ErrorMessage'
 
 import { type GetRootDataReturn } from '../../../data/_root/getRootData/getRootData.js'
-import { otherTokens } from '../../../theme/tokens/otherTokens.js'
 import DefaultHeadTags from '../../components/head/DefaultHeadTags/DefaultHeadTags.js'
 import useAuth from '../../../data/users/utils/useAuth/useAuth.js'
+import { themeTokens } from '../../../theme/tokens/tokens.js'
 
 import type { RootHeaderProps } from './containers/RootHeader/RootHeader.js'
 import RootHeader from './containers/RootHeader/RootHeader.js'
@@ -51,7 +51,7 @@ export default function RootLayout(props: RootLayoutMainProps) {
             p: '15px',
             pt: [`calc(${rootLayoutConfig.mobileHeaderHeight} + 10px)`, , '20px'],
             position: 'relative',
-            maxWidth: otherTokens.maxWidth[1],
+            maxWidth: themeTokens.maxWidth[1],
             mx: 'auto',
             ...props.sx,
           }}
