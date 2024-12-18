@@ -40,7 +40,7 @@ export default function PageNotFound() {
           }}
           content={
             <Link
-              href={!auth.user?.id ? '/' : '/sponsorships'}
+              href={'/'}
               sx={{
                 mt: 2,
                 display: 'block',
