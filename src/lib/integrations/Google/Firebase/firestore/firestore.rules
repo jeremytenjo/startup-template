@@ -9,7 +9,7 @@ service cloud.firestore {
     }
     
     match /notifications/{notificationId} {
-      allow read: if == request.auth.uid === resource.data.receiverUid;
+      allow read: if == request.auth.uid == resource.data.receiverUid;
     	allow create: if request.auth != null;
   	}
   }
