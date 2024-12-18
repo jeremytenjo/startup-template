@@ -55,7 +55,7 @@
     "helpers:generate-logo-assets": "node --experimental-json-modules --loader ts-node/esm ./devtools/helpers/assets/generateLogoAssets/run.ts",
     "helpers:create-icon": "node --experimental-json-modules --loader ts-node/esm ./devtools/helpers/createIcon/run.ts",
     "helpers:capture-page-screenshots": "node --loader  ts-node/esm ./scripts/assets/capturePageScreenshots/run.ts",
-    "helpers:update-useweb-deps": "npm-check-updates -f /@useweb/*/ -u && npm i && npm run prettify && npm run tests:ts-types",
+    "helpers:update-useweb-deps": "npm-check-updates -f /@useweb/*/ -u && npm i && npm run prettify && npm run tests:ts-types && npm i @jeremytenjo/super-code-generator@latest",
     "helpers:remove-empty-folders": "node --experimental-json-modules --loader ts-node/esm ./devtools/helpers/files/removeEmptyFoldersInSrc/run.ts",
     "helpers:generate-blurred-public-images-copies": "node --experimental-json-modules --loader ts-node/esm ./devtools/helpers/assets/generateBlurredPublicImagesCopies/run.ts",
     "helpers:rename-folder-and-files": "node --experimental-json-modules --loader ts-node/esm ./devtools/helpers/assets/renameFolderAndFiles/run.ts",
@@ -181,7 +181,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.18.10",
-    "@jeremytenjo/super-code-generator": "3.26.0",
+    "@jeremytenjo/super-code-generator": "3.28.0",
     "@prismicio/types": "0.2.8",
     "@slicemachine/adapter-next": "0.3.58",
     "@storybook/addon-essentials": "^8.3.4",
