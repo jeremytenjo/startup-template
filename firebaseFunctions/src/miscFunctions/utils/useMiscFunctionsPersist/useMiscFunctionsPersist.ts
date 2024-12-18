@@ -52,11 +52,7 @@ export default function useMiscFunctionsPersist<RouteSchema extends ApiRouteSche
   }, [props.currentUser?.id, props.api?.route, props.id, props.allowUnauthenticatedUser])
 
   const miscFunctions = useData<
-    Awaited<
-      MiscFunctionsClientReturn<RouteSchema>['data'] & {
-        id: string
-      }
-    >,
+    Awaited<MiscFunctionsClientReturn<RouteSchema>['data']>,
     MiscFunctionsClientProps<RouteSchema>,
     MiscFunctionsClientProps<RouteSchema>['api']['payload']
   >({
