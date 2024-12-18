@@ -11,7 +11,6 @@ import createEmotionCache from '../theme/UiTheme/utils/createEmotionCache.js'
 import GoogleSearchConsole from '../lib/integrations/Google/GoogleSearchConsole/components/GoogleSearchConsole.js'
 import Firebase from '../lib/integrations/Google/Firebase/firebase.js'
 import FirebaseAnalytics from '../lib/integrations/Google/Firebase/analytics/FirebaseAnalytics/FirebaseAnalytics.js'
-import ClarityScript from '../lib/integrations/Microsoft/Clarity/ClarityScript/ClarityScript.js'
 import GlobalErrorLogger from '../lib/utils/loggers/logError/GlobalErrorLogger/GlobalErrorLogger.js'
 import colors from '../theme/tokens/colors.js'
 import Prismic from '../lib/integrations/Prismic/Prismic.js'
@@ -30,7 +29,6 @@ export default function MyApp(props) {
       <GoogleSearchConsole />
       <GoogleIdentityScript />
       <FirebaseAnalytics />
-      <ClarityScript />
       <GoogleAds />
 
       <Head>

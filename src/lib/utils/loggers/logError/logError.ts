@@ -1,4 +1,3 @@
-import clarityError from '../../../integrations/Microsoft/Clarity/events/clarityError/clarityError.js'
 import phError from '../../../integrations/PostHog/events/browser/ph_error/phError.js'
 
 const isProd = process.env.NODE_ENV === 'production'
@@ -38,12 +37,6 @@ export default async function logError(props: LogErrorProps) {
   }
 
   if (isProd) {
-    clarityError({
-      functionName: props.fnName,
-      errorMessage,
-      fatal: props.fatal,
-    })
-
     phError({
       fnName: props.fnName,
       description: errorMessage,
