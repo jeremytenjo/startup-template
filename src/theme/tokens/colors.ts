@@ -1,8 +1,8 @@
 const colors = {
   primary: {
-    main: '#00AA6D',
-    light: '#3CEB82',
-    dark: '#0F3032',
+    main: '#5E00AA',
+    light: '#A53CEB',
+    dark: '#34005E',
     background: '#173230',
   },
   gradient: {
