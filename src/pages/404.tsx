@@ -37,9 +37,6 @@ export default function PageNotFound() {
             m: '0 auto',
             my: '40px',
             maxWidth: '100%',
-            '& [data-id="EmptyMessageTitle"]': {
-              color: 'neutral.600',
-            },
           }}
           content={
             <Link
