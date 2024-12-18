@@ -54,7 +54,11 @@ export default function UserAccessCardSignUp(props: UserAccessCardSignUpProps) {
         }}
       >
         {auth.user?.id && <UserAccessCardSignUpExistingUser />}
-        {!auth.user?.id && <UserAccessCardSignUpLastStep auth={auth} />}
+        {!auth.user?.id && (
+          <>
+            <UserAccessCardSignUpLastStep auth={auth} />
+          </>
+        )}
         <UserAccessCardSignUpErrorMessage auth={auth} />
         <UserAccessCardSignUpAknowledgmentAcknowledgment />
       </Form>
