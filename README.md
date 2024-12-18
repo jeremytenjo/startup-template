@@ -6,4 +6,5 @@ This is a template for a startup website. It includes common pages, components, 
 
 ## Todo
 
+- [ ] Find and replace all instances of `startup-template-one` with the name of the project
 - [ ] Add NODE_ENV='development' to firebaseFunctions/.env.local file
