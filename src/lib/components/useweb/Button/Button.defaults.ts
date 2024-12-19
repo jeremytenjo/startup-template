@@ -122,6 +122,7 @@ const defaults: ComponentDefaultsProps<ButtonProps> = {
       },
       '&:hover, &:active, &:focus': {
         boxShadow: 'none',
+        filter: 'brightness(0.9)',
       },
     },
   },
