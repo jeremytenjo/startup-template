@@ -28,6 +28,11 @@ export const allNavLinks = {
     } satisfies NavLinkSchema,
   },
 
+  profile: {
+    label: 'Profile',
+    url: `/profile`,
+  } satisfies NavLinkSchema,
+
   faq: {
     label: 'FAQ',
     url: `/faq`,
@@ -77,10 +82,10 @@ export default function useMainNavLinks() {
     size: 'lg',
     type: 'down',
   })
-  const profileLink: NavLinkSchema = {
-    label: 'Profile',
-    url: `/user/${auth.user?.displayName}`,
-  }
+  // const profileLink: NavLinkSchema = {
+  //   label: 'Profile',
+  //   url: `/user/${auth.user?.displayName}`,
+  // }
 
   // Main navigation links
   const mainNavLinks = useMemo(() => {
@@ -90,7 +95,7 @@ export default function useMainNavLinks() {
 
     if (isMobile) {
       if (auth.user?.id) {
-        links.push(profileLink)
+        links.push(allNavLinks.profile)
         links.push(allNavLinks.settings.settings)
       }
 
@@ -109,7 +114,7 @@ export default function useMainNavLinks() {
   // Profile photo menu links
   const profilePhotoMenuLinks = useMemo(() => {
     const links: NavLinkSchema[] = []
-    links.push(profileLink)
+    links.push(allNavLinks.profile)
     links.push(allNavLinks.settings.settings)
     return links
   }, [])

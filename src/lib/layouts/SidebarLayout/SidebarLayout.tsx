@@ -23,6 +23,7 @@ export type SidebarLayoutProps = {
   }
   plainContentStyles?: boolean
   reverseSidebarPosition?: boolean
+  'data-id'?: string
 }
 
 const bannerHeight = '180px'
@@ -30,7 +31,7 @@ const bannerHeight = '180px'
 export default function SidebarLayout(props: SidebarLayoutProps) {
   return (
     <Box
-      data-id='SidebarLayout'
+      data-id={props['data-id'] || 'SidebarLayout'}
       sx={{
         display: 'grid',
         gap: '20px',
