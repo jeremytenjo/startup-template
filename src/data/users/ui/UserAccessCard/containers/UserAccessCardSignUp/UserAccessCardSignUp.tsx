@@ -76,8 +76,7 @@ export default function UserAccessCardSignUp(props: UserAccessCardSignUpProps) {
             text={`Sign in`}
             tag='span'
             sx={{
-              color: 'primary.main',
-              fontWeight: 500,
+              fontWeight: 600,
             }}
           />
         </Link>

@@ -186,14 +186,19 @@ export default function UserAccessCardSignIn(props: UserAccessCardSignInProps) {
           backgroundColor: 'neutral.400',
         }}
       >
-        <Text text={`Don't have an account? `} tag='span' sx={{}} />
+        <Text
+          text={`Don't have an account? `}
+          tag='span'
+          sx={{
+            color: 'neutral.150',
+          }}
+        />
         <Link href={navLinks.access.signUp.url}>
           <Text
             text={`Sign up`}
             tag='span'
             sx={{
-              color: 'primary.main',
-              fontWeight: 500,
+              fontWeight: 600,
             }}
           />
         </Link>
