@@ -4,6 +4,7 @@ import Avatar from '@useweb/ui/Avatar'
 import Text from '@useweb/ui/Text'
 import Link from '@useweb/ui/Link'
 import Button from '@useweb/ui/Button'
+import Skeleton from '@useweb/ui/Skeleton'
 
 import RootLayout from '../../../../lib/layouts/RootLayout/RootLayout.js'
 import SidebarLayout from '../../../../lib/layouts/SidebarLayout/SidebarLayout.js'
@@ -36,20 +37,31 @@ export default function UserPageLayout(props: UserPageLayoutProps) {
                 textAlign: 'center',
               }}
             >
-              <Avatar
-                src={userPage.pageUser?.profilePhoto?.src}
-                alt={userPage.pageUser?.displayName}
-                size='70px'
-              />
-
-              <Text
-                text={userPage.pageUser?.displayName}
-                tag='p'
+              <Skeleton
+                loading={!userPage.pageUser?.displayName}
+                circle
                 sx={{
-                  fontSize: [, , '18px'],
-                  fontWeight: '600',
+                  width: '70px',
+                  height: '70px',
                 }}
-              />
+              >
+                <Avatar
+                  src={userPage.pageUser?.profilePhoto?.src}
+                  alt={userPage.pageUser?.displayName}
+                  size='70px'
+                />
+              </Skeleton>
+
+              <Skeleton loading={!userPage.pageUser?.displayName}>
+                <Text
+                  text={userPage.pageUser?.displayName}
+                  tag='p'
+                  sx={{
+                    fontSize: [, , '18px'],
+                    fontWeight: '600',
+                  }}
+                />
+              </Skeleton>
             </Box>
 
             {userPage.isSignedIn && (
