@@ -3,7 +3,7 @@ import Button from '@useweb/ui/Button'
 import NavLink from '@useweb/ui/NavLink'
 import type { BoxProps } from '@useweb/ui/Box'
 
-import { navLinks } from '../../utils/useNavLinks/useNavLinks.jsx'
+import { navLinks } from '../../utils/useNavLinks/useNavLinks.js'
 
 export type SignUpLinkProps = { sx?: BoxProps['sx'] }
 

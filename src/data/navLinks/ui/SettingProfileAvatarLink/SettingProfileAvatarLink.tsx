@@ -5,7 +5,7 @@ import type { AvatarProps } from '@useweb/ui/Avatar'
 import Avatar from '@useweb/ui/Avatar'
 
 import useAuth from '../../../users/utils/useAuth/useAuth.js'
-import useNavLinks from '../../utils/useNavLinks/useNavLinks.jsx'
+import useNavLinks from '../../utils/useNavLinks/useNavLinks.js'
 
 export type SettingProfileAvatarLinkProps = {
   sx?: BoxProps['sx']
