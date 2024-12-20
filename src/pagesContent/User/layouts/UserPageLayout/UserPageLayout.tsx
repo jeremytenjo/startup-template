@@ -7,13 +7,13 @@ import Button from '@useweb/ui/Button'
 
 import RootLayout from '../../../../lib/layouts/RootLayout/RootLayout.js'
 import SidebarLayout from '../../../../lib/layouts/SidebarLayout/SidebarLayout.js'
-import useAuth from '../../../../data/users/utils/useAuth/useAuth.js'
 import { allNavLinks } from '../../../../data/mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
+import useUserPage from '../../utils/useUserPage/useUserPage.js'
 
 export type UserPageLayoutProps = { children: any }
 
 export default function UserPageLayout(props: UserPageLayoutProps) {
-  const auth = useAuth()
+  const userPage = useUserPage()
 
   return (
     <RootLayout title={undefined} disableTitle>
@@ -37,13 +37,13 @@ export default function UserPageLayout(props: UserPageLayoutProps) {
               }}
             >
               <Avatar
-                src={auth.user?.profilePhoto?.src}
-                alt={auth.user?.displayName}
+                src={userPage.pageUser?.profilePhoto?.src}
+                alt={userPage.pageUser?.displayName}
                 size='70px'
               />
 
               <Text
-                text={auth.user?.displayName}
+                text={userPage.pageUser?.displayName}
                 tag='p'
                 sx={{
                   fontSize: [, , '18px'],
@@ -52,11 +52,13 @@ export default function UserPageLayout(props: UserPageLayoutProps) {
               />
             </Box>
 
-            <Link href={allNavLinks.settings.settings.url}>
-              <Button name='EditProfile' sx={{}}>
-                Edit Profile
-              </Button>
-            </Link>
+            {userPage.isSignedIn && (
+              <Link href={allNavLinks.settings.settings.url}>
+                <Button name='EditProfile' sx={{}}>
+                  Edit Profile
+                </Button>
+              </Link>
+            )}
           </Box>
         }
       >
