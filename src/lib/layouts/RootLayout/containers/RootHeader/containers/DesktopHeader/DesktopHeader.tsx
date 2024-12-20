@@ -4,21 +4,19 @@ import List from '@useweb/ui/List'
 import NavLink from '@useweb/ui/NavLink'
 
 import FullLogoLink from '../../../../../../components/logo/FullLogoLink/FullLogoLink.js'
-import useMainNavLinks, {
-  allNavLinks,
-} from '../../../../../../../data/mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
+import useNavLinks from '../../../../../../../data/navLinks/utils/useNavLinks/useNavLinks.js'
 import type NavLinkSchema from '../../../../../../../data/_commonSchemas/NavLinkSchema/NavLinkSchema.js'
 import useAuth from '../../../../../../../data/users/utils/useAuth/useAuth.js'
 import NotificationsPopover from '../../../../../../../data/notifications/queries/Notifications/ui/NotificationsPopover/NotificationsPopover.js'
 import useOnNewNotificationReceived from '../../../../../../../data/notifications/queries/Notifications/useOnNewNotificationReceived/useOnNewNotificationReceived.js'
-import SignUpLink from '../../../../../../../data/mainNavLinks/ui/SignUpLink/SignUpLink.js'
-import ProfilePhotoMenu from '../../../../../../../data/mainNavLinks/ui/ProfilePhotoMenu/ProfilePhotoMenu.js'
+import SignUpLink from '../../../../../../../data/navLinks/ui/SignUpLink/SignUpLink.js'
+import ProfilePhotoMenu from '../../../../../../../data/navLinks/ui/ProfilePhotoMenu/ProfilePhotoMenu.js'
 import { themeTokens } from '../../../../../../../theme/tokens/tokens.js'
 
 export default function DesktopHeader() {
   useOnNewNotificationReceived()
 
-  const mainNavLinks = useMainNavLinks()
+  const navLinks = useNavLinks()
   const auth = useAuth()
 
   return (
@@ -57,7 +55,7 @@ export default function DesktopHeader() {
           <Box data-id='DesktopRooHeaderNavlinks' sx={{}}>
             <List<NavLinkSchema>
               listItemKeyName='label'
-              data={mainNavLinks?.mainNavLinks || []}
+              data={navLinks?.mainNavLinks || []}
               ListItemComponent={({ itemData: navLink }) => {
                 return <NavLink label={navLink.label} href={navLink.url} />
               }}
@@ -89,8 +87,8 @@ export default function DesktopHeader() {
           ) : (
             <>
               <NavLink
-                href={allNavLinks.access.signIn?.url}
-                label={allNavLinks.access.signIn?.label}
+                href={navLinks.navLinks.access.signIn?.url}
+                label={navLinks.navLinks.access.signIn?.label}
                 sx={{
                   '& p': {
                     fontSize: '16px',

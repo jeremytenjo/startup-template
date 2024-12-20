@@ -8,7 +8,7 @@ import Skeleton from '@useweb/ui/Skeleton'
 
 import RootLayout from '../../../../lib/layouts/RootLayout/RootLayout.js'
 import SidebarLayout from '../../../../lib/layouts/SidebarLayout/SidebarLayout.js'
-import { allNavLinks } from '../../../../data/mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
+import { navLinks } from '../../../../data/navLinks/utils/useNavLinks/useNavLinks.js'
 import useUserPage from '../../utils/useUserPage/useUserPage.js'
 
 export type UserPageLayoutProps = { children: any }
@@ -65,7 +65,7 @@ export default function UserPageLayout(props: UserPageLayoutProps) {
             </Box>
 
             {userPage.isSignedIn && (
-              <Link href={allNavLinks.settings.settings.url}>
+              <Link href={navLinks.settings.settings.url}>
                 <Button name='EditProfile' variant='outlined' sx={{}}>
                   Edit Profile
                 </Button>

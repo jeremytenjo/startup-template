@@ -5,7 +5,7 @@ import type { AvatarProps } from '@useweb/ui/Avatar'
 import Avatar from '@useweb/ui/Avatar'
 
 import useAuth from '../../../users/utils/useAuth/useAuth.js'
-import useMainNavLinks from '../../utils/useMainNavLinks/useMainNavLinks.js'
+import useNavLinks from '../../utils/useNavLinks/useNavLinks.jsx'
 
 export type SettingProfileAvatarLinkProps = {
   sx?: BoxProps['sx']
@@ -16,7 +16,7 @@ export type SettingProfileAvatarLinkProps = {
 }
 
 export default function SettingProfileAvatarLink(props: SettingProfileAvatarLinkProps) {
-  const navLinks = useMainNavLinks()
+  const navLinks = useNavLinks()
 
   if (props.disableLink) {
     return (

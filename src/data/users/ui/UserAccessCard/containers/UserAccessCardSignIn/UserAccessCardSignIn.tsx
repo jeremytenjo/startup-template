@@ -18,7 +18,7 @@ import ContinueWithGoogleButton from '../../../../utils/signIn/ContinueWithGoogl
 import { noAccountErrorMessage } from '../../../../utils/signIn/ContinueWithGoogle/continueWithGoogle.js'
 import AccountAccessCta from '../../../AccountAccessCTA/AccountAccessCta.js'
 import appConfig from '../../../../../../../app.config.js'
-import { allNavLinks } from '../../../../../mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
+import { navLinks } from '../../../../../navLinks/utils/useNavLinks/useNavLinks.js'
 import { Island } from '../../../../../../theme/UiTheme/commonStyles/islandStyles.js'
 
 export type UserAccessCardSignInProps = {
@@ -138,7 +138,7 @@ export default function UserAccessCardSignIn(props: UserAccessCardSignInProps) {
             justifyContent: 'space-between',
           }}
           labelRightIcon={
-            <Link href={allNavLinks.access.resetPassword.url}>
+            <Link href={navLinks.access.resetPassword.url}>
               <Text
                 text={`Password Recovery`}
                 sx={{
@@ -164,16 +164,16 @@ export default function UserAccessCardSignIn(props: UserAccessCardSignInProps) {
               error={auth.signingInError}
               message={
                 isNoAccountErrorMessage
-                  ? `You do not have a ${appConfig.siteInfo.name} account, please create one in the ${allNavLinks.access.signUp.label} page.`
+                  ? `You do not have a ${appConfig.siteInfo.name} account, please create one in the ${navLinks.access.signUp.label} page.`
                   : 'You have entered an invalid username/email or password'
               }
             />
           )}
 
         {isNoAccountErrorMessage && (
-          <Link href={allNavLinks.access.signUp.url}>
-            <Button name={`Go to ${allNavLinks.access.signUp.label} page`} sx={{}}>
-              Go to {allNavLinks.access.signUp.label} page
+          <Link href={navLinks.access.signUp.url}>
+            <Button name={`Go to ${navLinks.access.signUp.label} page`} sx={{}}>
+              Go to {navLinks.access.signUp.label} page
             </Button>
           </Link>
         )}
@@ -187,7 +187,7 @@ export default function UserAccessCardSignIn(props: UserAccessCardSignInProps) {
         }}
       >
         <Text text={`Don't have an account? `} tag='span' sx={{}} />
-        <Link href={allNavLinks.access.signUp.url}>
+        <Link href={navLinks.access.signUp.url}>
           <Text
             text={`Sign up`}
             tag='span'

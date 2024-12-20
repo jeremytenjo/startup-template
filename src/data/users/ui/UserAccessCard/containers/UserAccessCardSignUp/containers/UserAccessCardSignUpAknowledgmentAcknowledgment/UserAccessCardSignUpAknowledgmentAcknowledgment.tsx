@@ -4,7 +4,7 @@ import Box from '@useweb/ui/Box'
 import Text from '@useweb/ui/Text'
 import Link from '@useweb/ui/Link'
 
-import { allNavLinks } from '../../../../../../../mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
+import { navLinks } from '../../../../../../../navLinks/utils/useNavLinks/useNavLinks.js'
 
 export type UserAccessCardSignUpAknowledgmentAcknowledgmentProps = { sx?: BoxProps['sx'] }
 
@@ -28,7 +28,7 @@ export default function UserAccessCardSignUpAknowledgmentAcknowledgment(
         }}
       />
 
-      <Link href={allNavLinks.tos.url} newTab>
+      <Link href={navLinks.tos.url} newTab>
         <Text
           text={`Terms of Service `}
           tag='span'
@@ -46,7 +46,7 @@ export default function UserAccessCardSignUpAknowledgmentAcknowledgment(
         }}
       />
 
-      <Link href={allNavLinks.privacyPolicy.url} newTab>
+      <Link href={navLinks.privacyPolicy.url} newTab>
         <Text
           text={`Privacy Policy.`}
           tag='span'

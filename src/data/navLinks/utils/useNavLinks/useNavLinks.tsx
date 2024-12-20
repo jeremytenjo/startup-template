@@ -7,7 +7,7 @@ import useAuth from '../../../users/utils/useAuth/useAuth.js'
 import DiscordIcon from '../../../../lib/components/icons/DiscordIcon.js'
 import appConfig from '../../../../../app.config.js'
 
-export const allNavLinks = {
+export const navLinks = {
   home: {
     label: 'Home',
     url: `/`,
@@ -76,20 +76,20 @@ export const allNavLinks = {
   },
 }
 
-export default function useMainNavLinks() {
+export default function useNavLinks() {
   const auth = useAuth()
   const mobileMq = useMediaQuery({
     size: 'lg',
     type: 'down',
   })
 
-  const navLinks = useMemo(() => {
-    allNavLinks.profile = {
+  const _navLinks = useMemo(() => {
+    navLinks.profile = {
       label: 'Profile',
       url: `/user/${auth.user?.displayName}`,
     }
 
-    return allNavLinks
+    return navLinks
   }, [auth.user?.id])
 
   // Main navigation links
@@ -101,16 +101,16 @@ export default function useMainNavLinks() {
     if (isMobile) {
       if (auth.user?.id) {
         links.push(navLinks.profile)
-        links.push(allNavLinks.settings.settings)
+        links.push(navLinks.settings.settings)
       }
 
       if (!auth.user?.id) {
-        links.push(allNavLinks.faq)
+        links.push(navLinks.faq)
       }
     }
 
     if (isDesktop) {
-      links.push(allNavLinks.home)
+      links.push(navLinks.home)
     }
 
     return links
@@ -120,17 +120,17 @@ export default function useMainNavLinks() {
   const profilePhotoMenuLinks = useMemo(() => {
     const links: NavLinkSchema[] = []
     links.push(navLinks.profile)
-    links.push(allNavLinks.settings.settings)
+    links.push(navLinks.settings.settings)
     return links
   }, [])
 
   // Social links
   const socialLinks = useMemo(() => {
-    const links: NavLinkSchema[] = [allNavLinks.socialLinks.discord]
+    const links: NavLinkSchema[] = [navLinks.socialLinks.discord]
     return links
   }, [])
 
-  return { navLinks, mainNavLinks, profilePhotoMenuLinks, socialLinks }
+  return { navLinks: _navLinks, mainNavLinks, profilePhotoMenuLinks, socialLinks }
 }
 
-export type UseMainNavLinksReturn = ReturnType<typeof useMainNavLinks>
+export type useNavLinksReturn = ReturnType<typeof useNavLinks>

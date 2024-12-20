@@ -7,12 +7,12 @@ import IconButton from '@useweb/ui/IconButton'
 import Link from '@useweb/ui/Link'
 import { useRouter } from 'next/router'
 
-import useMainNavLinks from '../../utils/useMainNavLinks/useMainNavLinks.js'
+import useNavLinks from '../../utils/useNavLinks/useNavLinks.js'
 import useAuth from '../../../users/utils/useAuth/useAuth.js'
 import SettingProfileAvatarLink from '../SettingProfileAvatarLink/SettingProfileAvatarLink.js'
 
 export default function ProfilePhotoMenu() {
-  const mainLinks = useMainNavLinks()
+  const navLinks = useNavLinks()
   const router = useRouter()
   const auth = useAuth({
     onSignOut() {
@@ -81,7 +81,7 @@ export default function ProfilePhotoMenu() {
         transformOrigin={{ horizontal: 'center', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}
         items={[
-          ...mainLinks.profilePhotoMenuLinks.map((link) => {
+          ...navLinks.profilePhotoMenuLinks.map((link) => {
             return (
               <Link key={link.label} href={link.url}>
                 <MenuItem>{link.label}</MenuItem>

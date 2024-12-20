@@ -8,10 +8,10 @@ import NavLink from '@useweb/ui/NavLink'
 
 import FullLogoLink from '../../../../../../components/logo/FullLogoLink/FullLogoLink.js'
 import useAuth from '../../../../../../../data/users/utils/useAuth/useAuth.js'
-import useMainNavLinks from '../../../../../../../data/mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
+import useNavLinks from '../../../../../../../data/navLinks/utils/useNavLinks/useNavLinks.js'
 
 export default function MobileHeaderSideMenu() {
-  const mainLinks = useMainNavLinks()
+  const navLinks = useNavLinks()
   const router = useRouter()
   const appHeaderStore = useAppHeaderStore()
   const auth = useAuth({
@@ -50,7 +50,7 @@ export default function MobileHeaderSideMenu() {
           width: '100%',
         }}
       >
-        {mainLinks.mainNavLinks.map((link) => {
+        {navLinks.mainNavLinks.map((link) => {
           return (
             <NavLink
               key={link.label}

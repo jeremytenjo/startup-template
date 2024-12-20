@@ -10,7 +10,7 @@ import type {
 import useAuth from '../../../../utils/useAuth/useAuth.js'
 import useOnSignUpActions from '../../../../utils/signUp/useOnSignUpActions/useOnSignUpActions.js'
 import { Island } from '../../../../../../theme/UiTheme/commonStyles/islandStyles.js'
-import { allNavLinks } from '../../../../../mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
+import { navLinks } from '../../../../../navLinks/utils/useNavLinks/useNavLinks.js'
 
 import UserAccessCardSignUpExistingUser from './containers/UserAccessCardSignUpExistingUser/UserAccessCardSignUpExistingUser.js'
 import UserAccessCardSignUpLastStep from './containers/UserAccessCardSignUpLastStep/UserAccessCardSignUpLastStep.js'
@@ -71,7 +71,7 @@ export default function UserAccessCardSignUp(props: UserAccessCardSignUpProps) {
         }}
       >
         <Text text={`Already have an account? `} tag='span' sx={{}} />
-        <Link href={allNavLinks.access.signIn.url}>
+        <Link href={navLinks.access.signIn.url}>
           <Text
             text={`Sign in`}
             tag='span'

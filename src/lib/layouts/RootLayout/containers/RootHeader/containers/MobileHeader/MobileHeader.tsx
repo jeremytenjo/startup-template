@@ -9,9 +9,9 @@ import useAuth from '../../../../../../../data/users/utils/useAuth/useAuth.js'
 import MenuIcon from '../../../../../../components/icons/MenuIcon.js'
 import LogoIcon from '../../../../../../components/icons/LogoIcon.js'
 import NotificationsPopover from '../../../../../../../data/notifications/queries/Notifications/ui/NotificationsPopover/NotificationsPopover.js'
-import SettingProfileAvatarLink from '../../../../../../../data/mainNavLinks/ui/SettingProfileAvatarLink/SettingProfileAvatarLink.js'
-import SignUpLink from '../../../../../../../data/mainNavLinks/ui/SignUpLink/SignUpLink.js'
-import { allNavLinks } from '../../../../../../../data/mainNavLinks/utils/useMainNavLinks/useMainNavLinks.js'
+import SettingProfileAvatarLink from '../../../../../../../data/navLinks/ui/SettingProfileAvatarLink/SettingProfileAvatarLink.js'
+import SignUpLink from '../../../../../../../data/navLinks/ui/SignUpLink/SignUpLink.js'
+import { navLinks } from '../../../../../../../data/navLinks/utils/useNavLinks/useNavLinks.js'
 
 export default function MobileHeader() {
   const appHeaderStore = useAppHeaderStore()
@@ -101,8 +101,8 @@ export default function MobileHeader() {
               }}
             >
               <NavLink
-                href={allNavLinks.access.signIn?.url}
-                label={allNavLinks.access.signIn?.label}
+                href={navLinks.access.signIn?.url}
+                label={navLinks.access.signIn?.label}
                 sx={{
                   mr: '10px',
                 }}
