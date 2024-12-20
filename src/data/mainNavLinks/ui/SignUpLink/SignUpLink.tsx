@@ -3,12 +3,14 @@ import Button from '@useweb/ui/Button'
 import NavLink from '@useweb/ui/NavLink'
 import type { BoxProps } from '@useweb/ui/Box'
 
+import { allNavLinks } from '../../utils/useMainNavLinks/useMainNavLinks.js'
+
 export type SignUpLinkProps = { sx?: BoxProps['sx'] }
 
 export default function SignUpLink(props: SignUpLinkProps) {
   return (
     <NavLink
-      href={'/access/sign-up'}
+      href={allNavLinks.access.signUp.url}
       data-id='SignUpLink'
       label={
         <Button name='SignUpLink' variant='green' sx={{}}>
