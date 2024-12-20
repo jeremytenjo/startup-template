@@ -5,7 +5,7 @@ import type { AvatarProps } from '@useweb/ui/Avatar'
 import Avatar from '@useweb/ui/Avatar'
 
 import useAuth from '../../../users/utils/useAuth/useAuth.js'
-import { allNavLinks } from '../../utils/useMainNavLinks/useMainNavLinks.js'
+import useMainNavLinks from '../../utils/useMainNavLinks/useMainNavLinks.js'
 
 export type SettingProfileAvatarLinkProps = {
   sx?: BoxProps['sx']
@@ -16,6 +16,8 @@ export type SettingProfileAvatarLinkProps = {
 }
 
 export default function SettingProfileAvatarLink(props: SettingProfileAvatarLinkProps) {
+  const navLinks = useMainNavLinks()
+
   if (props.disableLink) {
     return (
       <SettingProfileAvatarLinkAvatar
@@ -30,7 +32,7 @@ export default function SettingProfileAvatarLink(props: SettingProfileAvatarLink
 
   return (
     <Link
-      href={allNavLinks.profile.url}
+      href={navLinks.navLinks.profile.url}
       sx={{
         ...props.sx,
       }}

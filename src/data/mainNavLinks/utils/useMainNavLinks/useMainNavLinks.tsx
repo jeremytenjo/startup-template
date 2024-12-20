@@ -30,7 +30,7 @@ export const allNavLinks = {
 
   profile: {
     label: 'Profile',
-    url: `/profile`,
+    url: `/user/:displayName`,
   } satisfies NavLinkSchema,
 
   faq: {
@@ -82,10 +82,15 @@ export default function useMainNavLinks() {
     size: 'lg',
     type: 'down',
   })
-  // const profileLink: NavLinkSchema = {
-  //   label: 'Profile',
-  //   url: `/user/${auth.user?.displayName}`,
-  // }
+
+  const navLinks = useMemo(() => {
+    allNavLinks.profile = {
+      label: 'Profile',
+      url: `/user/${auth.user?.displayName}`,
+    }
+
+    return allNavLinks
+  }, [auth.user?.id])
 
   // Main navigation links
   const mainNavLinks = useMemo(() => {
@@ -95,7 +100,7 @@ export default function useMainNavLinks() {
 
     if (isMobile) {
       if (auth.user?.id) {
-        links.push(allNavLinks.profile)
+        links.push(navLinks.profile)
         links.push(allNavLinks.settings.settings)
       }
 
@@ -114,7 +119,7 @@ export default function useMainNavLinks() {
   // Profile photo menu links
   const profilePhotoMenuLinks = useMemo(() => {
     const links: NavLinkSchema[] = []
-    links.push(allNavLinks.profile)
+    links.push(navLinks.profile)
     links.push(allNavLinks.settings.settings)
     return links
   }, [])
@@ -125,7 +130,7 @@ export default function useMainNavLinks() {
     return links
   }, [])
 
-  return { mainNavLinks, profilePhotoMenuLinks, socialLinks }
+  return { navLinks, mainNavLinks, profilePhotoMenuLinks, socialLinks }
 }
 
 export type UseMainNavLinksReturn = ReturnType<typeof useMainNavLinks>
