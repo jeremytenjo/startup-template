@@ -66,7 +66,7 @@ export default function UserPageLayout(props: UserPageLayoutProps) {
 
             {userPage.isSignedIn && (
               <Link href={allNavLinks.settings.settings.url}>
-                <Button name='EditProfile' sx={{}}>
+                <Button name='EditProfile' variant='outlined' sx={{}}>
                   Edit Profile
                 </Button>
               </Link>
