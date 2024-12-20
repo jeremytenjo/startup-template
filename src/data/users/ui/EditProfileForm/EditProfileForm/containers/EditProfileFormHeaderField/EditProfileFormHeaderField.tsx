@@ -15,7 +15,7 @@ export default function EditProfileFormHeaderField() {
     <Island
       data-id='EditProfileFormHeaderField'
       sx={{
-        backgroundColor: 'neutral.300',
+        backgroundColor: 'neutral.500',
         display: 'grid',
         gap: 2,
         justifyContent: 'space-between',
@@ -61,11 +61,6 @@ export default function EditProfileFormHeaderField() {
         isRequired
         inputProps={{
           accept: '.png, .jpg, .jpeg, .webp',
-        }}
-        sx={{
-          '& [data-id="FileInput_Button"]': {
-            backgroundColor: 'neutral.100',
-          },
         }}
       />
     </Island>
