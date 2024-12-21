@@ -186,12 +186,12 @@ const files: SuperCodeGeneratorFilesSchema = [
               ctas={
                 <>
                   <Button
-                    name='Update'
+                    name='Save'
                     type='submit'
                     loading={submit.loading}
                     sx={{}}
                   >
-                    Update
+                    Save
                   </Button>
                 </>
               }
