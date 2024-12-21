@@ -24,6 +24,19 @@ const defaults: ComponentDefaultsProps<StepperProps> = {
         border: `1px solid ${colors.neutral[300]}`,
         borderRadius: '50%',
       },
+
+      // Active step
+      '& [data-id="Stepper"][data-active="true"]': {
+        '& .MuiStepIcon-text': {
+          fill: colors.neutral[600],
+        },
+      },
+      // No active step
+      '& [data-id="Stepper"][data-active="false"]': {
+        '& .MuiStepIcon-text': {
+          fill: colors.neutral[100],
+        },
+      },
     },
   },
 }
