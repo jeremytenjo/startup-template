@@ -7,7 +7,9 @@ const projectUrl =
     ? 'http://localhost:54321'
     : `https://${projectId}.supabase.co`
 
+// find by running npx supabase status
 const publicAnonKey_DEV = ''
+// find in https://supabase.com/dashboard/project/replace_with_projectId/settings/api
 const publicAnonKey_PROD = ''
 
 const publicAnonKey =
