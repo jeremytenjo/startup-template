@@ -7,10 +7,11 @@ const projectUrl =
     ? 'http://localhost:54321'
     : `https://${projectId}.supabase.co`
 
+const publicAnonKey_DEV = ''
+const publicAnonKey_PROD = ''
+
 const publicAnonKey =
-  process.env.NODE_ENV === 'development'
-    ? process.env.SUPABASE_PUBLISHABLE_KEY_DEVELOPMENT
-    : process.env.SUPABASE_PUBLISHABLE_KEY_PRODUCTION
+  process.env.NODE_ENV === 'development' ? publicAnonKey_DEV : publicAnonKey_PROD
 
 // KEEP PRIVATE
 const serviceRoleKey = process.env.SUPABASE_SECRET_KEY
