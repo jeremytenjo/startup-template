@@ -238,7 +238,7 @@ const files: SuperCodeGeneratorFilesSchema = [
             }
           
             try {
-              const data = await ${name}({ body, req })
+              const data = await ${name}Next({ body, req })
               console.log('${name} API Response:')
               res.status(200).json({ data, error: undefined })
             } catch (error: any) {
