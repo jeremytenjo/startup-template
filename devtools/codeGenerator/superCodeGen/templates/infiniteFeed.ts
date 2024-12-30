@@ -81,6 +81,7 @@ const files: SuperCodeGeneratorFilesSchema = [
       return `import React from 'react'
       import Box, { type BoxProps } from '@useweb/ui/Box'
       import Text from '@useweb/ui/Text'
+      import Skeleton from '@useweb/ui/Skeleton'
 
       import type { ${pascalName}DataSchema } from '../../${pascalName}.js'
       
@@ -95,7 +96,9 @@ const files: SuperCodeGeneratorFilesSchema = [
       ) {
         return (
           <Box data-id='${pascalName}Item' sx={{ ...props.sx }}>
+          <Skeleton loading={props.loading}>
             <Text text={'${pascalName}Item'} tag='p' sx={{}} />
+          </Skeleton>
           </Box>
         )
       }
