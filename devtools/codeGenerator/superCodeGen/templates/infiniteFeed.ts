@@ -25,10 +25,12 @@ const files: SuperCodeGeneratorFilesSchema = [
       export type ${pascalName}Props = {
         sx?: InfiniteListProps<any>['sx']
       }
+
+     export type ${pascalName}DataSchema = any
       
       export default function ${pascalName}(props: ${pascalName}Props) {
         return (
-          <InfiniteList<any>
+          <InfiniteList<${pascalName}DataSchema>
             dataId={${helpers?.wrapInTemplateLiteral({ text: pascalName })}}
             loading={false}
             fetcher={async (p) => {
@@ -79,9 +81,11 @@ const files: SuperCodeGeneratorFilesSchema = [
       return `import React from 'react'
       import Box, { type BoxProps } from '@useweb/ui/Box'
       import Text from '@useweb/ui/Text'
+
+      import type { ${pascalName}DataSchema } from '../../${pascalName}.js'
       
       export type ${pascalName}ItemProps = {
-        item: any | undefined
+        item: ${pascalName}DataSchema | undefined
         loading?: boolean
         sx?: BoxProps['sx']
       }
