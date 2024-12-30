@@ -94,7 +94,7 @@ const files: SuperCodeGeneratorFilesSchema = [
             data-id='${createFormComponentName}'
             sx={props.sx}
             onSubmit={({ formValues }) => {
-              submit.exec(formValues)
+              submit.exec({...formValues})
             }}
           >
             <ActionBox
@@ -168,7 +168,7 @@ const files: SuperCodeGeneratorFilesSchema = [
           <Form<${fieldsComponentName}Schema>
             data-id='${updateFormComponentName}'
             onSubmit={({ formValues }) => {
-              submit.exec(formValues)
+              submit.exec({...formValues})
             }}
           >
             <ResetForm<${fieldsComponentName}Schema>

@@ -48,7 +48,7 @@ const files: SuperCodeGeneratorFilesSchema = [
           <Form<${pascalName}Schema>
             data-id='${pascalName}'
             onSubmit={({ formValues }) => {
-              submitForm.exec(formValues)
+              submitForm.exec({...formValues})
             }}
           >
             <${pascalName}Content
