@@ -21,8 +21,7 @@ const files: SuperCodeGeneratorFilesSchema = [
       return \`\${fileName}\`
     },
     template: ({ name }) => {
-      const fileName = \`\${name}\`
-      return \`\${fileName}\`
+      return \`\content\`
     },
   },
 ]

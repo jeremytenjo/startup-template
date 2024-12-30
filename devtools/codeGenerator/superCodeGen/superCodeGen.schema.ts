@@ -48,6 +48,7 @@ import gameZoneAdUserSwitcherComponent from './templates/gameZoneAdUserSwitcherC
 import firebaseFunctionHttpApiRoute from './templates/firebaseFunctionHttpApiRoute.js'
 import newScgTemplate from './templates/newScgTemplate.js'
 import foundationPage from './templates/foundationPage.js'
+import infiniteFeed from './templates/infiniteFeed.js'
 
 const superCodeGeneratorConfig: SuperCodeGeneratorConfigSchema<any> = [
   component,
@@ -103,6 +104,7 @@ const superCodeGeneratorConfig: SuperCodeGeneratorConfigSchema<any> = [
   adminTool,
 
   infiniteTable,
+  infiniteFeed,
   basicFormComponent,
 
   posthogEvent,
