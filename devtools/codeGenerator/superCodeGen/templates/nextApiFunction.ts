@@ -61,7 +61,7 @@ const files: SuperCodeGeneratorFilesSchema = [
         body: ${pascalCase}Props
       }
       
-      export default async function ${camelCase}_next(
+      export default async function ${camelCase}Next(
         props: ${pascalCase}NextProps,
       ) {
         try {

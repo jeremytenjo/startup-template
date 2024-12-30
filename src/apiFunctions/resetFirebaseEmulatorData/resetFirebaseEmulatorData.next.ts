@@ -9,7 +9,7 @@ export type ResetFirebaseEmulatorDataNextProps = {
   body: ResetFirebaseEmulatorDataProps
 }
 
-export default async function resetFirebaseEmulatorData_next(
+export default async function resetFirebaseEmulatorDataNext(
   props: ResetFirebaseEmulatorDataNextProps,
 ) {
   try {
