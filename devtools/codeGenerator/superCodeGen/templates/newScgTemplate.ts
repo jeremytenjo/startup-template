@@ -17,10 +17,12 @@ const files: SuperCodeGeneratorFilesSchema = [
 const files: SuperCodeGeneratorFilesSchema = [
   {
     path: ({ name }) => {
-      return name
+      const fileName = \`\${name}\`
+      return \`\${fileName}\`
     },
     template: ({ name }) => {
-      return 'hello'
+      const fileName = \`\${name}\`
+      return \`\${fileName}\`
     },
   },
 ]
