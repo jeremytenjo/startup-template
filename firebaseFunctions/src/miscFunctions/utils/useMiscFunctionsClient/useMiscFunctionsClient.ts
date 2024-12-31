@@ -12,7 +12,14 @@ export function useMiscFunctionsClient<RouteSchema extends ApiRouteSchema>(
     MiscFunctionsClientProps<RouteSchema>['api'],
     RouteSchema['return']
   >({
-    fn: async () => await miscFunctionsClient(props),
+    fn: async (p) =>
+      await miscFunctionsClient(
+        p.route
+          ? {
+              api: p,
+            }
+          : props,
+      ),
     ...props.options,
     onError({ error, fnProps }) {
       logError({

@@ -119,7 +119,13 @@ const files: SuperCodeGeneratorFilesSchema = [
           ${pascalCase}ClientProps<RouteSchema>['api'],
           RouteSchema['return']
         >({
-          fn: async () => await ${camelCase}Client(props),
+          fn: async (p) => await ${camelCase}Client(
+          p.route
+          ? {
+              api: p,
+            }
+          : props,
+          ),
           ...props.options,
           onError({ error, fnProps }) {
             logError({

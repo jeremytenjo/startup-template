@@ -12,7 +12,15 @@ export function useSupabaseDatabaseApiClient<RouteSchema extends ApiRouteSchema>
     SupabaseDatabaseApiClientProps<RouteSchema>['api'],
     RouteSchema['return']
   >({
-    fn: async () => await supabaseDatabaseApiClient(props),
+    fn: async (p) => {
+      return await supabaseDatabaseApiClient(
+        p.route
+          ? {
+              api: p,
+            }
+          : props,
+      )
+    },
     ...props.options,
     onError({ error, fnProps }) {
       logError({
