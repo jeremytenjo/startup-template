@@ -1,7 +1,12 @@
 import type { CallableRequest } from 'firebase-functions/v2/https'
+import { httpsCallable } from 'firebase/functions'
 import type { UseDataReturn } from '@useweb/use-data'
 import useData from '@useweb/use-data'
 import logError from '@/src/lib/utils/loggers/logError/logError'
+
+import type { SupabaseDatabaseApiClientProps } from '../../supabaseDatabaseApi/supabaseDatabaseApi.client.js'
+import type { SupabaseDatabaseApiReturn } from '../../supabaseDatabaseApi/supabaseDatabaseApi.js'
+import { functions } from '../../../../src/lib/integrations/Google/Firebase/firebase.js'
 
 export type UseApiRouteDataProps<RouteSchema extends ApiRouteSchema> = {
   fn: (props: any) => any
@@ -87,3 +92,25 @@ export default function useApiRouteData<RouteSchema extends ApiRouteSchema>(
 
 export type UseApiRouteDataReturn<DataSchema extends ApiRouteSchema['return']> =
   UseDataReturn<DataSchema['data'][0], any>
+
+export async function callFirebaseFunction<RouteSchema extends RouteSchemaProps>(
+  props: SupabaseDatabaseApiClientProps<RouteSchema> & {
+    name: string
+  },
+) {
+  const callFunction = httpsCallable<
+    SupabaseDatabaseApiClientProps<RouteSchema>['api'],
+    SupabaseDatabaseApiReturn<RouteSchema>
+  >(functions, props.name)
+
+  try {
+    const res = await callFunction(props.api)
+    return res.data
+  } catch (error: any) {
+    const errorObj = JSON.parse(String(error).replace('FirebaseError: ', ''))
+
+    throw new Error(errorObj.description, {
+      cause: errorObj,
+    })
+  }
+}

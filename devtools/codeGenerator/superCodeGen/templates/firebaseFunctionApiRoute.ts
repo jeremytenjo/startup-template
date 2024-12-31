@@ -48,7 +48,7 @@ const files: SuperCodeGeneratorFilesSchema = [
         })
 
         const response: Awaited<${pascalCase}Return> = {
-          data: [{ id: props.name, success: true }],
+          data: [{ id: props.payload.name, success: true }],
         }
 
         logger.info(${'`'}END: ${'${'}routeId${'}'}${'`'}, { response })
