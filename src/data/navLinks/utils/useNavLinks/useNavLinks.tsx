@@ -5,7 +5,6 @@ import useMediaQuery from '@useweb/ui/useMediaQuery'
 import type NavLinkSchema from '../../../_commonSchemas/NavLinkSchema/NavLinkSchema.js'
 import useAuth from '../../../users/utils/useAuth/useAuth.js'
 import DiscordIcon from '../../../../lib/components/icons/DiscordIcon.js'
-import appConfig from '../../../../../app.config.js'
 
 export const navLinks = {
   home: {
@@ -70,7 +69,12 @@ export const navLinks = {
   socialLinks: {
     discord: {
       label: 'Discord',
-      url: appConfig.socialLinks.discord.link,
+      url: 'https://discord.gg/startup-template-one',
+      icon: DiscordIcon,
+    } satisfies NavLinkSchema,
+    mailto: {
+      label: 'Mail',
+      url: 'mailto:info@startup-template-one.com',
       icon: DiscordIcon,
     } satisfies NavLinkSchema,
   },

@@ -9,14 +9,6 @@ const appConfig = {
     domain: 'https://www.domain.com',
     previewDomain: 'https://www.previewDomain.com',
   },
-  socialLinks: {
-    discord: {
-      link: 'https://discord.gg/startup',
-    },
-    mailto: {
-      link: 'mailto:info@socialseed.com',
-    },
-  },
   nextjs: {
     port: 3001,
   },
