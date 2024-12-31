@@ -261,9 +261,7 @@ const files: SuperCodeGeneratorFilesSchema = [
       
               if (res?.error || !res?.result?.updatedItem) {
                 throw new Error(String(res?.error || 'res?.result?.updatedItem is undefined'), {
-                  cause: {
-                    publicErrorMessage: 'Error. Please try again later.',
-                  },
+                  cause: res?.error?.cause
                 })
               }
       
@@ -276,9 +274,7 @@ const files: SuperCodeGeneratorFilesSchema = [
       
               if (res?.error || !res?.result?.createdItem) {
                 throw new Error(String(res?.error || 'res?.result?.createdItem'), {
-                  cause: {
-                    publicErrorMessage: 'Error. Please try again later.',
-                  },
+                  cause: res?.error?.cause
                 })
               }
       
