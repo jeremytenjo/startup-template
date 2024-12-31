@@ -13,7 +13,7 @@ export default async function nodePhError(props: NodePhErrorProps) {
   assert<NodePhErrorProps>({ props, requiredProps: ['description', 'fnName'] })
 
   nodePostHog({
-    eventName: 'Error',
+    eventName: 'error',
     data: {
       description: String(props.description),
       functionName: props.fnName,

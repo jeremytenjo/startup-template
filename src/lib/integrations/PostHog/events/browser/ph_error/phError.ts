@@ -13,7 +13,7 @@ export default async function phError(props: PhErrorProps) {
   assert<PhErrorProps>({ props, requiredProps: ['description', 'fnName'] })
 
   postHog({
-    eventName: 'Error',
+    eventName: 'error',
     data: {
       description: String(props.description),
       functionName: props.fnName,
