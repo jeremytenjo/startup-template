@@ -5,12 +5,9 @@ import EmptyMessage from '@useweb/ui/EmptyMessage'
 import Box from '@useweb/ui/Box'
 
 import RootLayout from '../lib/layouts/RootLayout/RootLayout.js'
-import useAuth from '../data/users/utils/useAuth/useAuth.js'
 import PageNotFoundIcon from '../lib/components/icons/PageNotFoundIcon.js'
 
 export default function PageNotFound() {
-  const auth = useAuth()
-
   return (
     <RootLayout title='Page Not Found'>
       <Box
