@@ -88,11 +88,6 @@ export default function UserAccessCardSignUpLastStep(
             text='Continue with Email'
             buttonProps={{
               variant: 'text',
-              onClick: () => {
-                postHogEventClick({
-                  action: 'user sign up: Continue with Email',
-                })
-              },
             }}
           />
         </>
