@@ -5,6 +5,7 @@ import logger from 'firebase-functions/logger'
 import getFirebaseAdminServer from '../../../../../../src/lib/integrations/Google/Firebase/admin/utils/getFirebaseAdminServer/getFirebaseAdmin.server.js'
 import { usersCollectionName } from '../../../../../../src/data/users/users.config.js'
 import type UserSchema from '../../../../../../src/data/users/user.schema.js'
+import ph_userDeactivatedAccount from '../../../../../../src/lib/integrations/PostHog/events/node/ph_userDeactivatedAccount.ts/ph_userDeactivatedAccount.js'
 
 export const routeId = 'routes/deactivateAccount'
 
@@ -61,6 +62,10 @@ export default async function deactivateAccount(
     })
 
   await firebaseAdmin.firestore().collection(usersCollectionName).doc(userDoc.id).delete()
+
+  ph_userDeactivatedAccount({
+    uid: props.authUser.uid,
+  })
 
   const response: Awaited<DeactivateAccountReturn> = {
     data: [
