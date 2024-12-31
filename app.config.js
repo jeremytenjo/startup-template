@@ -13,9 +13,6 @@ const appConfig = {
     discord: {
       link: 'https://discord.gg/startup',
     },
-    twitter: {
-      link: 'https://twitter.com/SocialSeedHQ',
-    },
     mailto: {
       link: 'mailto:info@socialseed.com',
     },
