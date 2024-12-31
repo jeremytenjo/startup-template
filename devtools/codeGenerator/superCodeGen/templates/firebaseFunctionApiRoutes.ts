@@ -120,7 +120,7 @@ const files: SuperCodeGeneratorFilesSchema = [
           RouteSchema['return']
         >({
           fn: async (p) => await ${camelCase}Client(
-          p.route
+          p?.route
           ? {
               api: p,
             }

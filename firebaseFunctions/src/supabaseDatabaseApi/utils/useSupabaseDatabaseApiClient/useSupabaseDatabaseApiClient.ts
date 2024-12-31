@@ -14,7 +14,7 @@ export function useSupabaseDatabaseApiClient<RouteSchema extends ApiRouteSchema>
   >({
     fn: async (p) => {
       return await supabaseDatabaseApiClient(
-        p.route
+        p?.route
           ? {
               api: p,
             }

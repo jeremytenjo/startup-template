@@ -14,7 +14,7 @@ export function useMiscFunctionsClient<RouteSchema extends ApiRouteSchema>(
   >({
     fn: async (p) =>
       await miscFunctionsClient(
-        p.route
+        p?.route
           ? {
               api: p,
             }
