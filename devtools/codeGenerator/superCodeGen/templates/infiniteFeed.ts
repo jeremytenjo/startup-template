@@ -17,7 +17,8 @@ const files: SuperCodeGeneratorFilesSchema = [
       return `import React from 'react'
       import type { InfiniteListProps } from '@useweb/ui/InfiniteList'
       import InfiniteList from '@useweb/ui/InfiniteList'
-      
+      import { useInfiniteListCache } from '@useweb/use-infinite-list'
+
       import ${pascalName}Item from './components/${pascalName}Item/${pascalName}Item.js'
       
       import logError from '@/src/lib/utils/loggers/logError/logError.js'
@@ -31,7 +32,7 @@ const files: SuperCodeGeneratorFilesSchema = [
       export default function ${pascalName}(props: ${pascalName}Props) {
         return (
           <InfiniteList<${pascalName}DataSchema>
-            dataId={${helpers?.wrapInTemplateLiteral({ text: pascalName })}}
+            dataId={get${pascalName}DataId().id}
             loading={false}
             fetcher={async (p) => {
               return {
@@ -65,6 +66,26 @@ const files: SuperCodeGeneratorFilesSchema = [
           />
         )
       }
+
+const get${pascalName}DataId = (): {
+  id: string | undefined
+} => {
+  return { id: ${helpers?.wrapInTemplateLiteral({ text: pascalName })} }
+}
+
+export function use${pascalName}() {
+  const infiniteListCache = useInfiniteListCache()
+
+  const revalidate = () => {
+    infiniteListCache.revalidate({
+      id: get${pascalName}DataId().id || '',
+    })
+  }
+
+  return {
+    revalidate,
+  }
+}
       `
     },
   },
