@@ -89,7 +89,7 @@ const files: SuperCodeGeneratorFilesSchema = [
               logError({
                 error,
                 fnName: '${namePascalCase}',
-                metadata: { fnProps },
+                metadata: { },
               })
             }}
           />
@@ -102,6 +102,7 @@ const files: SuperCodeGeneratorFilesSchema = [
             data-id='Actions'
             sx={{}}
           >
+            <Skeleton loading>
               action
             </Skeleton>
           </Box>
@@ -135,7 +136,7 @@ const files: SuperCodeGeneratorFilesSchema = [
       
       export type Get${namePascalCase}Props = InfiniteTableFetcherProps
       
-      export async function get${namePascalCase}(props: Get${namePascalCase}Props) {
+      export default async function get${namePascalCase}(props: Get${namePascalCase}Props) {
         const data: DataSchema[] = []
         const constraints: QueryConstraint[] = []
         const coll = query(collection(db, dataCollectionName))

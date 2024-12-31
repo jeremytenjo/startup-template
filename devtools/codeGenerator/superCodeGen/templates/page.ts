@@ -19,7 +19,7 @@ const files: SuperCodeGeneratorFilesSchema<CustomProps> = [
     path: () => `index.tsx`,
     template: ({ name, customProps }) => {
       const upperName = changeCase.capitalCase(name).split(' ').join('')
-      const spaceName = changeCase.capitalCase(name).split(' ').join('-')
+      const spaceName = changeCase.capitalCase(name).split(' ').join(' ')
 
       return `import React from 'react' 
 

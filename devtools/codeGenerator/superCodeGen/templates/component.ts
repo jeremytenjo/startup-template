@@ -36,7 +36,7 @@ const files: SuperCodeGeneratorFilesSchema<CustomProps> = [
       const propsName = `${componentName}Props`
 
       return `import React from 'react'       
-    import Box from '@useweb/ui/Box'
+    import Box, { type BoxProps } from '@useweb/ui/Box'
     import Text from '@useweb/ui/Text'
 ${isFunctionWithComponent ? `import ErrorMessage from '@useweb/ui/ErrorMessage'` : ''}
     ${
@@ -45,7 +45,9 @@ ${isFunctionWithComponent ? `import ErrorMessage from '@useweb/ui/ErrorMessage'`
         : ''
     }
 
-    export type ${propsName} = { name?: string }
+    export type ${propsName} = { 
+      sx?: BoxProps['sx']
+    }
   
     export default function ${componentName}(props: ${propsName}) {
       ${
@@ -55,7 +57,7 @@ console.log(${camelCase})`
           : ''
       }
       return (
-        <Box data-id='${componentName}' sx={{}}>
+        <Box data-id='${componentName}' sx={{...props.sx}}>
           <Text text={'${componentName}'} tag='p' sx={{}} />
           ${
             isFunctionWithComponent
