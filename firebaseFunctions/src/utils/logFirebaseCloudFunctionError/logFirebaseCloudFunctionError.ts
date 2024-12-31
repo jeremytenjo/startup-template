@@ -7,7 +7,7 @@ import nodePhError from '../../../../src/lib/integrations/PostHog/events/node/no
 export type LogFirebaseCloudFunctionErrorProps = {
   description: string
   fnName: string
-  metadata: object
+  metadata: any
   uid?: string
   // use in callable cloud functions
   throwHttpsError?: boolean
@@ -22,11 +22,18 @@ export default function logFirebaseCloudFunctionError(
     requiredProps: ['description', 'fnName'],
   })
 
+  const publicErrorMessage =
+    props.metadata?.publicErrorMessage || 'Error. Please try again later.'
+
   const errorObj = {
     fnName: String(props.fnName),
     description: String(props.description),
-    metadata: props.metadata,
+    metadata: {
+      ...props.metadata,
+      publicErrorMessage,
+    },
     uid: props.uid,
+    publicErrorMessage,
   }
 
   nodePhError(errorObj)
@@ -34,7 +41,7 @@ export default function logFirebaseCloudFunctionError(
   // use in callable cloud functions
   if (props.throwHttpsError) {
     logger.error(errorObj.fnName + ` - ${errorObj.description}`, errorObj)
-    throw new HttpsError('failed-precondition', errorObj.description)
+    throw new HttpsError('failed-precondition', JSON.stringify(errorObj))
   } else {
     logger.error(errorObj.fnName + ` - ${errorObj.description}`, errorObj)
   }
