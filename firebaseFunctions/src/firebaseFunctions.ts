@@ -2,6 +2,7 @@ import { onCall, onRequest } from 'firebase-functions/v2/https'
 
 import miscFunctionsFirebase from './miscFunctions/miscFunctions.firebase.js'
 import stripeWebhooksReceiverFirebase from './stripeWebhooksReceiver/stripeWebhooksReceiver.firebase.js'
+import supabaseDatabaseApiFirebase from './supabaseDatabaseApi/supabaseDatabaseApi.firebase.js'
 
 // miscFunctions
 export const miscFunctions = onCall(
@@ -14,4 +15,9 @@ export const miscFunctions = onCall(
 // stripeWebhooksReceiver
 export const stripeWebhooksReceiver = onRequest(
   async (req, res) => await stripeWebhooksReceiverFirebase({ req, res }),
+)
+
+// supabaseDatabaseApi
+export const supabaseDatabaseApi = onCall(
+  async (request) => await supabaseDatabaseApiFirebase({ request }),
 )
