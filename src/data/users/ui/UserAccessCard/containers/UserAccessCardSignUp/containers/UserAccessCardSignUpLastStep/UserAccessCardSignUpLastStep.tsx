@@ -8,7 +8,6 @@ import type {
   UseAuthReturn,
 } from '../../../../../../utils/useAuth/useAuth.js'
 import type { UserAccessCardSignUpFormSchema } from '../../UserAccessCardSignUp.js'
-import postHogEventClick from '../../../../../../../../lib/integrations/PostHog/events/browser/postHogEventClick/postHogEventClick.js'
 import ContinueWithGoogleButton from '../../../../../../utils/signIn/ContinueWithGoogle/ui/ContinueWithGoogleButton/ContinueWithGoogleButton.js'
 import AccountAccessCta from '../../../../../AccountAccessCTA/AccountAccessCta.js'
 import { validatePassword } from '../../../../../../utils/signUp/signUpFormUtils/signUpFormUtils.js'
@@ -36,10 +35,6 @@ export default function UserAccessCardSignUpLastStep(
     >
       <ContinueWithGoogleButton
         onClick={() => {
-          postHogEventClick({
-            action: 'user sign up: Continue with Google',
-          })
-
           props.auth.signUp.exec({ signUpWithGoogle: signUpWithGoogleProps })
         }}
       />
