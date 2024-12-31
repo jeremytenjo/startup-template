@@ -24,7 +24,7 @@ const files: SuperCodeGeneratorFilesSchema = [
 
       import postHog from '@/src/lib/integrations/PostHog/postHog'
       
-      export type PH_${pascalCase}Props = { name: string }
+      export type PH_${pascalCase}Props = { name: string; metadata?: object }
       
       export default function ph_${camelCase}(
         props: PH_${pascalCase}Props,
@@ -37,9 +37,7 @@ const files: SuperCodeGeneratorFilesSchema = [
         postHog({
           eventName: '${snakeCase}',
           data: {
-            metadata: {
               ...props,
-            }
           },
         })
       }
