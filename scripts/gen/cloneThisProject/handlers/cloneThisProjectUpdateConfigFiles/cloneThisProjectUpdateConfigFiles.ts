@@ -64,7 +64,7 @@ export default async function cloneThisProjectUpdateConfigFiles(
               replaceValue: 'description',
             },
             {
-              searchValue: appConfig.default.siteInfo.title,
+              searchValue: appConfig.default.siteInfo.name,
               replaceValue: 'title',
             },
           ],

@@ -55,7 +55,7 @@ export default function UserPublicPageIndex(
   const userUrl = props.user?.document?.fields?.displayName?.stringValue
     ? `${appConfig.siteInfo.domain}/creator/${props.user?.document?.fields?.displayName?.stringValue}`
     : ''
-  const title = `${props.user?.document?.fields?.displayName?.stringValue} | ${appConfig.siteInfo.title}`
+  const title = `${props.user?.document?.fields?.displayName?.stringValue} | ${appConfig.siteInfo.name}`
   const description = props.user?.document?.fields?.bio?.stringValue || 'No Bio'
   const userPhoto = props.user?.document?.fields?.photoURL?.stringValue || ''
 
@@ -77,7 +77,7 @@ export default function UserPublicPageIndex(
         <meta property='og:image:alt' content={title} />
 
         <meta property='twitter:card' content='summary' />
-        <meta property='twitter:site' content={appConfig.siteInfo.title} />
+        <meta property='twitter:site' content={appConfig.siteInfo.name} />
 
         <meta property='og:type' content='website' />
 

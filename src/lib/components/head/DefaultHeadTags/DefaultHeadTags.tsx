@@ -11,14 +11,14 @@ export type DefaultHeadTagsProps = {
 export default function DefaultHeadTags(props: DefaultHeadTagsProps) {
   return (
     <Head>
-      <title>{props.title || appConfig.siteInfo.title}</title>
+      <title>{props.title || appConfig.siteInfo.name}</title>
       <meta
         name='description'
         content={props.description || appConfig.siteInfo.description}
       />
       <meta property='og:url' content={appConfig.siteInfo.domain} />
       <meta property='og:type' content='website' />
-      <meta property='og:title' content={appConfig.siteInfo.title} />
+      <meta property='og:title' content={appConfig.siteInfo.name} />
       <meta property='og:description' content={appConfig.siteInfo.description} />
       <meta
         property='og:image'

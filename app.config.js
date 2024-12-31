@@ -5,7 +5,6 @@ export const getIsProductionEnv = () => {
 const appConfig = {
   siteInfo: {
     name: 'Startup Template',
-    title: 'title',
     description: 'description',
     domain: 'https://www.domain.com',
     previewDomain: 'https://www.previewDomain.com',
