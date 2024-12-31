@@ -28,7 +28,7 @@
     "prismic:update": "npm install --save-dev slice-machine-ui@latest @slicemachine/adapter-next@latest",
     "supabase:database:reset": "node --loader ts-node/esm ./scripts/supabase/resetSupabaseDatabaseData/run.ts",
     "supabase:database:generateDevDatabase": "node --loader ts-node/esm ./src/lib/integrations/Supabase/database/scripts/generateSupabaseDevDatabase/run.ts",
-    "supabase:generate:types": "node --loader ts-node/esm ./scripts/supabase/generateSupabaseTypes/run.ts",
+    "supabase:stop": "npx supabase stop",
     "build": "node --experimental-json-modules --loader ts-node/esm ./scripts/buildApp/run.ts",
     "build:analyze": "ANALYZE=true next build",
     "build-and-serve": "npm run build && npm run serve",
