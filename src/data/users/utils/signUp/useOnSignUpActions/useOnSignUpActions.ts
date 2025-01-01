@@ -11,6 +11,13 @@ export default function useOnSignUpActions() {
       severity: 'success',
     })
 
+    if (router.query.redirect) {
+      const rawRedirect = router.query.redirect as string
+      const redirect = rawRedirect.charAt(0) !== '/' ? `/${rawRedirect}` : rawRedirect
+      router.push(redirect)
+      return
+    }
+
     router.push('/')
   }
 
