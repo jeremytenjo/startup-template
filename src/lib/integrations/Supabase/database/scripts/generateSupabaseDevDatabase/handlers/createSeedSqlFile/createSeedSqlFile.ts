@@ -34,17 +34,25 @@ values `
         const islastRow = index === table.data.length - 1
         let valuesSql = `(`
         const rowKeys = columnProperties.map((p) => {
-          const rawValue = row[p] ? JSON.stringify(row[p]) : 'null'
-          const valueType = Array.isArray(rawValue)
+          const rawValue = row[p]
+          try {
+            const isJson = typeof JSON.parse(rawValue) === 'object'
+            if (isJson) {
+              return `'${rawValue}'`
+            }
+          } catch (e) {}
+
+          const rawValueStringified = rawValue ? JSON.stringify(rawValue) : 'null'
+          const valueType = Array.isArray(rawValueStringified)
             ? 'array'
             : table.schemaProps[p]?.type || 'string'
           const value = valueType?.includes?.('string')
-            ? String(rawValue).replaceAll('"', "'")
+            ? rawValueStringified.replaceAll(`"`, `'`)
             : valueType.includes?.('object')
-            ? `'${rawValue}'`
+            ? `'${rawValueStringified}'`
             : valueType.includes?.('array')
-            ? `'${rawValue}'`
-            : rawValue
+            ? `'${rawValueStringified}'`
+            : rawValueStringified
 
           return value
         })
