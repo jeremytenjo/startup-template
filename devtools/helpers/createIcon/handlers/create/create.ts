@@ -18,7 +18,7 @@ export default async function create({ name, svgString, outputPath }: Props) {
       '<svg',
       `<SvgIcon 
         {...(props || {})} sx={{
-          width: '15px',
+          width: props.size || '15px',
           height: 'auto',
           ...(props?.sx || {}),
     }} data-id="${name}"`,
@@ -28,7 +28,9 @@ export default async function create({ name, svgString, outputPath }: Props) {
   const svg = `import React from 'react'
 import SvgIcon, { type SvgIconProps } from '@mui/material/SvgIcon'
 
-export default function ${name}(props: SvgIconProps) {
+export default function ${name}(props: SvgIconProps & {
+  size?: string
+}) {
   return (
     ${renderString}
   )
