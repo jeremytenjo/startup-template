@@ -36,7 +36,7 @@ export default function RootFooterLinksListContent(
         )
       }}
       sx={{
-        gridGap: '16px',
+        gridGap: '13px',
       }}
     />
   )
