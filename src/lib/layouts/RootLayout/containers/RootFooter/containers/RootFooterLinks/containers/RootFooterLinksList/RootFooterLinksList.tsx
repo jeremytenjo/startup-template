@@ -17,7 +17,7 @@ export default function RootFooterLinksList(props: RootFooterLinksListProps) {
         display: 'grid',
         alignContent: 'start',
         gridAutoFlow: 'row',
-        gridGap: '19.390625px',
+        gridGap: '15px',
         paddingBottom: '40px',
       }}
     >
