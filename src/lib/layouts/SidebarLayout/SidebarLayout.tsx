@@ -21,9 +21,9 @@ export type SidebarLayoutProps = {
     src: string
     loading: boolean
   }
-  plainContentStyles?: boolean
   reverseSidebarPosition?: boolean
-  'data-id'?: string
+  plainContentStyles?: boolean
+  plainSidebarStyles?: boolean
 }
 
 const bannerHeight = '180px'
@@ -31,7 +31,7 @@ const bannerHeight = '180px'
 export default function SidebarLayout(props: SidebarLayoutProps) {
   return (
     <Box
-      data-id={props['data-id'] || 'SidebarLayout'}
+      data-id='SidebarLayout'
       sx={{
         display: 'grid',
         gap: '20px',
@@ -106,6 +106,14 @@ export default function SidebarLayout(props: SidebarLayoutProps) {
           }),
 
           ...((props.sidebarSx ?? {}) as any),
+
+          ...(props.plainSidebarStyles
+            ? {
+                backgroundColor: 'transparent',
+                border: 'none',
+                p: 0,
+              }
+            : {}),
         }}
       >
         {props.sidebarComponent}
@@ -156,10 +164,8 @@ export default function SidebarLayout(props: SidebarLayoutProps) {
             )}
           </Box>
         )}
-
         {/* Uner Link Content */}
         {props.underLinksContent || null}
-
         {/* Page Content */}
         <Box
           data-id='SidebarLayout_Content'
