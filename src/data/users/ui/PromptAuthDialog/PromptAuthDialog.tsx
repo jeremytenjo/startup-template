@@ -7,7 +7,6 @@ import Link from '@useweb/ui/Link'
 import Button from '@useweb/ui/Button'
 
 import useAuth from '../../utils/useAuth/useAuth.js'
-import BlocksBackgroundIcon from '../../../../lib/components/icons/BlocksBackgroundIcon.js'
 import { navLinks } from '../../../navLinks/utils/useNavLinks/useNavLinks.js'
 import appConfig from '../../../../../app.config.js'
 
@@ -56,11 +55,6 @@ export default function PromptAuthDialog(props: PromptAuthDialogProps) {
           overflow: 'hidden',
         }}
       >
-        <BlocksBackgroundIcon
-          sx={{
-            zIndex: 1,
-          }}
-        />
         <Image
           src={`/images/logo/logo.svg`}
           alt={`logo`}
