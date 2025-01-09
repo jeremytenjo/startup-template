@@ -32,6 +32,11 @@ export const navLinks = {
     url: `/user/:displayName`,
   } satisfies NavLinkSchema,
 
+  user: {
+    label: 'User',
+    url: (p: { displayName: string }) => `/user/${p.displayName}`,
+  },
+
   faq: {
     label: 'FAQ',
     url: `/faq`,
