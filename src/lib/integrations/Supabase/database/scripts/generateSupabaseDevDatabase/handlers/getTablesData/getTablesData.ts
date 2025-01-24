@@ -38,9 +38,9 @@ export default async function getTablesData() {
         try {
           if (generateSupabaseDevDatabaseConfig.tables.some((t) => t.name === name)) {
             const { default: data } = await import(stubPath)
-            const schemaPath = path.join(
-              process.cwd(),
-              `src/data/${name}/${pluralize.singular(name)}.schema.ts`,
+            const schemaPath = stubPath.replace(
+              `${name}.stubs`,
+              `${pluralize.singular(name)}.schema`,
             )
             const config = {
               path: schemaPath,
