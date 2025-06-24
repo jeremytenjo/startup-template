@@ -1,6 +1,6 @@
 /* eslint-disable storybook/prefer-pascal-case */
-import Colors from './theme.colors.jsx'
-import Typography from './theme.typography.jsx'
+import Colors from './theme.colors.js'
+import Typography from './theme.typography.js'
 export default {
   title: 'Theme/Tokens',
 }

@@ -5,7 +5,7 @@ import type { ButtonProps } from '@useweb/ui/Button'
 import Button from '@useweb/ui/Button'
 import Link from '@useweb/ui/Link'
 
-import { Island } from '../../../integrations/Useweb/theme/UiTheme/commonStyles/islandStyles.jsx'
+import { Island } from '../../../integrations/Useweb/theme/UiTheme/commonStyles/islandStyles.js'
 import type { PageTitleHeadingProps } from '../../../layouts/PageTitleHeading/PageTitleHeading.js'
 import PageTitleHeading from '../../../layouts/PageTitleHeading/PageTitleHeading.js'
 

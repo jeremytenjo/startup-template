@@ -3,7 +3,7 @@ import React from 'react'
 import FileInput from '@useweb/ui/FileInput'
 import Form from '@useweb/ui/Form'
 
-import Typography from '../../../../theme/tokens/stories/theme.typography.jsx'
+import Typography from '../../../../theme/tokens/stories/theme.typography.js'
 
 export default {
   title: 'lib/components/useweb/FileInput',

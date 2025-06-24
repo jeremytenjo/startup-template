@@ -5,7 +5,7 @@ import Image from '@useweb/ui/Image'
 import type { LinkTabsProps } from '@useweb/ui/LinkTabs'
 import LinkTabs from '@useweb/ui/LinkTabs'
 
-import { islandStyles } from '../../integrations/Useweb/theme/UiTheme/commonStyles/islandStyles.jsx'
+import { islandStyles } from '../../integrations/Useweb/theme/UiTheme/commonStyles/islandStyles.js'
 
 export type SidebarLayoutProps = {
   children: any

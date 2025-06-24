@@ -4,7 +4,7 @@ import Box from '@useweb/ui/Box'
 import Text from '@useweb/ui/Text'
 
 import MiniLabel from '../MiniLabel/MiniLabel.js'
-import { Island } from '../../../integrations/Useweb/theme/UiTheme/commonStyles/islandStyles.jsx'
+import { Island } from '../../../integrations/Useweb/theme/UiTheme/commonStyles/islandStyles.js'
 
 export type SelectableInfoCardProps = {
   icon: any

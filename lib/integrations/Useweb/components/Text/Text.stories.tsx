@@ -2,7 +2,7 @@
 import React from 'react'
 import Text, { type TextProps } from '@useweb/ui/Text'
 
-import Typography from '../../theme/tokens/stories/theme.typography.jsx'
+import Typography from '../../theme/tokens/stories/theme.typography.js'
 
 const defaultArgs: TextProps = { text: 'hello', variant: 'h1' }
 
