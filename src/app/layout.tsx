@@ -6,7 +6,6 @@ import GlobalErrorLogger from '../../lib/utils/loggers/logError/GlobalErrorLogge
 import colors from '../../theme/tokens/colors.js'
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   viewport: 'initial-scale=1, maximum-scale=1, width=device-width',
   robots: 'index, follow',
   themeColor: colors.neutral[500],
