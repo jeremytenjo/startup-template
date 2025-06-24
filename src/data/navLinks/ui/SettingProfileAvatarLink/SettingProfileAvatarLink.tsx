@@ -4,7 +4,6 @@ import Link from '@useweb/ui/Link'
 import type { AvatarProps } from '@useweb/ui/Avatar'
 import Avatar from '@useweb/ui/Avatar'
 
-import useAuth from '../../../users/utils/useAuth/useAuth.js'
 import useNavLinks from '../../utils/useNavLinks/useNavLinks.js'
 
 export type SettingProfileAvatarLinkProps = {
@@ -53,12 +52,10 @@ const SettingProfileAvatarLinkAvatar = (props: {
   onClick?: any
   imgProps?: AvatarProps['imgProps']
 }) => {
-  const auth = useAuth()
-
   return (
     <Avatar
-      src={auth.user?.profilePhoto?.src}
-      alt={auth.user?.displayName}
+      src={''}
+      alt={''}
       avatarProps={{
         onClick: props.onClick,
       }}

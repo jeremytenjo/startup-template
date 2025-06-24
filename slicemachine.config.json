@@ -1,7 +1,0 @@
-{
-  "repositoryName": "startup-template-one",
-  "adapter": "@slicemachine/adapter-next",
-  "libraries": ["./src/lib/integrations/Prismic/slices"],
-  "apiEndpoint": "https://startup-template-one.prismic.io/api/v2",
-  "localSliceSimulatorURL": "http://localhost:3001/slice-simulator"
-}

@@ -6,18 +6,11 @@ import NavLink from '@useweb/ui/NavLink'
 import FullLogoLink from '../../../../../../components/logo/FullLogoLink/FullLogoLink.js'
 import useNavLinks from '../../../../../../../data/navLinks/utils/useNavLinks/useNavLinks.js'
 import type NavLinkSchema from '../../../../../../../data/_commonSchemas/NavLinkSchema/NavLinkSchema.js'
-import useAuth from '../../../../../../../data/users/utils/useAuth/useAuth.js'
-import NotificationsPopover from '../../../../../../../data/notifications/queries/Notifications/ui/NotificationsPopover/NotificationsPopover.js'
-import useOnNewNotificationReceived from '../../../../../../../data/notifications/queries/Notifications/useOnNewNotificationReceived/useOnNewNotificationReceived.js'
 import SignUpLink from '../../../../../../../data/navLinks/ui/SignUpLink/SignUpLink.js'
-import ProfilePhotoMenu from '../../../../../../../data/navLinks/ui/ProfilePhotoMenu/ProfilePhotoMenu.js'
 import { themeTokens } from '../../../../../../../theme/tokens/tokens.js'
 
 export default function DesktopHeader() {
-  useOnNewNotificationReceived()
-
   const navLinks = useNavLinks()
-  const auth = useAuth()
 
   return (
     <>
@@ -79,30 +72,21 @@ export default function DesktopHeader() {
             gridAutoFlow: 'column',
           }}
         >
-          {auth.userWasSignedInOrIsSignedIn ? (
-            <>
-              <NotificationsPopover />
-              <ProfilePhotoMenu />
-            </>
-          ) : (
-            <>
-              <NavLink
-                href={navLinks.navLinks.access.signIn?.url}
-                label={navLinks.navLinks.access.signIn?.label}
-                sx={{
-                  '& p': {
-                    fontSize: '16px',
-                  },
-                }}
-              />
+          <NavLink
+            href={navLinks.navLinks.access.signIn?.url}
+            label={navLinks.navLinks.access.signIn?.label}
+            sx={{
+              '& p': {
+                fontSize: '16px',
+              },
+            }}
+          />
 
-              <SignUpLink
-                sx={{
-                  ml: '10px',
-                }}
-              />
-            </>
-          )}
+          <SignUpLink
+            sx={{
+              ml: '10px',
+            }}
+          />
         </Box>
       </Box>
     </>

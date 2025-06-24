@@ -6,11 +6,8 @@ import { SnackbarProvider } from '@useweb/ui/Snackbar'
 import Theme from '../theme/theme.js'
 import createEmotionCache from '../theme/UiTheme/utils/createEmotionCache.js'
 import GoogleSearchConsole from '../lib/integrations/Google/GoogleSearchConsole/components/GoogleSearchConsole.js'
-import Firebase from '../lib/integrations/Google/Firebase/firebase.js'
 import GlobalErrorLogger from '../lib/utils/loggers/logError/GlobalErrorLogger/GlobalErrorLogger.js'
 import colors from '../theme/tokens/colors.js'
-import Prismic from '../lib/integrations/Prismic/Prismic.js'
-import AuthUserSetterMounter from '../lib/integrations/Google/Firebase/auth/ui/AuthUserSetter/AuthUserSetterMounter.js'
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache()
@@ -33,18 +30,13 @@ export default function MyApp(props) {
       </Head>
 
       <GlobalErrorLogger>
-        <Firebase>
-          <CacheProvider value={emotionCache}>
-            <Theme>
-              <SnackbarProvider>
-                <Prismic>
-                  <AuthUserSetterMounter />
-                  <Component {...pageProps} />
-                </Prismic>
-              </SnackbarProvider>
-            </Theme>
-          </CacheProvider>
-        </Firebase>
+        <CacheProvider value={emotionCache}>
+          <Theme>
+            <SnackbarProvider>
+              <Component {...pageProps} />
+            </SnackbarProvider>
+          </Theme>
+        </CacheProvider>
       </GlobalErrorLogger>
     </>
   )

@@ -1,36 +1,16 @@
-import path from 'path'
-
 import appConfig from '../../app.config.js'
-import firebaseJson from '../../firebase.json' assert { type: 'json' }
 import shellDashboard, {
   type CommandProps,
 } from '../../devtools/utils/terminal/shellDashboard.js'
-import readFile from '../../devtools/utils/node/readFile.js'
-import log from '../../devtools/utils/node/log.js'
 
 import getDevScriptArgs from './handlers/getDevScriptArgs/getDevScriptArgs.js'
 
 export default async function dev() {
   const devScriptArgs = await getDevScriptArgs()
   const emulatorPorts: number[] = []
-  const waitForEmulatorPortsMessage = 'Waiting for emulator data'
-
-  const firebaserc = await readFile(path.join(process.cwd(), '.firebaserc'))
-  const noProjectDefinedInFirebaserc = firebaserc.includes('""')
-  for (const [, value] of Object.entries(firebaseJson.emulators)) {
-    emulatorPorts.push(value.port)
-  }
 
   const startApp = true
   const startStorybook = !devScriptArgs.onlyApp
-  const startFirebaseEmulators =
-    !noProjectDefinedInFirebaserc && firebaseJson.emulators && !devScriptArgs.onlyApp
-  const waitForEmulatorPorts = startFirebaseEmulators
-    ? {
-        ports: emulatorPorts,
-        message: waitForEmulatorPortsMessage,
-      }
-    : undefined
 
   const commands: CommandProps[] = []
 
@@ -47,7 +27,6 @@ export default async function dev() {
       },
       ports: [appConfig.nextjs.port],
       color: '#fff',
-      waitForPorts: waitForEmulatorPorts,
     }
     commands.push(nextjsCommand)
   }
@@ -62,32 +41,8 @@ export default async function dev() {
       },
       ports: [appConfig.devtools.storybook.port],
       color: '#FF4785',
-      waitForPorts: waitForEmulatorPorts,
     }
     commands.push(storybookCommand)
-  }
-
-  // firebase emulator
-  if (startFirebaseEmulators) {
-    if (!emulatorPorts.length) {
-      throw new Error('Missing emulator ports in firebase.json')
-    }
-    try {
-      const getFirebaseCommand = (
-        await import(
-          './handlers/getFirebaseEmulatorCommand/getFirebaseEmulatorCommand.js'
-        )
-      ).default
-      const firebaseCommand = await getFirebaseCommand({
-        devScriptArgs,
-        emulatorPorts,
-      })
-      firebaseCommand && commands.push(firebaseCommand)
-    } catch (error: any) {
-      log(`Error running getFirebaseCommand - ${String(error)}`, {
-        error: true,
-      })
-    }
   }
 
   // playwright
@@ -111,7 +66,6 @@ export default async function dev() {
         process.exit(1)
       },
     }
-
     commands.push(playwrightCommand)
   }
 

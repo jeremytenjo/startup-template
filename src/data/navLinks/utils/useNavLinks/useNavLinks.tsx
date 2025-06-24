@@ -3,7 +3,6 @@ import React, { useMemo } from 'react'
 import useMediaQuery from '@useweb/ui/useMediaQuery'
 
 import type NavLinkSchema from '../../../_commonSchemas/NavLinkSchema/NavLinkSchema.js'
-import useAuth from '../../../users/utils/useAuth/useAuth.js'
 import DiscordIcon from '../../../../lib/components/icons/DiscordIcon.js'
 
 export const navLinks = {
@@ -86,20 +85,14 @@ export const navLinks = {
 }
 
 export default function useNavLinks() {
-  const auth = useAuth()
   const mobileMq = useMediaQuery({
     size: 'lg',
     type: 'down',
   })
 
   const _navLinks = useMemo(() => {
-    navLinks.profile = {
-      label: 'Profile',
-      url: `/user/${auth.user?.displayName}`,
-    }
-
     return navLinks
-  }, [auth.user?.id])
+  }, [])
 
   // Main navigation links
   const mainNavLinks = useMemo(() => {
@@ -107,23 +100,12 @@ export default function useNavLinks() {
     const isMobile = mobileMq.matches
     const isDesktop = !isMobile
 
-    if (isMobile) {
-      if (auth.user?.id) {
-        links.push(navLinks.profile)
-        links.push(navLinks.settings.settings)
-      }
-
-      if (!auth.user?.id) {
-        links.push(navLinks.faq)
-      }
-    }
-
     if (isDesktop) {
       links.push(navLinks.home)
     }
 
     return links
-  }, [auth.user?.id, mobileMq.matches])
+  }, [mobileMq.matches])
 
   // Profile photo menu links
   const profilePhotoMenuLinks = useMemo(() => {
