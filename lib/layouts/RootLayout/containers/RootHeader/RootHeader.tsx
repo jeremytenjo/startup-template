@@ -9,8 +9,6 @@ import MobileHeaderSideMenu from './containers/MobileHeaderSideMenu/MobileHeader
 import DesktopHeader from './containers/DesktopHeader/DesktopHeader.js'
 import commonHeaderSx from './containers/_common/commonHeaderSx.js'
 
-export type RootHeaderProps = any
-
 export default function RootHeader() {
   return (
     <AppHeader
