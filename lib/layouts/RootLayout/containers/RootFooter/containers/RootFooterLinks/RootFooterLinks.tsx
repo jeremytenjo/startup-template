@@ -2,7 +2,6 @@ import React from 'react'
 import Box from '@useweb/ui/Box'
 
 import useNavLinks from '../../../../../../../data/navLinks/utils/useNavLinks/useNavLinks.js'
-import colors from '../../../../../../integrations/Useweb/theme/tokens/colors.js'
 
 import RootFooterLinksList from './containers/RootFooterLinksList/RootFooterLinksList.js'
 
@@ -47,14 +46,6 @@ export default function RootFooterLinks() {
             url: link.url,
             label: link.label,
             newTab: true,
-            component: (
-              <link.icon
-                sx={{
-                  width: '21px',
-                  '& path': { fill: colors.neutral[200] },
-                }}
-              />
-            ),
           }
         })}
       />
