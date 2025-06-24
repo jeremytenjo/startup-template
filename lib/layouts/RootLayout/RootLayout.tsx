@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import type { BoxProps } from '@useweb/ui/Box'
 import Box from '@useweb/ui/Box'

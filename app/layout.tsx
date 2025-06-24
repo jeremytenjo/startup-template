@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { SnackbarProvider } from '@useweb/ui/Snackbar'
-import type { Metadata } from 'next/dist/types'
+import type { Metadata, Viewport } from 'next/dist/types'
 
 import Theme from '../theme/theme.js'
 import GlobalErrorLogger from '../lib/utils/loggers/logError/GlobalErrorLogger/GlobalErrorLogger.js'
@@ -10,14 +10,19 @@ import appConfig from '../app.config.js'
 
 export const metadata: Metadata = {
   title: appConfig.siteInfo.name,
-  viewport: 'initial-scale=1, maximum-scale=1, width=device-width',
   robots: 'index, follow',
-  themeColor: colors.neutral[500],
   manifest: '/manifest.json',
   icons: {
     icon: '/images/logo/logo.svg',
     apple: '/images/logo/assets/apple/apple-touch-icon.png',
   },
+}
+
+export const viewport: Viewport = {
+  initialScale: 1,
+  maximumScale: 1,
+  width: 'device-width',
+  themeColor: colors.neutral[500],
 }
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {

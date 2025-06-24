@@ -25,7 +25,8 @@ export default async function create({ name, svgString, outputPath }: Props) {
     )
     .replace('</svg>', '</SvgIcon>')
 
-  const svg = `import React from 'react'
+  const svg = `'use client'
+import React from 'react'
 import SvgIcon, { type SvgIconProps } from '@mui/material/SvgIcon'
 
 export default function ${name}(props: SvgIconProps & {
