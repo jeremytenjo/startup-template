@@ -2,11 +2,19 @@ import type { SuperCodeGeneratorFilesSchema } from '@jeremytenjo/super-code-gene
 import changeCase from 'change-case'
 
 export const getStoryPrefix = (p: { folderPath: string }): string => {
-  if (!p.folderPath.includes('src')) {
+  const spliter = p.folderPath.includes('app')
+    ? 'app'
+    : p.folderPath.includes('data')
+    ? 'data'
+    : p.folderPath.includes('lib')
+    ? 'lib'
+    : undefined
+
+  if (!spliter) {
     return ''
   }
 
-  const storyPrefix = p.folderPath.split('src')
+  const storyPrefix = p.folderPath.split(spliter)
   const storyPrefixProp = storyPrefix.pop() || ''
   const storyPrefixString = storyPrefixProp.substring(1)
 
