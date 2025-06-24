@@ -1,3 +1,4 @@
+'use client'
 import React, { createContext, useContext } from 'react'
 import type { BoxProps } from '@useweb/ui/Box'
 import Box from '@useweb/ui/Box'
@@ -17,10 +18,6 @@ export const RootLayoutContext = createContext<any>(null as any)
 export const useRootLayoutData = () => useContext(RootLayoutContext)
 
 type RootLayoutMainProps = {
-  title: string | undefined
-  description?: string
-  useDefaultTitle?: boolean
-  disableTitle?: boolean
   children: any
   hideFooter?: boolean
   headerProps?: RootHeaderProps

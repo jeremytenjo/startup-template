@@ -48,6 +48,7 @@
     "@emotion/styled": "11.10.0",
     "@json2csv/plainjs": "7.0.6",
     "@mui/material": "6.4.3",
+    "@mui/material-nextjs": "7.1.1",
     "@mui/x-charts": "7.25.0",
     "@mui/x-data-grid": "7.25.0",
     "@mui/x-date-pickers": "7.25.0",

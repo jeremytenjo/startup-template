@@ -7,9 +7,13 @@ import Box from '@useweb/ui/Box'
 import RootLayout from '../../lib/layouts/RootLayout/RootLayout.js'
 import PageNotFoundIcon from '../../lib/components/icons/PageNotFoundIcon.js'
 
-export default function PageNotFound() {
+export const metadata = {
+  title: 'Page Not Found',
+}
+
+export default function NotFound() {
   return (
-    <RootLayout title='Page Not Found'>
+    <RootLayout>
       <Box
         sx={{
           '& img': {
@@ -21,7 +25,7 @@ export default function PageNotFound() {
       >
         <EmptyMessage
           title='Page not found'
-          subTitle='Sorry, the page you’re looking for can’t be found'
+          subTitle="Sorry, the page you're looking for can't be found"
           icon={
             <PageNotFoundIcon
               sx={{
