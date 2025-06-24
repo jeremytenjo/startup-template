@@ -6,7 +6,7 @@ import webpackFinal from './storybookWebpack/webpackFinal'
 import stories from './storiesList.cjs'
 
 const config: StorybookConfig = {
-  stories: [...stories, '../../firebaseFunctions/**/*.stories.@(|ts|tsx)'],
+  stories: [...stories],
   staticDirs: ['../../public'],
   framework: '@storybook/nextjs',
   core: { builder: '@storybook/builder-webpack5', disableTelemetry: true },
