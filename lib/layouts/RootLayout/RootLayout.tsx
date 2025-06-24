@@ -1,5 +1,4 @@
-'use client'
-import React, { createContext, useContext } from 'react'
+import React from 'react'
 import type { BoxProps } from '@useweb/ui/Box'
 import Box from '@useweb/ui/Box'
 
@@ -13,40 +12,32 @@ import { rootLayoutConfig } from './rootLayout.config.js'
 
 export type RootLayoutProps = GetRootDataReturn
 
-export const RootLayoutContext = createContext<any>(null as any)
-
-export const useRootLayoutData = () => {return useContext(RootLayoutContext)}
-
 type RootLayoutMainProps = {
   children: any
   hideFooter?: boolean
   headerProps?: RootHeaderProps
   sx?: BoxProps['sx']
-  authRequiredMessage?: string
-  authRequiredBanner?: React.ReactNode
 }
 
 export default function RootLayout(props: RootLayoutMainProps) {
   return (
     <>
-      <RootLayoutContext.Provider value={props}>
-        <RootHeader {...(props.headerProps as any)} />
-        <Box
-          data-id='RootLayout'
-          component={'main'}
-          sx={{
-            p: '15px',
-            pt: [`calc(${rootLayoutConfig.mobileHeaderHeight} + 10px)`, , '20px'],
-            position: 'relative',
-            maxWidth: themeTokens.maxWidth[1],
-            mx: 'auto',
-            ...props.sx,
-          }}
-        >
-          {props.children}
-        </Box>
-        {!props.hideFooter && <RootFooter />}
-      </RootLayoutContext.Provider>
+      <RootHeader {...(props.headerProps as any)} />
+      <Box
+        data-id='RootLayout'
+        component={'main'}
+        sx={{
+          p: '15px',
+          pt: [`calc(${rootLayoutConfig.mobileHeaderHeight} + 10px)`, , '20px'],
+          position: 'relative',
+          maxWidth: themeTokens.maxWidth[1],
+          mx: 'auto',
+          ...props.sx,
+        }}
+      >
+        {props.children}
+      </Box>
+      {!props.hideFooter && <RootFooter />}
     </>
   )
 }

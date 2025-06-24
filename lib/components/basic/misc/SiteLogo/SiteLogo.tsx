@@ -3,7 +3,6 @@ import Link, { type LinkProps } from '@useweb/ui/Link'
 import Image, { type ImageProps } from '@useweb/ui/Image'
 
 import appConfig from '../../../../../app.config.js'
-import { useRootLayoutData } from '../../../../layouts/RootLayout/RootLayout.js'
 
 export type SiteLogoProps = Omit<ImageProps, 'alt'> & {
   src?: string
@@ -18,9 +17,7 @@ export default function SiteLogo({
   sx = {},
   onClick,
 }: SiteLogoProps) {
-  const rootData = useRootLayoutData()
-  const siteLogo =
-    src || rootData?.globalSettings?.data?.logo?.url || '/images/logo/logo-full.png'
+  const siteLogo = src || '/images/logo/logo-full.png'
 
   return (
     <Link
