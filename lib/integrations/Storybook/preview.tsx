@@ -3,7 +3,7 @@ import { SnackbarProvider } from '@useweb/ui/Snackbar'
 import Box from '@useweb/ui/Box'
 import { configure } from '@storybook/test'
 
-import appConfig from '../../app.config.js'
+import appConfig from '../../../app.config.js'
 
 import StorybookTheme from './theme/storybookTheme.js'
 

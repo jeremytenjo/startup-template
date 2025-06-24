@@ -1,7 +1,7 @@
 import path from 'path'
 
-import shell from '../../../utils/node/shell.js'
-import appConfig from '../../../../app.config.js'
+import shell from '../../../../../devtools/utils/node/shell.js'
+import appConfig from '../../../../../app.config.js'
 
 import generateStoriesList from './handlers/generateStoriesList/generateStoriesList.js'
 
