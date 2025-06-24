@@ -84,7 +84,7 @@ A consumer is could be a Firebase Cloud Function, Next API Function, useData hoo
 
       return `import type { NextApiRequest, NextApiResponse } from 'next'
 
-import allowCrossOriginInNextApi from '@/src/lib/utils/nextjs/allowCrossOriginInNextApi/allowCrossOriginInNextApi.js'
+import allowCrossOriginInNextApi from '@/lib/utils/nextjs/allowCrossOriginInNextApi/allowCrossOriginInNextApi.js'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   await allowCrossOriginInNextApi({ req, res })
@@ -161,7 +161,7 @@ export default async function ${nameCamelCase}Next(props: ${namePascalCase}NextP
 
       return `import type { ${namePascalCase}Props, ${namePascalCase}Return } from '../../${nameCamelCase}.js'
 
-import nextApi from '@/src/lib/utils/nextjs/nextApi/nextApi'
+import nextApi from '@/lib/utils/nextjs/nextApi/nextApi'
 
 export type ${namePascalCase}NextClientProps = ${namePascalCase}Props
 
@@ -211,7 +211,7 @@ import type {
   ${namePascalCase}NextClientReturn,
 } from './${nameCamelCase}.next.client.js'
 
-import logError from '@/src/lib/utils/loggers/logError/logError.js'
+import logError from '@/lib/utils/loggers/logError/logError.js'
 
 export type Use${namePascalCase}Props = UseAsyncProps
 
@@ -261,7 +261,7 @@ import type {
 } from './${nameCamelCase}.next.client.js'
 import ${nameCamelCase}NextClient from './${nameCamelCase}.next.client.js'
 
-import logError from '@/src/lib/utils/loggers/logError/logError.js'
+import logError from '@/lib/utils/loggers/logError/logError.js'
 
 export type Use${namePascalCase}PersistProps = ${namePascalCase}NextClientProps
 type PartialPayloadSchema = PartialRequired<Use${namePascalCase}PersistProps>

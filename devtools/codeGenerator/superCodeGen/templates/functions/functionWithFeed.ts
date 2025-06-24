@@ -71,7 +71,7 @@ import ${nameCamelCase} from '../../${nameCamelCase}.js'
 
 import ${namePascalCase}Item from './components/${namePascalCase}Item/${namePascalCase}Item.js'
 
-import logError from '@/src/lib/utils/loggers/logError/logError.js'
+import logError from '@/lib/utils/loggers/logError/logError.js'
 
 export type SocialFeedProps = {
   sx?: InfiniteListProps<any>['sx']

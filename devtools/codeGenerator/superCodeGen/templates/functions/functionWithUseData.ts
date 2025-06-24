@@ -24,7 +24,7 @@ import _${name}, {
   type ${returnName},
 } from '../${name}.js'
  
-import logError from '@/src/lib/utils/loggers/logError/logError'
+import logError from '@/lib/utils/loggers/logError/logError'
 
 export type Use${propsName} = PartialRequired<${propsName}>
 

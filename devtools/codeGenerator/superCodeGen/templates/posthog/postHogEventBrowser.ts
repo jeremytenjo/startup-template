@@ -18,7 +18,7 @@ const files: SuperCodeGeneratorFilesSchema = [
 
       return `import assert from '@useweb/assert'
 
-      import postHog from '@/src/lib/integrations/PostHog/utils/postHog'
+      import postHog from '@/lib/integrations/PostHog/utils/postHog'
       
       export type PH_${pascalCase}Props = { name: string; metadata?: object }
       

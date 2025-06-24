@@ -22,7 +22,7 @@ const files: SuperCodeGeneratorFilesSchema = [
 
       import ${pascalName}Item from './components/${pascalName}Item/${pascalName}Item.js'
       
-      import logError from '@/src/lib/utils/loggers/logError/logError.js'
+      import logError from '@/lib/utils/loggers/logError/logError.js'
       
       export type ${pascalName}Props = {
         sx?: InfiniteListProps<any>['sx']

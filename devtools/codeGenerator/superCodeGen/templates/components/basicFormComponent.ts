@@ -150,7 +150,7 @@ export type ${formHookNamePascal}Return = ReturnType<
 
 import type { ${pascalName}Schema } from '../${pascalName}/${pascalName}.js'
       
-import logError from '@/src/lib/utils/loggers/logError/logError'
+import logError from '@/lib/utils/loggers/logError/logError'
 
 export type ${formHookNamePascal}Props = {
   onSuccess?: (props: { updates: Partial<any> }) => void

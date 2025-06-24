@@ -6,7 +6,7 @@ import glob from '../../../../../../../devtools/utils/node/glob.js'
 
 export default async function generateStoriesList(payload: PayloadTypes) {
   const storiesWithFullPaths = await glob({
-    pattern: `${process.cwd()}/src/**/stories/*stories.@(tsx|ts)`,
+    pattern: `${process.cwd()}/**/stories/*stories.@(tsx|ts)`,
     options: {
       ignore: '**/node_modules/**',
     },

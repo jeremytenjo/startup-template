@@ -7,7 +7,7 @@ import stories from './storiesList.cjs'
 
 const config: StorybookConfig = {
   stories: [...stories],
-  staticDirs: ['../../public'],
+  staticDirs: ['../../../public'],
   framework: '@storybook/nextjs',
   core: { builder: '@storybook/builder-webpack5', disableTelemetry: true },
   addons: [

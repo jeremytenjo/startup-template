@@ -23,7 +23,7 @@ export default async function addFunctionToFirebaseFunctionsFile(
 
   const firebaseFunctionsPath = path.join(
     props.workspacePath,
-    'firebaseFunctions/src/firebaseFunctions.ts',
+    'firebaseFunctions/firebaseFunctions.ts',
   )
 
   const fileContent = await fs.readFile(firebaseFunctionsPath, 'utf-8')

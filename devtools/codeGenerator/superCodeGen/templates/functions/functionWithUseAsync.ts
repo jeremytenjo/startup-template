@@ -21,7 +21,7 @@ const files: SuperCodeGeneratorFilesSchema<any> = [
       const camelCase = helpers?.changeCase?.camelCase(name)
 
       return `import useAsync, { type UseAsyncProps } from '@useweb/use-async'
-import logError from '@/src/lib/utils/loggers/logError/logError'
+import logError from '@/lib/utils/loggers/logError/logError'
 
 import ${camelCase}Fn, { type ${pascalCase}Props, type ${pascalCase}Return } from '../${camelCase}.js'
 

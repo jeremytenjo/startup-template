@@ -27,7 +27,7 @@ const files: SuperCodeGeneratorFilesSchema = [
         import type { InfiniteTableFetcherProps, InfiniteTableFetcherReturn } from '@useweb/ui/InfiniteTable'
         import assert from '@useweb/assert'
         
-        import { db } from '@/src/lib/integrations/Google/Firebase/firebase'
+        import { db } from '@/lib/integrations/Google/Firebase/firebase'
   
         export type ${namePascalCase}FetcherPayload = any
         
@@ -99,8 +99,8 @@ import ${nameCamelCase}, {
   type ${namePascalCase}FetcherPayload,
 } from '../../${nameCamelCase}.js'     
 
-      import logError from '@/src/lib/utils/loggers/logError/logError.js'
-      import useAuth from '@/src/data/users/utils/useAuth/useAuth.js'
+      import logError from '@/lib/utils/loggers/logError/logError.js'
+      import useAuth from '@/data/users/utils/useAuth/useAuth.js'
 
       type FetcherProps = PartialRequired<${namePascalCase}FetcherPayload>
 

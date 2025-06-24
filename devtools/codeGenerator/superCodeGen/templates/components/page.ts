@@ -26,7 +26,7 @@ const files: SuperCodeGeneratorFilesSchema<CustomProps> = [
       return `import React from 'react' 
 
 ${customProps?.extra?.imports || ''}
-import RootLayout from '@/src/lib/layouts/RootLayout/RootLayout.js'
+import RootLayout from '@/lib/layouts/RootLayout/RootLayout.js'
 
 export default function ${upperName}PageRoot() {
   return <>
