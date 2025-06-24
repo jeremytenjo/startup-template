@@ -4,8 +4,8 @@ import Link from '@useweb/ui/Link'
 import EmptyMessage from '@useweb/ui/EmptyMessage'
 import Box from '@useweb/ui/Box'
 
-import RootLayout from '../lib/layouts/RootLayout/RootLayout.js'
-import PageNotFoundIcon from '../lib/components/icons/PageNotFoundIcon.js'
+import RootLayout from '../../lib/layouts/RootLayout/RootLayout.js'
+import PageNotFoundIcon from '../../lib/components/icons/PageNotFoundIcon.js'
 
 export default function PageNotFound() {
   return (

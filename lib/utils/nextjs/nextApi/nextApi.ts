@@ -1,4 +1,4 @@
-import appConfig from '../../../../../app.config.js'
+import appConfig from '../../../../app.config.js'
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 export type NextApiProps<PayloadProps> = {

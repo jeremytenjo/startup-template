@@ -3,7 +3,7 @@ import Box from '@useweb/ui/Box'
 import Text from '@useweb/ui/Text'
 
 import FullLogoLink from '../../../../components/logo/FullLogoLink/FullLogoLink.js'
-import appConfig from '../../../../../../app.config.js'
+import appConfig from '../../../../../app.config.js'
 
 import RootFooterLinks from './containers/RootFooterLinks/RootFooterLinks.js'
 

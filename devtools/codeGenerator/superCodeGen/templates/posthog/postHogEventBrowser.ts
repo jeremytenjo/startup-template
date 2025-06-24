@@ -3,7 +3,7 @@ import type {
   SuperCodeGeneratorFilesSchema,
 } from '@jeremytenjo/super-code-generator'
 
-const rootpath = 'src/lib/integrations/PostHog/events/browser'
+const rootpath = 'lib/integrations/PostHog/events/browser'
 
 const files: SuperCodeGeneratorFilesSchema = [
   {

@@ -30,18 +30,18 @@
     ]
   },
   "include": [
-    "./src",
-    "./devtools",
+    "src",
+    "data",
+    "lib",
+    "theme",
+    "devtools",
     "devtools/ts/declaredModules/*",
     "scripts/storybook/startStorybook",
     ".sliceMachine",
     ".next/types/**/*.ts",
-    "playwright.config.ts",
-    "firebaseFunctions",
-    "firebaseAdminServer/scripts/startFirebaseAdminServer",
-    "app"
+    "playwright.config.ts"
   ],
-  "exclude": ["node_modules", "devtools/codeGenerator/superCodeGen/test/testApp"],
+  "exclude": ["node_modules"],
   "ts-node": {
     "transpileOnly": true,
     "files": true,

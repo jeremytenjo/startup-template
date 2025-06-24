@@ -3,7 +3,7 @@ import React from 'react'
 import appConfig from '../../app.config.js'
 
 import HomePage from '@/src/pagesContent/Home/pages/HomePage.js'
-import RootLayout from '@/src/lib/layouts/RootLayout/RootLayout.js'
+import RootLayout from '@/lib/layouts/RootLayout/RootLayout.js'
 
 export default function HomePageRoot() {
   return (

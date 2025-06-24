@@ -1,7 +1,7 @@
 import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
-import setMuiDocumentData from '../theme/UiTheme/utils/setMuiDocumentData.js'
+import setMuiDocumentData from '../../theme/UiTheme/utils/setMuiDocumentData.js'
 
 type DocumentProps = {
   emotionStyleTags: any
