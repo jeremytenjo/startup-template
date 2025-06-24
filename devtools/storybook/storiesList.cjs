@@ -62,7 +62,6 @@ module.exports = [
   '../../src/lib/layouts/FormColumn/stories/FormColumn.stories.tsx',
   '../../src/lib/layouts/PageTitleHeading/stories/PageTitleHeading.stories.tsx',
   '../../src/lib/layouts/SidebarLayout/stories/SidebarLayout.stories.tsx',
-  '../../src/lib/utils/breakbpoints/useMediaQuery/stories/useMediaQuery.stories.tsx',
   '../../src/lib/utils/currency/formatValueToPrice/stories/formatValueToPrice.stories.tsx',
   '../../src/lib/utils/date/formatDateToHumanReadable/stories/formatDateToHumanReadable.stories.tsx',
   '../../src/lib/utils/loggers/logError/GlobalErrorLogger/stories/GlobalErrorLogger.stories.tsx',
