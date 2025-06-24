@@ -3,11 +3,9 @@ import Box from '@useweb/ui/Box'
 import { useAppHeaderStore } from '@useweb/ui/AppHeader'
 import IconButton from '@useweb/ui/IconButton'
 import Link from '@useweb/ui/Link'
-import NavLink from '@useweb/ui/NavLink'
 
 import MenuIcon from '../../../../../../components/icons/MenuIcon.js'
 import LogoIcon from '../../../../../../components/icons/LogoIcon.js'
-import { navLinks } from '../../../../../../../data/navLinks/utils/useNavLinks/useNavLinks.js'
 
 export default function MobileHeader() {
   const appHeaderStore = useAppHeaderStore()
@@ -55,32 +53,6 @@ export default function MobileHeader() {
               }}
             />
           </Link>
-        </Box>
-
-        <Box
-          sx={{
-            display: 'flex',
-            width: 'fit-content',
-            gap: 1,
-            alignItems: 'center',
-          }}
-        >
-          <Box
-            data-id='SignedOutButtons'
-            sx={{
-              display: 'grid',
-              gap: 2,
-              gridAutoFlow: 'column',
-            }}
-          >
-            <NavLink
-              href={navLinks.access.signIn?.url}
-              label={navLinks.access.signIn?.label}
-              sx={{
-                mr: '10px',
-              }}
-            />
-          </Box>
         </Box>
       </Box>
     </>
