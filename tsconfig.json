@@ -32,7 +32,6 @@
   "include": [
     "data",
     "lib",
-    "lib/integrations/Useweb/theme",
     "app",
     "devtools",
     "devtools/ts/declaredModules/*",
