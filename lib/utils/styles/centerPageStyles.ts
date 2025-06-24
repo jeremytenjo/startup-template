@@ -1,4 +1,4 @@
-import { themeTokens } from '../../../theme/tokens/tokens.js'
+import { themeTokens } from '../../integrations/Useweb/theme/tokens/tokens.js'
 
 export default {
   width: '100%',

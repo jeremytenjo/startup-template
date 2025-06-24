@@ -6,7 +6,7 @@ import Text from '@useweb/ui/Text'
 import WarnRoundIcon from '../../icons/WarnRoundIcon.js'
 import ErrorRoundIcon from '../../icons/ErrorRoundIcon.js'
 import CheckCircleIcon from '../../icons/CheckCircleIcon.js'
-import colors from '../../../../theme/tokens/colors.js'
+import colors from '../../../integrations/Useweb/theme/tokens/colors.js'
 
 export type StatusLabelProps = {
   type: 'warning' | 'success' | 'error'

@@ -3,9 +3,9 @@ import type { BoxProps } from '@useweb/ui/Box'
 import Box from '@useweb/ui/Box'
 import Text from '@useweb/ui/Text'
 
-import { Island } from '../../../../../theme/UiTheme/commonStyles/islandStyles.js'
-import colors from '../../../../../theme/tokens/colors.js'
-import { buttonVariantSmallStyles } from '../../../useweb/Button/Button.defaults.js'
+import colors from '../../../../integrations/Useweb/theme/tokens/colors.js'
+import { Island } from '../../../../integrations/Useweb/theme/UiTheme/commonStyles/islandStyles.js'
+import { buttonVariantSmallStyles } from '../../../../integrations/Useweb/components/Button/Button.defaults.js'
 
 export type ChartWrapperProps = {
   children: any
@@ -60,38 +60,40 @@ export default function ChartWrapper(props: ChartWrapperProps) {
             gap: 2,
           }}
         >
-          {props.filters?.map((filter, index) => {return (
-            <Box
-              key={index}
-              onClick={filter.onClick}
-              sx={{
-                ...buttonVariantSmallStyles,
-                borderRadius: '20px',
-                cursor: 'pointer',
-                whiteSpace: 'nowrap',
-                border: '1px solid transparent',
-                fontWeight: 'bold',
-                transitionDuration: '0.2s',
-                ...(filter.active
-                  ? {
-                      color: 'white',
-                      backgroundColor: colors.primary.dark,
-                      borderColor: colors.primary.light,
-                    }
-                  : {
-                      borderColor: 'transparent',
-                      backgroundColor: 'neutral.300',
-                    }),
+          {props.filters?.map((filter, index) => {
+            return (
+              <Box
+                key={index}
+                onClick={filter.onClick}
+                sx={{
+                  ...buttonVariantSmallStyles,
+                  borderRadius: '20px',
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                  border: '1px solid transparent',
+                  fontWeight: 'bold',
+                  transitionDuration: '0.2s',
+                  ...(filter.active
+                    ? {
+                        color: 'white',
+                        backgroundColor: colors.primary.dark,
+                        borderColor: colors.primary.light,
+                      }
+                    : {
+                        borderColor: 'transparent',
+                        backgroundColor: 'neutral.300',
+                      }),
 
-                '&:hover': {
-                  backgroundColor: colors.primary.dark,
-                  borderColor: colors.primary.light,
-                },
-              }}
-            >
-              {filter.dayInterval}
-            </Box>
-          )})}
+                  '&:hover': {
+                    backgroundColor: colors.primary.dark,
+                    borderColor: colors.primary.light,
+                  },
+                }}
+              >
+                {filter.dayInterval}
+              </Box>
+            )
+          })}
         </Box>
       </Box>
 

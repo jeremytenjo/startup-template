@@ -7,7 +7,7 @@ import 'chartjs-adapter-date-fns'
 import CircularProgress from '@useweb/ui/CircularProgress'
 import Text from '@useweb/ui/Text'
 
-import colors from '../../../../../theme/tokens/colors.js'
+import colors from '../../../../integrations/Useweb/theme/tokens/colors.js'
 
 export type ChartBaseProps = {
   config: ChartConfiguration

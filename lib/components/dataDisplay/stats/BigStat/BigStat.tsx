@@ -3,7 +3,7 @@ import Box from '@useweb/ui/Box'
 import Text from '@useweb/ui/Text'
 import Skeleton from '@useweb/ui/Skeleton'
 
-import { Island } from '../../../../../theme/UiTheme/commonStyles/islandStyles.js'
+import { Island } from '../../../../integrations/Useweb/theme/UiTheme/commonStyles/islandStyles.jsx'
 
 export type BigStatProps = {
   icon?: any

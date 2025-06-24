@@ -3,7 +3,7 @@ import React from 'react'
 import Box from '@useweb/ui/Box'
 
 import { type GetRootDataReturn } from '../../../data/_root/getRootData/getRootData.js'
-import { themeTokens } from '../../../theme/tokens/tokens.js'
+import { themeTokens } from '../../integrations/Useweb/theme/tokens/tokens.js'
 
 import RootHeader from './containers/RootHeader/RootHeader.js'
 import RootFooter from './containers/RootFooter/RootFooter.js'

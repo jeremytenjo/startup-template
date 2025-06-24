@@ -1,4 +1,4 @@
-import colors from '../../../theme/tokens/colors.js'
+import colors from '../../integrations/Useweb/theme/tokens/colors.js'
 
 export default function gradientText(props: { gradient: string }): object {
   const gradientCss = colors.gradient[props.gradient]

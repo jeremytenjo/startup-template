@@ -1,7 +1,7 @@
 import React from 'react'
 import { createSvgIcon } from '@mui/material'
 
-import colors from '../../../theme/tokens/colors.js'
+import colors from '../../integrations/Useweb/theme/tokens/colors.js'
 
 export default createSvgIcon(
   <svg

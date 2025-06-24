@@ -2,7 +2,7 @@ import React from 'react'
 import Box from '@useweb/ui/Box'
 
 import useNavLinks from '../../../../../../../data/navLinks/utils/useNavLinks/useNavLinks.js'
-import colors from '../../../../../../../theme/tokens/colors.js'
+import colors from '../../../../../../integrations/Useweb/theme/tokens/colors.js'
 
 import RootFooterLinksList from './containers/RootFooterLinksList/RootFooterLinksList.js'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import SvgIcon, { type SvgIconProps } from '@mui/material/SvgIcon'
 
-import colors from '../../../theme/tokens/colors.js'
+import colors from '../../integrations/Useweb/theme/tokens/colors.js'
 
 export default function SuitcaseIcon(props: SvgIconProps) {
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import colors from '../../../theme/tokens/colors.js'
+import colors from '../../integrations/Useweb/theme/tokens/colors.js'
 
 export default function Icon() {
   return (

@@ -10,7 +10,7 @@ import type { BoxProps } from '@useweb/ui/Box'
 import ChartBase from '../../ChartBase/ChartBase.js'
 import type { CommonChartStylesOptionsProps } from '../_common/commonChartStyles.js'
 import { commonChartStyles } from '../_common/commonChartStyles.js'
-import colors from '../../../../../../theme/tokens/colors.js'
+import colors from '../../../../../integrations/Useweb/theme/tokens/colors.js'
 
 export type LineChartProps = {
   options?: Partial<ChartConfiguration['options']>
@@ -43,7 +43,9 @@ export default function LineChart(props: LineChartProps) {
               data: item.dataset?.map((row) => {
                 return row
               }),
-              pointStyle: item.dataset?.map((row) => {return row.point || 'none'}),
+              pointStyle: item.dataset?.map((row) => {
+                return row.point || 'none'
+              }),
               ...(commonChartStyles(props.commonChartStyles) as any),
               ...(item.config || {}),
             }
