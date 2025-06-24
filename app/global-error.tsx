@@ -24,7 +24,7 @@ export default function GlobalError(props: GlobalErrorProps) {
         },
       })
     }
-  }, [])
+  }, [props.error])
 
   return (
     // global-error must include html and body tags
