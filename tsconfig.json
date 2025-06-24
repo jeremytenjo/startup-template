@@ -35,8 +35,6 @@
     "app",
     "devtools",
     "devtools/ts/declaredModules/*",
-    "scripts/storybook/startStorybook",
-    ".sliceMachine",
     ".next/types/**/*.ts",
     "playwright.config.ts"
   ],
