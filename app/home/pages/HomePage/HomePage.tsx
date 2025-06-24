@@ -2,7 +2,7 @@
 import React from 'react'
 import Box from '@useweb/ui/Box'
 
-import HomePageLayout from '../layouts/HomePageLayout/HomePageLayout.js'
+import HomePageLayout from './HomePage.layout.js'
 
 export default function HomePage() {
   return (

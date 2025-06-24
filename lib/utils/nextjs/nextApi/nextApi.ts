@@ -54,7 +54,7 @@ export default async function nextApi<DataSchema = any, PayloadProps = any>(
         'Content-Type': 'application/json',
       },
     },
-  ).then((res) => res.json())
+  ).then((res) => {return res.json()})
 
   return response
 }

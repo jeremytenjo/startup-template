@@ -135,7 +135,7 @@ const variants = {
   fontFamily: [interFont.style.fontFamily].join(','),
 }
 
-const variantNames = Object.keys(variants).filter((variant) => variant !== 'fontFamily')
+const variantNames = Object.keys(variants).filter((variant) => {return variant !== 'fontFamily'})
 
 export { variants, variantNames }
 

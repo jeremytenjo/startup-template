@@ -33,7 +33,7 @@ export const navLinks = {
 
   user: {
     label: 'User',
-    url: (p: { displayName: string }) => `/user/${p.displayName}`,
+    url: (p: { displayName: string }) => {return `/user/${p.displayName}`},
   },
 
   faq: {

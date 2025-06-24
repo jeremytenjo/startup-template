@@ -32,7 +32,7 @@ export default function DocumentDialog(props: DocumentDialogProps) {
 
       <Dialog
         open={openDialog}
-        onClose={() => setOpenDialog(false)}
+        onClose={() => {return setOpenDialog(false)}}
         sx={{
           p: 0,
           border: 'none',

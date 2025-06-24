@@ -30,7 +30,7 @@ function Fallback({ error, resetErrorBoundary }) {
 
       <Button
         name='Go back home'
-        onClick={() => resetErrorBoundary()}
+        onClick={() => {return resetErrorBoundary()}}
         sx={{ mt: 2, width: 'fit-content' }}
       >
         Go back Home

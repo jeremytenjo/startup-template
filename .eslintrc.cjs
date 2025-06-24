@@ -5,13 +5,7 @@ module.exports = {
     node: true,
     es6: true,
   },
-  ignorePatterns: [
-    `node_modules`,
-    `build`,
-    `.env`,
-    `dist`,
-    `devtools/codeGenerator/appGenerator/test/testApp`,
-  ],
+  ignorePatterns: [`node_modules`, `build`, `.env`, `dist`],
   plugins: [`react`, `react-hooks`, `import`, 'require-extensions'],
   extends: [
     `next/core-web-vitals`,
@@ -19,6 +13,8 @@ module.exports = {
     `plugin:@typescript-eslint/recommended`,
     `plugin:storybook/recommended`,
     'plugin:require-extensions/recommended',
+    'next',
+    'prettier',
   ],
   parser: `@typescript-eslint/parser`,
   parserOptions: {
@@ -37,30 +33,13 @@ module.exports = {
     propWrapperFunctions: [`forbidExtraProps`],
   },
   rules: {
-    'import/order': [
-      'error',
-      {
-        groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
-        'newlines-between': 'always',
-      },
-    ],
+    // typscript
     '@typescript-eslint/consistent-type-imports': 2,
     '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/no-namespace': 0,
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/no-unused-vars': 1,
-    'prefer-const': 2,
-    'no-var': 2,
-    'no-const-assign': 1,
-    'no-this-before-super': 1,
-    'no-undef': 2,
-    'no-unreachable': 2,
-    'no-unneeded-ternary': 2,
-    'import/no-anonymous-default-export': 0,
-    'no-debugger': 1,
-    'no-console': 0,
-    'constructor-super': 1,
-    'valid-typeof': 1,
+    // react
     'react/display-name': 0,
     'react/prop-types': 0,
     'react/jsx-fragments': [0, `syntax`],
@@ -77,5 +56,26 @@ module.exports = {
         allowGlobals: true,
       },
     ],
+    // miscellaneous
+    'import/order': [
+      'error',
+      {
+        groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
+        'newlines-between': 'always',
+      },
+    ],
+    'prefer-const': 2,
+    'no-var': 2,
+    'no-const-assign': 1,
+    'no-this-before-super': 1,
+    'no-undef': 2,
+    'no-unreachable': 2,
+    'no-unneeded-ternary': 2,
+    'import/no-anonymous-default-export': 0,
+    'no-debugger': 1,
+    'no-console': 0,
+    'constructor-super': 1,
+    'valid-typeof': 1,
+    'arrow-body-style': ['error', 'always'],
   },
 }

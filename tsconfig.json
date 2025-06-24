@@ -30,12 +30,10 @@
     ]
   },
   "include": [
-    "src",
     "data",
     "lib",
     "theme",
     "app",
-    "pagesContent",
     "devtools",
     "devtools/ts/declaredModules/*",
     "scripts/storybook/startStorybook",

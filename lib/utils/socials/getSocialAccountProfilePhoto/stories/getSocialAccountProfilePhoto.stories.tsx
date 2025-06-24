@@ -21,7 +21,7 @@ export default {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Template = (args: any) => {
   const fn = async () => {
-    const html = await fetch(args.profileUrl).then((res) => res.text())
+    const html = await fetch(args.profileUrl).then((res) => {return res.text()})
 
     console.log(html)
     return getSocialAccountProfilePhoto({ html })

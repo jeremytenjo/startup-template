@@ -15,7 +15,7 @@ export type RootLayoutProps = GetRootDataReturn
 
 export const RootLayoutContext = createContext<any>(null as any)
 
-export const useRootLayoutData = () => useContext(RootLayoutContext)
+export const useRootLayoutData = () => {return useContext(RootLayoutContext)}
 
 type RootLayoutMainProps = {
   children: any

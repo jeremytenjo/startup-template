@@ -60,7 +60,7 @@ export default function ChartWrapper(props: ChartWrapperProps) {
             gap: 2,
           }}
         >
-          {props.filters?.map((filter, index) => (
+          {props.filters?.map((filter, index) => {return (
             <Box
               key={index}
               onClick={filter.onClick}
@@ -91,7 +91,7 @@ export default function ChartWrapper(props: ChartWrapperProps) {
             >
               {filter.dayInterval}
             </Box>
-          ))}
+          )})}
         </Box>
       </Box>
 

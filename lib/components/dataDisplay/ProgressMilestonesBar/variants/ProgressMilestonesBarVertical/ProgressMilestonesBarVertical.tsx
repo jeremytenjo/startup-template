@@ -47,7 +47,7 @@ export default function ProgressMilestonesBarVertical(
             gap: 3,
           }}
         >
-          {props.milestones.map((milestone) => (
+          {props.milestones.map((milestone) => {return (
             <Box
               key={milestone.percent}
               data-id='ProgressMilestonesBarVerticalMilestone'
@@ -63,7 +63,7 @@ export default function ProgressMilestonesBarVertical(
 
               {milestone.component}
             </Box>
-          ))}
+          )})}
         </Box>
       </Box>
     </Box>

@@ -5,7 +5,7 @@ export type Base64ToBinaryProps = { base64: string }
   })
  */
 export default async function base64ToBinary(props: Base64ToBinaryProps) {
-  const binary = await fetch(props.base64).then((res) => res.blob())
+  const binary = await fetch(props.base64).then((res) => {return res.blob()})
 
   return binary
 }

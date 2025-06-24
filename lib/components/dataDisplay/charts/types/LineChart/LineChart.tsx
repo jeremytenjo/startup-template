@@ -43,7 +43,7 @@ export default function LineChart(props: LineChartProps) {
               data: item.dataset?.map((row) => {
                 return row
               }),
-              pointStyle: item.dataset?.map((row) => row.point || 'none'),
+              pointStyle: item.dataset?.map((row) => {return row.point || 'none'}),
               ...(commonChartStyles(props.commonChartStyles) as any),
               ...(item.config || {}),
             }
