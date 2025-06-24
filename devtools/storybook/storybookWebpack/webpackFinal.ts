@@ -12,7 +12,7 @@ export default function webpackFinal(props: { defaultWebpackConfig: Configuratio
   updatedConfig.resolve = updatedConfig.resolve || {}
   updatedConfig.resolve.alias = {
     ...updatedConfig.resolve.alias,
-    'next/router': 'next-router-mock',
+    'next/compat/router': 'next-router-mock',
     '@': process.cwd(),
   }
   // allow importing ts files with .js

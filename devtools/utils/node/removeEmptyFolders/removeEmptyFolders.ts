@@ -11,11 +11,11 @@ export default async function removeEmptyFolders(props: RemoveEmptyFoldersProps)
   }
   let fileNames = await fsPromises.readdir(props.folderPath)
   if (fileNames.length > 0) {
-    const recursiveRemovalPromises = fileNames.map((fileName) =>
-      removeEmptyFolders({
+    const recursiveRemovalPromises = fileNames.map((fileName) => {
+      return removeEmptyFolders({
         folderPath: path.join(props.folderPath, fileName),
-      }),
-    )
+      })
+    })
     await Promise.all(recursiveRemovalPromises)
 
     // re-evaluate fileNames; after deleting subdirectory

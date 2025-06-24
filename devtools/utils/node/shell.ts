@@ -25,6 +25,8 @@ export default async function shell(commands: ShellProps) {
 
     return result
   } catch (error: any) {
-    log(`Shell error: ${_commands}`, { error: true })
+    log(`Shell error: ${JSON.stringify(_commands)}, ${JSON.stringify(error)}`, {
+      error: true,
+    })
   }
 }

@@ -7,6 +7,8 @@ export default function removeFolder(props: { folderPath: string }) {
   }
 
   return new Promise((resolve) => {
-    fs.rm(props.folderPath, { recursive: true }, () => resolve(true))
+    fs.rm(props.folderPath, { recursive: true }, () => {
+      return resolve(true)
+    })
   })
 }

@@ -43,7 +43,9 @@ export default async function runPlayWright() {
       pattern: path.join(process.cwd(), '**', '*.e2e.ts'),
     })
 
-    const testsNames = tests.map((t) => t.split('/').pop())
+    const testsNames = tests.map((t) => {
+      return t.split('/').pop()
+    })
     const prompt = new Select({
       name: 'selectedTest',
       message: 'Select test',

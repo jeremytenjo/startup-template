@@ -21,10 +21,15 @@ export default async function captureScreenshot({
   pathPrefix,
 }: CaptureScreenshotProps) {
   return await Promise.all(
-    sizes.map(
-      async (size) =>
-        await capture({ url, path, pathPrefix, width: size.width, height: size.height }),
-    ),
+    sizes.map(async (size) => {
+      return await capture({
+        url,
+        path,
+        pathPrefix,
+        width: size.width,
+        height: size.height,
+      })
+    }),
   )
 }
 

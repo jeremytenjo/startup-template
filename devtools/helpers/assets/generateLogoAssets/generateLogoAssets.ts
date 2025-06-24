@@ -24,8 +24,12 @@ export default async function generateLogoAssets() {
   try {
     await createFolder({ paths: [outputFolderPath, applePath, sizesPath] })
 
-    const getSizeIconName = (name: string) => path.join(sizesPath, name)
-    const getAppleIconName = (name: string) => path.join(applePath, name)
+    const getSizeIconName = (name: string) => {
+      return path.join(sizesPath, name)
+    }
+    const getAppleIconName = (name: string) => {
+      return path.join(applePath, name)
+    }
 
     const iconList = [
       {

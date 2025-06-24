@@ -7,9 +7,6 @@ import shellDashboard, {
 } from '../../devtools/utils/terminal/shellDashboard.js'
 import readFile from '../../devtools/utils/node/readFile.js'
 import log from '../../devtools/utils/node/log.js'
-import resetSupabaseDatabaseData from '../supabase/resetSupabaseDatabaseData/resetSupabaseDatabaseData.js'
-import generateSupabaseDevDatabaseConfig from '../../src/lib/integrations/Supabase/database/scripts/generateSupabaseDevDatabase/generateSupabaseDevDatabase.config.js'
-import { stripeConfig } from '../../src/lib/integrations/Stripe/stripe.config.js'
 
 import getDevScriptArgs from './handlers/getDevScriptArgs/getDevScriptArgs.js'
 
@@ -118,27 +115,6 @@ export default async function dev() {
     commands.push(playwrightCommand)
   }
 
-  // Stripe Webhooks
-  // https://stripe.com/docs/webhooks#local-listener
-  if (stripeConfig?.webhooks?.listener?.forwardUrl) {
-    const stripeCommand_paymentIntent: CommandProps = {
-      label: `stripeWebhooksReceiver`,
-      command: {
-        root: 'stripe',
-        args: `listen --forward-to ${stripeConfig?.webhooks?.listener?.forwardUrl}`,
-      },
-      ports: [],
-      color: '#6772E5',
-    }
-
-    commands.push(stripeCommand_paymentIntent)
-  }
-
   // run commands
   shellDashboard({ commands })
-
-  // supabase
-  if (generateSupabaseDevDatabaseConfig.tables.length) {
-    await resetSupabaseDatabaseData()
-  }
 }

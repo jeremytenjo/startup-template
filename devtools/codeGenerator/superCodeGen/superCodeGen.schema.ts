@@ -1,60 +1,66 @@
 import type { SuperCodeGeneratorConfigSchema } from '@jeremytenjo/super-code-generator'
 
-import component from './templates/component.js'
-import componentStory from './templates/componentStory.js'
-import componentWithStory from './templates/componentWithStory.js'
-import functions from './templates/function.js'
-import functionStory from './templates/functionStory.js'
-import functionWithStory from './templates/functionWithStory.js'
-import functionWithUseAsync from './templates/functionWithUseAsync.js'
-import functionWithVitest from './templates/functionWithVitest.js'
-import functionWithUseData from './templates/functionWithUseData.js'
-import functionWithHook from './templates/functionWithHook.js'
-import componentWithProvider from './templates/componentWithProvider.js'
-import dataFunction from './templates/dataFunction.js'
-import page from './templates/page.js'
-import pageContent from './templates/pageContent.js'
-import globalState from './templates/globalState.js'
-import muiOverride from './templates/muiOverride.js'
-import muiOverrideWithStory from './templates/muiOverrideWithStory.js'
-import playwrightTest from './templates/playwrightTest.js'
-import playwrightTestFile from './templates/playwrightTestFile.js'
-import playwrightTestCommon from './templates/playwrightTestCommon.js'
-import data from './templates/data.js'
-import dataQuery from './templates/dataQuery.js'
-import dataQueryUi from './templates/dataQueryUi.js'
-import dataComponent from './templates/dataComponent.js'
-import dataPrismic from './templates/dataPrismic.js'
-import dataVariant from './templates/dataVariant.js'
-import dataFormComponent from './templates/dataFormComponent.js'
-import reactContext from './templates/ReactContext.js'
-import vitestTest from './templates/vitestTest.js'
-import script from './templates/script.js'
-import nextApiFunction from './templates/nextApiFunction.js'
-import tsSchema from './templates/tsSchema.js'
-import collection from './templates/collection.js'
-import dataComponentUi from './templates/dataComponentUi.js'
-import firebaseFunction from './templates/firebaseFunction.js'
-import firebaseFunctionApiRoutes from './templates/firebaseFunctionApiRoutes.js'
-import firebaseFunctionApiRoute from './templates/firebaseFunctionApiRoute.js'
-import firebaseFunctionApiRouteHandler from './templates/firebaseFunctionApiRouteHandler.js'
-import firebaseFunctionCollable from './templates/firebaseFunctionCollable.js'
-import reactHook from './templates/reactHook.js'
-import adminTool from './templates/adminTool.js'
-import infiniteTable from './templates/infiniteTable.js'
-import basicFormComponent from './templates/basicFormComponent.js'
-import posthogEvent from './templates/postHogEvent.js'
-import gameZoneAdUserSwitcherComponent from './templates/gameZoneAdUserSwitcherComponent.js'
-import firebaseFunctionHttpApiRoute from './templates/firebaseFunctionHttpApiRoute.js'
-import newScgTemplate from './templates/newScgTemplate.js'
-import foundationPage from './templates/foundationPage.js'
-import infiniteFeed from './templates/infiniteFeed.js'
+import component from './templates/components/component.js'
+import componentStory from './templates/components/componentStory.js'
+import componentWithStory from './templates/components/componentWithStory.js'
+import functions from './templates/functions/function.js'
+import functionStory from './templates/functions/functionStory.js'
+import functionWithStory from './templates/functions/functionWithStory.js'
+import functionWithUseAsync from './templates/functions/functionWithUseAsync.js'
+import functionWithVitest from './templates/functions/functionWithVitest.js'
+import functionWithUseData from './templates/functions/functionWithUseData.js'
+import functionWithHook from './templates/functions/functionWithHook.js'
+import componentWithProvider from './templates/components/componentWithProvider.js'
+import page from './templates/components/page.js'
+import pageContent from './templates/components/pageContent.js'
+import globalState from './templates/react/globalState.js'
+import muiOverride from './templates/components/muiOverride.js'
+import muiOverrideWithStory from './templates/components/muiOverrideWithStory.js'
+import playwrightTest from './templates/playwright/playwrightTest.js'
+import playwrightTestFile from './templates/playwright/playwrightTestFile.js'
+import playwrightTestCommon from './templates/playwright/playwrightTestCommon.js'
+import data from './templates/data/data.js'
+import dataQuery from './templates/data/dataQuery.js'
+import dataQueryUi from './templates/data/dataQueryUi.js'
+import dataPrismic from './templates/data/dataPrismic.js'
+import dataVariant from './templates/data/dataVariant.js'
+import dataFormComponent from './templates/data/dataFormComponent.js'
+import reactContext from './templates/react/ReactContext.js'
+import vitestTest from './templates/misc/vitestTest.js'
+import script from './templates/misc/script.js'
+import functionWithNextPagesApiConsumer from './templates/functions/functionWithNextPagesApiConsumer.js'
+import tsSchema from './templates/misc/tsSchema.js'
+import collection from './templates/data/collection.js'
+import firebaseCollableFunctionEntry from './templates/firebase/firebaseCallableFunctionEntry.js'
+import firebaseHttpFunctionEntry from './templates/firebase/firebaseHttpFunctionEntry.js'
+import reactHook from './templates/react/reactHook.js'
+import basicFormComponent from './templates/components/basicFormComponent.js'
+import postHogEventBrowser from './templates/posthog/postHogEventBrowser.js'
+import postHogEventNode from './templates/posthog/postHogEventNode.js'
+import newScgTemplate from './templates/misc/newScgTemplate.js'
+import infiniteFeed from './templates/components/infiniteFeed.js'
+import customMessageComponent from './templates/components/customMessageComponent.js'
+import functionWithFirebaseCronJobConsumer from './templates/functions/functionWithFirebaseCronJobConsumer.js'
+import functionWithFirebaseCloudFunctionConsumer from './templates/functions/functionWithFirebaseCloudFunctionConsumer.js'
+import functionWithTable from './templates/functions/functionWithTable.js'
+import functionWithFeed from './templates/functions/functionWithFeed.js'
+import supabaseDatabaseFunction from './templates/supabase/supabaseDatabaseFunction.js'
+import supabasePaginationFunction from './templates/supabase/supabasePaginationFunction.js'
+import functionWithFirebaseHttpFunctionRoute from './templates/functions/functionWithFirebaseHttpFunctionRoute.js'
+import functionWithNodeTestingFirebaseCloudFunctionConsumer from './templates/functions/functionWithNodeTestingFirebaseCloudFunctionConsumer.js'
+import functionWithAdminTool from './templates/functions/functionWithAdminTool.js'
+import functionWithNextCachedFunction from './templates/functions/functionWithNextCachedFunction.js'
 
-const superCodeGeneratorConfig: SuperCodeGeneratorConfigSchema<any> = [
+const superCodeGeneratorConfig: SuperCodeGeneratorConfigSchema<any, any> = [
+  // Components
   component,
   componentStory,
   componentWithStory,
+  customMessageComponent,
+  infiniteFeed,
+  basicFormComponent,
 
+  // Functions
   functions,
   functionStory,
   functionWithStory,
@@ -62,55 +68,59 @@ const superCodeGeneratorConfig: SuperCodeGeneratorConfigSchema<any> = [
   functionWithVitest,
   functionWithUseData,
   functionWithHook,
-  dataFunction,
+  functionWithFirebaseCloudFunctionConsumer,
+  functionWithFirebaseHttpFunctionRoute,
+  functionWithNextPagesApiConsumer,
+  functionWithNodeTestingFirebaseCloudFunctionConsumer,
+  functionWithAdminTool,
+  functionWithFirebaseCronJobConsumer,
+  functionWithTable,
+  functionWithFeed,
   reactHook,
+  functionWithNextCachedFunction,
 
-  nextApiFunction,
-  firebaseFunction,
-  firebaseFunctionApiRoutes,
-  firebaseFunctionApiRoute,
-  firebaseFunctionApiRouteHandler,
-  firebaseFunctionCollable,
-  firebaseFunctionHttpApiRoute,
+  // Firebase
+  firebaseCollableFunctionEntry,
+  firebaseHttpFunctionEntry,
 
+  // Supabase
+  supabaseDatabaseFunction,
+  supabasePaginationFunction,
+
+  // Data
   collection,
   data,
   dataQuery,
   dataQueryUi,
   componentWithProvider,
-  dataComponent,
-  dataComponentUi,
   dataVariant,
   dataFormComponent,
   dataPrismic,
   globalState,
   reactContext,
-
   tsSchema,
 
+  // Testing
   playwrightTest,
   playwrightTestFile,
   playwrightTestCommon,
   vitestTest,
 
+  // Pages
   page,
   pageContent,
 
+  // MUI
   muiOverride,
   muiOverrideWithStory,
 
-  script,
+  // PostHog
+  postHogEventBrowser,
+  postHogEventNode,
 
-  adminTool,
-
-  infiniteTable,
-  infiniteFeed,
-  basicFormComponent,
-
-  posthogEvent,
-  gameZoneAdUserSwitcherComponent,
+  // Misc
   newScgTemplate,
-  foundationPage,
+  script,
 ]
 
 export default superCodeGeneratorConfig

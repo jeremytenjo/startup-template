@@ -1,6 +1,5 @@
 import React from 'react'
 import { SnackbarProvider } from '@useweb/ui/Snackbar'
-import ClickToComponent from '@useweb/click-to-component'
 import Box from '@useweb/ui/Box'
 import { configure } from '@storybook/test'
 
@@ -21,8 +20,6 @@ export const decorators = [
 
     return (
       <>
-        {process.env.NODE_ENV === 'development' && <ClickToComponent />}
-
         <Firebase>
           <StorybookTheme>
             <SnackbarProvider>

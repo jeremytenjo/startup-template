@@ -6,7 +6,7 @@ import assert from '@useweb/assert'
 
 export type GetFilesInFolderProps = { path: string }
 
-async function getFilesInFolderRecursive(props: {
+export async function getFilesInFolderRecursive(props: {
   folderPath: string
 }): Promise<string[]> {
   let files: string[] = []

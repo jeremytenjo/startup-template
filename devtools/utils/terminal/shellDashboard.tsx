@@ -42,7 +42,11 @@ export type CommandProps = {
 let commandsRunningTriggered = false
 
 export default async function shellSponsorships({ commands, onCommandsRunning }: Props) {
-  const allPortsInCommands = commands.map((command) => command.ports).flat(1)
+  const allPortsInCommands = commands
+    .map((command) => {
+      return command.ports
+    })
+    .flat(1)
 
   try {
     await killPortProcess(allPortsInCommands)
@@ -65,17 +69,17 @@ export default async function shellSponsorships({ commands, onCommandsRunning }:
 
       return (
         <Box flexDirection='column'>
-          {commands.map((arg, index) => (
-            <Header key={arg.label} {...arg} index={index} />
-          ))}
+          {commands.map((arg, index) => {
+            return <Header key={arg.label} {...arg} index={index} />
+          })}
 
           <Box marginTop={1}>
             <Text>{output}</Text>
           </Box>
 
-          {commands.map((arg, index) => (
-            <Command key={arg.label} {...arg} index={index} onOutput={onOutput} />
-          ))}
+          {commands.map((arg, index) => {
+            return <Command key={arg.label} {...arg} index={index} onOutput={onOutput} />
+          })}
         </Box>
       )
     }
@@ -103,10 +107,18 @@ export default async function shellSponsorships({ commands, onCommandsRunning }:
       ports,
       waitForPorts,
       index = 1,
-      onCommandRunning = () => null,
-      onOutput = () => null,
-      onCommandEnd = () => null,
-      onCommandError = () => null,
+      onCommandRunning = () => {
+        return null
+      },
+      onOutput = () => {
+        return null
+      },
+      onCommandEnd = () => {
+        return null
+      },
+      onCommandError = () => {
+        return null
+      },
     }: CommandProps) => {
       const shellRef = React.useRef<any>(null)
       const [output, setOutput] = React.useState('')
@@ -144,7 +156,9 @@ export default async function shellSponsorships({ commands, onCommandsRunning }:
 
         const commandArgs = command?.args?.split(' ') || ['']
         const shell = spawn(command.root, commandArgs)
-        shell.stdout.on('close', () => onCommandEnd())
+        shell.stdout.on('close', () => {
+          return onCommandEnd()
+        })
         // https://www.npmjs.com/package/qrcode-terminal
 
         // https://www.freecodecamp.org/news/node-js-child-processes-everything-you-need-to-know-e69498fe970a/
