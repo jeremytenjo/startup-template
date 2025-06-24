@@ -70,11 +70,11 @@ export const navLinks = {
   socialLinks: {
     discord: {
       label: 'Discord',
-      url: 'https://discord.gg/startup-template-one',
+      url: 'https://discord.gg/startup-template',
     } satisfies NavLinkSchema,
     mailto: {
       label: 'Mail',
-      url: 'mailto:info@startup-template-one.com',
+      url: 'mailto:info@startup-template.com',
     } satisfies NavLinkSchema,
   },
 }
