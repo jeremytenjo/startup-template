@@ -2,6 +2,7 @@ import React from 'react'
 import { SnackbarProvider } from '@useweb/ui/Snackbar'
 import Box from '@useweb/ui/Box'
 import { configure } from '@storybook/test'
+import type { Preview } from '@storybook/react'
 
 import appConfig from '../../../app.config.js'
 
@@ -10,6 +11,16 @@ import StorybookTheme from './theme/storybookTheme.js'
 configure({
   testIdAttribute: appConfig.devtools.playwright.testIdAttribute,
 })
+
+const preview: Preview = {
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
+}
+
+export default preview
 
 export const decorators = [
   (Story) => {

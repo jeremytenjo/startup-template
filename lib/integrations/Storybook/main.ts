@@ -3,10 +3,9 @@ import type { StorybookConfig } from '@storybook/nextjs'
 // disable because webpack has not ran extensionAlias
 // eslint-disable-next-line require-extensions/require-extensions
 import webpackFinal from './storybookWebpack/webpackFinal'
-import stories from './storiesList.cjs'
 
 const config: StorybookConfig = {
-  stories: [...stories],
+  stories: ['../../../**/stories/*stories.@(tsx|ts)'],
   staticDirs: ['../../../public'],
   framework: '@storybook/nextjs',
   core: { builder: '@storybook/builder-webpack5', disableTelemetry: true },

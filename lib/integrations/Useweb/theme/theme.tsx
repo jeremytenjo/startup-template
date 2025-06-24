@@ -11,3 +11,7 @@ export default function Theme({ children }) {
     </AppRouterCacheProvider>
   )
 }
+
+export const ThemeWithoutCacheProvider = ({ children }) => {
+  return <UiTheme>{children}</UiTheme>
+}
