@@ -3,7 +3,6 @@ import { SnackbarProvider } from '@useweb/ui/Snackbar'
 import type { Metadata, Viewport } from 'next/dist/types'
 
 import Theme from '../theme/theme.js'
-import GlobalErrorLogger from '../lib/utils/loggers/logError/GlobalErrorLogger/GlobalErrorLogger.js'
 import colors from '../theme/tokens/colors.js'
 import RootLayout from '../lib/layouts/RootLayout/RootLayout.js'
 import appConfig from '../app.config.js'
@@ -30,11 +29,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     <html lang='en'>
       <body>
         <RootLayout>
-          <GlobalErrorLogger>
-            <Theme>
-              <SnackbarProvider>{children}</SnackbarProvider>
-            </Theme>
-          </GlobalErrorLogger>
+          <Theme>
+            <SnackbarProvider>{children}</SnackbarProvider>
+          </Theme>
         </RootLayout>
       </body>
     </html>
