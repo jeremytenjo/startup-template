@@ -1,4 +1,4 @@
-import type NavLinkSchema from '../_commonSchemas/NavLinkSchema/NavLinkSchema.js'
+import type NavLinkSchema from './NavLink.schema.js'
 
 export const navLinks = {
   home: {

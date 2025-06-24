@@ -3,7 +3,7 @@ import Link from '@useweb/ui/Link'
 import List from '@useweb/ui/List'
 import type { BoxProps } from '@useweb/ui/Box'
 
-import type NavLinkSchema from '../../../../../../../../../../../data/_commonSchemas/NavLinkSchema/NavLinkSchema.js'
+import type NavLinkSchema from '../../../../../../../../../../../data/navLinks/NavLink.schema.js'
 
 export type RootFooterLinksListContentProps = {
   links: ({ sx?: BoxProps['sx']; component?: any; newTab?: boolean } & NavLinkSchema)[]

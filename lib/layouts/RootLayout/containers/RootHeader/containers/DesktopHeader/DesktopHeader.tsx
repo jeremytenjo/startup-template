@@ -5,7 +5,7 @@ import NavLink from '@useweb/ui/NavLink'
 
 import FullLogoLink from '../../../../../../components/logo/FullLogoLink/FullLogoLink.js'
 import useNavLinks from '../../../../../../../data/navLinks/utils/useNavLinks/useNavLinks.js'
-import type NavLinkSchema from '../../../../../../../data/_commonSchemas/NavLinkSchema/NavLinkSchema.js'
+import type NavLinkSchema from '../../../../../../../data/navLinks/NavLink.schema.js'
 import { themeTokens } from '../../../../../../integrations/Useweb/theme/tokens/tokens.js'
 
 export default function DesktopHeader() {

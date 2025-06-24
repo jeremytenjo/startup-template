@@ -1,10 +1,8 @@
 import type { DateProps } from '@useweb/date'
 import date, { formatDate } from '@useweb/date'
 
-import type DateSchema from '../../../../data/_commonSchemas/DateSchema/date.schema.js'
-
 export type FormatDateToHumanReadableProps = {
-  date: DateSchema | undefined | string | Date | DateProps
+  date: undefined | string | Date | DateProps
   showTime?: boolean
 }
 

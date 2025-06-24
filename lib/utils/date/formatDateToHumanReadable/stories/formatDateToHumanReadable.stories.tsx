@@ -2,7 +2,6 @@
 // https://github.com/storybookjs/storybook/tree/next/code/frameworks/nextjs?ref=storybook-blog
 import React from 'react'
 import AsyncTester from '@useweb/async-tester'
-import { getToday } from '@useweb/date'
 
 import formatDateToHumanReadable, {
   type FormatDateToHumanReadableProps,
@@ -10,7 +9,7 @@ import formatDateToHumanReadable, {
 } from '../formatDateToHumanReadable.js'
 
 const defaultArgs: FormatDateToHumanReadableProps = {
-  date: getToday(),
+  date: new Date(),
 }
 
 export default {

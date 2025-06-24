@@ -1,4 +1,4 @@
-import type NavLinkSchema from './NavLinkSchema.js'
+import type NavLinkSchema from './NavLink.schema.js'
 
 const navLinksStubs: NavLinkSchema[] = [
   {

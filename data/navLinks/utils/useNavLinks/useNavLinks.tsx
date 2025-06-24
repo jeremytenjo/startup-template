@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import useMediaQuery from '@useweb/ui/useMediaQuery'
 
-import type NavLinkSchema from '../../../_commonSchemas/NavLinkSchema/NavLinkSchema.js'
+import type NavLinkSchema from '../../NavLink.schema.js'
 import { navLinks } from '../../navLinks.js'
 
 export default function useNavLinks() {
