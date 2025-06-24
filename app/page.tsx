@@ -1,9 +1,9 @@
 import React from 'react'
 
-import HomePage from '@/src/pagesContent/Home/pages/HomePage.js'
+import HomePage from '@/pagesContent/Home/pages/HomePage.js'
 import RootLayout from '@/lib/layouts/RootLayout/RootLayout.js'
 
-export default function Home() {
+export default function HomePageRoot() {
   return (
     <RootLayout>
       <HomePage />
