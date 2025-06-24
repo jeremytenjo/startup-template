@@ -5,7 +5,6 @@ import { SnackbarProvider } from '@useweb/ui/Snackbar'
 
 import Theme from '../theme/theme.js'
 import createEmotionCache from '../theme/UiTheme/utils/createEmotionCache.js'
-import GoogleSearchConsole from '../lib/integrations/Google/GoogleSearchConsole/components/GoogleSearchConsole.js'
 import GlobalErrorLogger from '../lib/utils/loggers/logError/GlobalErrorLogger/GlobalErrorLogger.js'
 import colors from '../theme/tokens/colors.js'
 
@@ -17,8 +16,6 @@ export default function MyApp(props) {
 
   return (
     <>
-      <GoogleSearchConsole />
-
       <Head>
         <meta
           name='viewport'

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import postHog from '../../../postHog.js'
+import postHog from '../../../utils/postHog.js'
 
 export default function usePostHogSendPageView() {
   useEffect(() => {

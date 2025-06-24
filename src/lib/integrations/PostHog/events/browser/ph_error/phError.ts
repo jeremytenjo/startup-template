@@ -1,6 +1,6 @@
 import assert from '@useweb/assert'
 
-import postHog from '../../../postHog.js'
+import postHog from '../../../utils/postHog.js'
 
 export type PhErrorProps = {
   fnName: string
@@ -13,7 +13,7 @@ export default async function phError(props: PhErrorProps) {
   assert<PhErrorProps>({ props, requiredProps: ['description', 'fnName'] })
 
   postHog({
-    eventName: 'error',
+    eventName: 'Error',
     data: {
       description: String(props.description),
       functionName: props.fnName,

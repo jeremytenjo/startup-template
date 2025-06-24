@@ -4,8 +4,6 @@ import Box from '@useweb/ui/Box'
 import { configure } from '@storybook/test'
 
 import appConfig from '../../app.config.js'
-import Firebase from '../../src/lib/integrations/Google/Firebase/firebase.js'
-import AuthUserSetter from '../../src/lib/integrations/Google/Firebase/auth/ui/AuthUserSetter/AuthUserSetter.js'
 
 import StorybookTheme from './theme/storybookTheme.js'
 
@@ -14,30 +12,20 @@ configure({
 })
 
 export const decorators = [
-  (Story, metadata) => {
-    const signInAs = metadata?.parameters?.signInAs
-    const ignoreAuthUserSetter = metadata?.parameters?.ignoreAuthUserSetter
-
+  (Story) => {
     return (
       <>
-        <Firebase>
-          <StorybookTheme>
-            <SnackbarProvider>
-              <Box
-                sx={{
-                  minHeight: '100vh',
-                }}
-              >
-                <AuthUserSetter
-                  signInAs={signInAs}
-                  ignoreAuthUserSetter={ignoreAuthUserSetter}
-                >
-                  <Story />
-                </AuthUserSetter>
-              </Box>
-            </SnackbarProvider>
-          </StorybookTheme>
-        </Firebase>
+        <StorybookTheme>
+          <SnackbarProvider>
+            <Box
+              sx={{
+                minHeight: '100vh',
+              }}
+            >
+              <Story />
+            </Box>
+          </SnackbarProvider>
+        </StorybookTheme>
       </>
     )
   },

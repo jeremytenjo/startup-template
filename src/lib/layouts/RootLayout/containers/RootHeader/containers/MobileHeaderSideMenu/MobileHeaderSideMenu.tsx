@@ -1,25 +1,14 @@
 import React from 'react'
 import Box from '@useweb/ui/Box'
 import { useAppHeaderStore } from '@useweb/ui/AppHeader'
-import Divider from '@useweb/ui/Divider'
-import Text from '@useweb/ui/Text'
-import { useRouter } from 'next/router'
 import NavLink from '@useweb/ui/NavLink'
 
 import FullLogoLink from '../../../../../../components/logo/FullLogoLink/FullLogoLink.js'
-import useAuth from '../../../../../../../data/users/utils/useAuth/useAuth.js'
 import useNavLinks from '../../../../../../../data/navLinks/utils/useNavLinks/useNavLinks.js'
 
 export default function MobileHeaderSideMenu() {
   const navLinks = useNavLinks()
-  const router = useRouter()
   const appHeaderStore = useAppHeaderStore()
-  const auth = useAuth({
-    onSignOut() {
-      appHeaderStore.setOpenDrawer({ value: false })
-      router.push('/')
-    },
-  })
 
   return (
     <Box
@@ -71,26 +60,6 @@ export default function MobileHeaderSideMenu() {
             />
           )
         })}
-
-        {auth.user && (
-          <>
-            <Divider sx={{ mt: '20px' }} />
-            <Text
-              onClick={() => {
-                auth.signOut()
-              }}
-              text={'Sign out'}
-              sx={{
-                cursor: 'pointer',
-                userSelect: 'none',
-                color: 'neutral.200',
-                fontSize: 14,
-                textAlign: 'left',
-                py: '6px',
-              }}
-            />
-          </>
-        )}
       </Box>
     </Box>
   )

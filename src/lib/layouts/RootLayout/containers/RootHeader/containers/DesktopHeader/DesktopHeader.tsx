@@ -6,7 +6,6 @@ import NavLink from '@useweb/ui/NavLink'
 import FullLogoLink from '../../../../../../components/logo/FullLogoLink/FullLogoLink.js'
 import useNavLinks from '../../../../../../../data/navLinks/utils/useNavLinks/useNavLinks.js'
 import type NavLinkSchema from '../../../../../../../data/_commonSchemas/NavLinkSchema/NavLinkSchema.js'
-import SignUpLink from '../../../../../../../data/navLinks/ui/SignUpLink/SignUpLink.js'
 import { themeTokens } from '../../../../../../../theme/tokens/tokens.js'
 
 export default function DesktopHeader() {
@@ -79,12 +78,6 @@ export default function DesktopHeader() {
               '& p': {
                 fontSize: '16px',
               },
-            }}
-          />
-
-          <SignUpLink
-            sx={{
-              ml: '10px',
             }}
           />
         </Box>

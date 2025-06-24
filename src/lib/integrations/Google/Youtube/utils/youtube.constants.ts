@@ -1,3 +1,0 @@
-// generated from user oauth
-export const testGoogleAccessToken =
-  'ya29.a0AVvZVsrPRUqD7QwVntXej4YRpYXebc8hmZ4ud8lEarWztLZ7WHDQGGm8QIobO8-DhwQFc10OtEMBSmsL1_IfMSQUVe6tkciRfL_Jg6Hf593t16PAHGnTyq4Su7iNY_kjAKFxjrM6V_TAo7mHm7IFGGYYUmjulAaCgYKAYgSARISFQGbdwaIYGq3xmuFWKDYvGvX648qDA0165'

@@ -5,17 +5,12 @@ import IconButton from '@useweb/ui/IconButton'
 import Link from '@useweb/ui/Link'
 import NavLink from '@useweb/ui/NavLink'
 
-import useAuth from '../../../../../../../data/users/utils/useAuth/useAuth.js'
 import MenuIcon from '../../../../../../components/icons/MenuIcon.js'
 import LogoIcon from '../../../../../../components/icons/LogoIcon.js'
-import NotificationsPopover from '../../../../../../../data/notifications/queries/Notifications/ui/NotificationsPopover/NotificationsPopover.js'
-import SettingProfileAvatarLink from '../../../../../../../data/navLinks/ui/SettingProfileAvatarLink/SettingProfileAvatarLink.js'
-import SignUpLink from '../../../../../../../data/navLinks/ui/SignUpLink/SignUpLink.js'
 import { navLinks } from '../../../../../../../data/navLinks/utils/useNavLinks/useNavLinks.js'
 
 export default function MobileHeader() {
   const appHeaderStore = useAppHeaderStore()
-  const auth = useAuth()
 
   return (
     <>
@@ -70,51 +65,22 @@ export default function MobileHeader() {
             alignItems: 'center',
           }}
         >
-          {auth.userWasSignedInOrIsSignedIn ? (
-            <Box
+          <Box
+            data-id='SignedOutButtons'
+            sx={{
+              display: 'grid',
+              gap: 2,
+              gridAutoFlow: 'column',
+            }}
+          >
+            <NavLink
+              href={navLinks.access.signIn?.url}
+              label={navLinks.access.signIn?.label}
               sx={{
-                display: 'grid',
-                gridAutoFlow: 'column',
-                alignItems: 'center',
+                mr: '10px',
               }}
-            >
-              <NotificationsPopover />
-
-              <SettingProfileAvatarLink
-                sx={{
-                  ml: '8px',
-                }}
-                avatarSx={{
-                  width: '40px',
-                  height: '40px',
-                  mr: '8px',
-                }}
-              />
-            </Box>
-          ) : (
-            <Box
-              data-id='SignedOutButtons'
-              sx={{
-                display: 'grid',
-                gap: 2,
-                gridAutoFlow: 'column',
-              }}
-            >
-              <NavLink
-                href={navLinks.access.signIn?.url}
-                label={navLinks.access.signIn?.label}
-                sx={{
-                  mr: '10px',
-                }}
-              />
-
-              <SignUpLink
-                sx={{
-                  mr: '10px',
-                }}
-              />
-            </Box>
-          )}
+            />
+          </Box>
         </Box>
       </Box>
     </>
