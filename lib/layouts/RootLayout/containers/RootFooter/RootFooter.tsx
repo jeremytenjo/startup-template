@@ -3,7 +3,7 @@ import Box from '@useweb/ui/Box'
 import Text from '@useweb/ui/Text'
 
 import FullLogoLink from '../../../../components/logo/FullLogoLink/FullLogoLink.js'
-import appConfig from '../../../../../app.config.js'
+import { siteInfo } from '../../../../../data/_siteInfo/siteInfo.js'
 
 import RootFooterLinks from './containers/RootFooterLinks/RootFooterLinks.js'
 
@@ -52,7 +52,7 @@ export default function RootFooter() {
             }}
           />
           <Text
-            text={`${appConfig.siteInfo.name} LLC. ${new Date().getFullYear()}`}
+            text={`${siteInfo.name} LLC. ${new Date().getFullYear()}`}
             sx={{
               color: 'neutral.200',
               fontWeight: 400,

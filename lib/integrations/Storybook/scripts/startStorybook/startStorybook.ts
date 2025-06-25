@@ -1,15 +1,12 @@
 import shell from '../../../../../devtools/utils/node/shell.js'
-import appConfig from '../../../../../app.config.js'
+import { storybookConfig } from '../../storybook.config.js'
 
 export default async function startStorybook() {
-  const port = appConfig.devtools.storybook.port
-  const nextPort = appConfig.nextjs.port
-
   shell([
     {
-      command: `storybook dev -p ${port} -c ./lib/integrations/Storybook --no-open --quiet`,
+      command: `storybook dev -p ${storybookConfig.port} -c ./lib/integrations/Storybook --no-open --quiet`,
       name: 'start storybook script',
-      env: { STORYBOOK_NEXT_PORT: nextPort },
+      env: { STORYBOOK_NEXT_PORT: storybookConfig.nextjsPort },
     },
   ])
 }

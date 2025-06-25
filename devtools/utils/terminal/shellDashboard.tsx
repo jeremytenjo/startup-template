@@ -14,11 +14,11 @@ import onPortsRunning from './onPortsRunning.js'
 console.clear()
 
 export type Props = {
-  commands: CommandProps[]
+  commands: DevCommandProps[]
   onCommandsRunning?: () => any
 }
 
-export type CommandProps = {
+export type DevCommandProps = {
   label: string
   command: {
     root: string
@@ -84,7 +84,7 @@ export default async function shellSponsorships({ commands, onCommandsRunning }:
       )
     }
 
-    const Header = (props: CommandProps & { index: number; key: any }) => {
+    const Header = (props: DevCommandProps & { index: number; key: any }) => {
       const [port] = props.ports
       const restardInput = (props.index + 1).toString()
       const networkUrl = `http://${getIpAddress()}:${port}`
@@ -119,7 +119,7 @@ export default async function shellSponsorships({ commands, onCommandsRunning }:
       onCommandError = () => {
         return null
       },
-    }: CommandProps) => {
+    }: DevCommandProps) => {
       const shellRef = React.useRef<any>(null)
       const [output, setOutput] = React.useState('')
       const [error, setError] = React.useState<string>('')

@@ -4,12 +4,11 @@ import Box from '@useweb/ui/Box'
 import { configure } from '@storybook/test'
 import type { Preview } from '@storybook/react'
 
-import appConfig from '../../../app.config.js'
-
 import StorybookTheme from './theme/storybookTheme.js'
+import { storybookConfig } from './storybook.config.js'
 
 configure({
-  testIdAttribute: appConfig.devtools.playwright.testIdAttribute,
+  testIdAttribute: storybookConfig.testIdAttribute,
 })
 
 const preview: Preview = {

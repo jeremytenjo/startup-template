@@ -7,7 +7,9 @@ import ConfirmationButton, {
 
 const defaultArgs: ConfirmationButtonProps = {
   fn: {
-    fn: async () => {return null},
+    fn: async () => {
+      return null
+    },
   },
   acceptButtonProps: {} as any,
   dialogProps: {} as any,

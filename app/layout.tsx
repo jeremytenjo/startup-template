@@ -5,10 +5,10 @@ import type { Metadata, Viewport } from 'next/dist/types'
 import Theme from '../lib/integrations/Useweb/theme/theme.js'
 import colors from '../lib/integrations/Useweb/theme/tokens/colors.js'
 import RootLayout from '../lib/layouts/RootLayout/RootLayout.js'
-import appConfig from '../app.config.js'
+import { siteInfo } from '../data/_siteInfo/siteInfo.js'
 
 export const metadata: Metadata = {
-  title: appConfig.siteInfo.name,
+  title: siteInfo.name,
   robots: 'index, follow',
   manifest: '/manifest.json',
   icons: {

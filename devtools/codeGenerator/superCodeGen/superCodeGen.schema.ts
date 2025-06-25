@@ -14,9 +14,6 @@ import page from './templates/components/page.js'
 import pageContent from './templates/components/pageContent.js'
 import muiOverride from './templates/components/muiOverride.js'
 import muiOverrideWithStory from './templates/components/muiOverrideWithStory.js'
-import playwrightTest from './templates/playwright/playwrightTest.js'
-import playwrightTestFile from './templates/playwright/playwrightTestFile.js'
-import playwrightTestCommon from './templates/playwright/playwrightTestCommon.js'
 import vitestTest from './templates/misc/vitestTest.js'
 import script from './templates/misc/script.js'
 import functionWithNextPagesApiConsumer from './templates/functions/functionWithNextPagesApiConsumer.js'
@@ -52,9 +49,6 @@ const superCodeGeneratorConfig: SuperCodeGeneratorConfigSchema<any, any> = [
   reactHook,
   functionWithNextCachedFunction,
   tsSchema,
-  playwrightTest,
-  playwrightTestFile,
-  playwrightTestCommon,
   vitestTest,
   page,
   pageContent,

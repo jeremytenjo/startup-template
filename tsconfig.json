@@ -35,8 +35,7 @@
     "app",
     "devtools",
     "devtools/ts/declaredModules/*",
-    ".next/types/**/*.ts",
-    "playwright.config.ts"
+    ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"],
   "ts-node": {

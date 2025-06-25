@@ -12,7 +12,7 @@ type WatchFolderProps = {
  *  const folderToWatch = path.join(process.cwd(), 'src')
     watchFolder({
       folderToWatch,
-      onChange: runPlaywrightTests,
+      onChange: folder,
     })
  */
 export default function watchFolder({ folderToWatch, onChange }: WatchFolderProps) {

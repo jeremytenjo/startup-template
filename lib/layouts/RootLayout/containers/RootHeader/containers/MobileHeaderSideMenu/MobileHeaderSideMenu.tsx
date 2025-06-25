@@ -55,7 +55,9 @@ export default function MobileHeaderSideMenu() {
                 fontWeight: '500',
               }}
               href={link.url}
-              onClick={() => {return appHeaderStore.setOpenDrawer({ value: false })}}
+              onClick={() => {
+                return appHeaderStore.setOpenDrawer({ value: false })
+              }}
               label={link.label}
             />
           )

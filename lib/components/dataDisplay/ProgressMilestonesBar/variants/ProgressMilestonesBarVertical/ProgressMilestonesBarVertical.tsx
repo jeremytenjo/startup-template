@@ -47,23 +47,25 @@ export default function ProgressMilestonesBarVertical(
             gap: 3,
           }}
         >
-          {props.milestones.map((milestone) => {return (
-            <Box
-              key={milestone.percent}
-              data-id='ProgressMilestonesBarVerticalMilestone'
-              sx={{
-                display: 'flex',
-                gap: 3,
-              }}
-            >
-              <ProgressMilestonesBarPoint
-                progress={props.progress}
-                milestone={milestone}
-              />
+          {props.milestones.map((milestone) => {
+            return (
+              <Box
+                key={milestone.percent}
+                data-id='ProgressMilestonesBarVerticalMilestone'
+                sx={{
+                  display: 'flex',
+                  gap: 3,
+                }}
+              >
+                <ProgressMilestonesBarPoint
+                  progress={props.progress}
+                  milestone={milestone}
+                />
 
-              {milestone.component}
-            </Box>
-          )})}
+                {milestone.component}
+              </Box>
+            )
+          })}
         </Box>
       </Box>
     </Box>

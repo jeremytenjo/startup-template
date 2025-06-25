@@ -7,7 +7,6 @@ type GetAppStateReturn = {
   signedIn: boolean
   dataSource: 'dev' | 'prod'
   onlyApp: boolean
-  runPlaywright: boolean
 }
 
 export default async function getDevScriptArgs(): Promise<GetAppStateReturn> {
@@ -16,11 +15,6 @@ export default async function getDevScriptArgs(): Promise<GetAppStateReturn> {
     { name: 'dataSource', type: String },
     {
       name: 'onlyApp',
-      type: Boolean,
-      defaultValue: false,
-    },
-    {
-      name: 'runPlaywright',
       type: Boolean,
       defaultValue: false,
     },
@@ -51,13 +45,6 @@ export default async function getDevScriptArgs(): Promise<GetAppStateReturn> {
       message: 'Only run nextjs app?',
       skip: scriptArgs.onlyApp !== undefined,
       initial: Boolean(scriptArgs.onlyApp),
-    },
-    {
-      type: 'confirm',
-      name: 'runPlaywright',
-      message: 'Run Playwright tests?',
-      skip: scriptArgs.runPlaywright !== undefined,
-      initial: Boolean(scriptArgs.runPlaywright),
     },
 
     // add more as needed here...

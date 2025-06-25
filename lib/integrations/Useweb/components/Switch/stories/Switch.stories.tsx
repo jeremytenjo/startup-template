@@ -18,7 +18,11 @@ export default {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Template = (args: typeof defaultArgs) => {
   return (
-    <Form onSubmit={(formData) => {return console.log(formData)}}>
+    <Form
+      onSubmit={(formData) => {
+        return console.log(formData)
+      }}
+    >
       <Switch<any> {...args} />
     </Form>
   )

@@ -1,4 +1,4 @@
-import appConfig from '../../../../app.config.js'
+import { nextjsConfig } from '../../nextjs.config.js'
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 export type NextApiProps<PayloadProps> = {
@@ -29,7 +29,7 @@ export default async function nextApi<DataSchema = any, PayloadProps = any>(
       : '/'
 
   const url = props.isExternalCall
-    ? `${appConfig.siteInfo?.domain}/api/${props.name}`
+    ? `${nextjsConfig?.domain}/api/${props.name}`
     : `${prefix}api/${props.name}`
 
   // Upload form data, eg file
@@ -54,7 +54,9 @@ export default async function nextApi<DataSchema = any, PayloadProps = any>(
         'Content-Type': 'application/json',
       },
     },
-  ).then((res) => {return res.json()})
+  ).then((res) => {
+    return res.json()
+  })
 
   return response
 }

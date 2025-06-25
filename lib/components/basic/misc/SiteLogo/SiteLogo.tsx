@@ -2,7 +2,7 @@ import React from 'react'
 import Link, { type LinkProps } from '@useweb/ui/Link'
 import Image, { type ImageProps } from '@useweb/ui/Image'
 
-import appConfig from '../../../../../app.config.js'
+import { siteInfo } from '../../../../../data/_siteInfo/siteInfo.js'
 
 export type SiteLogoProps = Omit<ImageProps, 'alt'> & {
   src?: string
@@ -32,7 +32,7 @@ export default function SiteLogo({
         src={siteLogo}
         width={width}
         height={height}
-        alt={`${appConfig.siteInfo.name} beautiful logo`}
+        alt={`${siteInfo.name} beautiful logo`}
       />
     </Link>
   )
