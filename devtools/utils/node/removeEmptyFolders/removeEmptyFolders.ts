@@ -1,29 +1,39 @@
 import path from 'path'
 import fsPromises from 'fs/promises'
 
-export type RemoveEmptyFoldersProps = { folderPath: string }
+export type RemoveEmptyFoldersProps = {
+  folderPath: string | string[]
+}
 
-export default async function removeEmptyFolders(props: RemoveEmptyFoldersProps) {
+async function removeEmptyFolder(folderPath: string) {
   // lstat does not follow symlinks (in contrast to stat)
-  const fileStats = await fsPromises.lstat(props.folderPath)
+  const fileStats = await fsPromises.lstat(folderPath)
   if (!fileStats.isDirectory()) {
     return
   }
-  let fileNames = await fsPromises.readdir(props.folderPath)
+  let fileNames = await fsPromises.readdir(folderPath)
+
   if (fileNames.length > 0) {
     const recursiveRemovalPromises = fileNames.map((fileName) => {
-      return removeEmptyFolders({
-        folderPath: path.join(props.folderPath, fileName),
-      })
+      return removeEmptyFolder(path.join(folderPath, fileName))
     })
     await Promise.all(recursiveRemovalPromises)
 
     // re-evaluate fileNames; after deleting subdirectory
     // we may have parent directory empty now
-    fileNames = await fsPromises.readdir(props.folderPath)
+    fileNames = await fsPromises.readdir(folderPath)
   }
 
   if (fileNames.length === 0) {
-    await fsPromises.rmdir(props.folderPath)
+    await fsPromises.rmdir(folderPath)
   }
+}
+
+export default async function removeEmptyFolders(props: RemoveEmptyFoldersProps) {
+  const paths = Array.isArray(props.folderPath) ? props.folderPath : [props.folderPath]
+  await Promise.all(
+    paths.map((folderPath) => {
+      return removeEmptyFolder(folderPath)
+    }),
+  )
 }

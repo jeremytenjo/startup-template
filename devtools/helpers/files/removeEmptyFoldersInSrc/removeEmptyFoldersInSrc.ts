@@ -7,14 +7,16 @@ import removeEmptyFolders from '../../../utils/node/removeEmptyFolders/removeEmp
 
 export default async function removeEmptyFoldersInSrc() {
   console.clear()
-  intro(chalk.cyan('removeEmptyFoldersInSrc'))
+  intro(chalk.cyan('Remove Empty Folders in app, lib, and data'))
   const s = spinner()
   s.start('Removing empty folders')
 
-  const srcPath = path.join(process.cwd(), 'src')
+  const app = path.join(process.cwd(), 'app')
+  const lib = path.join(process.cwd(), 'lib')
+  const data = path.join(process.cwd(), 'data')
 
   await removeEmptyFolders({
-    folderPath: srcPath,
+    folderPath: [app, lib, data],
   })
 
   s.stop('Empty folders removed')
