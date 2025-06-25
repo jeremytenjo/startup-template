@@ -3,6 +3,8 @@ import type {
   SuperCodeGeneratorFilesSchema,
 } from '@jeremytenjo/super-code-generator'
 
+import addTemplateToSchema from '../../utils/addTemplateToSchema/addTemplateToSchema.js'
+
 const files: SuperCodeGeneratorFilesSchema = [
   {
     path: ({ name, helpers }) => {
@@ -36,18 +38,26 @@ const ${helpers?.changeCase?.camelCase(name)}: SuperCodeGeneratorTemplateSchema 
   files,
 }
 
-export default ${helpers?.changeCase?.camelCase(name)}
-    `
+export default ${helpers?.changeCase?.camelCase(name)}`
     },
   },
 ]
 
-const template: SuperCodeGeneratorTemplateSchema = {
+const newScgTemplate: SuperCodeGeneratorTemplateSchema = {
   type: 'Super Code Generator Template',
   files,
   options: {
     createNamedFolder: false,
   },
+  hooks: {
+    onCreate: async ({ outputPath, componentName, workspacePath }) => {
+      await addTemplateToSchema({
+        templatePath: outputPath,
+        workspacePath,
+        name: componentName,
+      })
+    },
+  },
 }
 
-export default template
+export default newScgTemplate
