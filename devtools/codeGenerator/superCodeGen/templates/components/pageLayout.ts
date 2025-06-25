@@ -5,11 +5,8 @@ import type {
 
 const files: SuperCodeGeneratorFilesSchema = [
   {
-    path: ({ name, helpers }) => {
-      const nameCamelCase = helpers?.changeCase?.camelCase(name)
-      const fileName = `${nameCamelCase}`
-
-      return `${fileName}`
+    path: () => {
+      return `layout.tsx`
     },
     template: ({ name, helpers }) => {
       const namePascalCase = helpers?.changeCase?.pascalCase(name)
@@ -35,6 +32,10 @@ export default function ${namePascalCase}Layout(props: ${namePascalCase}LayoutPr
 const pageLayout: SuperCodeGeneratorTemplateSchema = {
   type: 'Page Layout',
   files,
+  outputWithoutParentDir: true,
+  options: {
+    createNamedFolder: false,
+  },
 }
 
 export default pageLayout

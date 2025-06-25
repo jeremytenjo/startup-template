@@ -5,11 +5,8 @@ import type {
 
 const files: SuperCodeGeneratorFilesSchema = [
   {
-    path: ({ name, helpers }) => {
-      const nameCamelCase = helpers?.changeCase?.camelCase(name)
-      const fileName = `${nameCamelCase}`
-
-      return `${fileName}/page.tsx`
+    path: () => {
+      return `page.tsx`
     },
     template: ({ name, helpers }) => {
       const namePascalCase = helpers?.changeCase?.pascalCase(name)
@@ -27,11 +24,8 @@ export default function ${namePascalCase}Page() {
     },
   },
   {
-    path: ({ name, helpers }) => {
-      const nameCamelCase = helpers?.changeCase?.camelCase(name)
-      const fileName = `${nameCamelCase}`
-
-      return `${fileName}/utils/readme.md`
+    path: () => {
+      return `utils/readme.md`
     },
     template: ({ name, helpers }) => {
       const namePascalCase = helpers?.changeCase?.pascalCase(name)
@@ -43,11 +37,8 @@ Add ${namePascalCase} utils here
     },
   },
   {
-    path: ({ name, helpers }) => {
-      const nameCamelCase = helpers?.changeCase?.camelCase(name)
-      const fileName = `${nameCamelCase}`
-
-      return `${fileName}/containers/readme.md`
+    path: () => {
+      return `containers/readme.md`
     },
     template: ({ name, helpers }) => {
       const namePascalCase = helpers?.changeCase?.pascalCase(name)
@@ -55,6 +46,19 @@ Add ${namePascalCase} utils here
       return `## ${namePascalCase} containers
 
 Add ${namePascalCase} containers here
+`
+    },
+  },
+  {
+    path: () => {
+      return `(pages)/readme.md`
+    },
+    template: ({ name, helpers }) => {
+      const namePascalCase = helpers?.changeCase?.pascalCase(name)
+
+      return `## ${namePascalCase} children pages
+
+Add ${namePascalCase} children pages here
 `
     },
   },
