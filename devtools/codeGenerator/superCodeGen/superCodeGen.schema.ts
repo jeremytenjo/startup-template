@@ -10,8 +10,6 @@ import functionWithUseAsync from './templates/functions/functionWithUseAsync.js'
 import functionWithVitest from './templates/functions/functionWithVitest.js'
 import functionWithUseData from './templates/functions/functionWithUseData.js'
 import functionWithHook from './templates/functions/functionWithHook.js'
-import page from './templates/components/page.js'
-import pageContent from './templates/components/pageContent.js'
 import muiOverride from './templates/components/muiOverride.js'
 import muiOverrideWithStory from './templates/components/muiOverrideWithStory.js'
 import vitestTest from './templates/misc/vitestTest.js'
@@ -24,7 +22,6 @@ import postHogEventBrowser from './templates/posthog/postHogEventBrowser.js'
 import postHogEventNode from './templates/posthog/postHogEventNode.js'
 import newScgTemplate from './templates/misc/newScgTemplate.js'
 import infiniteFeed from './templates/components/infiniteFeed.js'
-import customMessageComponent from './templates/components/customMessageComponent.js'
 import functionWithTable from './templates/functions/functionWithTable.js'
 import functionWithFeed from './templates/functions/functionWithFeed.js'
 import functionWithNextCachedFunction from './templates/functions/functionWithNextCachedFunction.js'
@@ -33,7 +30,6 @@ const superCodeGeneratorConfig: SuperCodeGeneratorConfigSchema<any, any> = [
   component,
   componentStory,
   componentWithStory,
-  customMessageComponent,
   infiniteFeed,
   basicFormComponent,
   functions,
@@ -50,8 +46,6 @@ const superCodeGeneratorConfig: SuperCodeGeneratorConfigSchema<any, any> = [
   functionWithNextCachedFunction,
   tsSchema,
   vitestTest,
-  page,
-  pageContent,
   muiOverride,
   muiOverrideWithStory,
   postHogEventBrowser,
