@@ -13,8 +13,8 @@ export default async function getNextjsDevCommand(
   const devCommand: DevCommandProps = {
     label: 'Nextjs',
     command: {
-      root: 'node',
-      args: `--experimental-json-modules --loader ts-node/esm node_modules/.bin/next dev -p ${nextjsConfig.port}`,
+      root: 'next',
+      args: `dev -p ${nextjsConfig.port}`,
       env: {
         DATA_SOURCE: props.dataSource,
       },

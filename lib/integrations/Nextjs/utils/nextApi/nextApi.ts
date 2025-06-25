@@ -21,7 +21,7 @@ export default async function nextApi<DataSchema = any, PayloadProps = any>(
   const fetchFn = props.fetchFn || fetch
 
   // Regular call
-  const port = props.port || process.env.nextjsPort || process.env.PUBIC_NEXT_PORT || 3001
+  const port = props.port || process.env.PUBIC_NEXT_PORT || nextjsConfig.port
   const prefix =
     // @ts-ignore
     process.env.NODE_ENV === 'development' && !props.forceProduction
