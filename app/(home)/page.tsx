@@ -1,7 +1,10 @@
 import React from 'react'
+import Box from '@useweb/ui/Box'
 
-import HomePage from './pages/HomePage/HomePage.js'
-
-export default function HomePageRoot() {
-  return <HomePage />
+export default function HomePage() {
+  return (
+    <Box data-id='HomePage' sx={{}}>
+      HomePage
+    </Box>
+  )
 }

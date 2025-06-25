@@ -1,5 +1,7 @@
 import type { SuperCodeGeneratorConfigSchema } from '@jeremytenjo/super-code-generator'
 
+import pageLayout from './templates/components/pageLayout.js'
+import page from './templates/components/page.js'
 import component from './templates/components/component.js'
 import componentStory from './templates/components/componentStory.js'
 import componentWithStory from './templates/components/componentWithStory.js'
@@ -52,6 +54,8 @@ const superCodeGeneratorConfig: SuperCodeGeneratorConfigSchema<any, any> = [
   postHogEventNode,
   newScgTemplate,
   script,
+  page,
+  pageLayout,
 ]
 
 export default superCodeGeneratorConfig
