@@ -1,7 +1,7 @@
 import type { DevCommandProps } from '../../../../../devtools/utils/terminal/shellDashboard.js'
 import { storybookConfig } from '../../storybook.config.js'
 
-export default async function getStorybookDevCommand(): GetStorybookDevCommandReturn {
+export async function getStorybookDevCommand(): GetStorybookDevCommandReturn {
   const devCommand: DevCommandProps = {
     label: `Storybook`,
     command: {

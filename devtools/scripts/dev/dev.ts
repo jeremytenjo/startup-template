@@ -1,5 +1,5 @@
 import getNextjsDevCommand from '../../../lib/integrations/Nextjs/utils/getNextjsDevCommand/getNextjsDevCommand.js'
-import getStorybookDevCommand from '../../../lib/integrations/Storybook/utils/getStorybookDevCommand/getStorybookDevCommand.js'
+import { getStorybookDevCommand } from '../../../lib/integrations/Storybook/utils/getStorybookDevCommand/getStorybookDevCommand.js'
 import shellDashboard, {
   type DevCommandProps,
 } from '../../utils/terminal/shellDashboard.js'

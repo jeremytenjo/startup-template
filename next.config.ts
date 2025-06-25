@@ -2,7 +2,7 @@ import withBundleAnalyzer from '@next/bundle-analyzer'
 import type { NextConfig } from 'next'
 import { codeInspectorPlugin } from 'code-inspector-plugin'
 
-import appConfig from './app.config.js'
+import { nextjsConfig } from './lib/integrations/Nextjs/nextjs.config.js'
 
 const withBundleAnalyzerFn = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
@@ -12,7 +12,7 @@ export default async () => {
   const nextConfig = withBundleAnalyzerFn({
     transpilePackages: ['@useweb'],
     env: {
-      nextjsPort: String(appConfig.nextjs.port),
+      nextjsPort: String(nextjsConfig.port),
     },
     devIndicators: false,
     images: {
