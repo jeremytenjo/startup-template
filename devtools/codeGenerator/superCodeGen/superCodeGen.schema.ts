@@ -33,15 +33,12 @@ import functionWithFeed from './templates/functions/functionWithFeed.js'
 import functionWithNextCachedFunction from './templates/functions/functionWithNextCachedFunction.js'
 
 const superCodeGeneratorConfig: SuperCodeGeneratorConfigSchema<any, any> = [
-  // Components
   component,
   componentStory,
   componentWithStory,
   customMessageComponent,
   infiniteFeed,
   basicFormComponent,
-
-  // Functions
   functions,
   functionStory,
   functionWithStory,
@@ -54,29 +51,17 @@ const superCodeGeneratorConfig: SuperCodeGeneratorConfigSchema<any, any> = [
   functionWithFeed,
   reactHook,
   functionWithNextCachedFunction,
-
-  // Data
   tsSchema,
-
-  // Testing
   playwrightTest,
   playwrightTestFile,
   playwrightTestCommon,
   vitestTest,
-
-  // Pages
   page,
   pageContent,
-
-  // MUI
   muiOverride,
   muiOverrideWithStory,
-
-  // PostHog
   postHogEventBrowser,
   postHogEventNode,
-
-  // Misc
   newScgTemplate,
   script,
 ]
