@@ -25,7 +25,7 @@ const defaultArgs: TableRowProps = {
 }
 
 export default {
-  title: 'lib/components/table/TableRow',
+  title: 'lib/components/useweb/table/TableRow',
   component: TableRow,
   args: defaultArgs,
   parameters: {
