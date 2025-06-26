@@ -18,7 +18,7 @@ export const getStoryPrefix = (p: { folderPath: string }): string => {
   const storyPrefixProp = storyPrefix.pop() || ''
   const storyPrefixString = storyPrefixProp.substring(1)
 
-  return storyPrefixString
+  return `${spliter}/${storyPrefixString}`
 }
 
 const getStoryTemplate = ({
