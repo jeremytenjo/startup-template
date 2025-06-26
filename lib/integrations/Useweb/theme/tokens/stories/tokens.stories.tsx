@@ -2,7 +2,7 @@
 import Colors from './theme.colors.js'
 import Typography from './theme.typography.js'
 export default {
-  title: 'Theme/Tokens',
+  title: 'lib/theme',
 }
 export const colors = Colors
 export const typography = Typography
