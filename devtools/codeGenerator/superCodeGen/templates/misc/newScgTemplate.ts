@@ -7,10 +7,10 @@ import addTemplateToSchema from '../../utils/addTemplateToSchema/addTemplateToSc
 
 const files: SuperCodeGeneratorFilesSchema = [
   {
-    path: ({ name, helpers }) => {
-      return `${helpers?.changeCase?.camelCase(name)}.ts`
+    path: (p) => {
+      return `${p.nameCamelCase}.ts`
     },
-    template: ({ name, helpers }) => {
+    template: (p) => {
       return `import type {
   SuperCodeGeneratorTemplateSchema,
   SuperCodeGeneratorFilesSchema,
@@ -18,27 +18,23 @@ const files: SuperCodeGeneratorFilesSchema = [
 
 const files: SuperCodeGeneratorFilesSchema = [
   {
-    path: ({ name, helpers }) => {
-      const nameCamelCase = helpers?.changeCase?.camelCase(name)
-      const fileName = \`\${nameCamelCase}\`
+    path: (p) => {
+      const fileName = \`\${p.nameCamelCase}\`
 
       return \`\${fileName}\`
     },
-    template: ({ name, helpers }) => {
-      const nameCamelCase = helpers?.changeCase?.camelCase(name)
-      const namePascalCase = helpers?.changeCase?.pascalCase(name)
-      
+    template: () => {
       return \`\content\`
     },
   },
 ]
 
-const ${helpers?.changeCase?.camelCase(name)}: SuperCodeGeneratorTemplateSchema = {
-  type: '${helpers?.changeCase?.capitalCase(name)}',
+const ${p.nameCamelCase}: SuperCodeGeneratorTemplateSchema = {
+  type: '${p.nameCapitalCase}',
   files,
 }
 
-export default ${helpers?.changeCase?.camelCase(name)}`
+export default ${p.nameCamelCase}`
     },
   },
 ]

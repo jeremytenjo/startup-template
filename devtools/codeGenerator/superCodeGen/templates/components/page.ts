@@ -8,16 +8,14 @@ const files: SuperCodeGeneratorFilesSchema = [
     path: () => {
       return `page.tsx`
     },
-    template: ({ name, helpers }) => {
-      const namePascalCase = helpers?.changeCase?.pascalCase(name)
-
+    template: (p) => {
       return `import React from 'react'
 import Box from '@useweb/ui/Box'
 
-export default function ${namePascalCase}Page() {
+export default function ${p.namePascalCase}Page() {
   return (
-    <Box data-id='${namePascalCase}Page' sx={{}}>
-      ${namePascalCase}Page
+    <Box data-id='${p.namePascalCase}Page' sx={{}}>
+      ${p.namePascalCase}Page
     </Box>
   )
 }`
