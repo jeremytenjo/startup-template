@@ -1,8 +1,7 @@
-/* eslint-disable storybook/prefer-pascal-case */
 import React from 'react'
 import Text, { type TextProps } from '@useweb/ui/Text'
 
-import Typography from '../../theme/tokens/stories/theme.typography.js'
+export { default as Typography } from '../../theme/tokens/stories/theme.typography.js'
 
 const defaultArgs: TextProps = { text: 'hello', variant: 'h1' }
 
@@ -23,5 +22,3 @@ export const Default = {
     )
   },
 }
-
-export const typography = Typography
