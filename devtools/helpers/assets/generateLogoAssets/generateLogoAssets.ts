@@ -94,7 +94,11 @@ export default async function generateLogoAssets() {
       }),
     )
 
-    spinner.succeed(`Generated logo assets ${chalk.cyan(outputFolderPath)}`)
+    spinner.succeed(
+      `Generated logo assets from: \n ${chalk.cyan(
+        logoPath,
+      )} \n \n Output: \n ${chalk.green(outputFolderPath)} \n`,
+    )
   } catch (error: any) {
     spinner.stop()
     throw new Error(error)
