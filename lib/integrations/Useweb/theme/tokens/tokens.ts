@@ -13,4 +13,9 @@ export const themeTokens = {
   imageFilter: {
     1: 'blur(7px)',
   },
+  borderRadius: {
+    1: '14px',
+    2: '10px',
+    3: '6px',
+  },
 }
