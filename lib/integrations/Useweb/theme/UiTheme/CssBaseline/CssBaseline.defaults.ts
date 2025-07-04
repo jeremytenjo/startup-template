@@ -29,6 +29,8 @@ const defaults: ComponentDefaultsProps<CssBaselineProps> = {
 
   *::-webkit-scrollbar {
     width: 3px;
+    background-color: ${colors.backgroundColor};
+
   }
 
   *::-webkit-scrollbar-thumb {
