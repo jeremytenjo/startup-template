@@ -18,18 +18,7 @@ export const buttonVariantSmallStyles: BoxProps['sx'] = {
 }
 
 // colors
-export const severeVariantStyles = {
-  color: colors.neutral[100],
-  backgroundColor: colors.semantic.error[100],
-  border: '1px solid transparent',
-  borderColor: colors.semantic.error[200],
-  '&:hover, &:active, &:focus': {
-    boxShadow: 'none',
-    backgroundColor: colors.semantic.error[100],
-  },
-}
-
-const greenVariantStyles = {
+const primaryVariantStyles = {
   color: colors.neutral[100],
   backgroundColor: colors.primary.main,
   border: '1px solid transparent',
@@ -40,7 +29,7 @@ const greenVariantStyles = {
   },
 }
 
-const yellowVariantStyles = {
+const secondaryVariantStyles = {
   color: colors.semantic.warning['dark'],
   backgroundColor: colors.semantic.warning[100],
   border: '1px solid transparent',
@@ -48,6 +37,17 @@ const yellowVariantStyles = {
   '&:hover, &:active, &:focus': {
     boxShadow: 'none',
     backgroundColor: colors.semantic.warning['100'],
+  },
+}
+
+export const severeVariantStyles = {
+  color: colors.neutral[100],
+  backgroundColor: colors.semantic.error[100],
+  border: '1px solid transparent',
+  borderColor: colors.semantic.error[200],
+  '&:hover, &:active, &:focus': {
+    boxShadow: 'none',
+    backgroundColor: colors.semantic.error[100],
   },
 }
 
@@ -86,7 +86,7 @@ const outlinedBase = {
 }
 
 export const loadMoreVariantStyles = {
-  ...greenVariantStyles,
+  ...primaryVariantStyles,
   margin: '0 auto',
   width: 'fit-content !important',
   display: 'block',
@@ -104,7 +104,7 @@ const textVariantStyles = {
 
 const defaults: ComponentDefaultsProps<ButtonProps> = {
   defaultProps: {
-    variant: 'green',
+    variant: 'primary',
     name: 'default name',
     size: 'small',
   },
@@ -127,7 +127,7 @@ const defaults: ComponentDefaultsProps<ButtonProps> = {
     },
   },
   variants: [
-    // Outlined
+    // outlined
     {
       props: {
         variant: 'outlined',
@@ -186,42 +186,42 @@ const defaults: ComponentDefaultsProps<ButtonProps> = {
       },
     },
 
-    // green
+    // primary
     {
       props: {
-        variant: 'green',
+        variant: 'primary',
       },
       style: {
-        ...greenVariantStyles,
+        ...primaryVariantStyles,
       },
     },
     {
       props: {
-        variant: 'green',
+        variant: 'primary',
         size: 'small',
       },
       style: {
-        ...greenVariantStyles,
+        ...primaryVariantStyles,
         ...buttonVariantSmallStyles,
       },
     },
 
-    // yellow
+    // secondary
     {
       props: {
-        variant: 'yellow',
+        variant: 'secondary',
       },
       style: {
-        ...yellowVariantStyles,
+        ...secondaryVariantStyles,
       },
     },
     {
       props: {
-        variant: 'yellow',
+        variant: 'secondary',
         size: 'small',
       },
       style: {
-        ...yellowVariantStyles,
+        ...secondaryVariantStyles,
         ...buttonVariantSmallStyles,
       },
     },
@@ -290,10 +290,10 @@ const defaults: ComponentDefaultsProps<ButtonProps> = {
 
 declare module '@mui/material/Button' {
   interface ButtonPropsVariantOverrides {
-    severe: true
+    primary: true
+    secondary: true
     white: true
-    green: true
-    yellow: true
+    severe: true
     grey: true
     loadMore: true
   }

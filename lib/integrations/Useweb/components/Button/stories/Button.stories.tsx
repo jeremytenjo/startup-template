@@ -25,7 +25,7 @@ export const Default = Template.bind({}) as any
 
 const defaultArgs: ButtonProps = {
   name: 'testbutton',
-  variant: 'green',
+  variant: 'primary',
 }
 
 Default.args = defaultArgs
