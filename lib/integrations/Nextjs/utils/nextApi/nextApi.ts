@@ -1,3 +1,5 @@
+import crossFetch from 'cross-fetch'
+
 import { nextjsConfig } from '../../nextjs.config.js'
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -6,19 +8,17 @@ export type NextApiProps<PayloadProps> = {
   payload?: PayloadProps
   port?: number
   formData?: FormData
-  fetchFn?: any
   isExternalCall?: boolean
   forceProduction?: boolean
 }
 
-export type NextApiReturn<DataSchema> = { data: DataSchema; error: any }
+export type NextApiReturn<ReturnProps> = { data: ReturnProps; error: any }
 
 // can't be in node_modules because it would not have access to procce.env or import.meta
-export default async function nextApi<DataSchema = any, PayloadProps = any>(
+export default async function nextApi<ReturnProps = any, PayloadProps = any>(
   props: NextApiProps<PayloadProps>,
-): Promise<NextApiReturn<DataSchema>> {
+): Promise<NextApiReturn<ReturnProps>> {
   if (!props.name) throw new Error('Missing name prop')
-  const fetchFn = props.fetchFn || fetch
 
   // Regular call
   const port = props.port || process.env.PUBIC_NEXT_PORT || nextjsConfig.port
@@ -35,7 +35,7 @@ export default async function nextApi<DataSchema = any, PayloadProps = any>(
   // Upload form data, eg file
   if (props.formData) {
     const datas = await (
-      await fetchFn(url, {
+      await crossFetch(url, {
         method: 'post',
         body: props.formData,
       })
@@ -45,7 +45,7 @@ export default async function nextApi<DataSchema = any, PayloadProps = any>(
   }
 
   const body = JSON.stringify(props.payload)
-  const response: NextApiReturn<DataSchema> = await fetchFn(
+  const response: NextApiReturn<ReturnProps> = await crossFetch(
     url,
     props.payload && {
       method: 'post',
