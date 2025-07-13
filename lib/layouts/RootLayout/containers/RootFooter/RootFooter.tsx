@@ -13,7 +13,6 @@ export default function RootFooter() {
       data-id='RootFooter'
       component='footer'
       sx={{
-        backgroundColor: 'neutral.600',
         mt: '50px',
         display: 'grid',
         gap: 2,
