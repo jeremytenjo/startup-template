@@ -7,9 +7,9 @@ export type NextApiProps<PayloadProps> = {
   name: string
   payload?: PayloadProps
   port?: number
-  formData?: FormData
   isExternalCall?: boolean
   forceProduction?: boolean
+  isFormData?: boolean
 }
 
 export type NextApiReturn<ReturnProps> = { data: ReturnProps; error: any }
@@ -33,13 +33,23 @@ export default async function nextApi<ReturnProps = any, PayloadProps = any>(
     : `${prefix}api/${props.name}`
 
   // Upload form data, eg file
-  if (props.formData) {
-    const datas = await (
-      await crossFetch(url, {
-        method: 'post',
-        body: props.formData,
-      })
-    ).json()
+  if (props.isFormData && props.payload) {
+    const datas = await await crossFetch(url, {
+      method: 'post',
+      body: props.payload as any,
+    }).then((res) => {
+      if (!res.ok) {
+        throw new Error(`${res.statusText}`, {
+          cause: {
+            status: res.status,
+            statusText: res.statusText,
+            res,
+          },
+        })
+      }
+
+      return res.json()
+    })
 
     return datas
   }
@@ -52,6 +62,16 @@ export default async function nextApi<ReturnProps = any, PayloadProps = any>(
       body,
     },
   ).then((res) => {
+    if (!res.ok) {
+      throw new Error(`${res.statusText}`, {
+        cause: {
+          status: res.status,
+          statusText: res.statusText,
+          res,
+        },
+      })
+    }
+
     return res.json()
   })
 
