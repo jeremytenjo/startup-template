@@ -54,9 +54,10 @@ import {
   type ${p.namePascalCase}Props,
   type ${p.namePascalCase}Return,
 } from '../${p.nameCamelCase}.js'
+import type { ${p.namePascalCase}NextjsRouteHandlerConsumerProps } from '../consumers/nextjsRouteHandlerConsumer/${p.nameCamelCase}.nextjsRouteHandlerConsumer.js'
 import ${p.nameCamelCase}NextjsRouteHandlerConsumer from '../consumers/nextjsRouteHandlerConsumer/${p.nameCamelCase}.nextjsRouteHandlerConsumer.js'
 
-const defaultArgs: ${p.namePascalCase}Props = {
+const defaultArgs: ${p.namePascalCase}NextjsRouteHandlerConsumerProps['payload'] = {
   name: 'hello',
 }
 
@@ -68,7 +69,7 @@ export default {
   },
 }
 
-const Template = (args: ${p.namePascalCase}Props) => {
+const Template = (${p.namePascalCase}NextjsRouteHandlerConsumerProps) => {
   const fn = async (triggerProps = {}) => {
     const res = await ${p.nameCamelCase}NextjsRouteHandlerConsumer({
       ...args,
@@ -80,7 +81,7 @@ const Template = (args: ${p.namePascalCase}Props) => {
 
   return (
     <>
-      <AsyncTester<Awaited<${p.namePascalCase}Return>, ${p.namePascalCase}Props> fn={fn} />
+      <AsyncTester<Awaited<${p.namePascalCase}Return>, ${p.namePascalCase}NextjsRouteHandlerConsumerProps> fn={fn} />
     </>
   )
 }
@@ -111,19 +112,24 @@ export const Default = {
   ${p.namePascalCase}Return,
 } from '../../${p.nameCamelCase}.js'
 
+import type { NextApiProps } from '@/lib/integrations/Nextjs/utils/nextApi/nextApi.js'
 import nextApi from '@/lib/integrations/Nextjs/utils/nextApi/nextApi.js'
 
-export type ${p.namePascalCase}NextjsRouteHandlerConsumerProps = ${p.namePascalCase}Props
+export type ${p.namePascalCase}NextjsRouteHandlerConsumerProps = {
+  payload: ${p.namePascalCase}Props
+  nextApiProps?: Partial<NextApiProps<${p.namePascalCase}Props>>
+}
 
 export default async function ${p.nameCamelCase}NextjsRouteHandlerConsumer(
   props: ${p.namePascalCase}NextjsRouteHandlerConsumerProps,
 ) {
   const res = await nextApi<
     Awaited<${p.namePascalCase}Return>,
-    ${p.namePascalCase}NextjsRouteHandlerConsumerProps
+    ${p.namePascalCase}NextjsRouteHandlerConsumerProps['payload']
   >({
-    name: '${p.params?.routeHandlerParentFolder}/${p.nameCamelCase}',
-    payload: props,
+    name: 'openAi/${p.nameCamelCase}',
+    payload: props.payload,
+    ...props.nextApiProps,
   })
 
   return res
