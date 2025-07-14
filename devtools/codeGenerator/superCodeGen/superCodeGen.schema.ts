@@ -27,6 +27,7 @@ import infiniteFeed from './templates/components/infiniteFeed.js'
 import functionWithTable from './templates/functions/functionWithTable.js'
 import functionWithFeed from './templates/functions/functionWithFeed.js'
 import functionWithNextCachedFunction from './templates/functions/functionWithNextCachedFunction.js'
+import functionWithNextjsRouteHandler from './templates/functions/functionWithNextjsRouteHandler.js'
 
 const superCodeGeneratorConfig: SuperCodeGeneratorConfigSchema<any, any> = [
   component,
@@ -56,6 +57,7 @@ const superCodeGeneratorConfig: SuperCodeGeneratorConfigSchema<any, any> = [
   script,
   page,
   pageLayout,
+  functionWithNextjsRouteHandler,
 ]
 
 export default superCodeGeneratorConfig
