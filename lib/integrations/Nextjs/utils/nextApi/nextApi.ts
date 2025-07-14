@@ -50,9 +50,6 @@ export default async function nextApi<ReturnProps = any, PayloadProps = any>(
     props.payload && {
       method: 'post',
       body,
-      headers: {
-        'Content-Type': 'application/json',
-      },
     },
   ).then((res) => {
     return res.json()
