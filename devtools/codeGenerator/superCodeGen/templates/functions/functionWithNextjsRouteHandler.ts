@@ -80,9 +80,7 @@ const Template = (args: ${p.namePascalCase}Props) => {
 
   return (
     <>
-      <AsyncTester<Awaited<${p.namePascalCase}Return>, ${p.namePascalCase}Props>
-        fn={fn}
-      />
+      <AsyncTester<Awaited<${p.namePascalCase}Return>, ${p.namePascalCase}Props> fn={fn} />
     </>
   )
 }
