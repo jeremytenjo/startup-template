@@ -127,7 +127,7 @@ export default async function ${p.nameCamelCase}NextjsRouteHandlerConsumer(
     Awaited<${p.namePascalCase}Return>,
     ${p.namePascalCase}NextjsRouteHandlerConsumerProps['payload']
   >({
-    name: 'openAi/${p.nameCamelCase}',
+    name: '${p.params?.routeHandlerParentFolder}/${p.nameCamelCase}',
     payload: props.payload,
     ...props.nextApiProps,
   })
