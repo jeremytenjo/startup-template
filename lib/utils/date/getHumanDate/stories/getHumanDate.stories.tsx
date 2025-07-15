@@ -3,17 +3,17 @@
 import React from 'react'
 import AsyncTester from '@useweb/async-tester'
 
-import formatDateToHumanReadable, {
-  type FormatDateToHumanReadableProps,
-  type FormatDateToHumanReadableReturn,
-} from '../formatDateToHumanReadable.js'
+import getHumanDate, {
+  type GetHumanDateProps,
+  type GetHumanDateReturn,
+} from '../getHumanDate.js'
 
-const defaultArgs: FormatDateToHumanReadableProps = {
+const defaultArgs: GetHumanDateProps = {
   date: new Date(),
 }
 
 export default {
-  title: 'lib/utils/date/FormatDateToHumanReadable',
+  title: 'lib/utils/date/GetHumanDate',
   args: defaultArgs,
   parameters: {
     signInAs: false,
@@ -23,21 +23,18 @@ export default {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Template = (args: typeof defaultArgs) => {
   const fn = async (triggerProps = {}) => {
-    return formatDateToHumanReadable({ ...args, ...triggerProps })
+    return getHumanDate({ ...args, ...triggerProps })
   }
 
   return (
     <>
-      <AsyncTester<FormatDateToHumanReadableReturn, FormatDateToHumanReadableProps>
-        fn={fn}
-        autoExec
-      />
+      <AsyncTester<GetHumanDateReturn, GetHumanDateProps> fn={fn} autoExec />
     </>
   )
 }
 
 export const Default = {
-  render: (args: FormatDateToHumanReadableProps) => {
+  render: (args: GetHumanDateProps) => {
     return <Template {...args} />
   },
 }
@@ -46,5 +43,5 @@ export const Default = {
 //  ...Default,
 //  args: {
 //  ...defaultArgs,
-// } satisfies FormatDateToHumanReadableProps
+// } satisfies GetHumanDateProps
 // }
