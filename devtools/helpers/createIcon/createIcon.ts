@@ -13,7 +13,6 @@ export default async function createIcon() {
   const iconNameFormatted = changeCase.pascalCase(iconName).replace('Icon', '') + 'Icon'
   const outputPath = path.join(
     process.cwd(),
-    'src',
     'lib',
     'components',
     'icons',
