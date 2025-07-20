@@ -48,7 +48,7 @@ export type ${namePascalCase}Return = Promise<InfiniteListFetcherReturn<DataSche
     },
   },
 
-  // Component - Feed
+  // Component -
   {
     path: ({ name, helpers }) => {
       const namePascalCase = helpers?.changeCase?.pascalCase(name)
@@ -71,24 +71,24 @@ import ${nameCamelCase} from '../../${nameCamelCase}.js'
 
 import ${namePascalCase}Item from './components/${namePascalCase}Item/${namePascalCase}Item.js'
 
-import logError from '@/lib/utils/loggers/logError/logError.js'
+import logError from '@/src/lib/utils/loggers/logError/logError.js'
 
-export type SocialFeedProps = {
+export type ${namePascalCase}Props = {
   sx?: InfiniteListProps<any>['sx']
 }
 
-export type SocialFeedDataSchema = DataSchema
+export type ${namePascalCase}DataSchema = DataSchema
 
 export const create${namePascalCase}DataId = () => {
   return createUseDataId({
-    name: 'SocialFeed',
+    name: '${namePascalCase}',
     props: {},
   })
 }
 
-export default function SocialFeed(props: SocialFeedProps) {
+export default function ${namePascalCase}(props: ${namePascalCase}Props) {
   return (
-    <InfiniteList<SocialFeedDataSchema>
+    <InfiniteList<${namePascalCase}DataSchema>
       dataId={create${namePascalCase}DataId().id}
       loading={false}
       fetcher={async (p) => {
@@ -163,10 +163,10 @@ import Box, { type BoxProps } from '@useweb/ui/Box'
 import Text from '@useweb/ui/Text'
 import Skeleton from '@useweb/ui/Skeleton'
 
-import type { SocialFeedDataSchema } from '../../${namePascalCase}.js'
+import type { ${namePascalCase}DataSchema } from '../../${namePascalCase}.js'
 
 export type ${namePascalCase}ItemProps = {
-  item: SocialFeedDataSchema | undefined
+  item: ${namePascalCase}DataSchema | undefined
   loading?: boolean
   sx?: BoxProps['sx']
 }
