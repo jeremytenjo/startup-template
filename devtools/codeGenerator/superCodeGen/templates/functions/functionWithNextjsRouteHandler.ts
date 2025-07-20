@@ -153,7 +153,7 @@ export type ${p.namePascalCase}NextjsRouteHandlerConsumerReturn = ReturnType<
 
       return `import ${
         p.nameCamelCase
-      } from '@${mainFunctionPathFromFolder?.fileWorkspacePath.replace('ts', 'js')}'
+      } from '@${mainFunctionPathFromFolder?.fileWorkspacePath.replace('.ts', '.js')}'
 
 // https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
 export const maxDuration = 60
