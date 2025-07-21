@@ -1,5 +1,7 @@
 import type { SuperCodeGeneratorTemplateSchema } from '@jeremytenjo/super-code-generator'
 
+import story from '../misc/story.js'
+
 import functions from './function.js'
 
 const template: SuperCodeGeneratorTemplateSchema = {
@@ -17,24 +19,18 @@ const template: SuperCodeGeneratorTemplateSchema = {
         const propsName = `${pascalCase}Props`
         const returnName = `${pascalCase}Return`
 
-        return `import useData, { createUseDataId, type PartialRequired } from '@useweb/use-data'
+        return `import useData, { type PartialRequired } from '@useweb/use-data'
 
 import _${name}, {
   type ${propsName},
   type ${returnName},
 } from '../${name}.js'
+
+import { get${pascalCase}DataId } from './get${pascalCase}DataId.js'
  
 import logError from '@/lib/utils/loggers/logError/logError'
 
 export type Use${propsName} = PartialRequired<${propsName}>
-
-export const get${pascalCase}DataId = (props: Use${propsName}) => {
-  const id = createUseDataId<${propsName}>({
-    name: '${name}',
-    props,
-  })
-  return id
-}
 
 export default function use${pascalCase}(props: Use${propsName}) {
   const fetcherProps: Use${propsName} = {
@@ -78,10 +74,42 @@ export type Use${returnName} = ReturnType<
       },
     },
 
+    // get id function
+    {
+      path: ({ name, helpers }) => {
+        const pascalCase = helpers?.changeCase?.pascalCase(name)
+        return `use${pascalCase}/get${pascalCase}DataId.ts`
+      },
+      template: ({ name, helpers }) => {
+        const pascalCase = helpers?.changeCase?.pascalCase(name)
+        const propsName = `${pascalCase}Props`
+        return `import type { PartialRequired } from '@useweb/use-data/useData'
+import createUseDataId from '@useweb/use-data/createUseDataId'
+
+import type { ${propsName} } from '../${name}.js'
+
+ export type Get${pascalCase}DataIdProps = PartialRequired<${propsName}>
+
+ export const get${pascalCase}DataId = (
+   props: Get${pascalCase}DataIdProps,
+ ) => {
+   const id = createUseDataId<${propsName},>({
+     name: '${name}',
+     props,
+   })
+
+   return id
+ }
+    `
+      },
+    },
+
     // ui - readme
     {
-      path: () => {
-        return `ui/readme.md`
+      path: ({ name, helpers }) => {
+        const pascalCase = helpers?.changeCase?.pascalCase(name)
+
+        return `use${pascalCase}/ui/readme.md`
       },
       template: ({ name, helpers }) => {
         const nameCamelCase = helpers?.changeCase?.camelCase(name)
@@ -91,6 +119,8 @@ export type Use${returnName} = ReturnType<
 Add components that consume '${nameCamelCase}' query here.`
       },
     },
+
+    ...story.functionStoryFiles,
   ],
 }
 
