@@ -45,25 +45,25 @@ export type ${propsName} = {name: string}
 
       return `import { unstable_cache } from 'next/cache'
 
-import type { ${namePascalCase}Props } from '../../${nameCamelCase}Data.js'
-import ${nameCamelCase}Data from '../../${nameCamelCase}Data.js'
+import type { ${namePascalCase}Props } from '../../${nameCamelCase}.js'
+import ${nameCamelCase} from '../../${nameCamelCase}.js'
 
-import { ${nameCamelCase}DataNextCachedFunctionConfig } from './${nameCamelCase}Data.nextCachedFunction.config.js'
+import { ${nameCamelCase}NextCachedFunctionConfig } from './${nameCamelCase}.nextCachedFunction.config.js'
 
-export default async function ${nameCamelCase}DataNextCachedFunction(
+export default async function ${nameCamelCase}NextCachedFunction(
   props: ${namePascalCase}Props,
 ) {
   const fetcher = unstable_cache(
     async () => {
-      console.log('Fetching ${nameCamelCase}Data...')
+      console.log('Fetching ${nameCamelCase}...')
 
-      const pageProps = await ${nameCamelCase}Data(props)
+      const pageProps = await ${nameCamelCase}(props)
 
       return pageProps
     },
-    [${nameCamelCase}DataNextCachedFunctionConfig.tag],
+    [${nameCamelCase}NextCachedFunctionConfig.tag],
     {
-      tags: [${nameCamelCase}DataNextCachedFunctionConfig.tag],
+      tags: [${nameCamelCase}NextCachedFunctionConfig.tag],
     },
   )
 
@@ -73,7 +73,7 @@ export default async function ${nameCamelCase}DataNextCachedFunction(
 }
 
 export type ${namePascalCase}NextCachedFunctionReturn = ReturnType<
-  typeof ${nameCamelCase}DataNextCachedFunction
+  typeof ${nameCamelCase}NextCachedFunction
 >
 
 `
