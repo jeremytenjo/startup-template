@@ -15,6 +15,21 @@ export const metadata: Metadata = {
     icon: '/images/logo/logo.svg',
     apple: '/images/logo/assets/apple/apple-touch-icon.png',
   },
+  openGraph: {
+    title: siteInfo.name,
+    description: siteInfo.description,
+    type: 'website',
+    url: siteInfo.domain,
+    siteName: siteInfo.name,
+    images: [
+      {
+        url: '/images/og/main.png',
+        width: 1200,
+        height: 412,
+        alt: siteInfo.name,
+      },
+    ],
+  },
 }
 
 export const viewport: Viewport = {
