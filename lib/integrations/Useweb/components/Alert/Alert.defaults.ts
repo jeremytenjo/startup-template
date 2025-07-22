@@ -13,16 +13,16 @@ const defaults: ComponentDefaultsProps<AlertProps> = {
       backdropFilter: 'blur(12px) saturate(0.9)',
       fontSize: '13px',
       alignItems: 'start',
-      '&[data-severity="success"], &[data-severity="success"]  svg:first-child': {
+      '&[data-severity="success"], &[data-severity="success"]  svg:first-of-type': {
         color: '#b8f9bb !important',
       },
-      '&[data-severity="warning"], &[data-severity="warning"] svg:first-child ': {
+      '&[data-severity="warning"], &[data-severity="warning"] svg:first-of-type ': {
         color: '#ffe4bc',
       },
-      '&[data-severity="info"], &[data-severity="info"] svg:first-child': {
+      '&[data-severity="info"], &[data-severity="info"] svg:first-of-type': {
         color: '#bae9ff',
       },
-      '&[data-severity="error"], &[data-severity="error"] svg:first-child': {
+      '&[data-severity="error"], &[data-severity="error"] svg:first-of-type': {
         color: '#ff9494',
       },
       '&[data-has-title="false"]': {
