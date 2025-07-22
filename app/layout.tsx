@@ -25,7 +25,7 @@ export const metadata: Metadata = {
       {
         url: '/images/og/main.png',
         width: 1200,
-        height: 412,
+        height: 630,
         alt: siteInfo.name,
       },
     ],
