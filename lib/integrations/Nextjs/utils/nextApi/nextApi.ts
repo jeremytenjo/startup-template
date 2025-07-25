@@ -9,7 +9,6 @@ export type NextApiProps<PayloadProps> = {
   port?: number
   isExternalCall?: boolean
   forceProduction?: boolean
-  isFormData?: boolean
 }
 
 export type NextApiReturn<ReturnProps> = { data: ReturnProps; error: any }
@@ -32,8 +31,10 @@ export default async function nextApi<ReturnProps = any, PayloadProps = any>(
     ? `${nextjsConfig?.domain}/api/${props.name}`
     : `${prefix}api/${props.name}`
 
+  const isFormData = props.payload instanceof FormData
+
   // Upload form data, eg file
-  if (props.isFormData && props.payload) {
+  if (isFormData && props.payload) {
     const datas = await await crossFetch(url, {
       method: 'post',
       body: props.payload as any,
