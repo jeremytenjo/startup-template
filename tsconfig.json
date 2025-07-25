@@ -35,7 +35,8 @@
     "app",
     "devtools",
     "devtools/ts/declaredModules/*",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "mdx-components.tsx"
   ],
   "exclude": ["node_modules"]
 }
