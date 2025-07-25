@@ -90,6 +90,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
       if (hasHref) {
         const childrenArray = children as { props: any }[]
+
         return (
           <p
             style={{
@@ -128,7 +129,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
       return (
         <Text
-          text={String(children)}
+          text={children}
           tag='p'
           sx={{
             mb: 2,
