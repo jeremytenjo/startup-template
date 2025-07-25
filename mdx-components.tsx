@@ -1,5 +1,6 @@
 import React from 'react'
 import Text from '@useweb/ui/Text'
+import Link from '@useweb/ui/Link'
 import type { MDXComponents } from 'mdx/types'
 
 import PageTitleHeading from './lib/layouts/PageTitleHeading/PageTitleHeading.js'
@@ -83,6 +84,48 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
 
     p: ({ children }) => {
+      const hasHref = React.Children.toArray(children).some((child) => {
+        return React.isValidElement(child) && child.props?.href
+      })
+
+      if (hasHref) {
+        const childrenArray = children as { props: any }[]
+        return (
+          <p
+            style={{
+              marginBottom: '16px',
+            }}
+          >
+            {childrenArray?.map?.((child, index) => {
+              const childProps = (child.props || {}) as any
+              const hasHref = React.isValidElement(child) && childProps?.href
+
+              if (hasHref) {
+                return (
+                  <Link
+                    key={index}
+                    {...(child.props as any)}
+                    sx={{
+                      ...childProps?.sx,
+                      fontWeight: 'bold',
+                      '&:hover': {
+                        textDecoration: 'underline',
+                      },
+                    }}
+                  />
+                )
+              }
+
+              if (typeof child === 'string') {
+                return <Text key={index} text={child} tag='span' sx={{}} />
+              }
+
+              return children
+            })}
+          </p>
+        )
+      }
+
       return (
         <Text
           text={String(children)}
