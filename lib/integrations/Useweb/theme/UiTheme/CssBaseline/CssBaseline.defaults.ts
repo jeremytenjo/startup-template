@@ -24,13 +24,13 @@ const defaults: ComponentDefaultsProps<CssBaselineProps> = {
     margin: 0;
     background-color: ${colors.backgroundColor};
     scrollbar-width: thin;
+    background-color: ${colors.backgroundColor};
     color: ${colors.neutral[100]};
   }
 
   *::-webkit-scrollbar {
     width: 3px;
     background-color: ${colors.backgroundColor};
-
   }
 
   *::-webkit-scrollbar-thumb {
