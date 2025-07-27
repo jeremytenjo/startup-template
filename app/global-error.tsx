@@ -20,7 +20,9 @@ export default function GlobalError(props: GlobalErrorProps) {
         fnName: 'GlobalErrorLogger',
         fatal: true,
         metadata: {
-          cause: props.error?.cause || {},
+          cause: {
+            ...props.error,
+          },
         },
       })
     }
