@@ -6,10 +6,12 @@ import type { LinkTabsProps } from '@useweb/ui/LinkTabs'
 import LinkTabs from '@useweb/ui/LinkTabs'
 
 import { islandStyles } from '../../integrations/Useweb/theme/UiTheme/commonStyles/islandStyles.js'
+import { themeTokens } from '../../integrations/Useweb/theme/tokens/tokens.js'
 
 export type SidebarLayoutProps = {
   children: any
   sidebarComponent: any
+  aboveLinksContent?: any
   underLinksContent?: any
   navLinks?: LinkTabsProps
   navLinksAffixComponent?: any
@@ -24,6 +26,7 @@ export type SidebarLayoutProps = {
   reverseSidebarPosition?: boolean
   plainContentStyles?: boolean
   plainSidebarStyles?: boolean
+  moveSidebarBelowContentOnMobile?: boolean
 }
 
 const bannerHeight = '180px'
@@ -34,16 +37,22 @@ export default function SidebarLayout(props: SidebarLayoutProps) {
       data-id='SidebarLayout'
       sx={{
         display: 'grid',
-        gap: '20px',
+        gap: props.hideSidebarOnMobile ? ['0', , '20px'] : '20px',
         gridTemplateColumns: [, , '300px 1fr'],
+
+        // Add grid template areas based on moveSidebarBelowContentOnMobile
+        gridTemplateAreas: props.moveSidebarBelowContentOnMobile
+          ? [
+              '"content" "sidebar"',
+              ,
+              props.reverseSidebarPosition ? '"content sidebar"' : '"sidebar content"',
+            ]
+          : props.reverseSidebarPosition
+          ? ['"sidebar" "content"', , '"content sidebar"']
+          : ['"sidebar" "content"', , '"sidebar content"'],
 
         ...(props.reverseSidebarPosition && {
           gridTemplateColumns: [, , '1fr 300px'],
-          gridTemplateAreas: [
-            '"SidebarLayout_ContentWrapper" "SidebarLayout_Sidebar"',
-            ,
-            '"SidebarLayout_ContentWrapper SidebarLayout_Sidebar"',
-          ],
         }),
 
         ...((props.sx ?? {}) as any),
@@ -98,12 +107,9 @@ export default function SidebarLayout(props: SidebarLayoutProps) {
           maxWidth: [, , '600px'],
           m: '0 auto',
           ...islandStyles,
-          borderRadius: '14px',
+          borderRadius: themeTokens.borderRadius[1],
           display: [props.hideSidebarOnMobile ? 'none' : 'block', , 'block'],
-
-          ...(props.reverseSidebarPosition && {
-            gridArea: 'SidebarLayout_Sidebar',
-          }),
+          gridArea: 'sidebar',
 
           ...((props.sidebarSx ?? {}) as any),
 
@@ -118,7 +124,6 @@ export default function SidebarLayout(props: SidebarLayoutProps) {
       >
         {props.sidebarComponent}
       </Box>
-
       {/* Content */}
       <Box
         data-id='SidebarLayout_ContentWrapper'
@@ -126,22 +131,17 @@ export default function SidebarLayout(props: SidebarLayoutProps) {
           display: 'grid',
           gap: 2,
           alignContent: 'start',
-
-          ...(props.reverseSidebarPosition && {
-            gridArea: 'SidebarLayout_ContentWrapper',
-          }),
+          gridArea: 'content',
 
           ...(props.banner ? { mt: [, , bannerHeight] } : {}),
         }}
       >
+        {/* Above Link Content */}
+        {props.aboveLinksContent || null}
+
         {/* Tabs */}
         {props.navLinks && (
-          <Box
-            data-id='SidebarLayout_TabsWrapper'
-            sx={{
-              mb: [1, 0],
-            }}
-          >
+          <Box data-id='SidebarLayout_TabsWrapper'>
             {!props.navLinksAffixComponent ? (
               Boolean(props.navLinks?.links?.length) && <LinkTabs {...props.navLinks} />
             ) : (
@@ -164,8 +164,10 @@ export default function SidebarLayout(props: SidebarLayoutProps) {
             )}
           </Box>
         )}
+
         {/* Uner Link Content */}
         {props.underLinksContent || null}
+
         {/* Page Content */}
         <Box
           data-id='SidebarLayout_Content'
