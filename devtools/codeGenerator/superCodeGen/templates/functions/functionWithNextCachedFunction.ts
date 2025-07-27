@@ -61,9 +61,9 @@ export default async function ${nameCamelCase}NextCachedFunction(
 
       return pageProps
     },
-    [${nameCamelCase}NextCachedFunctionConfig.tag],
+    [${nameCamelCase}NextCachedFunctionConfig.tag(props)],
     {
-      tags: [${nameCamelCase}NextCachedFunctionConfig.tag],
+      tags: [${nameCamelCase}NextCachedFunctionConfig.tag(props)],
     },
   )
 
@@ -88,9 +88,21 @@ export type ${namePascalCase}NextCachedFunctionReturn = ReturnType<
     },
     template: ({ name, helpers }) => {
       const nameCamelCase = helpers?.changeCase?.camelCase(name)
+      const namePascalCase = helpers?.changeCase?.pascalCase(name)
 
-      return `export const ${nameCamelCase}NextCachedFunctionConfig = {
-  tag: '${nameCamelCase}',
+      return `import createUseDataId from '@useweb/use-data/createUseDataId'
+
+import type { ${namePascalCase}Props } from '../../${nameCamelCase}.js'
+
+export const ${nameCamelCase}NextCachedFunctionConfig = {
+  tag: (props: ${namePascalCase}Props) => {
+    return (
+      createUseDataId<${namePascalCase}Props,>({
+        name: '${nameCamelCase}',
+        props,
+      }).id || ''
+    )
+  },
 }
 `
     },
@@ -108,10 +120,12 @@ export type ${namePascalCase}NextCachedFunctionReturn = ReturnType<
 
       return `import { revalidateTag } from 'next/cache'
 
+import type { ${namePascalCase}Props } from '../../${nameCamelCase}.js'
+
 import { ${nameCamelCase}NextCachedFunctionConfig } from './${nameCamelCase}.nextCachedFunction.config.js'
 
-export default function ${nameCamelCase}NextCachedFunctionRevalidate() {
-  revalidateTag(${nameCamelCase}NextCachedFunctionConfig.tag)
+export default function ${nameCamelCase}NextCachedFunctionRevalidate(props: ${namePascalCase}Props) {
+  revalidateTag(${nameCamelCase}NextCachedFunctionConfig.tag(props))
 }
 
 export type ${namePascalCase}NextCachedFunctionReturn = ReturnType<
