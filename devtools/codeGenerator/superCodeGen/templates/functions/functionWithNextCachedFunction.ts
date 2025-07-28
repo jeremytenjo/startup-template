@@ -50,16 +50,31 @@ import ${nameCamelCase} from '../../${nameCamelCase}.js'
 
 import { ${nameCamelCase}NextCachedFunctionConfig } from './${nameCamelCase}.nextCachedFunction.config.js'
 
+import logErrorNode from '@/lib/utils/loggers/logError/logErrorNode.js'
+
 export default async function ${nameCamelCase}NextCachedFunction(
   props: ${namePascalCase}Props,
 ) {
   const fetcher = unstable_cache(
     async () => {
       console.log('Fetching ${nameCamelCase}...')
+      try {
+        const pageProps = await ${nameCamelCase}(props)
+      
+        return pageProps
+      } catch (error) {
+        logErrorNode({
+          fnName: '${nameCamelCase}NextCachedFunction',
+          error: String(error),
+          metadata: {
+            props,
+          },
+        })
 
-      const pageProps = await ${nameCamelCase}(props)
-
-      return pageProps
+        return {
+          data: {} as Awaited<ReturnType<typeof ${nameCamelCase}>,>['data'],
+        } satisfies Awaited<ReturnType<typeof ${nameCamelCase}>,> 
+      }
     },
     [${nameCamelCase}NextCachedFunctionConfig.tag(props)],
     {
