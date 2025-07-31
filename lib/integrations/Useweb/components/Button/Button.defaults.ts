@@ -5,6 +5,7 @@ import { type ButtonProps } from '@useweb/ui/Button'
 import type { BoxProps } from '@useweb/ui/Box'
 
 import colors from '../../theme/tokens/colors.js'
+import { themeTokens } from '../../theme/tokens/tokens.js'
 
 // variants
 
@@ -110,7 +111,7 @@ const defaults: ComponentDefaultsProps<ButtonProps> = {
   },
   styleOverrides: {
     root: {
-      borderRadius: '14px',
+      borderRadius: themeTokens.borderRadius[1],
       fontWeight: '600',
       boxShadow: 'none',
       width: '100%',
