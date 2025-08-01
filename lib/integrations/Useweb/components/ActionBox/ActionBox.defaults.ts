@@ -9,8 +9,9 @@ const defaults: ComponentDefaultsProps<ActionBoxProps> = {
   styleOverrides: {
     root: {
       backgroundColor: colors.neutral[400],
-      border: `1px solid ${colors.neutral[300]}`,
+      border: `1px solid transparent`,
       borderRadius: '14px',
+      borderColor: colors.neutral[300],
     },
   },
 }
