@@ -1,12 +1,12 @@
 import React from 'react'
 import Box from '@useweb/ui/Box'
-import List from '@useweb/ui/List'
 import NavLink from '@useweb/ui/NavLink'
 
 import FullLogoLink from '../../../../../../components/logo/FullLogoLink/FullLogoLink.js'
 import useNavLinks from '../../../../../../../data/navLinks/utils/useNavLinks/useNavLinks.js'
-import type NavLinkSchema from '../../../../../../../data/navLinks/NavLink.schema.js'
 import { themeTokens } from '../../../../../../integrations/Useweb/theme/tokens/tokens.js'
+
+import DesktopRooHeaderNavlinks from './containers/DesktopRooHeaderNavlinks/DesktopRooHeaderNavlinks.js'
 
 export default function DesktopHeader() {
   const navLinks = useNavLinks()
@@ -44,22 +44,7 @@ export default function DesktopHeader() {
               transform: 'translateY(-2px)',
             }}
           />
-          <Box data-id='DesktopRooHeaderNavlinks' sx={{}}>
-            <List<NavLinkSchema>
-              listItemKeyName='label'
-              data={navLinks?.mainNavLinks || []}
-              ListItemComponent={({ itemData: navLink }) => {
-                return <NavLink label={navLink.label} href={navLink.url} />
-              }}
-              sx={{
-                gridAutoFlow: 'column',
-                gridGap: '21px',
-                '& p': {
-                  fontSize: '16px',
-                },
-              }}
-            />
-          </Box>
+          <DesktopRooHeaderNavlinks />
         </Box>
 
         <Box
