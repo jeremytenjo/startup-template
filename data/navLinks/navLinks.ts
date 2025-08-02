@@ -51,30 +51,19 @@ export const navLinks = {
   settings: {
     settings: {
       label: 'Settings',
-      url: `/settings/edit-profile`,
-    } satisfies NavLinkSchema,
-    account: {
-      label: 'Account',
-      url: `/settings/account`,
-    } satisfies NavLinkSchema,
-    billing: {
-      label: 'Billing',
-      url: `/settings/billing`,
-    } satisfies NavLinkSchema,
-    security: {
-      label: 'Security',
-      url: `/settings/security`,
+      url: `/settings`,
     } satisfies NavLinkSchema,
   },
+
+  mailto: {
+    label: 'Mail',
+    url: 'mailto:info@startup-template.com',
+  } satisfies NavLinkSchema,
 
   socialLinks: {
     discord: {
       label: 'Discord',
       url: 'https://discord.gg/startup-template',
-    } satisfies NavLinkSchema,
-    mailto: {
-      label: 'Mail',
-      url: 'mailto:info@startup-template.com',
     } satisfies NavLinkSchema,
   },
 }

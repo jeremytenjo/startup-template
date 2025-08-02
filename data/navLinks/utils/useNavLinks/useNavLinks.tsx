@@ -37,7 +37,12 @@ export default function useNavLinks() {
 
   // Social links
   const socialLinks = useMemo(() => {
-    const links: NavLinkSchema[] = [navLinks.socialLinks.discord]
+    const links: NavLinkSchema[] = []
+
+    Object.values(navLinks.socialLinks).forEach((link) => {
+      links.push(link)
+    })
+
     return links
   }, [])
 
