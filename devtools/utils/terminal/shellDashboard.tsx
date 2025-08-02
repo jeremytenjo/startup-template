@@ -30,6 +30,7 @@ export type DevCommandProps = {
     ports: number[]
     message?: string
   }
+  externalPort?: string
   color?: string
   index?: number
   enableQRCode?: boolean
@@ -88,14 +89,23 @@ export default async function shellSponsorships({ commands, onCommandsRunning }:
       const [port] = props.ports
       const restardInput = (props.index + 1).toString()
       const networkUrl = `http://${getIpAddress()}:${port}`
+      const externalPort = props.externalPort
 
       return (
         <Box flexDirection='column'>
           <Box flexDirection='row'>
             <Text color={props.color}>{props.label}: </Text>
-            <Text dimColor>http://localhost:{port}</Text>
-            <Text> - </Text>
-            <Text dimColor>{networkUrl}</Text>
+            {externalPort ? (
+              <Text dimColor>{externalPort}</Text>
+            ) : port === 0 ? (
+              <Text dimColor>Port not specified</Text>
+            ) : (
+              <>
+                <Text dimColor>http://localhost:{port}</Text>
+                <Text> - </Text>
+                <Text dimColor>{networkUrl}</Text>
+              </>
+            )}
           </Box>
           <Text dimColor>Press {restardInput} to restart</Text>
         </Box>
