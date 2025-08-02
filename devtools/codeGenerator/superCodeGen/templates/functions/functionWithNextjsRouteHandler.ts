@@ -69,7 +69,7 @@ export default {
   },
 }
 
-const Template = (${p.namePascalCase}NextjsRouteHandlerConsumerProps) => {
+const Template = (args: ${p.namePascalCase}NextjsRouteHandlerConsumerProps) => {
   const fn = async (triggerProps = {}) => {
     const res = await ${p.nameCamelCase}NextjsRouteHandlerConsumer({
       ...args,
@@ -88,7 +88,7 @@ const Template = (${p.namePascalCase}NextjsRouteHandlerConsumerProps) => {
 
 export const Default = {
   render: (args: ${p.namePascalCase}Props) => {
-    return <Template {...args} />
+    return <Template payload={args} />
   },
 }
 
@@ -151,7 +151,8 @@ export type ${p.namePascalCase}NextjsRouteHandlerConsumerReturn = ReturnType<
         return file.fileWorkspacePath.includes(`${p.nameCamelCase}.ts`)
       })
 
-      return `import ${
+      return `import nextRouteHandler from '@/lib/integrations/Nextjs/utils/nextRouteHandler/nextRouteHandler.js'
+      import ${
         p.nameCamelCase
       } from '@${mainFunctionPathFromFolder?.fileWorkspacePath.replace('.ts', '.js')}'
 
@@ -159,14 +160,13 @@ export type ${p.namePascalCase}NextjsRouteHandlerConsumerReturn = ReturnType<
 export const maxDuration = 60
 
 export async function POST(req: Request) {
-  try {
-    const props = await req.json()
-    const res = await ${p.nameCamelCase}(props)
-
-    return Response.json(res)
-  } catch (error: any) {
-    return Response.json(error.cause)
-  }
+  return await nextRouteHandler({
+    req,
+    func: async ({ req }) => {
+      const props = await req.json()
+      return ${p.nameCamelCase}(props)
+    }
+  })
 }`
     },
   },
