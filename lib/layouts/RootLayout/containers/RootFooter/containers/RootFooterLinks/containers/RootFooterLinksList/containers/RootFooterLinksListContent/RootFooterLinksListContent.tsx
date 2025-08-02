@@ -29,6 +29,10 @@ export default function RootFooterLinksListContent(
               lineHeight: '24px',
               textAlign: 'left',
               ...(link.sx || {}),
+
+              '&:hover': {
+                textDecoration: 'underline',
+              },
             }}
           >
             {link.component || link.label}
