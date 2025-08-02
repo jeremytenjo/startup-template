@@ -6,7 +6,7 @@ import FullLogoLink from '../../../../../../components/logo/FullLogoLink/FullLog
 import useNavLinks from '../../../../../../../data/navLinks/utils/useNavLinks/useNavLinks.js'
 import { themeTokens } from '../../../../../../integrations/Useweb/theme/tokens/tokens.js'
 
-import DesktopRooHeaderNavlinks from './containers/DesktopRooHeaderNavlinks/DesktopRooHeaderNavlinks.js'
+import DesktopHeaderNavlinks from './containers/DesktopHeaderNavlinks/DesktopHeaderNavlinks.js'
 
 export default function DesktopHeader() {
   const navLinks = useNavLinks()
@@ -44,7 +44,7 @@ export default function DesktopHeader() {
               transform: 'translateY(-2px)',
             }}
           />
-          <DesktopRooHeaderNavlinks />
+          <DesktopHeaderNavlinks />
         </Box>
 
         <Box

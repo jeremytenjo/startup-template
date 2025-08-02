@@ -4,12 +4,12 @@ import NavLink from '@useweb/ui/NavLink'
 
 import useNavLinks from '../../../../../../../../../data/navLinks/utils/useNavLinks/useNavLinks.js'
 
-export default function DesktopRooHeaderNavlinks() {
+export default function DesktopHeaderNavlinks() {
   const navLinks = useNavLinks()
 
   return (
     <Box
-      data-id='DesktopRooHeaderNavlinks'
+      data-id='DesktopHeaderNavlinks'
       sx={{
         display: 'grid',
         height: '17px',
