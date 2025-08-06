@@ -1,9 +1,9 @@
 import React from 'react'
 import Text from '@useweb/ui/Text'
 import Link from '@useweb/ui/Link'
+import Heading from '@useweb/ui/Heading'
 import type { MDXComponents } from 'mdx/types'
 
-import PageTitleHeading from './lib/layouts/PageTitleHeading/PageTitleHeading.js'
 import { variants } from './lib/integrations/Useweb/theme/tokens/typography/typography.js'
 
 /**
@@ -15,7 +15,7 @@ import { variants } from './lib/integrations/Useweb/theme/tokens/typography/typo
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children }) => {
-      return <PageTitleHeading title={String(children)} />
+      return <Heading title={String(children)} />
     },
 
     h2: ({ children }) => {
