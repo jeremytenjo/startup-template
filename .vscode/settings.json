@@ -8,6 +8,13 @@
   "prettier.configPath": "./devtools/prettier/prettier.config.js",
   "superCodeGenerator.prettierConfigFilePath": "devtools/prettier/prettier.config.js",
   "superCodeGenerator.schemaFilePath": "devtools/codeGenerator/superCodeGen/superCodeGen.schema.ts",
-  "thunder-client.saveToWorkspace": true,
-  "thunder-client.workspaceRelativePath": "src/tests/http.tests"
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "next/router",
+    "console",
+    "ts-toolbelt",
+    "prettier",
+    "@storybook/components",
+    "ink",
+    "react-hook-form/*"
+  ]
 }
