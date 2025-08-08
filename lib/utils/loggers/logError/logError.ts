@@ -30,10 +30,10 @@ export default async function logError(props: LogErrorProps) {
 
   if (!props.supressConsoleLogs) {
     console.log('')
-    console.error(props.fnName)
-    console.error(errorMessage)
-    cause?.cause && console.error('metadata', cause?.cause as any)
-    props.metadata && console.error('metadata', props.metadata)
+    console.log(props.fnName)
+    console.log(errorMessage)
+    cause?.cause && console.log('metadata', cause?.cause as any)
+    props.metadata && console.log('metadata', props.metadata)
   }
 
   if (isProd) {
