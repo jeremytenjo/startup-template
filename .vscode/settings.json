@@ -15,6 +15,7 @@
     "prettier",
     "@storybook/components",
     "ink",
-    "react-hook-form/*"
+    "react-hook-form/*",
+    "@mui/*"
   ]
 }
