@@ -64,6 +64,11 @@ export default async function nextApi<ReturnProps = any, PayloadProps = any>(
     },
   ).then((res) => {
     if (!res.ok) {
+      if (res.statusText === 'Method Not Allowed') {
+        console.error(
+          `Method Not Allowed for ${props.name}/route.ts API. Please check the method used. If payload is not needed, use GET instead of POST.`,
+        )
+      }
       throw new Error(`${res.statusText}`, {
         cause: {
           status: res.status,
