@@ -16,7 +16,6 @@ import muiOverride from './templates/components/muiOverride.js'
 import muiOverrideWithStory from './templates/components/muiOverrideWithStory.js'
 import vitestTest from './templates/misc/vitestTest.js'
 import script from './templates/misc/script.js'
-import functionWithNextPagesApiConsumer from './templates/functions/functionWithNextPagesApiConsumer.js'
 import tsSchema from './templates/misc/tsSchema.js'
 import reactHook from './templates/react/reactHook.js'
 import basicFormComponent from './templates/components/basicFormComponent.js'
@@ -42,7 +41,6 @@ const superCodeGeneratorConfig: SuperCodeGeneratorConfigSchema<any, any> = [
   functionWithVitest,
   functionWithUseData,
   functionWithHook,
-  functionWithNextPagesApiConsumer,
   functionWithTable,
   functionWithFeed,
   reactHook,
