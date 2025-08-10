@@ -133,6 +133,10 @@ export default async function ${p.nameCamelCase}NextjsRouteHandlerConsumer(
     ...props.nextApiProps,
   })
 
+  if (res.error) {
+    throw new Error(res.error.message)
+  }
+
   return res
 }
 
