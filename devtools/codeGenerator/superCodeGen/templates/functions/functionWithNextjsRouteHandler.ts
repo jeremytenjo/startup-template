@@ -108,7 +108,9 @@ export const Default = {
       return `consumers/nextjsRouteHandlerConsumer/${fileName}.nextjsRouteHandlerConsumer.ts`
     },
     template: (p) => {
-      return `import type {
+      return `import throwError from '@useweb/ui/throwError'
+
+import type {
   ${p.namePascalCase}Props,
   ${p.namePascalCase}Return,
 } from '../../${p.nameCamelCase}.js'
@@ -134,7 +136,9 @@ export default async function ${p.nameCamelCase}NextjsRouteHandlerConsumer(
   })
 
   if (res.error) {
-    throw new Error(res.error.message)
+    throwError({
+      message: res.error.message,
+    })
   }
 
   return res
