@@ -28,10 +28,11 @@ export type ${p.namePascalCase}Props = { name: string }
 export default async function ${p.nameCamelCase}(props: ${p.namePascalCase}Props) {
   assert<${p.namePascalCase}Props,>({ props, requiredProps: ['name'] })
 
-  const data = props.name
+  const name = props.name
 
   return {
-    data
+    id: props.name,
+    name
   }
 }
 
@@ -138,6 +139,105 @@ export default async function ${p.nameCamelCase}NextjsRouteHandlerConsumer(
 export type ${p.namePascalCase}NextjsRouteHandlerConsumerReturn = ReturnType<
   typeof ${p.nameCamelCase}NextjsRouteHandlerConsumer
 >`
+    },
+  },
+  // hook with persist and trigger
+  {
+    path: (p) => {
+      const fileName = `use${p.namePascalCase}`
+      return `consumers/nextjsRouteHandlerConsumer/${fileName}.nextjsRouteHandlerConsumer.ts`
+    },
+    template: (p) => {
+      return `import type { PartialRequired } from '@useweb/use-data'
+import createUseDataId from '@useweb/use-data/createUseDataId'
+import useAsync from '@useweb/use-async'
+import useData from '@useweb/use-data'
+import type { GetOptions } from '@useweb/use-data/useData/handlers/useGet'
+
+import ${p.nameCamelCase}NextjsRouteHandlerConsumer, {
+  type ${p.namePascalCase}NextjsRouteHandlerConsumerProps,
+  type ${p.namePascalCase}NextjsRouteHandlerConsumerReturn,
+} from './${p.nameCamelCase}.nextjsRouteHandlerConsumer.js'
+
+import type { NextApiProps } from '@/lib/integrations/Nextjs/utils/nextApi/nextApi.js'
+import logError from '@/lib/utils/loggers/logError/logError.js'
+
+type PayloadSchema = ${p.namePascalCase}NextjsRouteHandlerConsumerProps['payload']
+type PartialPayloadSchema = PartialRequired<PayloadSchema>
+type ReturnSchema = Awaited<${p.namePascalCase}NextjsRouteHandlerConsumerReturn>['data']
+
+export type Use${p.namePascalCase}PersistProps = {
+  payload: PartialPayloadSchema
+  onGet?: GetOptions<ReturnSchema, any>['onGet']
+}
+
+export const getUse${p.namePascalCase}PersistDataId = (props: PartialPayloadSchema) => {
+  const id = createUseDataId<PayloadSchema>({
+    name: 'use${p.namePascalCase}Persist',
+    props,
+  })
+  return id
+}
+
+export function use${p.namePascalCase}Persist(props: Use${p.namePascalCase}PersistProps) {
+  const res = useData<ReturnSchema, PayloadSchema>({
+    id: getUse${p.namePascalCase}PersistDataId(props.payload).id,
+    get: {
+      fetcher: async () => {
+        const result = await ${p.nameCamelCase}NextjsRouteHandlerConsumer({
+          payload: props.payload as PayloadSchema,
+        })
+        return [result.data]
+      },
+      onGet: props.onGet,
+    },
+  })
+
+  return res
+}
+
+export type Use${p.namePascalCase}TriggerProps = {
+  options?: {
+    nextApiProps?: Partial<NextApiProps<PayloadSchema>>
+    onResult?: (props: { result: ReturnSchema }) => void
+    onError?: (props: { error: unknown; fnProps: PayloadSchema }) => void
+  }
+}
+
+export function use${p.namePascalCase}Trigger(props: Use${p.namePascalCase}TriggerProps = {}) {
+  const trigger = useAsync<PayloadSchema, ReturnSchema>({
+    fn: async (payload) => {
+      const res = await ${p.nameCamelCase}NextjsRouteHandlerConsumer({
+        payload,
+        nextApiProps: props.options?.nextApiProps,
+      })
+
+      return res.data
+    },
+
+    onResult(p) {
+      if (props.options?.onResult) {
+        props.options.onResult({
+          result: p.result,
+        })
+      }
+    },
+    onError({ error, fnProps }) {
+      if (props.options?.onError) {
+        props.options.onError({ error, fnProps })
+      }
+
+      logError({
+        error,
+        fnName: 'use${p.namePascalCase}Trigger',
+        metadata: { fnProps },
+      })
+    },
+  })
+
+  return trigger
+}
+`
     },
   },
   // route
