@@ -81,5 +81,19 @@ export default async function nextApi<ReturnProps = any, PayloadProps = any>(
     return res.json()
   })
 
+  if (response.error) {
+    return {
+      error: response.error,
+      data: undefined as ReturnProps, // Ensure data is defined as ReturnProps type
+    }
+  }
+
+  if (!response.data) {
+    return {
+      data: response as ReturnProps,
+      error: undefined,
+    }
+  }
+
   return response
 }
