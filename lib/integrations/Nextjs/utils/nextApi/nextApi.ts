@@ -35,7 +35,7 @@ export default async function nextApi<ReturnProps = any, PayloadProps = any>(
 
   // Upload form data, eg file
   if (isFormData && props.payload) {
-    const datas = await await crossFetch(url, {
+    const datas = await crossFetch(url, {
       method: 'post',
       body: props.payload as any,
     }).then((res) => {
