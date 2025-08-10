@@ -194,6 +194,15 @@ export function use${p.namePascalCase}Persist(props: Use${p.namePascalCase}Persi
         return [result.data]
       },
       onGet: props.onGet,
+      onGetError(p) {
+        logError({
+          fnName: 'use${p.namePascalCase}Persist',
+          error: p.error,
+          metadata: {
+            props,
+          },
+        })
+      },
     },
   })
 
