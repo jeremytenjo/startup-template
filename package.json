@@ -155,7 +155,7 @@
     "@storybook/nextjs": "8.6.11",
     "@storybook/test": "8.6.11",
     "@storybook/test-runner": "0.22.0",
-    "code-inspector-plugin": "1.0.5-beta.2",
+    "code-inspector-plugin": "0.20.17",
     "@storybook/theming": "8.6.11",
     "@svgr/core": "8.1.0",
     "@types/google.accounts": "0.0.5",
