@@ -11,8 +11,9 @@ export default function DesktopHeaderNavlinks() {
     <Box
       data-id='DesktopHeaderNavlinks'
       sx={{
-        display: 'grid',
+        display: 'flex',
         height: '17px',
+        gap: 3,
         alignItems: 'center',
         alignContent: 'center',
         whiteSpace: 'nowrap',
