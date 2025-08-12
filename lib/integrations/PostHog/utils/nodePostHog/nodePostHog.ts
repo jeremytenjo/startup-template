@@ -3,13 +3,14 @@ import assert from '@useweb/assert'
 import { PostHog } from 'posthog-node'
 
 import posthogConfig from '../../posthog.config.js'
+import enablePostHog from '../enablePostHog/enablePostHog.js'
 
 export type NodePostHogProps = { eventName: string; data: any }
 
 export default async function nodePostHog(props: NodePostHogProps) {
   assert<NodePostHogProps>({ props, requiredProps: ['eventName', 'data'] })
 
-  if (process?.env?.NODE_ENV === 'production' && posthogConfig.id) {
+  if (enablePostHog().enable) {
     const client = new PostHog(posthogConfig.id)
 
     client.capture({

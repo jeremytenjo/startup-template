@@ -6,6 +6,7 @@ import Theme from '../lib/integrations/Useweb/theme/theme.js'
 import colors from '../lib/integrations/Useweb/theme/tokens/colors.js'
 import RootLayout from '../lib/layouts/RootLayout/RootLayout.js'
 import { siteInfo } from '../data/_siteInfo/siteInfo.js'
+import PostHogProvider from '../lib/integrations/PostHog/utils/PostHogProvider/PostHogProvider.js'
 
 export const metadata: Metadata = {
   title: siteInfo.name,
@@ -45,9 +46,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     <html lang='en'>
       <body>
         <Theme>
-          <RootLayout>
-            <SnackbarProvider>{children}</SnackbarProvider>
-          </RootLayout>
+          <PostHogProvider>
+            <RootLayout>
+              <SnackbarProvider>{children}</SnackbarProvider>
+            </RootLayout>
+          </PostHogProvider>
         </Theme>
       </body>
     </html>
