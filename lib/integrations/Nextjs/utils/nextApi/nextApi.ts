@@ -1,4 +1,5 @@
 import crossFetch from 'cross-fetch'
+import throwError from '@useweb/ui/throwError'
 
 import { nextjsConfig } from '../../nextjs.config.js'
 
@@ -17,7 +18,7 @@ export type NextApiReturn<ReturnProps> = { data: ReturnProps; error: any }
 export default async function nextApi<ReturnProps = any, PayloadProps = any>(
   props: NextApiProps<PayloadProps>,
 ): Promise<NextApiReturn<ReturnProps>> {
-  if (!props.name) throw new Error('Missing name prop')
+  if (!props.name) throwError({ message: 'Missing name prop' })
 
   // Regular call
   const port = props.port || process.env.PUBIC_NEXT_PORT || nextjsConfig.port
@@ -40,8 +41,9 @@ export default async function nextApi<ReturnProps = any, PayloadProps = any>(
       body: props.payload as any,
     }).then((res) => {
       if (!res.ok) {
-        throw new Error(`${res.statusText}`, {
-          cause: {
+        throwError({
+          message: `${res.statusText}`,
+          metadata: {
             status: res.status,
             statusText: res.statusText,
             res,
@@ -66,11 +68,13 @@ export default async function nextApi<ReturnProps = any, PayloadProps = any>(
     if (!res.ok) {
       if (res.statusText === 'Method Not Allowed') {
         console.error(
-          `Method Not Allowed for ${props.name}/route.ts API. Please check the method used. If payload is not needed, use GET instead of POST.`,
+          `Method Not Allowed for ${props.name}/route.ts API. Please check the method used in the route.ts. If payload is not needed, use GET instead of POST.`,
         )
       }
-      throw new Error(`${res.statusText}`, {
-        cause: {
+
+      throwError({
+        message: `${res.statusText}`,
+        metadata: {
           status: res.status,
           statusText: res.statusText,
           res,
@@ -84,7 +88,7 @@ export default async function nextApi<ReturnProps = any, PayloadProps = any>(
   if (response.error) {
     return {
       error: response.error,
-      data: undefined as ReturnProps, // Ensure data is defined as ReturnProps type
+      data: undefined as ReturnProps,
     }
   }
 

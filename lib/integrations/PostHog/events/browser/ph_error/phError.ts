@@ -1,16 +1,16 @@
-import assert from '@useweb/assert';
+import assert from '@useweb/assert'
 
-import postHog from '../../../utils/postHog.js';
+import postHog from '../../../utils/postHog.js'
 
 export type PhErrorProps = {
-  fnName: string;
-  description: string;
-  fatal?: boolean;
-  metadata?: any;
-};
+  fnName: string
+  description: string
+  fatal?: boolean
+  metadata?: any
+}
 
 export default async function phError(props: PhErrorProps) {
-  assert<PhErrorProps>({ props, requiredProps: ['description', 'fnName'] });
+  assert<PhErrorProps>({ props, requiredProps: ['description', 'fnName'] })
 
   postHog({
     eventName: 'error',
@@ -20,7 +20,7 @@ export default async function phError(props: PhErrorProps) {
       fatal: Boolean(props.fatal),
       metadata: props.metadata,
     },
-  });
+  })
 }
 
-export type PhErrorReturn = ReturnType<typeof phError>;
+export type PhErrorReturn = ReturnType<typeof phError>

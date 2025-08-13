@@ -1,16 +1,16 @@
-import assert from '@useweb/assert';
+import assert from '@useweb/assert'
 
-import nodePostHog from '../../../utils/nodePostHog/nodePostHog.js';
+import nodePostHog from '../../../utils/nodePostHog/nodePostHog.js'
 
 export type NodePhErrorProps = {
-  fnName: string;
-  description: string;
-  uid?: string;
-  metadata?: object;
-};
+  fnName: string
+  description: string
+  uid?: string
+  metadata?: object
+}
 
 export default async function nodePhError(props: NodePhErrorProps) {
-  assert<NodePhErrorProps>({ props, requiredProps: ['description', 'fnName'] });
+  assert<NodePhErrorProps>({ props, requiredProps: ['description', 'fnName'] })
 
   nodePostHog({
     eventName: 'error',
@@ -20,7 +20,7 @@ export default async function nodePhError(props: NodePhErrorProps) {
       uid: props.uid || '',
       metadata: props?.metadata,
     },
-  });
+  })
 }
 
-export type NodePhErrorReturn = ReturnType<typeof nodePhError>;
+export type NodePhErrorReturn = ReturnType<typeof nodePhError>
