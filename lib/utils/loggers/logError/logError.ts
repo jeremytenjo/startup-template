@@ -1,7 +1,5 @@
 import phError from '../../../integrations/PostHog/events/browser/ph_error/phError.js'
 
-const isProd = process.env.NODE_ENV === 'production'
-
 export type LogErrorProps = {
   error: Error | string
   fnName: string
@@ -36,14 +34,12 @@ export default async function logError(props: LogErrorProps) {
     props.metadata && console.error('metadata', props.metadata)
   }
 
-  if (isProd) {
-    phError({
-      fnName: props.fnName,
-      description: errorMessage,
-      fatal: props.fatal,
-      metadata: props.metadata,
-    })
-  }
+  phError({
+    fnName: props.fnName,
+    description: errorMessage,
+    fatal: props.fatal,
+    metadata: props.metadata,
+  })
 }
 
 export type LogErrorReturn = ReturnType<typeof logError>
