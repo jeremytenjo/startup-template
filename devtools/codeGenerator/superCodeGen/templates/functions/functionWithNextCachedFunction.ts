@@ -55,6 +55,20 @@ import logErrorNode from '@/lib/utils/loggers/logError/logErrorNode.js'
 export default async function ${nameCamelCase}NextCachedFunction(
   props: ${namePascalCase}Props,
 ) {
+  if (process.env.NODE_ENV === 'development') {
+    try {
+      return ${nameCamelCase}(props)
+    } catch (error) {
+      logErrorNode({
+        fnName: '${nameCamelCase}NextCachedFunction',
+        error: String(error),
+        metadata: {
+          props,
+        },
+      })
+    }
+  }
+
   const fetcher = unstable_cache(
     async () => {
       console.log('Fetching ${nameCamelCase}...')
@@ -79,6 +93,7 @@ export default async function ${nameCamelCase}NextCachedFunction(
     [${nameCamelCase}NextCachedFunctionConfig.tag(props)],
     {
       tags: [${nameCamelCase}NextCachedFunctionConfig.tag(props)],
+      revalidate: 60,
     },
   )
 
