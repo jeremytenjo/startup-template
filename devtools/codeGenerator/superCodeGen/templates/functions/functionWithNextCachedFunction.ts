@@ -43,7 +43,7 @@ export type ${propsName} = {name: string}
       const nameCamelCase = helpers?.changeCase?.camelCase(name)
       const namePascalCase = helpers?.changeCase?.pascalCase(name)
 
-      return `import { unstable_cache } from 'next/cache'
+      return `import runNextjsCachedFunction from '@useweb/nextjs/runNextjsCachedFunction'
 
 import type { ${namePascalCase}Props } from '../../${nameCamelCase}.js'
 import ${nameCamelCase} from '../../${nameCamelCase}.js'
@@ -55,10 +55,14 @@ import logErrorNode from '@/lib/utils/loggers/logError/logErrorNode.js'
 export default async function ${nameCamelCase}NextCachedFunction(
   props: ${namePascalCase}Props,
 ) {
-  if (process.env.NODE_ENV === 'development') {
-    try {
-      return ${nameCamelCase}(props)
-    } catch (error) {
+  const pageProps = await runNextjsCachedFunction({
+    NODE_ENV: process.env.NODE_ENV,
+    fetcher: async () => {
+      console.log('Fetching ${nameCamelCase}...')
+      const result = await ${nameCamelCase}(props)
+      return result
+    },
+    onError: ({ error }) => {
       logErrorNode({
         fnName: '${nameCamelCase}NextCachedFunction',
         error: String(error),
@@ -66,38 +70,14 @@ export default async function ${nameCamelCase}NextCachedFunction(
           props,
         },
       })
-    }
-  }
 
-  const fetcher = unstable_cache(
-    async () => {
-      console.log('Fetching ${nameCamelCase}...')
-      try {
-        const pageProps = await ${nameCamelCase}(props)
-      
-        return pageProps
-      } catch (error) {
-        logErrorNode({
-          fnName: '${nameCamelCase}NextCachedFunction',
-          error: String(error),
-          metadata: {
-            props,
-          },
-        })
-
-        return {
-          data: {} as Awaited<ReturnType<typeof ${nameCamelCase}>,>['data'],
-        } satisfies Awaited<ReturnType<typeof ${nameCamelCase}>,> 
-      }
+      return {
+        data: {} as Awaited<ReturnType<typeof ${nameCamelCase}>,>['data'],
+      } satisfies Awaited<ReturnType<typeof ${nameCamelCase}>,> 
     },
-    [${nameCamelCase}NextCachedFunctionConfig.tag(props)],
-    {
-      tags: [${nameCamelCase}NextCachedFunctionConfig.tag(props)],
-      revalidate: 60,
-    },
-  )
-
-  const pageProps = await fetcher()
+    tags: [${nameCamelCase}NextCachedFunctionConfig.tag(props)],
+    revalidate: 60,
+  })
 
   return pageProps
 }
