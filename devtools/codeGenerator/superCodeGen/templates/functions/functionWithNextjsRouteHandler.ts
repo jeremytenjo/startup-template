@@ -268,7 +268,7 @@ export function use${p.namePascalCase}Trigger(props: Use${p.namePascalCase}Trigg
         return file.fileWorkspacePath.includes(`${p.nameCamelCase}.ts`)
       })
 
-      return `import nextRouteHandler from '@/lib/integrations/Nextjs/utils/nextRouteHandler/nextRouteHandler.js'
+      return `import nextjsRouteHandler from '@useweb/nextjs/nextjsRouteHandler'
       import ${
         p.nameCamelCase
       } from '@${mainFunctionPathFromFolder?.fileWorkspacePath.replace('.ts', '.js')}'
@@ -277,7 +277,7 @@ export function use${p.namePascalCase}Trigger(props: Use${p.namePascalCase}Trigg
 export const maxDuration = 60
 
 export async function POST(req: Request) {
-  return await nextRouteHandler({
+  return await nextjsRouteHandler({
     req,
     func: async ({ req }) => {
       const props = await req.json()
