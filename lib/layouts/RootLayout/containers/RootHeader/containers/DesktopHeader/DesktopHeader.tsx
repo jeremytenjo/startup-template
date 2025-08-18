@@ -57,8 +57,8 @@ export default function DesktopHeader() {
           }}
         >
           <NavLink
-            href={navLinks.navLinks.access.signIn?.url}
-            label={navLinks.navLinks.access.signIn?.label}
+            href={navLinks.navLinks.auth?.url}
+            label={navLinks.navLinks.auth?.label}
             sx={{
               '& p': {
                 fontSize: '16px',

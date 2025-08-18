@@ -6,20 +6,10 @@ export const navLinks = {
     url: `/`,
   } satisfies NavLinkSchema,
 
-  access: {
-    signIn: {
-      label: 'Sign In',
-      url: `/access/sign-in`,
-    } satisfies NavLinkSchema,
-    signUp: {
-      label: 'Sign Up',
-      url: `/access/sign-up`,
-    } satisfies NavLinkSchema,
-    resetPassword: {
-      label: 'Reset Password',
-      url: `/access/reset-password`,
-    } satisfies NavLinkSchema,
-  },
+  auth: {
+    label: 'Sign In',
+    url: `/auth`,
+  } satisfies NavLinkSchema,
 
   profile: {
     label: 'Profile',
