@@ -2,8 +2,8 @@ import React from 'react'
 import Box from '@useweb/ui/Box'
 import { useAppHeaderStore } from '@useweb/ui/AppHeader'
 import NavLink from '@useweb/ui/NavLink'
+import FullLogoLink from '@useweb/ui/FullLogoLink'
 
-import FullLogoLink from '../../../../../../components/logo/FullLogoLink/FullLogoLink.js'
 import useNavLinks from '../../../../../../../data/navLinks/utils/useNavLinks/useNavLinks.js'
 
 export default function MobileHeaderSideMenu() {

@@ -1,8 +1,8 @@
 import React from 'react'
 import Box from '@useweb/ui/Box'
 import NavLink from '@useweb/ui/NavLink'
+import FullLogoLink from '@useweb/ui/FullLogoLink'
 
-import FullLogoLink from '../../../../../../components/logo/FullLogoLink/FullLogoLink.js'
 import useNavLinks from '../../../../../../../data/navLinks/utils/useNavLinks/useNavLinks.js'
 import { themeTokens } from '../../../../../../integrations/Useweb/theme/tokens/tokens.js'
 

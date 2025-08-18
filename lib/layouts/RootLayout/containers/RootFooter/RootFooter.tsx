@@ -1,8 +1,8 @@
 import React from 'react'
 import Box from '@useweb/ui/Box'
 import Text from '@useweb/ui/Text'
+import FullLogoLink from '@useweb/ui/FullLogoLink'
 
-import FullLogoLink from '../../../../components/logo/FullLogoLink/FullLogoLink.js'
 import { siteInfo } from '../../../../../data/_siteInfo/siteInfo.js'
 
 import RootFooterLinks from './containers/RootFooterLinks/RootFooterLinks.js'
@@ -46,9 +46,7 @@ export default function RootFooter() {
             sx={{
               transform: 'translateY(-2px)',
             }}
-            iconSx={{
-              width: '120px',
-            }}
+            width='120px'
           />
           <Text
             text={`${siteInfo.name} LLC. ${new Date().getFullYear()}`}

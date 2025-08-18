@@ -3,8 +3,8 @@ import React from 'react'
 import Box from '@useweb/ui/Box'
 import Button from '@useweb/ui/Button'
 import ErrorMessage from '@useweb/ui/ErrorMessage'
+import FullLogoLink from '@useweb/ui/FullLogoLink'
 
-import FullLogoLink from '../lib/components/logo/FullLogoLink/FullLogoLink.js'
 import logError from '../lib/utils/loggers/logError/logError.js'
 
 export type GlobalErrorProps = {
