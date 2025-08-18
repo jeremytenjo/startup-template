@@ -17,7 +17,6 @@ export default function RootFooterLinks() {
         gridAutoFlow: ['row', 'column'],
         gridGap: ['10px', '90px'],
         '& a': {
-          color: 'neutral.200',
           fontWeight: 'bold',
         },
       }}
