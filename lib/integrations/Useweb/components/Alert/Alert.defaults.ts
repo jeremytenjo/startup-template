@@ -3,6 +3,7 @@ import { type ComponentDefaultsProps } from '@useweb/ui-theme'
 import { type AlertProps } from '@useweb/ui/Alert'
 
 import colors from '../../theme/tokens/colors.js'
+import { themeTokens } from '../../theme/tokens/tokens.js'
 
 const defaults: ComponentDefaultsProps<AlertProps> = {
   styleOverrides: {
@@ -23,7 +24,7 @@ const defaults: ComponentDefaultsProps<AlertProps> = {
         color: '#bae9ff',
       },
       '&[data-severity="error"], &[data-severity="error"] svg:first-of-type': {
-        color: '#ff9494',
+        color: themeTokens.colors.semantic.error[100],
       },
       '&[data-has-title="false"]': {
         '& .MuiAlert-message': {
