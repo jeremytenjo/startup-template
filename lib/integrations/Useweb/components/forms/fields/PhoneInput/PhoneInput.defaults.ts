@@ -4,6 +4,7 @@ import { type ComponentDefaultsProps } from '@useweb/ui-theme'
 import { type PhoneInputProps } from '@useweb/ui/PhoneInput'
 
 import colors from '../../../../theme/tokens/colors.js'
+import { themeTokens } from '../../../../theme/tokens/tokens.js'
 
 const defaults: ComponentDefaultsProps<PhoneInputProps<any>> = {
   styleOverrides: {
@@ -11,7 +12,7 @@ const defaults: ComponentDefaultsProps<PhoneInputProps<any>> = {
       '& [class="PhoneInput"], [class="PhoneInput PhoneInput--focus"]': {
         backgroundColor: colors.neutral[300],
         border: `1px solid ${colors.neutral[300]}`,
-        borderRadius: '14px',
+        borderRadius: themeTokens.borderRadius[1],
 
         '& [class="PhoneInput--focus"]': {
           backgroundColor: colors.neutral[300],

@@ -3,12 +3,13 @@ import type { BoxProps } from '@useweb/ui/Box'
 import Box from '@useweb/ui/Box'
 
 import colors from '../../tokens/colors.js'
+import { themeTokens } from '../../tokens/tokens.js'
 
 // styles
 export const islandStyles: BoxProps['sx'] = {
   height: 'fit-content',
   width: '100%',
-  borderRadius: '14px',
+  borderRadius: themeTokens.borderRadius[1],
   backgroundColor: colors.neutral[400],
   border: `1px solid ${colors.neutral[300]}`,
   p: '15px',

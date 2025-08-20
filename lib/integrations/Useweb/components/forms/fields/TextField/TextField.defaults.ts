@@ -4,6 +4,7 @@ import { type ComponentDefaultsProps } from '@useweb/ui-theme'
 import { type TextFieldProps } from '@useweb/ui/TextField'
 
 import colors from '../../../../theme/tokens/colors.js'
+import { themeTokens } from '../../../../theme/tokens/tokens.js'
 
 const defaults: ComponentDefaultsProps<TextFieldProps<any>> = {
   defaultProps: {
@@ -14,7 +15,7 @@ const defaults: ComponentDefaultsProps<TextFieldProps<any>> = {
       '& [data-id="textfield_inner"]': {
         backgroundColor: colors.neutral[300],
         border: `1px solid ${colors.neutral[300]}`,
-        borderRadius: '14px',
+        borderRadius: themeTokens.borderRadius[1],
       },
       '& input, textarea': {
         color: colors.neutral[100],

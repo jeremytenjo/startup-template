@@ -2,6 +2,8 @@
 // import in src/theme/useweb/UsewebThemeProvider.js
 import { type ComponentDefaultsProps } from '@useweb/ui-theme'
 
+import { themeTokens } from '../../theme/tokens/tokens.js'
+
 const defaults: ComponentDefaultsProps<any> = {
   styleOverrides: {
     root: {
@@ -10,7 +12,7 @@ const defaults: ComponentDefaultsProps<any> = {
       border: '1px solid',
       borderColor: 'neutral.300',
       backdropFilter: 'blur(22px) saturate(0.9)',
-      borderRadius: '14px',
+      borderRadius: themeTokens.borderRadius[1],
       width: '360px',
       margin: '0 auto',
 

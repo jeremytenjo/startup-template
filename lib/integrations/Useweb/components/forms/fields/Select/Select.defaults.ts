@@ -4,6 +4,7 @@ import { type ComponentDefaultsProps } from '@useweb/ui-theme'
 import { type SelectProps } from '@useweb/ui/Select'
 
 import colors from '../../../../theme/tokens/colors.js'
+import { themeTokens } from '../../../../theme/tokens/tokens.js'
 
 const defaults: ComponentDefaultsProps<SelectProps<any, any>> = {
   styleOverrides: {
@@ -12,7 +13,7 @@ const defaults: ComponentDefaultsProps<SelectProps<any, any>> = {
         backgroundColor: colors.neutral[300],
         border: `1px solid ${colors.neutral[300]}`,
         color: colors.neutral[100],
-        borderRadius: '14px',
+        borderRadius: themeTokens.borderRadius[1],
       },
       '& .MuiNativeSelect-select': {
         '&[disabled]': {

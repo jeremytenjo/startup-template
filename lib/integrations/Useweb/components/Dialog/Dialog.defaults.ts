@@ -4,12 +4,13 @@ import { type ComponentDefaultsProps } from '@useweb/ui-theme'
 import { type DialogProps } from '@useweb/ui/Dialog'
 
 import colors from '../../theme/tokens/colors.js'
+import { themeTokens } from '../../theme/tokens/tokens.js'
 
 const defaults: ComponentDefaultsProps<DialogProps> = {
   styleOverrides: {
     root: {
       '& .MuiPaper-root': {
-        borderRadius: '14px',
+        borderRadius: themeTokens.borderRadius[1],
         boxShadow: '0px 9px 38px rgba(0, 0, 0, 0.06)',
         minWidth: [, '360px'],
         backgroundColor: colors.neutral[500],

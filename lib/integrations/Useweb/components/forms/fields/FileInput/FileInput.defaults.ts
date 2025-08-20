@@ -4,6 +4,7 @@ import { type ComponentDefaultsProps } from '@useweb/ui-theme'
 import { type FileInputProps } from '@useweb/ui/FileInput'
 
 import colors from '../../../../theme/tokens/colors.js'
+import { themeTokens } from '../../../../theme/tokens/tokens.js'
 
 const defaults: ComponentDefaultsProps<FileInputProps<any>> = {
   styleOverrides: {
@@ -25,7 +26,7 @@ const defaults: ComponentDefaultsProps<FileInputProps<any>> = {
       },
 
       '& img': {
-        borderRadius: '14px',
+        borderRadius: themeTokens.borderRadius[1],
       },
     },
   },
