@@ -3,15 +3,15 @@
 import { type ComponentDefaultsProps } from '@useweb/ui-theme'
 import { type ActionBoxProps } from '@useweb/ui/ActionBox'
 
-import colors from '../../theme/tokens/colors.js'
+import { themeTokens } from '../../theme/tokens/tokens.js'
 
 const defaults: ComponentDefaultsProps<ActionBoxProps> = {
   styleOverrides: {
     root: {
-      backgroundColor: colors.neutral[400],
+      backgroundColor: themeTokens.colors.neutral[400],
       border: `1px solid transparent`,
-      borderRadius: '14px',
-      borderColor: colors.neutral[300],
+      borderRadius: themeTokens.borderRadius[1],
+      borderColor: themeTokens.colors.neutral[300],
     },
   },
 }
