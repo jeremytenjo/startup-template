@@ -4,6 +4,7 @@ import { type ComponentDefaultsProps } from '@useweb/ui-theme'
 import { type DatePickerProps } from '@useweb/ui/DatePicker'
 
 import colors from '../../../../theme/tokens/colors.js'
+import { themeTokens } from '../../../../theme/tokens/tokens.js'
 
 const defaults: ComponentDefaultsProps<DatePickerProps<any>> = {
   styleOverrides: {
@@ -12,11 +13,11 @@ const defaults: ComponentDefaultsProps<DatePickerProps<any>> = {
         width: '100%',
       },
       '& fieldset': {
-        borderRadius: '16px',
+        borderRadius: themeTokens.borderRadius[1],
         width: '100%',
       },
       '& input': {
-        borderRadius: '16px',
+        borderRadius: themeTokens.borderRadius[1],
         backgroundColor: colors.neutral[300],
         borderColor: `${colors.neutral[300]} !important`,
       },

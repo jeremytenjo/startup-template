@@ -4,6 +4,7 @@ import { type ComponentDefaultsProps } from '@useweb/ui-theme'
 import { type ChipSelectorProps } from '@useweb/ui/ChipSelector'
 
 import colors from '../../theme/tokens/colors.js'
+import { themeTokens } from '../../theme/tokens/tokens.js'
 
 const defaults: ComponentDefaultsProps<ChipSelectorProps<any>> = {
   defaultProps: {
@@ -14,7 +15,7 @@ const defaults: ComponentDefaultsProps<ChipSelectorProps<any>> = {
   },
   styleOverrides: {
     root: {
-      borderRadius: '16px',
+      borderRadius: themeTokens.borderRadius[1],
       backgroundColor: colors.neutral[400],
       color: colors.neutral[100],
       '& .MuiInputBase-root': {

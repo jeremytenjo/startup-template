@@ -4,6 +4,7 @@ import { type ComponentDefaultsProps } from '@useweb/ui-theme'
 import { type VerificationCodeInputProps } from '@useweb/ui/VerificationCodeInput'
 
 import colors from '../../theme/tokens/colors.js'
+import { themeTokens } from '../../theme/tokens/tokens.js'
 
 const defaults: ComponentDefaultsProps<VerificationCodeInputProps> = {
   styleOverrides: {
@@ -19,7 +20,7 @@ const defaults: ComponentDefaultsProps<VerificationCodeInputProps> = {
 
           '& input': {
             backgroundColor: colors.neutral[600],
-            borderRadius: '16px',
+            borderRadius: themeTokens.borderRadius[1],
             border: '1px solid transparent',
             borderColor: colors.neutral[300],
             color: colors.neutral[100],

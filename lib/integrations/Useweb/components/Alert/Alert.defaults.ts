@@ -8,7 +8,7 @@ import { themeTokens } from '../../theme/tokens/tokens.js'
 const defaults: ComponentDefaultsProps<AlertProps> = {
   styleOverrides: {
     root: {
-      borderRadius: '16px',
+      borderRadius: themeTokens.borderRadius[1],
       backgroundColor: colors.neutral[600],
       border: `1px solid ${colors.neutral[300]}`,
       backdropFilter: 'blur(12px) saturate(0.9)',
