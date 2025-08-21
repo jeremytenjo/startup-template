@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import useSnackbar, { SnackbarProvider } from '@useweb/ui/Snackbar'
+import useSnackbar, { Snackbar, SnackbarProvider } from '@useweb/ui/Snackbar'
 
 export default {
   title: 'lib/components/useweb/Snackbar',
@@ -39,5 +39,11 @@ export const Example = {
         <Child />
       </Provider>
     )
+  },
+}
+
+export const SnackbarOnly = {
+  render: () => {
+    return <Snackbar title='Title' message='This is a snackbar' />
   },
 }
