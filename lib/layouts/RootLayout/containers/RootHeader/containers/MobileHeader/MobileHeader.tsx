@@ -2,10 +2,9 @@ import React from 'react'
 import Box from '@useweb/ui/Box'
 import { useAppHeaderStore } from '@useweb/ui/AppHeader'
 import IconButton from '@useweb/ui/IconButton'
-import Link from '@useweb/ui/Link'
+import FullLogoLink from '@useweb/ui/FullLogoLink'
 
 import MenuIcon from '../../../../../../components/icons/MenuIcon.js'
-import LogoIcon from '../../../../../../components/icons/LogoIcon.js'
 
 export default function MobileHeader() {
   const appHeaderStore = useAppHeaderStore()
@@ -41,18 +40,7 @@ export default function MobileHeader() {
           >
             <MenuIcon fontSize='small' />
           </IconButton>
-          <Link
-            href={`/`}
-            sx={{
-              display: 'contents',
-            }}
-          >
-            <LogoIcon
-              sx={{
-                width: '20px',
-              }}
-            />
-          </Link>
+          <FullLogoLink width='20px' />
         </Box>
       </Box>
     </>
