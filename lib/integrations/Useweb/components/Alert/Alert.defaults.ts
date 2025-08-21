@@ -9,22 +9,34 @@ const defaults: ComponentDefaultsProps<AlertProps> = {
   styleOverrides: {
     root: {
       borderRadius: themeTokens.borderRadius[1],
-      backgroundColor: colors.neutral[600],
-      border: `1px solid ${colors.neutral[300]}`,
+      backgroundColor: colors.neutral[100],
+      border: `1px solid ${colors.neutral[200]}`,
       backdropFilter: 'blur(12px) saturate(0.9)',
       fontSize: '13px',
       alignItems: 'start',
-      '&[data-severity="success"], &[data-severity="success"]  svg:first-of-type': {
-        color: '#b8f9bb !important',
+      '&[data-severity="success"], &[data-severity="success"]': {
+        '& svg:first-of-type': {
+          color: '#b8f9bb !important',
+        },
       },
-      '&[data-severity="warning"], &[data-severity="warning"] svg:first-of-type ': {
-        color: '#ffe4bc',
+      '&[data-severity="warning"], &[data-severity="warning"]': {
+        '& svg:first-of-type': {
+          color: '#ffe4bc',
+        },
       },
-      '&[data-severity="info"], &[data-severity="info"] svg:first-of-type': {
-        color: '#bae9ff',
+      '&[data-severity="info"], &[data-severity="info"]': {
+        '& svg:first-of-type': {
+          color: '#bae9ff',
+        },
       },
-      '&[data-severity="error"], &[data-severity="error"] svg:first-of-type': {
-        color: themeTokens.colors.semantic.error[100],
+      '&[data-severity="error"], &[data-severity="error"]': {
+        '& svg:first-of-type': {
+          color: themeTokens.colors.semantic.error[100],
+
+          '& p': {
+            color: themeTokens.colors.semantic.error[100],
+          },
+        },
       },
       '&[data-has-title="false"]': {
         '& .MuiAlert-message': {
