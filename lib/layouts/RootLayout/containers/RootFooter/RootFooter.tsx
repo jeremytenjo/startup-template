@@ -1,7 +1,6 @@
 import React from 'react'
 import Box from '@useweb/ui/Box'
 import Text from '@useweb/ui/Text'
-import FullLogoLink from '@useweb/ui/FullLogoLink'
 
 import { siteInfo } from '../../../../../data/_siteInfo/siteInfo.js'
 
@@ -35,21 +34,12 @@ export default function RootFooter() {
           sx={{
             display: 'grid',
             width: '100%',
-            backgroundColor: 'rgba(0, 0, 0, 0)',
-            gridAutoFlow: ['row', 'column'],
-            alignItems: 'center',
-            justifyContent: [, 'space-between'],
             gap: 2,
+            justifyContent: 'center',
           }}
         >
-          <FullLogoLink
-            sx={{
-              transform: 'translateY(-2px)',
-            }}
-            width='120px'
-          />
           <Text
-            text={`${siteInfo.name} LLC. ${new Date().getFullYear()}`}
+            text={`© ${new Date().getFullYear()} ${siteInfo.name}. All Rights Reserved.`}
             sx={{
               color: 'neutral.200',
               fontWeight: 400,
