@@ -8,6 +8,7 @@
     "npm": ">=6.0.0"
   },
   "scripts": {
+    "dev:nextjs": "next dev -p 3001 --turbopack",
     "dev": "tsx ./devtools/scripts/dev/run.ts --dataSource=dev",
     "dev:signedIn": "tsx ./devtools/scripts/dev/run.ts --signedIn --dataSource=dev",
     "dev:dataSource-prod": "tsx ./devtools/scripts/dev/run.ts --dataSource=prod",
@@ -116,7 +117,7 @@
     "json-to-ts": "1.7.0",
     "jwt-decode": "4.0.0",
     "motion": "12.11.3",
-    "next": "15.2.2",
+    "next": "15.5.0",
     "notion-client": "6.16.0",
     "notion-types": "6.16.0",
     "ohm-js": "17.1.0",
