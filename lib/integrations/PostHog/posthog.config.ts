@@ -5,6 +5,5 @@ export default {
   id: '',
   initContig: {
     api_host: 'https://us.i.posthog.com',
-    autocapture: false,
   } as PostHogConfig,
 }
