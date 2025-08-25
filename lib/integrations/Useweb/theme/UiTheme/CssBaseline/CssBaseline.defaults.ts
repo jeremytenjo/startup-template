@@ -5,6 +5,7 @@ import { interFont } from '../../fonts/fonts.js'
 import colors from '../../tokens/colors.js'
 import { datePickerCss } from '../../../components/forms/fields/DatePicker/DatePicker.css.js'
 import { rootLayoutConfig } from '../../../../../layouts/RootLayout/rootLayout.config.js'
+import { themeTokens } from '../../tokens/tokens.js'
 
 const defaults: ComponentDefaultsProps<CssBaselineProps> = {
   styleOverrides: `
@@ -35,7 +36,7 @@ const defaults: ComponentDefaultsProps<CssBaselineProps> = {
 
   *::-webkit-scrollbar-thumb {
     background-color: ${colors.neutral[250]};
-    border-radius: 10px;
+    border-radius: ${themeTokens.borderRadius[1]};
   }
 
   p,
@@ -140,7 +141,7 @@ const defaults: ComponentDefaultsProps<CssBaselineProps> = {
   background-color: var(--base-color);
 
   width: 100%;
-  border-radius: 0.25rem;
+  border-radius: ${themeTokens.borderRadius[1]};
   display: inline-flex;
   line-height: 1;
 
@@ -184,14 +185,14 @@ const defaults: ComponentDefaultsProps<CssBaselineProps> = {
     backdrop-filter: blur(8px);
   }
   .mainBackground {
-    border-radius: 3px;
+    border-radius: ${themeTokens.borderRadius[1]};
     background-color: ${colors.neutral[500]};
     border: 1px solid ${colors.neutral[300]};
   }
   .iconBackground {
     cursor: pointer;
     background-color: ${colors.neutral[300]};
-    border-radius: 16px;
+    border-radius: ${themeTokens.borderRadius[1]};
     width: 40px;
     height: 40px;
     display: flex;
@@ -211,7 +212,7 @@ const defaults: ComponentDefaultsProps<CssBaselineProps> = {
     background-color: ${colors.neutral[300]};
     border: 1px solid ${colors.neutral[300]};
     color: ${colors.neutral[100]};
-    border-radius: 14px;
+    border-radius: ${themeTokens.borderRadius[1]};
   },
 
   ol[data-sonner-toaster="true"] {
