@@ -16,6 +16,6 @@
     "@storybook/components",
     "ink",
     "react-hook-form/*",
-    "@mui/*"
+    "@mui/material/*"
   ]
 }
