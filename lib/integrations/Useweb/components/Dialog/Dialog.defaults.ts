@@ -9,7 +9,7 @@ import { themeTokens } from '../../theme/tokens/tokens.js'
 const defaults: ComponentDefaultsProps<DialogProps> = {
   styleOverrides: {
     root: {
-      '& .MuiPaper-root': {
+      '& .MuiDialog-paper': {
         borderRadius: themeTokens.borderRadius[1],
         boxShadow: '0px 9px 38px rgba(0, 0, 0, 0.06)',
         minWidth: [, '360px'],
