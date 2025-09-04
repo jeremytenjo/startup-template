@@ -13,7 +13,7 @@ const defaults: ComponentDefaultsProps<any> = {
       borderColor: 'neutral.300',
       backdropFilter: 'blur(22px) saturate(0.9)',
       borderRadius: themeTokens.borderRadius[1],
-      width: '360px',
+      width: '340px',
       margin: '0 auto',
 
       '& .MuiTypography-root': {
